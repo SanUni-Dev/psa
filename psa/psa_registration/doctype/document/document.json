@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PSA-DOC-{YY}-{MM}-{#####}",
+ "creation": "2024-01-21 03:13:26.141848",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "document_type",
+  "type",
+  "student",
+  "column_break_mjji",
+  "country",
+  "issuer",
+  "issuance_date",
+  "file"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Document\nQualification"
+  },
+  {
+   "fieldname": "file",
+   "fieldtype": "Attach",
+   "label": "File"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "column_break_mjji",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issuer",
+   "fieldtype": "Data",
+   "label": "Issuer"
+  },
+  {
+   "fieldname": "issuance_date",
+   "fieldtype": "Date",
+   "label": "Issuance Date"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "options": "Document Type"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-21 03:35:29.776401",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Document",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

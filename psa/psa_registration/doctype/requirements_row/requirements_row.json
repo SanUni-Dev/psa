@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-21 03:55:38.651035",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "document"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "label": "Type",
+   "options": "Document Type"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Link",
+   "label": "Document",
+   "options": "Document"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-21 03:56:45.590594",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Requirements Row",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

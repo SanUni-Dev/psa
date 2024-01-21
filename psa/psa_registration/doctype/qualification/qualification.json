@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-15 22:46:17.577273",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "qualification_section",
+  "requirement",
+  "student",
+  "university",
+  "college",
+  "department",
+  "specialty",
+  "column_break_dizt",
+  "estimation",
+  "percentage",
+  "role",
+  "graduation_year",
+  "country"
+ ],
+ "fields": [
+  {
+   "fieldname": "requirement",
+   "fieldtype": "Data",
+   "label": "Requirement"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "PSA Student"
+  },
+  {
+   "fieldname": "university",
+   "fieldtype": "Data",
+   "label": "University"
+  },
+  {
+   "fieldname": "college",
+   "fieldtype": "Data",
+   "label": "College"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fieldname": "specialty",
+   "fieldtype": "Data",
+   "label": "Specialty"
+  },
+  {
+   "fieldname": "column_break_dizt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "estimation",
+   "fieldtype": "Data",
+   "label": "Estimation"
+  },
+  {
+   "fieldname": "percentage",
+   "fieldtype": "Float",
+   "label": "Percentage"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Data",
+   "label": "Role"
+  },
+  {
+   "fieldname": "graduation_year",
+   "fieldtype": "Date",
+   "label": "Graduation Year"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "Country"
+  },
+  {
+   "fieldname": "qualification_section",
+   "fieldtype": "Section Break",
+   "label": "Qualification"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-21 03:47:40.938369",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Qualification",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

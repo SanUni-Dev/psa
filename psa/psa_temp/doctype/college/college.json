@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:collage_name",
+ "creation": "2024-01-16 00:35:03.034543",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "college_section",
+  "collage_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "college_section",
+   "fieldtype": "Section Break",
+   "label": "College"
+  },
+  {
+   "fieldname": "collage_name",
+   "fieldtype": "Data",
+   "label": "Collage Name",
+   "unique": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-21 02:23:33.524979",
+ "modified_by": "Administrator",
+ "module": "PSA Temp",
+ "name": "College",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "collage_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
