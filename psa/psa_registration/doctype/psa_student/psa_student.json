@@ -86,6 +86,7 @@
    "fieldname": "nationality",
    "fieldtype": "Select",
    "label": "Nationality",
+   "options": "Yemeni\nSaudi",
    "reqd": 1
   },
   {
@@ -244,7 +245,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-21 03:50:29.296772",
+ "modified": "2024-01-25 22:43:29.256625",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "PSA Student",
