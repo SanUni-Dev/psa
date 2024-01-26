@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "autoname": "format: PSA-Stop-Req-{YY}-{MM}-{#####}",
+ "creation": "2024-01-25 23:43:02.975918",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "request_information_section",
+  "program_student",
+  "reason",
+  "stopping_period",
+  "excuse",
+  "fees_status",
+  "status",
+  "councils_section",
+  "college_council_number",
+  "college_council_date",
+  "college_council_decision",
+  "department_council_section",
+  "department_council_number",
+  "department_council_date",
+  "department_council_decision"
+ ],
+ "fields": [
+  {
+   "fieldname": "program_student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Program Enrollment"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stopping_period",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Stopping Period",
+   "options": "Semester\nTwo Semesters",
+   "reqd": 1
+  },
+  {
+   "fieldname": "excuse",
+   "fieldtype": "Attach",
+   "label": "Excuse"
+  },
+  {
+   "fieldname": "fees_status",
+   "fieldtype": "Select",
+   "label": "Fees Status",
+   "options": "Paid\nNot Paid"
+  },
+  {
+   "fieldname": "councils_section",
+   "fieldtype": "Section Break",
+   "label": "College Council"
+  },
+  {
+   "fieldname": "request_information_section",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Accepted\nRejected"
+  },
+  {
+   "fieldname": "college_council_number",
+   "fieldtype": "Data",
+   "label": "College Council Number"
+  },
+  {
+   "fieldname": "college_council_date",
+   "fieldtype": "Date",
+   "label": "College Council Date"
+  },
+  {
+   "fieldname": "college_council_decision",
+   "fieldtype": "Data",
+   "label": "College Council Decision"
+  },
+  {
+   "fieldname": "department_council_section",
+   "fieldtype": "Section Break",
+   "label": "Department Council"
+  },
+  {
+   "fieldname": "department_council_number",
+   "fieldtype": "Data",
+   "label": "Department Council Number"
+  },
+  {
+   "fieldname": "department_council_date",
+   "fieldtype": "Date",
+   "label": "Department Council Date"
+  },
+  {
+   "fieldname": "department_council_decision",
+   "fieldtype": "Data",
+   "label": "Department Council Decision"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-26 00:11:21.153154",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Stopping Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
