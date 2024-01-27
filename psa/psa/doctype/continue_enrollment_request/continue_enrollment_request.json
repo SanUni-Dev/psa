@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PSA-Continue-Req-{YY}-{MM}-{#####}",
+ "creation": "2024-01-27 22:36:10.913144",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_aexq",
+  "program_enrollment",
+  "fees_status",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_aexq",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Program Enrollment"
+  },
+  {
+   "fieldname": "fees_status",
+   "fieldtype": "Select",
+   "label": "Fees Status",
+   "options": "Paid\nNot Paid"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Accepted\nRejected"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-27 22:46:32.702581",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Continue Enrollment Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
