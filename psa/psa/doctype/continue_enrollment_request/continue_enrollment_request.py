@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class StoppingRequest(Document):
+class ContinueEnrollmentRequest(Document):
 	pass

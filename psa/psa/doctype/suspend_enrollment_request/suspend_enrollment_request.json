@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "autoname": "format: PSA-Suspend-Req-{YY}-{MM}-{#####}",
+ "creation": "2024-01-25 23:43:02.975918",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "request_information_section",
+  "program_enrollment",
+  "reason",
+  "suspend_period",
+  "excuse",
+  "fees_status",
+  "status",
+  "councils_section",
+  "college_council_minutes_number",
+  "college_council_minutes_date",
+  "college_council_minutes_decision",
+  "department_council_section",
+  "department_council_minutes_number",
+  "department_council_minutes_date",
+  "department_council_minutes_decision",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "excuse",
+   "fieldtype": "Attach",
+   "label": "Excuse"
+  },
+  {
+   "fieldname": "fees_status",
+   "fieldtype": "Select",
+   "label": "Fees Status",
+   "options": "Paid\nNot Paid"
+  },
+  {
+   "fieldname": "councils_section",
+   "fieldtype": "Section Break",
+   "label": "College Council Minutes"
+  },
+  {
+   "fieldname": "request_information_section",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Accepted\nRejected"
+  },
+  {
+   "fieldname": "department_council_section",
+   "fieldtype": "Section Break",
+   "label": "Department Council Minutes"
+  },
+  {
+   "fieldname": "suspend_period",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Suspend Period",
+   "options": "Semester\nTwo Semesters",
+   "reqd": 1
+  },
+  {
+   "fieldname": "college_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "College Council Minutes Number"
+  },
+  {
+   "fieldname": "college_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "College Council Minutes Date"
+  },
+  {
+   "fieldname": "college_council_minutes_decision",
+   "fieldtype": "Data",
+   "label": "College Council Minutes Decision"
+  },
+  {
+   "fieldname": "department_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Number"
+  },
+  {
+   "fieldname": "department_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "Department Council Minutes Date"
+  },
+  {
+   "fieldname": "department_council_minutes_decision",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Decision"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Program Enrollment"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Suspend Enrollment Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-27 22:28:29.765475",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Suspend Enrollment Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
