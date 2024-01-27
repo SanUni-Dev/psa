@@ -39,6 +39,15 @@ app_license = "mit"
 #     "ToDo"
 # ]
 
+
+fixtures = [
+    # export all records from the Category table
+    "Role",
+    "User"
+]
+
+
+
 # Svg Icons
 # ------------------
 # include app icons in desk
