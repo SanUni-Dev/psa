@@ -12,6 +12,7 @@
   "excuse",
   "fees_status",
   "status",
+  "amended_from",
   "councils_section",
   "college_council_minutes_number",
   "college_council_minutes_date",
@@ -19,8 +20,7 @@
   "department_council_section",
   "department_council_minutes_number",
   "department_council_minutes_date",
-  "department_council_minutes_decision",
-  "amended_from"
+  "department_council_minutes_decision"
  ],
  "fields": [
   {
@@ -120,9 +120,9 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-27 22:28:29.765475",
+ "modified": "2024-01-31 20:59:26.956997",
  "modified_by": "Administrator",
- "module": "PSA",
+ "module": "psa",
  "name": "Suspend Enrollment Request",
  "naming_rule": "Expression",
  "owner": "Administrator",
@@ -136,6 +136,78 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Dean",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Department Head",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Director of Graduate Studies",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Chancellor for Graduate Studies",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Dean For GSA",
    "share": 1,
    "write": 1
   }
