@@ -122,7 +122,7 @@
  "links": [],
  "modified": "2024-01-31 20:59:26.956997",
  "modified_by": "Administrator",
- "module": "psa",
+ "module": "PSA",
  "name": "Suspend Enrollment Request",
  "naming_rule": "Expression",
  "owner": "Administrator",

@@ -52,7 +52,7 @@
  "links": [],
  "modified": "2024-01-31 21:15:08.492229",
  "modified_by": "Administrator",
- "module": "psa",
+ "module": "PSA",
  "name": "Continue Enrollment Request",
  "naming_rule": "Expression",
  "owner": "Administrator",
