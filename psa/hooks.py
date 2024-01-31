@@ -42,8 +42,7 @@ app_license = "mit"
 
 fixtures = [
     # export all records from the Category table
-    "Role",
-    "User"
+    "Role"
 ]
 
 
