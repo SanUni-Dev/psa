@@ -7,13 +7,8 @@
  "field_order": [
   "student_information_section",
   "program_enrollment",
-  "full_name_arabic",
-  "program",
-  "specialization",
   "column_break_ufsy",
-  "year_of_enrollment",
-  "full_name_english",
-  "department",
+  "student_html",
   "request_information_section",
   "reason",
   "suspend_period",
@@ -150,44 +145,19 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "full_name_arabic",
-   "fieldtype": "HTML",
-   "label": "Full Name Arabic"
-  },
-  {
-   "fieldname": "program",
-   "fieldtype": "HTML",
-   "label": "Program"
-  },
-  {
-   "fieldname": "specialization",
-   "fieldtype": "HTML",
-   "label": "Specialization"
-  },
-  {
    "fieldname": "column_break_ufsy",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "year_of_enrollment",
+   "fieldname": "student_html",
    "fieldtype": "HTML",
-   "label": "Year of Enrollment"
-  },
-  {
-   "fieldname": "full_name_english",
-   "fieldtype": "HTML",
-   "label": "Full Name English"
-  },
-  {
-   "fieldname": "department",
-   "fieldtype": "HTML",
-   "label": "Department"
+   "label": "Student HTML"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-04 21:49:56.631428",
+ "modified": "2024-02-04 23:17:59.705859",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
