@@ -5,25 +5,37 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "request_information_section",
+  "student_information_section",
   "program_enrollment",
+  "full_name_arabic",
+  "program",
+  "specialization",
+  "column_break_ufsy",
+  "year_of_enrollment",
+  "full_name_english",
+  "department",
+  "request_information_section",
   "reason",
   "suspend_period",
+  "column_break_cypq",
   "excuse",
-  "fees_status",
-  "status",
-  "amended_from",
   "councils_section",
+  "college_council_minutes_column",
   "college_council_minutes_number",
   "college_council_minutes_date",
   "college_council_minutes_decision",
-  "department_council_section",
+  "department_council_minutes_column",
   "department_council_minutes_number",
   "department_council_minutes_date",
-  "department_council_minutes_decision"
+  "department_council_minutes_decision",
+  "section_break_bpbc",
+  "fees_status",
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "reason",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -31,6 +43,7 @@
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "excuse",
    "fieldtype": "Attach",
    "label": "Excuse"
@@ -43,8 +56,7 @@
   },
   {
    "fieldname": "councils_section",
-   "fieldtype": "Section Break",
-   "label": "College Council Minutes"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "request_information_section",
@@ -58,16 +70,12 @@
    "options": "Accepted\nRejected"
   },
   {
-   "fieldname": "department_council_section",
-   "fieldtype": "Section Break",
-   "label": "Department Council Minutes"
-  },
-  {
+   "allow_in_quick_entry": 1,
    "fieldname": "suspend_period",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Suspend Period",
-   "options": "Semester\nTwo Semesters",
+   "options": "\nSemester\nTwo Semesters",
    "reqd": 1
   },
   {
@@ -101,10 +109,12 @@
    "label": "Department Council Minutes Decision"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Student",
-   "options": "Program Enrollment"
+   "options": "Program Enrollment",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -115,12 +125,69 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "student_information_section",
+   "fieldtype": "Section Break",
+   "label": "Student Information"
+  },
+  {
+   "fieldname": "column_break_cypq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "college_council_minutes_column",
+   "fieldtype": "Column Break",
+   "label": "College Council Minutes"
+  },
+  {
+   "fieldname": "department_council_minutes_column",
+   "fieldtype": "Column Break",
+   "label": "Department Council Minutes"
+  },
+  {
+   "fieldname": "section_break_bpbc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "full_name_arabic",
+   "fieldtype": "HTML",
+   "label": "Full Name Arabic"
+  },
+  {
+   "fieldname": "program",
+   "fieldtype": "HTML",
+   "label": "Program"
+  },
+  {
+   "fieldname": "specialization",
+   "fieldtype": "HTML",
+   "label": "Specialization"
+  },
+  {
+   "fieldname": "column_break_ufsy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "year_of_enrollment",
+   "fieldtype": "HTML",
+   "label": "Year of Enrollment"
+  },
+  {
+   "fieldname": "full_name_english",
+   "fieldtype": "HTML",
+   "label": "Full Name English"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "HTML",
+   "label": "Department"
   }
  ],
- "index_web_pages_for_search": 1,
+ "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-31 20:59:26.956997",
+ "modified": "2024-02-04 21:49:56.631428",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
@@ -212,7 +279,9 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
