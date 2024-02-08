@@ -47,7 +47,7 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "Paid\nNot Paid"
+   "options": "\nPaid\nNot Paid"
   },
   {
    "fieldname": "councils_section",
@@ -62,7 +62,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Accepted\nRejected"
+   "options": "\nAccepted\nRejected"
   },
   {
    "allow_in_quick_entry": 1,
@@ -145,6 +145,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "column_break_ufsy",
    "fieldtype": "Column Break"
   },
@@ -157,7 +158,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-02-04 23:17:59.705859",
+ "modified": "2024-02-07 23:12:11.249427",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
