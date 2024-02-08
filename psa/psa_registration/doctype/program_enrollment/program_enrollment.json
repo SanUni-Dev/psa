@@ -29,13 +29,15 @@
   },
   {
    "fieldname": "status",
-   "fieldtype": "Data",
-   "label": "Status"
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Continued\nSuspended\nWithdrawn"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-25 22:19:02.134517",
+ "modified": "2024-02-07 23:10:46.634466",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Program Enrollment",
