@@ -90,14 +90,10 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
     },
 
-    // before_save(frm) {
-    //         get_program_enrollment_status(frm, function (status) {
-    //             if (status != "Continued") {
-    //                 frappe.throw(__("You can't add a suspend enrollment request, because"));
-    //             }
-    //         });
-    // },
+    onload(frm) {
 
+    },
+    
     program_enrollment(frm) {
         if (frm.doc.program_enrollment) {
             get_program_enrollment_status(frm, function (status) {
