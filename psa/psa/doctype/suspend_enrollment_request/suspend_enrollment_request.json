@@ -1,0 +1,254 @@
+{
+ "actions": [],
+ "autoname": "format: PSA-Suspend-Req-{YY}-{MM}-{#####}",
+ "creation": "2024-01-25 23:43:02.975918",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student_information_section",
+  "program_enrollment",
+  "column_break_ufsy",
+  "student_html",
+  "request_information_section",
+  "reason",
+  "suspend_period",
+  "column_break_cypq",
+  "excuse",
+  "councils_section",
+  "college_council_minutes_column",
+  "college_council_minutes_number",
+  "college_council_minutes_date",
+  "college_council_minutes_decision",
+  "department_council_minutes_column",
+  "department_council_minutes_number",
+  "department_council_minutes_date",
+  "department_council_minutes_decision",
+  "section_break_bpbc",
+  "fees_status",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "excuse",
+   "fieldtype": "Attach",
+   "label": "Excuse"
+  },
+  {
+   "fieldname": "fees_status",
+   "fieldtype": "Select",
+   "label": "Fees Status",
+   "options": "\nPaid\nNot Paid"
+  },
+  {
+   "fieldname": "councils_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "request_information_section",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nAccepted\nRejected"
+  },
+  {
+   "fieldname": "suspend_period",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Suspend Period",
+   "options": "\nSemester\nTwo Semesters",
+   "reqd": 1
+  },
+  {
+   "fieldname": "college_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "College Council Minutes Number"
+  },
+  {
+   "fieldname": "college_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "College Council Minutes Date"
+  },
+  {
+   "fieldname": "college_council_minutes_decision",
+   "fieldtype": "Data",
+   "label": "College Council Minutes Decision"
+  },
+  {
+   "fieldname": "department_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Number"
+  },
+  {
+   "fieldname": "department_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "Department Council Minutes Date"
+  },
+  {
+   "fieldname": "department_council_minutes_decision",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Decision"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Suspend Enrollment Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student_information_section",
+   "fieldtype": "Section Break",
+   "label": "Student Information"
+  },
+  {
+   "fieldname": "column_break_cypq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "college_council_minutes_column",
+   "fieldtype": "Column Break",
+   "label": "College Council Minutes"
+  },
+  {
+   "fieldname": "department_council_minutes_column",
+   "fieldtype": "Column Break",
+   "label": "Department Council Minutes"
+  },
+  {
+   "fieldname": "section_break_bpbc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "column_break_ufsy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_html",
+   "fieldtype": "HTML",
+   "label": "Student HTML"
+  }
+ ],
+ "hide_toolbar": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-03 21:47:58.503317",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Suspend Enrollment Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Dean",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Department Head",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Director of Graduate Studies",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Chancellor for Graduate Studies",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Dean For GSA",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
