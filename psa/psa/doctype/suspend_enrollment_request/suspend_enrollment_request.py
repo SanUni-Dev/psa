@@ -11,7 +11,8 @@ class SuspendEnrollmentRequest(Document):
 		count_of_allowed_requests = 2
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
 		if(program_enrollment_status.status == "Suspended"):
-			frappe.throw(_("You can't add a suspend enrollment request, because you are suspended!"))
+			url_of_continue_enrollment_request = frappe.utils.get_url_to_list('Continue Enrollment Request')
+			frappe.throw(_("You can't add a suspend enrollment request, because you are suspended!") + "<br><br><a href='" + url_of_continue_enrollment_request + "'>" + _('Do you want to add a continue enrollment request?') + "</a>")
 		elif(program_enrollment_status.status == "Withdrawn"):
 			frappe.throw(_("You can't add a suspend enrollment request, because you are withdrawn!"))
 		student_program_suspend_requests = frappe.get_all('Suspend Enrollment Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])

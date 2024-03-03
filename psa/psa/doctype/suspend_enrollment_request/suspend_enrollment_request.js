@@ -87,7 +87,7 @@ function get_program_enrollment_status(frm, callback) {
 
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
-
+        
     },
 
     onload(frm) {
@@ -95,9 +95,11 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     },
     
     program_enrollment(frm) {
+        frm.set_intro('', 'blue');
         if (frm.doc.program_enrollment) {
             get_program_enrollment_status(frm, function (status) {
                 if (status == "Continued") {
+                    frm.set_intro((__(`You are ${status}.`)), 'green');
                     get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
                         var year_of_enrollment = new Date(creation_date).getFullYear();
                         $(frm.fields_dict["student_html"].wrapper).html('<span style="color: black;"><table><tr><th>' +
@@ -110,9 +112,16 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                             __("Specialization") + ': </th><td>' + specialization + '</td></tr></table></span>');
                     });
                 }
-                else {
+                else if(status == "Suspended") {
+                    frm.add_custom_button(__("Go to Continue Enrollment Request List"), () => {
+                        frappe.set_route("List", "Continue Enrollment Request");
+                    });
+                    frm.set_intro((__(`You can't add a suspend enrollment request, because you are ${status}!`)), 'red');
                     $(frm.fields_dict["student_html"].wrapper).html('');
-                    frappe.throw(__("You can't add a suspend enrollment request"));
+                }
+                else {
+                    frm.set_intro((__(`You can't add a suspend enrollment request, because you are ${status}!`)), 'red');
+                    $(frm.fields_dict["student_html"].wrapper).html('');
                 }
             });
         }
