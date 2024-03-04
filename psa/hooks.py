@@ -47,7 +47,9 @@ app_license = "mit"
 
 
 fixtures = [
-    "Workflow"
+    "Workflow",
+    "Workflow State",
+    "Workflow Action Master"
 ]
 
 

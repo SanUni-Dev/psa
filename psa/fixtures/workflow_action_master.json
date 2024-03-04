@@ -1,0 +1,58 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-01-29 16:05:48.809220",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-01-29 16:05:48.813734",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-01-29 16:05:48.821166",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-04 22:08:44.012546",
+  "name": "Confirm",
+  "workflow_action_name": "Confirm"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-04 22:12:31.812574",
+  "name": "Send to Department Head",
+  "workflow_action_name": "Send to Department Head"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-04 22:14:45.487878",
+  "name": "Send to College Dean",
+  "workflow_action_name": "Send to College Dean"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-04 22:17:54.128729",
+  "name": "Send to Department Council",
+  "workflow_action_name": "Send to Department Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-04 22:24:32.603261",
+  "name": "Send to College Council",
+  "workflow_action_name": "Send to College Council"
+ }
+]
