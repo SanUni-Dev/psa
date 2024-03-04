@@ -1,0 +1,146 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "question-sign",
+  "modified": "2024-01-29 16:05:48.688358",
+  "name": "Pending",
+  "style": "",
+  "workflow_state_name": "Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "ok-sign",
+  "modified": "2024-01-29 16:05:48.696567",
+  "name": "Approved",
+  "style": "Success",
+  "workflow_state_name": "Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2024-01-29 16:05:48.704545",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:44:03.989693",
+  "name": "Approval Pending by Vice Dean for GSA",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Vice Dean for GSA"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:45:50.134626",
+  "name": "Approval Pending by Department Head",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Department Head"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:48:02.304348",
+  "name": "Approval Pending by Department Council",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Department Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:50:30.803823",
+  "name": "Approval Pending by College Dean",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by College Dean"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:51:07.128966",
+  "name": "Approval Pending by College Council",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by College Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:53:07.644254",
+  "name": "Rejected by Vice Dean for GSA",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by Vice Dean for GSA"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:53:32.698451",
+  "name": "Rejected by Department Head",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by Department Head"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:55:12.331791",
+  "name": "Rejected by Department Council",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by Department Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:56:08.226734",
+  "name": "Rejected by College Dean",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by College Dean"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:56:51.057856",
+  "name": "Rejected by College Council",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by College Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 21:00:03.509934",
+  "name": "Approved by College Dean",
+  "style": "Success",
+  "workflow_state_name": "Approved by College Dean"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 21:00:37.946325",
+  "name": "Approved by College Council",
+  "style": "Success",
+  "workflow_state_name": "Approved by College Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 22:03:56.147881",
+  "name": "Draft",
+  "style": "Warning",
+  "workflow_state_name": "Draft"
+ }
+]
