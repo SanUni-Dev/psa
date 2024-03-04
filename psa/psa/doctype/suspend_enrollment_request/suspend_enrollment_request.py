@@ -21,7 +21,7 @@ class SuspendEnrollmentRequest(Document):
 			if(request.status == "Accepted"):
 				frappe.msgprint("Accepted")
 				frappe.throw(_("You can't add a suspend enrollment request, because you have been suspended!"))
-			elif(request.status == "Rejected"):
+			elif(request.status == "Rejected by College Dean"):
 				frappe.msgprint("Rejected")
 				count_of_rejected = count_of_rejected + 1
 				if(count_of_rejected >= count_of_allowed_requests):

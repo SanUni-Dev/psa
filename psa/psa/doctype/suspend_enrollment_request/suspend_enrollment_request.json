@@ -58,9 +58,9 @@
   },
   {
    "fieldname": "status",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Status",
-   "options": "\nAccepted\nRejected"
+   "read_only": 1
   },
   {
    "fieldname": "suspend_period",
@@ -154,7 +154,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-03 21:47:58.503317",
+ "modified": "2024-03-04 23:19:10.948775",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
@@ -171,7 +171,6 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
@@ -179,6 +178,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "if_owner": 1,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -187,8 +187,6 @@
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -196,11 +194,10 @@
    "report": 1,
    "role": "College Dean",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -211,32 +208,24 @@
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "College Director of Graduate Studies",
-   "share": 1,
-   "write": 1
+   "share": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Vice Chancellor for Graduate Studies",
-   "share": 1,
-   "write": 1
+   "share": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,

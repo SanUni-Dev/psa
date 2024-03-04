@@ -87,7 +87,7 @@ function get_program_enrollment_status(frm, callback) {
 
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
-        
+        $(frm.fields_dict["student_html"].wrapper).html('');
     },
 
     onload(frm) {
