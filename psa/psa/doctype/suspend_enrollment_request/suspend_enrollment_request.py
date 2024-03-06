@@ -7,6 +7,12 @@ from frappe import _
 
 
 class SuspendEnrollmentRequest(Document):
+	def on_submit(self):
+		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
+		if(program_enrollment.status == "Continued"):
+			program_enrollment.status = "Suspended"
+			program_enrollment.save()
+
 	def before_insert(self):
 		count_of_allowed_requests = 2
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
@@ -33,6 +39,12 @@ class SuspendEnrollmentRequest(Document):
 				count_of_rejected = count_of_rejected + 1
 				if(count_of_rejected >= count_of_allowed_requests):
 					frappe.throw(_("You can't add a suspend enrollment request, because you requested more than limit(") + count_of_allowed_requests + _(") requests!"))
-			elif(request.status != "Draft"):
+			elif(
+				request.status != "Approval Pending by Vice Dean for GSA" or
+				request.status != "Approval Pending by Department Head" or
+				request.status != "Approval Pending by Department Council" or
+				request.status != "Approval Pending by College Dean" or
+				request.status != "Approval Pending by College Council"
+			):
 				frappe.throw(_("You can't add a suspend enrollment request, because you have active request that is pending approval!"))
 
