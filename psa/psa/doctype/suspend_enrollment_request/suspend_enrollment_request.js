@@ -88,12 +88,23 @@ function get_program_enrollment_status(frm, callback) {
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
         $(frm.fields_dict["student_html"].wrapper).html('');
+        if (frappe.user.has_role('Student')) {
+            if (!String(frm.status).includes("Rejected")) {
+                frm.toggle_display("rejected", false);
+            }
+        }
     },
 
     onload(frm) {
 
     },
-    
+
+    rejected(frm) {
+        if (!frm.rejected) {
+            frm.set_value("rejection_reason", "");
+        }
+    },
+
     program_enrollment(frm) {
         frm.set_intro('', 'blue');
         if (frm.doc.program_enrollment) {
@@ -112,7 +123,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                             __("Specialization") + ': </th><td>' + specialization + '</td></tr></table></span>');
                     });
                 }
-                else if(status == "Suspended") {
+                else if (status == "Suspended") {
                     frm.add_custom_button(__("Go to Continue Enrollment Request List"), () => {
                         frappe.set_route("List", "Continue Enrollment Request");
                     });

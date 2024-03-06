@@ -18,14 +18,21 @@ class SuspendEnrollmentRequest(Document):
 		student_program_suspend_requests = frappe.get_all('Suspend Enrollment Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])
 		count_of_rejected = 0
 		for request in student_program_suspend_requests:
-			if(request.status == "Accepted"):
-				frappe.msgprint("Accepted")
+			if(
+				request.status == "Approved by College Council" or
+				request.status == "Approved by College Dean"
+			):
 				frappe.throw(_("You can't add a suspend enrollment request, because you have been suspended!"))
-			elif(request.status == "Rejected by College Dean"):
-				frappe.msgprint("Rejected")
+			elif(
+				request.status == "Rejected by Vice Dean for GSA" or
+				request.status == "Rejected by Department Head" or
+				request.status == "Rejected by Department Council" or
+				request.status == "Rejected by College Dean" or
+				request.status == "Rejected by College Council"
+			):
 				count_of_rejected = count_of_rejected + 1
 				if(count_of_rejected >= count_of_allowed_requests):
-					frappe.throw(_("You can't add a suspend enrollment request, because you requested more than limit!"))
-			elif(request.status == ""):
-				frappe.throw(_("You have active request!"))
+					frappe.throw(_("You can't add a suspend enrollment request, because you requested more than limit(") + count_of_allowed_requests + _(") requests!"))
+			elif(request.status != "Draft"):
+				frappe.throw(_("You can't add a suspend enrollment request, because you have active request that is pending approval!"))
 
