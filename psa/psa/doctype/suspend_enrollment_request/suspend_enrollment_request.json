@@ -14,7 +14,6 @@
   "suspend_period",
   "excuse",
   "column_break_cypq",
-  "rejected",
   "rejection_reason",
   "councils_section",
   "college_council_minutes_column",
@@ -47,7 +46,8 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid"
+   "options": "\nPaid\nNot Paid",
+   "read_only": 1
   },
   {
    "fieldname": "councils_section",
@@ -153,25 +153,16 @@
    "label": "Student HTML"
   },
   {
-   "default": "0",
-   "fieldname": "rejected",
-   "fieldtype": "Check",
-   "label": "Rejected",
-   "permlevel": 1
-  },
-  {
-   "depends_on": "eval: doc.rejected == 1;",
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
-   "mandatory_depends_on": "eval: doc.rejected == 1;",
-   "permlevel": 1
+   "read_only": 1
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-07 04:08:08.968604",
+ "modified": "2024-03-09 23:48:04.679875",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
@@ -179,6 +170,7 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -189,31 +181,16 @@
    "role": "System Manager",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
    "create": 1,
    "delete": 1,
-   "email": 1,
-   "export": 1,
    "if_owner": 1,
-   "print": 1,
    "read": 1,
-   "report": 1,
    "role": "Student",
-   "share": 1,
    "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "if_owner": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Student",
-   "share": 1
   },
   {
    "email": 1,
@@ -222,17 +199,7 @@
    "read": 1,
    "report": 1,
    "role": "Vice Dean For GSA",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Vice Dean For GSA",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -243,17 +210,7 @@
    "read": 1,
    "report": 1,
    "role": "Department Head",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Department Head",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -264,17 +221,7 @@
    "read": 1,
    "report": 1,
    "role": "Department Council Head",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Department Council Head",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -285,19 +232,9 @@
    "read": 1,
    "report": 1,
    "role": "College Dean",
+   "select": 1,
    "share": 1,
    "submit": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "College Dean",
-   "share": 1,
    "write": 1
   },
   {
@@ -307,6 +244,7 @@
    "read": 1,
    "report": 1,
    "role": "College Council Head",
+   "select": 1,
    "share": 1,
    "submit": 1,
    "write": 1
@@ -314,31 +252,11 @@
   {
    "email": 1,
    "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "College Council Head",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "College Director of Graduate Studies",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "College Director of Graduate Studies",
+   "select": 1,
    "share": 1
   },
   {
@@ -348,16 +266,7 @@
    "read": 1,
    "report": 1,
    "role": "Vice Chancellor for Graduate Studies",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Vice Chancellor for Graduate Studies",
+   "select": 1,
    "share": 1
   },
   {
