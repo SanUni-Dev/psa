@@ -11,7 +11,9 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/psa/css/psa.css"
-# app_include_js = "/assets/psa/js/psa.js"
+app_include_js = [
+    "/assets/psa/js/app_include_js/workflow.js",
+    ]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/psa/css/psa.css"
