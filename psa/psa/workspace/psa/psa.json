@@ -45,75 +45,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Masters",
-   "link_count": 6,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "College",
-   "link_count": 0,
-   "link_to": "College",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Department",
-   "link_count": 0,
-   "link_to": "Department",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Program",
-   "link_count": 0,
-   "link_to": "Program",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Specialization",
-   "link_count": 0,
-   "link_to": "Specialization",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "PSA Student",
-   "link_count": 0,
-   "link_to": "PSA Student",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Program Enrollment",
-   "link_count": 0,
-   "link_to": "Program Enrollment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Users and Roles",
    "link_count": 2,
    "link_type": "DocType",
@@ -158,9 +89,78 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "College",
+   "link_count": 0,
+   "link_to": "College",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Department",
+   "link_count": 0,
+   "link_to": "Department",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Specialization",
+   "link_count": 0,
+   "link_to": "Specialization",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Program",
+   "link_count": 0,
+   "link_to": "Program",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PSA Student",
+   "link_count": 0,
+   "link_to": "PSA Student",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Program Enrollment",
+   "link_count": 0,
+   "link_to": "Program Enrollment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-03-10 11:44:56.839483",
+ "modified": "2024-03-10 12:38:35.772837",
  "modified_by": "esmailebraheem771@gmail.com",
  "module": "PSA",
  "name": "PSA",
