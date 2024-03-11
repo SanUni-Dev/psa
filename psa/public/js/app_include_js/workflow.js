@@ -30,19 +30,121 @@ class workflow_overide extends frappe.ui.form.States {
             // console.log("Action: ", d.action);
             // console.log("Current Transaction: ", me.frm.doc);
             if (d.action.includes("Reject")) {
-   
+              frappe.warn(
+                __("Are you sure you want to proceed?"),
+                `<div>
+                    <p><label for="reason">${__(
+                      "Enter reason of reject "
+                    )} <span class="text-danger">*</span></label></p>
+                    <p><textarea id="reason" name="reason" class="form-control" rows="4" required></textarea></p>
+                </div>`,
+                () => {
+                  // Retrieve the value of the reason field and trim any leading/trailing whitespace
+                  const reason = document.getElementById("reason").value.trim();
 
-              // prompt for single value of any type
-              frappe.prompt(
-                {
-                  label: "Reason",
-                  fieldname: "reason",
-                  fieldtype: "Small Text",
-                  reqd: 1,
+                  // Check if the reason field is empty
+                  if (!reason) {
+                    // If the reason field is empty, display a validation error message
+                    frappe.msgprint({
+                      title: __("Validation Error"),
+                      message: __("Please enter a reason."),
+                      indicator: "red",
+                    });
+                    return; // Exit the function early if validation fails
+                  }
+
+                  // Set the value of the reason variable to the rejection_reason field in the current doctype
+                  me.frm.doc.rejection_reason = reason;
+
+                  // Save the document to ensure rejection_reason is saved
+                  frappe.call({
+                    method: "frappe.client.save",
+                    args: {
+                      doc: me.frm.doc,
+                    },
+                    callback: function (response) {
+                      if (!response.exc) {
+                        // Document saved successfully
+                        // Proceed with the action using the reason provided...
+                        frappe.dom.freeze();
+                        frappe
+                          // api url
+                          .xcall("psa.api.v1.workflow.before_transition", {
+                            doc: me.frm.doc,
+                            transition: d,
+                          })
+                          .then((response) => {
+                            // console.log(response);
+                            if (response == true) {
+                              // transition start
+                              // set the workflow_action for use in form scripts
+
+                              me.frm.selected_workflow_action = d.action;
+                              me.frm.script_manager
+                                .trigger("before_workflow_action")
+                                .then(() => {
+                                  frappe
+                                    .xcall(
+                                      "frappe.model.workflow.apply_workflow",
+                                      {
+                                        doc: me.frm.doc,
+                                        action: d.action,
+                                      }
+                                    )
+                                    .then((doc) => {
+                                      frappe.model.sync(doc);
+                                      me.frm.refresh();
+                                      me.frm.selected_workflow_action = null;
+                                      me.frm.script_manager.trigger(
+                                        "after_workflow_action"
+                                      );
+
+                                      // Show a success message indicating that the workflow action was successfully executed
+                                      frappe.show_alert(
+                                        {
+                                          message: __(`Successfully rejected.`),
+                                          indicator: "green",
+                                        },
+                                        5
+                                      );
+
+                                      // // Clear any existing error messages
+                                      // const errorMessages = document.querySelectorAll('.msgprint');
+                                      // errorMessages.forEach(message => message.remove());
+
+                                      // // Reset the value of the reason field
+                                      // document.getElementById("reason").value = "";
+
+                                      // window.refresh();
+                                      location.reload();
+                                    })
+                                    .finally(() => {
+                                      frappe.dom.unfreeze();
+                                    });
+                                });
+                              // transition end
+                            } else {
+                              // set the workflow_action for use in form scripts
+                              frappe.dom.unfreeze();
+                              frappe.msgprint(
+                                __("OOPS, We could not proceed!")
+                              );
+                            }
+                          });
+                      } else {
+                        // Error occurred while saving the document
+                        frappe.msgprint({
+                          title: __("Error"),
+                          message: __(
+                            "An error occurred while saving the document."
+                          ),
+                          indicator: "red",
+                        });
+                      }
+                    },
+                  });
                 },
-                (values) => {
-                  console.log(values.reason);
-                }
+                "Continue"
               );
             } else {
               frappe.confirm(
