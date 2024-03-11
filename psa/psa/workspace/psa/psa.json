@@ -114,45 +114,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "For Development",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "DocType",
-   "link_count": 0,
-   "link_to": "DocType",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Workflow State",
-   "link_count": 0,
-   "link_to": "Workflow State",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Workflow Action Master",
-   "link_count": 0,
-   "link_to": "Workflow Action Master",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Users and Roles",
    "link_count": 3,
    "link_type": "DocType",
@@ -188,9 +149,58 @@
    "link_type": "Page",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "For Development",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DocType",
+   "link_count": 0,
+   "link_to": "DocType",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow",
+   "link_count": 0,
+   "link_to": "Workflow",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow State",
+   "link_count": 0,
+   "link_to": "Workflow State",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow Action Master",
+   "link_count": 0,
+   "link_to": "Workflow Action Master",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-03-10 18:27:32.272184",
+ "modified": "2024-03-11 06:34:47.759048",
  "modified_by": "esmailebraheem771@gmail.com",
  "module": "PSA",
  "name": "PSA",
