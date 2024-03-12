@@ -11,85 +11,94 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         $(frm.fields_dict["student_html"].wrapper).html('');
     },
 
-    // onload(frm) {
-
-    // },
-
-    before_workflow_action(frm) {
-        if (frm.selected_workflow_action.includes("Confirm"))
-        {
-            frappe.set_route("List", "Suspend Enrollment Request");            
-            frappe.throw(frm.doc.fees_status);
-            frm.refresh();
-        }
-
-        var selected_workflow_action = frm.selected_workflow_action;
-        if (selected_workflow_action.includes("Reject")) {
-            frappe.msgprint(selected_workflow_action);
-
-            frappe.warn(__("Are you sure you want to continue?"),
-                `<div>
-                    <p>
-                        <label for="reason">
-                            ${__("Enter reason of reject ")}
-                            <span class="text-danger">*</span>
-                        </label>
-                    </p>
-                    <p>
-                        <textarea id="reason" name="reason" class="form-control" rows="4" required></textarea>
-                    </p>
-                </div>`,
-                () => {
-                    // Retrieve the value of the reason field and trim any leading/trailing whitespace
-                    const reason = document.getElementById("reason").value.trim();
-
-                    // Check if the reason field is empty
-                    if (!reason) {
-                        // If the reason field is empty, display a validation error message
-                        frappe.msgprint({
-                            title: __("Error"),
-                            message: __("Please enter a reason"),
-                            indicator: "red",
-                        });
-                        return; // Exit the function early if validation fails
-                    }
-
-                    // Set the value of the reason variable to the rejection_reason field in the current doctype
-                    frm.doc.rejection_reason = reason;
-
-                    frappe.show_alert(
-                        {
-                            message: __(`Successfully rejected.`),
-                            indicator: "green",
-                        },
-                        5
-                    );
-                },
-                "Continue"
-            );
-
-        }
-        else {
-            frappe.msgprint(selected_workflow_action);
-            frappe.confirm(
-                (__(`Are you sure you want to `) + `<b>${selected_workflow_action}</b>?`),
-                () => {
-                    frappe.show_alert(
-                        {
-                            message: __(
-                                __(`Action '`) + selected_workflow_action + __(`' completed successfully.`)
-                            ),
-                            indicator: "green",
-                        },
-                        5
-                    );
-                },
-                () => {
-                    // action to perform if No is selected
+    onload(frm) {
+        if (frappe.user_roles.includes("Student")) {
+            setTimeout(() => {
+                var fees_status = frm.doc.fees_status;
+                if (fees_status === "Not Paid") {
+                    frm.add_custom_button(__("Get Clipboard Number"), () => {
+                        frappe.msgprint(__("Clipboard Number for '") + frm.doc.name + __("' is: #########"));
+                    });
                 }
-            );
+            }, 500);
         }
     },
+
+    // before_workflow_action(frm) {
+    //     if (frm.selected_workflow_action.includes("Confirm")) {
+    //         if (frm.doc.fees_status === "Not Paid") {
+    //             frappe.throw(__("Please pay fees first!"));
+    //             frappe.validated = false;
+    //         }
+    //     }
+
+    //     // var selected_workflow_action = frm.selected_workflow_action;
+    //     // if (selected_workflow_action.includes("Reject")) {
+    //     //     frappe.msgprint(selected_workflow_action);
+
+    //     //     frappe.warn(__("Are you sure you want to continue?"),
+    //     //         `<div>
+    //     //             <p>
+    //     //                 <label for="reason">
+    //     //                     ${__("Enter reason of reject ")}
+    //     //                     <span class="text-danger">*</span>
+    //     //                 </label>
+    //     //             </p>
+    //     //             <p>
+    //     //                 <textarea id="reason" name="reason" class="form-control" rows="4" required></textarea>
+    //     //             </p>
+    //     //         </div>`,
+    //     //         () => {
+    //     //             // Retrieve the value of the reason field and trim any leading/trailing whitespace
+    //     //             const reason = document.getElementById("reason").value.trim();
+
+    //     //             // Check if the reason field is empty
+    //     //             if (!reason) {
+    //     //                 // If the reason field is empty, display a validation error message
+    //     //                 frappe.msgprint({
+    //     //                     title: __("Error"),
+    //     //                     message: __("Please enter a reason"),
+    //     //                     indicator: "red",
+    //     //                 });
+    //     //                 return; // Exit the function early if validation fails
+    //     //             }
+
+    //     //             // Set the value of the reason variable to the rejection_reason field in the current doctype
+    //     //             frm.doc.rejection_reason = reason;
+
+    //     //             frappe.show_alert(
+    //     //                 {
+    //     //                     message: __(`Successfully rejected.`),
+    //     //                     indicator: "green",
+    //     //                 },
+    //     //                 5
+    //     //             );
+    //     //         },
+    //     //         "Continue"
+    //     //     );
+
+    //     // }
+    //     // else {
+    //     //     frappe.msgprint(selected_workflow_action);
+    //     //     frappe.confirm(
+    //     //         (__(`Are you sure you want to `) + `<b>${selected_workflow_action}</b>?`),
+    //     //         () => {
+    //     //             frappe.show_alert(
+    //     //                 {
+    //     //                     message: __(
+    //     //                         __(`Action '`) + selected_workflow_action + __(`' completed successfully.`)
+    //     //                     ),
+    //     //                     indicator: "green",
+    //     //                 },
+    //     //                 5
+    //     //             );
+    //     //         },
+    //     //         () => {
+    //     //             // action to perform if No is selected
+    //     //         }
+    //     //     );
+    //     // }
+    // },
 
     // after_workflow_action(frm) {
     //     frappe.msgprint("after_workflow_action");
