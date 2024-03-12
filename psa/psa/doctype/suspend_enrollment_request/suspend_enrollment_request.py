@@ -1,12 +1,13 @@
 # Copyright (c) 2024, Sana'a university and contributors
 # For license information, please see license.txt
 
-import frappe
+import frappe, json
 from frappe.model.document import Document
 from frappe import _
 
 
 class SuspendEnrollmentRequest(Document):
+
 	def on_submit(self):
 		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
 		if(program_enrollment.status == "Continued"):
@@ -48,3 +49,12 @@ class SuspendEnrollmentRequest(Document):
 			):
 				frappe.throw(_("You can't add a suspend enrollment request, because you have active request that is pending approval!"))
 
+
+
+	# @frappe.whitelist()
+	# def set_multiple_status(names, status):
+	# 	names = json.loads(names)
+	# 	for name in names:
+	# 		sus = frappe.get_doc("Suspend Enrollment Request", name)
+	# 		sus.status = status
+	# 		sus.save()
