@@ -34,8 +34,8 @@ class workflow_overide extends frappe.ui.form.States {
                 __("Are you sure you want to proceed?"),
                 `<div>
                     <p><label for="reason">${__(
-                      "Enter reason of reject "
-                    )} <span class="text-danger">*</span></label></p>
+                  "Enter reason of reject "
+                )} <span class="text-danger">*</span></label></p>
                     <p><textarea id="reason" name="reason" class="form-control" rows="4" required></textarea></p>
                 </div>`,
                 () => {
@@ -56,7 +56,7 @@ class workflow_overide extends frappe.ui.form.States {
                   // Set the value of the reason variable to the rejection_reason field in the current doctype
                   me.frm.doc.rejection_reason = reason;
 
-                  // Save the document to ensure rejection_reason is saved
+                  // Save the document to ensureme rejection_reason is saved
                   frappe.call({
                     method: "frappe.client.save",
                     args: {
@@ -69,7 +69,7 @@ class workflow_overide extends frappe.ui.form.States {
                         frappe.dom.freeze();
                         frappe
                           // api url
-                          .xcall("psa.api.v1.workflow.before_transition", {
+                          .xcall("psa.api.workflow.before_transition", {
                             doc: me.frm.doc,
                             transition: d,
                           })
@@ -146,71 +146,77 @@ class workflow_overide extends frappe.ui.form.States {
                 },
                 "Continue"
               );
-            } else {
-              frappe.confirm(
-                __(`Are you sure you want to <b>${d.action}</b>`),
-                () => {
-                  // action to perform if Yes is selected
-                  // before transition start
-                  frappe.dom.freeze();
-                  frappe
-                    // api url
-                    .xcall("psa.api.v1.workflow.before_transition", {
-                      doc: me.frm.doc,
-                      transition: d,
-                    })
-                    .then((response) => {
-                      // console.log(response);
-                      if (response == true) {
-                        // transition start
-                        // set the workflow_action for use in form scripts
-
-                        me.frm.selected_workflow_action = d.action;
-                        me.frm.script_manager
-                          .trigger("before_workflow_action")
-                          .then(() => {
-                            frappe
-                              .xcall("frappe.model.workflow.apply_workflow", {
-                                doc: me.frm.doc,
-                                action: d.action,
-                              })
-                              .then((doc) => {
-                                frappe.model.sync(doc);
-                                me.frm.refresh();
-                                me.frm.selected_workflow_action = null;
-                                me.frm.script_manager.trigger(
-                                  "after_workflow_action"
-                                );
-
-                                // Show a success message indicating that the workflow action was successfully executed
-                                frappe.show_alert(
-                                  {
-                                    message: __(
-                                      `Successfully sent to ${d.action}.`
-                                    ),
-                                    indicator: "green",
-                                  },
-                                  5
-                                );
-                              })
-                              .finally(() => {
-                                frappe.dom.unfreeze();
-                              });
-                          });
-                        // transition end
-                      } else {
-                        // set the workflow_action for use in form scripts
-                        frappe.dom.unfreeze();
-                        frappe.msgprint(__("OOPS, We could not proceed!"));
-                      }
-                    });
-
-                  // before transition end
-                },
-                () => {
-                  // action to perform if No is selected
-                }
-              );
+            }
+            else {
+              if (d.action.includes("Confirm") && (me.frm.doc.fees_status === "Not Paid")) {
+                frappe.throw(__("Please pay fees first!"));
+              }
+              else {
+                frappe.confirm(
+                  __(`Are you sure you want to <b>${d.action}</b>`),
+                  () => {
+                    // action to perform if Yes is selected
+                    // before transition start
+                    frappe.dom.freeze();
+                    frappe
+                      // api url
+                      .xcall("psa.api.workflow.before_transition", {
+                        doc: me.frm.doc,
+                        transition: d,
+                      })
+                      .then((response) => {
+                        // console.log(response);
+                        if (response == true) {
+                          // transition start
+                          // set the workflow_action for use in form scripts
+  
+                          me.frm.selected_workflow_action = d.action;
+                          me.frm.script_manager
+                            .trigger("before_workflow_action")
+                            .then(() => {
+                              frappe
+                                .xcall("frappe.model.workflow.apply_workflow", {
+                                  doc: me.frm.doc,
+                                  action: d.action,
+                                })
+                                .then((doc) => {
+                                  frappe.model.sync(doc);
+                                  me.frm.refresh();
+                                  me.frm.selected_workflow_action = null;
+                                  me.frm.script_manager.trigger(
+                                    "after_workflow_action"
+                                  );
+  
+                                  // Show a success message indicating that the workflow action was successfully executed
+                                  frappe.show_alert(
+                                    {
+                                      message: __(
+                                        `Successfully sent to ${d.action}.`
+                                      ),
+                                      indicator: "green",
+                                    },
+                                    5
+                                  );
+                                })
+                                .finally(() => {
+                                  frappe.dom.unfreeze();
+                                });
+                            });
+                          // transition end
+                        } else {
+                          // set the workflow_action for use in form scripts
+                          frappe.dom.unfreeze();
+                          frappe.msgprint(__("OOPS, We could not proceed!"));
+                        }
+                      });
+  
+                    // before transition end
+                  },
+                  () => {
+                    // action to perform if No is selected
+                  }
+                );
+              }
             }
           });
         }

@@ -43,6 +43,7 @@
    "label": "Excuse"
   },
   {
+   "default": "Not Paid",
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
@@ -162,7 +163,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-09 23:48:04.679875",
+ "modified": "2024-03-12 06:46:45.554136",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
