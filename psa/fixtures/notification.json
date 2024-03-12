@@ -1,0 +1,82 @@
+[
+ {
+  "attach_print": 0,
+  "channel": "System Notification",
+  "condition": "",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Suspend Enrollment Request",
+  "enabled": 1,
+  "event": "Submit",
+  "is_standard": 0,
+  "message": "test message for notification",
+  "method": null,
+  "modified": "2024-03-13 01:08:51.381396",
+  "module": null,
+  "name": "Approved Suspend Enrollmend Request Notification",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Approved Suspend Enrollmend Request Notification",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "owner",
+    "receiver_by_role": "Student"
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "Your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "value_changed": ""
+ },
+ {
+  "attach_print": 0,
+  "channel": "System Notification",
+  "condition": "doc.status == \"Rejected by Vice Dean for GSA\" or doc.status == \"Rejected by Department Head\" or doc.status == \"Rejected by Department Council\" or doc.status == \"Rejected by College Dean\" or doc.status == \"Rejected by College Council\"",
+  "date_changed": null,
+  "days_in_advance": 0,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Suspend Enrollment Request",
+  "enabled": 1,
+  "event": "Value Change",
+  "is_standard": 0,
+  "message": "Reason of rejection is: {{doc.rejection_reason}}",
+  "method": null,
+  "modified": "2024-03-13 01:43:01.879351",
+  "module": null,
+  "name": "Reject Suspend Enrollment Request",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Reject Suspend Enrollment Request",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "owner",
+    "receiver_by_role": "Student"
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "Your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "value_changed": "status"
+ }
+]
