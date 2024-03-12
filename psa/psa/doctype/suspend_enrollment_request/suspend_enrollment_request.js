@@ -1,6 +1,136 @@
 // Copyright (c) 2024, Sana'a university and contributors
 // For license information, please see license.txt
 
+
+frappe.ui.form.on("Suspend Enrollment Request", {
+    refresh(frm) {
+        setTimeout(() => {
+            frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
+        }, 500);
+
+        $(frm.fields_dict["student_html"].wrapper).html('');
+    },
+
+    // onload(frm) {
+
+    // },
+
+    before_workflow_action(frm) {
+        var selected_workflow_action = frm.selected_workflow_action;
+        if (selected_workflow_action.includes("Reject")) {
+            frappe.msgprint(selected_workflow_action);
+
+            frappe.warn(__("Are you sure you want to continue?"),
+                `<div>
+                    <p>
+                        <label for="reason">
+                            ${__("Enter reason of reject ")}
+                            <span class="text-danger">*</span>
+                        </label>
+                    </p>
+                    <p>
+                        <textarea id="reason" name="reason" class="form-control" rows="4" required></textarea>
+                    </p>
+                </div>`,
+                () => {
+                    // Retrieve the value of the reason field and trim any leading/trailing whitespace
+                    const reason = document.getElementById("reason").value.trim();
+
+                    // Check if the reason field is empty
+                    if (!reason) {
+                        // If the reason field is empty, display a validation error message
+                        frappe.msgprint({
+                            title: __("Error"),
+                            message: __("Please enter a reason"),
+                            indicator: "red",
+                        });
+                        return; // Exit the function early if validation fails
+                    }
+
+                    // Set the value of the reason variable to the rejection_reason field in the current doctype
+                    frm.doc.rejection_reason = reason;
+
+                    frappe.show_alert(
+                        {
+                            message: __(`Successfully rejected.`),
+                            indicator: "green",
+                        },
+                        5
+                    );
+                },
+                "Continue"
+            );
+
+        }
+        else {
+            frappe.msgprint(selected_workflow_action);
+            frappe.confirm(
+                (__(`Are you sure you want to `) + `<b>${selected_workflow_action}</b>?`),
+                () => {
+                    frappe.show_alert(
+                        {
+                            message: __(
+                                __(`Action '`) + selected_workflow_action + __(`' completed successfully.`)
+                            ),
+                            indicator: "green",
+                        },
+                        5
+                    );
+                },
+                () => {
+                    // action to perform if No is selected
+                }
+            );
+        }
+    },
+
+    // after_workflow_action(frm) {
+    //     frappe.msgprint("after_workflow_action");
+    // },
+
+    // status(frm) {
+    //     frappe.msgprint("status");
+    // },
+
+    program_enrollment(frm) {
+        frm.set_intro('', 'blue');
+        if (frm.doc.program_enrollment) {
+            get_program_enrollment_status(frm, function (status) {
+                if (status == "Continued") {
+                    frm.set_intro((__(`You are ${status}.`)), 'green');
+                    get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
+                        var year_of_enrollment = new Date(creation_date).getFullYear();
+                        $(frm.fields_dict["student_html"].wrapper).html('<span style="color: black;"><table><tr><th>' +
+                            __("Full Name Arabic") + ': </th><td>' + full_name_arabic + '</td></tr><tr><th>' +
+                            __("Full Name English") + ': </th><td>' + full_name_english + '</td></tr><th>' +
+                            __("Year of Enrollment") + ': </th><td>' + year_of_enrollment + '</td></tr><tr><th>' +
+                            __("Program") + ': </th><td>' + program + '</td></tr><tr><th>' +
+                            __("College") + ': </th><td>' + college + '</td></tr><tr><th>' +
+                            __("Department") + ': </th><td>' + department + '</td></tr><tr><th>' +
+                            __("Specialization") + ': </th><td>' + specialization + '</td></tr></table></span>');
+                    });
+                }
+                else if (status == "Suspended") {
+                    frm.add_custom_button(__("Go to Continue Enrollment Request List"), () => {
+                        frappe.set_route("List", "Continue Enrollment Request");
+                    });
+                    frm.set_intro((__(`You can't add a suspend enrollment request, because you are ${status}!`)), 'red');
+                    $(frm.fields_dict["student_html"].wrapper).html('');
+                }
+                else {
+                    frm.set_intro((__(`You can't add a suspend enrollment request, because you are ${status}!`)), 'red');
+                    $(frm.fields_dict["student_html"].wrapper).html('');
+                }
+            });
+        }
+        else {
+            $(frm.fields_dict["student_html"].wrapper).html('');
+        }
+    },
+});
+
+
+
 // Custom functions
 function get_program(program, callback) {
     frappe.call({
@@ -83,61 +213,3 @@ function get_program_enrollment_status(frm, callback) {
         }
     });
 }
-
-
-frappe.ui.form.on("Suspend Enrollment Request", {
-    refresh(frm) {
-        $(frm.fields_dict["student_html"].wrapper).html('');
-        if (frappe.user.has_role('Student')) {
-            if (!String(frm.status).includes("Rejected")) {
-                frm.toggle_display("rejected", false);
-            }
-        }
-    },
-
-    onload(frm) {
-
-    },
-
-    rejected(frm) {
-        if (!frm.rejected) {
-            frm.set_value("rejection_reason", "");
-        }
-    },
-
-    program_enrollment(frm) {
-        frm.set_intro('', 'blue');
-        if (frm.doc.program_enrollment) {
-            get_program_enrollment_status(frm, function (status) {
-                if (status == "Continued") {
-                    frm.set_intro((__(`You are ${status}.`)), 'green');
-                    get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
-                        var year_of_enrollment = new Date(creation_date).getFullYear();
-                        $(frm.fields_dict["student_html"].wrapper).html('<span style="color: black;"><table><tr><th>' +
-                            __("Full Name Arabic") + ': </th><td>' + full_name_arabic + '</td></tr><tr><th>' +
-                            __("Full Name English") + ': </th><td>' + full_name_english + '</td></tr><th>' +
-                            __("Year of Enrollment") + ': </th><td>' + year_of_enrollment + '</td></tr><tr><th>' +
-                            __("Program") + ': </th><td>' + program + '</td></tr><tr><th>' +
-                            __("College") + ': </th><td>' + college + '</td></tr><tr><th>' +
-                            __("Department") + ': </th><td>' + department + '</td></tr><tr><th>' +
-                            __("Specialization") + ': </th><td>' + specialization + '</td></tr></table></span>');
-                    });
-                }
-                else if (status == "Suspended") {
-                    frm.add_custom_button(__("Go to Continue Enrollment Request List"), () => {
-                        frappe.set_route("List", "Continue Enrollment Request");
-                    });
-                    frm.set_intro((__(`You can't add a suspend enrollment request, because you are ${status}!`)), 'red');
-                    $(frm.fields_dict["student_html"].wrapper).html('');
-                }
-                else {
-                    frm.set_intro((__(`You can't add a suspend enrollment request, because you are ${status}!`)), 'red');
-                    $(frm.fields_dict["student_html"].wrapper).html('');
-                }
-            });
-        }
-        else {
-            $(frm.fields_dict["student_html"].wrapper).html('');
-        }
-    },
-});
