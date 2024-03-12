@@ -14,6 +14,11 @@ fixtures = [
 ]
 
 
+app_include_js = [
+    "/assets/psa/js/suspend_enrollment_request_workflow.js",
+    ]
+
+
 # Includes in <head>
 # ------------------
 
