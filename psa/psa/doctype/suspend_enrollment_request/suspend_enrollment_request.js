@@ -16,6 +16,13 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     // },
 
     before_workflow_action(frm) {
+        if (frm.selected_workflow_action.includes("Confirm"))
+        {
+            frappe.set_route("List", "Suspend Enrollment Request");            
+            frappe.throw(frm.doc.fees_status);
+            frm.refresh();
+        }
+
         var selected_workflow_action = frm.selected_workflow_action;
         if (selected_workflow_action.includes("Reject")) {
             frappe.msgprint(selected_workflow_action);
