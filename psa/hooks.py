@@ -10,7 +10,8 @@ required_apps = ["wiki"]
 fixtures = [
     "Workflow",
     "Workflow State",
-    "Workflow Action Master"
+    "Workflow Action Master",
+    "Notification"
 ]
 
 

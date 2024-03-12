@@ -47,8 +47,7 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid",
-   "read_only": 1
+   "options": "\nPaid\nNot Paid"
   },
   {
    "fieldname": "councils_section",
@@ -163,7 +162,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-12 06:46:45.554136",
+ "modified": "2024-03-13 00:43:01.306459",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
