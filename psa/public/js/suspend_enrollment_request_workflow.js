@@ -69,7 +69,7 @@ class workflow_overide extends frappe.ui.form.States {
                         frappe.dom.freeze();
                         frappe
                           // api url
-                          .xcall("psa.api.v1.workflow.before_transition", {
+                          .xcall("psa.api.workflow.before_transition", {
                             doc: me.frm.doc,
                             transition: d,
                           })
@@ -155,7 +155,7 @@ class workflow_overide extends frappe.ui.form.States {
                   frappe.dom.freeze();
                   frappe
                     // api url
-                    .xcall("psa.api.v1.workflow.before_transition", {
+                    .xcall("psa.api.workflow.before_transition", {
                       doc: me.frm.doc,
                       transition: d,
                     })
