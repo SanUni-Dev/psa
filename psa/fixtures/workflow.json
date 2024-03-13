@@ -4,7 +4,7 @@
   "doctype": "Workflow",
   "document_type": "Suspend Enrollment Request",
   "is_active": 1,
-  "modified": "2024-03-11 06:37:23.069280",
+  "modified": "2024-03-13 02:40:07.861219",
   "name": "Suspend Enrollmen Request Workflow",
   "override_status": 0,
   "send_email_alert": 0,
@@ -42,7 +42,7 @@
    {
     "allow_edit": "No One for Rejected Request",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -72,7 +72,7 @@
    {
     "allow_edit": "No One for Rejected Request",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -102,7 +102,7 @@
    {
     "allow_edit": "No One for Rejected Request",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -132,7 +132,7 @@
    {
     "allow_edit": "No One for Rejected Request",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -177,7 +177,7 @@
    {
     "allow_edit": "No One for Rejected Request",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,

@@ -11,8 +11,12 @@ class SuspendEnrollmentRequest(Document):
 	def on_submit(self):
 		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
 		if(program_enrollment.status == "Continued"):
-			program_enrollment.status = "Suspended"
-			program_enrollment.save()
+			if("Rejected" in self.status):
+				if(not self.rejection_reason):
+					frappe.throw(_("Please enter reason of rejection!"))
+			else:
+				program_enrollment.status = "Suspended"
+				program_enrollment.save()
 
 	def before_insert(self):
 		count_of_allowed_requests = 2
