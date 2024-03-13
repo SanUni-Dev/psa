@@ -162,7 +162,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-13 00:43:01.306459",
+ "modified": "2024-03-13 02:55:01.111146",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
@@ -201,6 +201,7 @@
    "role": "Vice Dean For GSA",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
@@ -212,6 +213,7 @@
    "role": "Department Head",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
@@ -223,6 +225,7 @@
    "role": "Department Council Head",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
