@@ -169,11 +169,11 @@
   "doctype": "Notification",
   "document_type": "Suspend Enrollment Request",
   "enabled": 1,
-  "event": "Save",
+  "event": "New",
   "is_standard": 0,
   "message": "Your suspend enrollment request \"{{doc.name}}\" pending fee payment.",
   "method": null,
-  "modified": "2024-03-14 01:27:38.833599",
+  "modified": "2024-03-14 02:10:30.917307",
   "module": null,
   "name": "New Suspend Enrollment Request Notification for Student",
   "print_format": null,
@@ -213,7 +213,7 @@
   "is_standard": 0,
   "message": "",
   "method": null,
-  "modified": "2024-03-14 01:44:42.973697",
+  "modified": "2024-03-14 02:09:56.261369",
   "module": null,
   "name": "Suspend Enrollment Request Workflow Notification for Student",
   "print_format": null,
@@ -236,7 +236,7 @@
   "sender_email": null,
   "set_property_after_alert": null,
   "slack_webhook_url": null,
-  "subject": "Your Suspend Enrollment Request ({{doc.name}}) {{doc.status}}",
+  "subject": "Your Suspend Enrollment Request ({{doc.name}}) {{doc.status}}.",
   "value_changed": "status"
  }
 ]
