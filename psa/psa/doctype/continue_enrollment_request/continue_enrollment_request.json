@@ -9,12 +9,18 @@
   "program_enrollment",
   "column_break_ykbu",
   "student_html",
-  "section_break_pjrp",
+  "section_break_kpjo",
   "fees_status",
   "status",
   "amended_from",
-  "column_break_lzrw",
-  "rejection_reason"
+  "column_break_caxe",
+  "rejection_reason",
+  "last_approved_suspend_enrollment_request_details_section",
+  "suspended_request_number",
+  "column_break_scdl",
+  "suspended_date",
+  "column_break_btht",
+  "suspended_period"
  ],
  "fields": [
   {
@@ -63,24 +69,58 @@
    "label": "Student HTML"
   },
   {
-   "fieldname": "section_break_pjrp",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_lzrw",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
    "read_only": 1
+  },
+  {
+   "fieldname": "last_approved_suspend_enrollment_request_details_section",
+   "fieldtype": "Section Break",
+   "label": "Last Approved Suspend Enrollment Request Details"
+  },
+  {
+   "fetch_from": ".",
+   "fieldname": "suspended_date",
+   "fieldtype": "Data",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_scdl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": ".",
+   "fieldname": "suspended_period",
+   "fieldtype": "Data",
+   "label": "Period",
+   "read_only": 1
+  },
+  {
+   "fieldname": "suspended_request_number",
+   "fieldtype": "Link",
+   "label": "Request Number",
+   "options": "Suspend Enrollment Request",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_btht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kpjo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_caxe",
+   "fieldtype": "Column Break"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-14 23:32:16.085846",
+ "modified": "2024-03-15 00:14:20.296894",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",
