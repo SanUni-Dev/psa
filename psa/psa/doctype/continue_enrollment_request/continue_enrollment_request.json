@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "format:PSA-Continue-Req-{YY}-{MM}-{#####}",
  "creation": "2024-01-27 22:36:10.913144",
  "doctype": "DocType",
@@ -8,9 +7,14 @@
  "field_order": [
   "section_break_aexq",
   "program_enrollment",
+  "column_break_ykbu",
+  "student_html",
+  "section_break_pjrp",
   "fees_status",
   "status",
-  "amended_from"
+  "amended_from",
+  "column_break_lzrw",
+  "rejection_reason"
  ],
  "fields": [
   {
@@ -21,20 +25,23 @@
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Student",
-   "options": "Program Enrollment"
+   "options": "Program Enrollment",
+   "reqd": 1
   },
   {
+   "default": "Not Paid",
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "Paid\nNot Paid"
+   "options": "\nPaid\nNot Paid"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Accepted\nRejected"
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -45,12 +52,35 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "column_break_ykbu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_html",
+   "fieldtype": "HTML",
+   "label": "Student HTML"
+  },
+  {
+   "fieldname": "section_break_pjrp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lzrw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "read_only": 1
   }
  ],
- "index_web_pages_for_search": 1,
+ "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-31 21:15:08.492229",
+ "modified": "2024-03-14 23:32:16.085846",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",
@@ -58,6 +88,7 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -66,6 +97,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "submit": 1,
    "write": 1
@@ -73,77 +105,77 @@
   {
    "create": 1,
    "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
+   "if_owner": 1,
    "read": 1,
-   "report": 1,
    "role": "Student",
-   "share": 1,
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "College Dean",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Vice Dean For GSA",
+   "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "College Director of Graduate Studies",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Department Head",
+   "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Dean",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Director of Graduate Studies",
+   "select": 1,
+   "share": 1
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Vice Chancellor for Graduate Studies",
-   "share": 1,
-   "write": 1
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "No One for Rejected Request",
+   "share": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
