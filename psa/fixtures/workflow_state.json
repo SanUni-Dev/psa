@@ -142,5 +142,14 @@
   "name": "Draft",
   "style": "Warning",
   "workflow_state_name": "Draft"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-14 23:37:19.359688",
+  "name": "Approved by Department Head",
+  "style": "Success",
+  "workflow_state_name": "Approved by Department Head"
  }
 ]
