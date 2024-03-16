@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>PSA</b></span>\",\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Requests\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"Users and Roles\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}}]",
+ "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>PSA</b></span>\",\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Requests\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"Users and Roles\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}},{\"id\":\"pBc0boxuOg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
  "creation": "2024-03-10 02:10:29.764588",
  "custom_blocks": [],
  "docstatus": 0,
@@ -208,10 +208,29 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PSA Settings",
+   "link_count": 0,
+   "link_to": "PSA Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-03-13 01:08:04.857568",
- "modified_by": "esmailebraheem771@gmail.com",
+ "modified": "2024-03-17 00:08:51.894431",
+ "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA",
  "number_cards": [],

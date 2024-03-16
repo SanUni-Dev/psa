@@ -11,7 +11,8 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
-    "Notification"
+    "Notification",
+    "PSA Settings"
 ]
 
 
