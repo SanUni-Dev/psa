@@ -123,6 +123,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
     }
     else {
       $(frm.fields_dict["student_html"].wrapper).html('');
+      frm.remove_custom_button(__("Go to Suspend Enrollment Request List"));
     }
   },
 });
