@@ -17,7 +17,7 @@ fixtures = [
 
 
 app_include_js = [
-    "/assets/psa/js/suspend_enrollment_request_workflow.js",
+    "/assets/psa/js/workflow_override.js",
     ]
 
 

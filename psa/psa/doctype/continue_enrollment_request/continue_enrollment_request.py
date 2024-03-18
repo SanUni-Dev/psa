@@ -38,7 +38,7 @@ class ContinueEnrollmentRequest(Document):
 			):
 				count_of_rejected = count_of_rejected + 1
 				if(count_of_rejected >= count_of_allowed_requests):
-					frappe.throw(_("You can't add a continue enrollment request, because you requested more than limit(") + count_of_allowed_requests + _(") requests!"))
+					frappe.throw(_("You can't add a continue enrollment request, because you requested more than limit(") + str(count_of_allowed_requests) + _(") requests!"))
 			elif(
 				request.status != "Approval Pending by Vice Dean for GSA" or
 				request.status != "Approval Pending by Department Head"
