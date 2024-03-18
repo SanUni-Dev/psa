@@ -58,29 +58,41 @@ frappe.ui.form.on("Continue Enrollment Request", {
         });
       });
 
-      frappe.call({
-        method: "get_last_approved_suspend_enrollment_request",
-        doc: frm.doc,
-        args: {
-          program_enrollment: frm.doc.program_enrollment,
-        },
-        callback: function (response) {
-          var modified_date = response.message.modified;
-          var formatted_date = modified_date.split(" ")[0];
+      if (frm.doc.suspended_request_number) {
+        frappe.call({
+          method: 'frappe.client.get_value',
+          args: {
+            doctype: 'Suspend Enrollment Request',
+            filters: {
+              name: frm.doc.suspended_request_number
+            },
+            fieldname: ['creation', 'modified', 'status', 'suspend_period']
+          },
+          callback: function (response) {
+            if (response.message) {
+              var creation_date = response.message.creation;
+              var formatted_creation_date = creation_date.split(" ")[0];
+              var modified_date = response.message.modified;
+              var formatted_modified_date = modified_date.split(" ")[0];
 
-          frm.set_value("suspended_request_number", response.message.name);
-          frm.set_value("suspended_date", formatted_date);
-          frm.set_value("suspended_period", response.message.suspend_period);
-          frm.set_value("suspended_status", response.message.status);
-        },
-      });
+              $(frm.fields_dict["suspended_request_details_html"].wrapper).html('<div><table><tr><th>' +
+                __("Request Date") + ': </th><td>' + formatted_creation_date + '</td></tr><tr><th>' +
+                __("Approval Date") + ': </th><td>' + formatted_modified_date + '</td></tr><th>' +
+                __("Status") + ': </th><td>' + response.message.status + '</td></tr><tr><th>' +
+                __("Suspend Period") + ': </th><td>' + response.message.suspend_period + '</td></tr></table></div>');
+            }
+            else {
+              $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
+            }
+          }
+        });
+      }
+      else {
+        $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
+      }
     }
     else {
       $(frm.fields_dict["student_html"].wrapper).html('');
-      frm.set_value("suspended_request_number", "");
-      frm.set_value("suspended_date", "");
-      frm.set_value("suspended_period", "");
-      frm.set_value("suspended_status", "");
     }
   },
 
@@ -137,13 +149,23 @@ frappe.ui.form.on("Continue Enrollment Request", {
           program_enrollment: frm.doc.program_enrollment,
         },
         callback: function (response) {
-          var modified_date = response.message.modified;
-          var formatted_date = modified_date.split(" ")[0];
+          if (response.message) {
+            var creation_date = response.message.creation;
+            var formatted_creation_date = creation_date.split(" ")[0];
+            var modified_date = response.message.modified;
+            var formatted_modified_date = modified_date.split(" ")[0];
 
-          frm.set_value("suspended_request_number", response.message.name);
-          frm.set_value("suspended_date", formatted_date);
-          frm.set_value("suspended_period", response.message.suspend_period);
-          frm.set_value("suspended_status", response.message.status);
+            frm.set_value("suspended_request_number", response.message.name);
+            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('<div><table><tr><th>' +
+              __("Request Date") + ': </th><td>' + formatted_creation_date + '</td></tr><tr><th>' +
+              __("Approval Date") + ': </th><td>' + formatted_modified_date + '</td></tr><th>' +
+              __("Status") + ': </th><td>' + response.message.status + '</td></tr><tr><th>' +
+              __("Suspend Period") + ': </th><td>' + response.message.suspend_period + '</td></tr></table></div>');
+          }
+          else {
+            frm.set_value("suspended_request_number", "");
+            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
+          }
         },
       });
     }
@@ -151,9 +173,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
       $(frm.fields_dict["student_html"].wrapper).html('');
       frm.remove_custom_button(__("Go to Suspend Enrollment Request List"));
       frm.set_value("suspended_request_number", "");
-      frm.set_value("suspended_date", "");
-      frm.set_value("suspended_period", "");
-      frm.set_value("suspended_status", "");
+      $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
     }
   },
 });

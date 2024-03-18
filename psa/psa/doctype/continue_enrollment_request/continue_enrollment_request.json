@@ -20,11 +20,7 @@
   "last_approved_suspend_enrollment_request_details_section",
   "suspended_request_number",
   "column_break_scdl",
-  "suspended_date",
-  "column_break_btht",
-  "suspended_period",
-  "column_break_dkfy",
-  "suspended_status"
+  "suspended_request_details_html"
  ],
  "fields": [
   {
@@ -79,27 +75,14 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval: doc.suspended_request_number",
    "fieldname": "last_approved_suspend_enrollment_request_details_section",
    "fieldtype": "Section Break",
    "label": "Last Approved Suspend Enrollment Request Details"
   },
   {
-   "fetch_from": ".",
-   "fieldname": "suspended_date",
-   "fieldtype": "Data",
-   "label": "Date",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_scdl",
    "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": ".",
-   "fieldname": "suspended_period",
-   "fieldtype": "Data",
-   "label": "Period",
-   "read_only": 1
   },
   {
    "fieldname": "suspended_request_number",
@@ -107,10 +90,6 @@
    "label": "Request Number",
    "options": "Suspend Enrollment Request",
    "read_only": 1
-  },
-  {
-   "fieldname": "column_break_btht",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "section_break_kpjo",
@@ -131,21 +110,15 @@
    "label": "Modified Request Date"
   },
   {
-   "fieldname": "column_break_dkfy",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": ".",
-   "fieldname": "suspended_status",
-   "fieldtype": "Data",
-   "label": "Status",
-   "read_only": 1
+   "fieldname": "suspended_request_details_html",
+   "fieldtype": "HTML",
+   "label": "Request Details"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-18 10:58:57.765868",
+ "modified": "2024-03-19 00:35:02.014379",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",
