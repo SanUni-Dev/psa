@@ -1,0 +1,224 @@
+{
+ "actions": [],
+ "autoname": "format: PSA-Withdrawal-Req-{YY}-{MM}-{#####}",
+ "creation": "2024-03-19 02:02:08.889539",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student_information_section",
+  "program_enrollment",
+  "column_break_ufsy",
+  "student_html",
+  "request_information_section",
+  "reason",
+  "excuse",
+  "library_eviction",
+  "column_break_cypq",
+  "rejection_reason",
+  "request_date_html",
+  "modified_request_date_html",
+  "section_break_bpbc",
+  "financial_status",
+  "fees_status",
+  "column_break_ktjl",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "student_information_section",
+   "fieldtype": "Section Break",
+   "label": "Student Information"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "column_break_ufsy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_html",
+   "fieldtype": "HTML",
+   "label": "Student HTML"
+  },
+  {
+   "fieldname": "request_information_section",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "excuse",
+   "fieldtype": "Attach",
+   "label": "Excuse"
+  },
+  {
+   "fieldname": "column_break_cypq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "request_date_html",
+   "fieldtype": "HTML",
+   "label": "Request Date"
+  },
+  {
+   "fieldname": "modified_request_date_html",
+   "fieldtype": "HTML",
+   "label": "Modified Request Date"
+  },
+  {
+   "fieldname": "section_break_bpbc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Not Paid",
+   "fieldname": "fees_status",
+   "fieldtype": "Select",
+   "label": "Fees Status",
+   "options": "\nPaid\nNot Paid"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Withdrawal Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_ktjl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Withdrawal Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "library_eviction",
+   "fieldtype": "Attach",
+   "label": "Library Eviction"
+  },
+  {
+   "fieldname": "financial_status",
+   "fieldtype": "Select",
+   "label": "Financial Status",
+   "options": "\nPaid\nNot Paid"
+  }
+ ],
+ "hide_toolbar": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-19 02:06:55.164634",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Withdrawal Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "if_owner": 1,
+   "read": 1,
+   "role": "Student",
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Finance Officer",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Director of Graduate Studies",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Archivist",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "No One for Rejected Request",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
