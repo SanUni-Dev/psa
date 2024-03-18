@@ -20,7 +20,7 @@ frappe.listview_settings['Continue Enrollment Request'] = {
                         "indicator" : "red"
                     });
                 }
-            }).addClass().css({"color" : "black"});
+            });
         }
 
 

@@ -7,13 +7,20 @@ frappe.ui.form.on("Continue Enrollment Request", {
       frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
     }, 500);
     if (!frm.is_new()) {
-      $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + frm.doc.creation + "<br>");
+      var creation_date = frm.doc.creation;
+      var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
+
+      var modified_date = frm.doc.modified;
+      var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
+
+      $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + formatted_creation_date + "<br>");
+
       if (frm.doc.status == "Approved by Department Head") {
-        $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + frm.doc.modified);
+        $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + formatted_modified_date);
       }
       else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
         frm.doc.status == "Rejected by Department Head") {
-        $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + frm.doc.modified);
+        $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + formatted_modified_date);
       }
     }
     else {
@@ -50,9 +57,30 @@ frappe.ui.form.on("Continue Enrollment Request", {
             __("Status") + ': </th><td>' + status + '</td></tr></table></div>');
         });
       });
+
+      frappe.call({
+        method: "get_last_approved_suspend_enrollment_request",
+        doc: frm.doc,
+        args: {
+          program_enrollment: frm.doc.program_enrollment,
+        },
+        callback: function (response) {
+          var modified_date = response.message.modified;
+          var formatted_date = modified_date.split(" ")[0];
+
+          frm.set_value("suspended_request_number", response.message.name);
+          frm.set_value("suspended_date", formatted_date);
+          frm.set_value("suspended_period", response.message.suspend_period);
+          frm.set_value("suspended_status", response.message.status);
+        },
+      });
     }
     else {
       $(frm.fields_dict["student_html"].wrapper).html('');
+      frm.set_value("suspended_request_number", "");
+      frm.set_value("suspended_date", "");
+      frm.set_value("suspended_period", "");
+      frm.set_value("suspended_status", "");
     }
   },
 
@@ -103,28 +131,29 @@ frappe.ui.form.on("Continue Enrollment Request", {
 
 
       frappe.call({
-        method:
-          "get_last_approved_suspend_enrollment_request",
+        method: "get_last_approved_suspend_enrollment_request",
         doc: frm.doc,
         args: {
           program_enrollment: frm.doc.program_enrollment,
         },
         callback: function (response) {
-          frm.set_value("suspended_request_number", response.message.name);
-
           var modified_date = response.message.modified;
-
           var formatted_date = modified_date.split(" ")[0];
 
+          frm.set_value("suspended_request_number", response.message.name);
           frm.set_value("suspended_date", formatted_date);
-
           frm.set_value("suspended_period", response.message.suspend_period);
+          frm.set_value("suspended_status", response.message.status);
         },
       });
     }
     else {
       $(frm.fields_dict["student_html"].wrapper).html('');
       frm.remove_custom_button(__("Go to Suspend Enrollment Request List"));
+      frm.set_value("suspended_request_number", "");
+      frm.set_value("suspended_date", "");
+      frm.set_value("suspended_period", "");
+      frm.set_value("suspended_status", "");
     }
   },
 });
