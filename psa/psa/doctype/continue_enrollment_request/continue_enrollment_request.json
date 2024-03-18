@@ -15,6 +15,8 @@
   "amended_from",
   "column_break_caxe",
   "rejection_reason",
+  "request_date_html",
+  "modified_request_date_html",
   "last_approved_suspend_enrollment_request_details_section",
   "suspended_request_number",
   "column_break_scdl",
@@ -115,12 +117,22 @@
   {
    "fieldname": "column_break_caxe",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "request_date_html",
+   "fieldtype": "HTML",
+   "label": "Request Date"
+  },
+  {
+   "fieldname": "modified_request_date_html",
+   "fieldtype": "HTML",
+   "label": "Modified Request Date"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-15 00:14:20.296894",
+ "modified": "2024-03-17 15:34:00.114683",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",

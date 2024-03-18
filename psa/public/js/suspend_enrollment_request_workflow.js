@@ -31,7 +31,7 @@ class workflow_overide extends frappe.ui.form.States {
             // console.log("Current Transaction: ", me.frm.doc);
             if (d.action.includes("Reject")) {
               frappe.warn(
-                __("Are you sure you want to proceed?"),
+                __("Are you sure you want to continue?"),
                 `<div>
                     <p><label for="reason">${__(
                   "Enter reason of reject "

@@ -19,11 +19,13 @@
  ],
  "fields": [
   {
+   "collapsible": 1,
    "fieldname": "semester_settings_section",
    "fieldtype": "Section Break",
    "label": "Semester Settings"
   },
   {
+   "collapsible": 1,
    "fieldname": "suspend_enrollment_request_settings_section",
    "fieldtype": "Section Break",
    "label": "Suspend Enrollment Request Settings"
@@ -77,6 +79,7 @@
    "label": "Set Days of Programs"
   },
   {
+   "collapsible": 1,
    "fieldname": "continue_enrollment_request_settings_section",
    "fieldtype": "Section Break",
    "label": "Continue Enrollment Request Settings"
@@ -89,10 +92,11 @@
    "label": "Enable Auto Validation for Days"
   }
  ],
+ "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-03-17 02:21:29.286120",
+ "modified": "2024-03-17 17:27:03.091701",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",

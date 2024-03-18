@@ -15,6 +15,8 @@
   "excuse",
   "column_break_cypq",
   "rejection_reason",
+  "request_date_html",
+  "modified_request_date_html",
   "councils_section",
   "college_council_minutes_column",
   "college_council_minutes_number",
@@ -157,12 +159,22 @@
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
    "read_only": 1
+  },
+  {
+   "fieldname": "request_date_html",
+   "fieldtype": "HTML",
+   "label": "Request Date"
+  },
+  {
+   "fieldname": "modified_request_date_html",
+   "fieldtype": "HTML",
+   "label": "Modified Request Date"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-13 02:55:01.111146",
+ "modified": "2024-03-17 15:00:12.397465",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
