@@ -189,7 +189,7 @@ class workflow_overide extends frappe.ui.form.States {
                                 frappe.show_alert(
                                   {
                                     message: __(
-                                      `Action "${d.action}" was successfull.`
+                                      `Action "${d.action}" succeeded.`
                                     ),
                                     indicator: "green",
                                   },
