@@ -38,13 +38,26 @@ class ContinueEnrollmentRequest(Document):
 			):
 				count_of_rejected = count_of_rejected + 1
 				if(count_of_rejected >= count_of_allowed_requests):
-					frappe.throw(_("You can't add a continue enrollment request, because you requested more than limit(") + count_of_allowed_requests + _(") requests!"))
+					frappe.throw(_("You can't add a continue enrollment request, because you requested more than limit(") + str(count_of_allowed_requests) + _(") requests!"))
 			elif(
 				request.status != "Approval Pending by Vice Dean for GSA" or
 				request.status != "Approval Pending by Department Head"
 			):
 				frappe.throw(_("You can't add a continue enrollment request, because you have active request that is pending approval!"))
 
+	@frappe.whitelist(allow_guest=True)
+	def get_last_approved_suspend_enrollment_request(self, program_enrollment):
+		# Query to fetch the last document with status containing "Approved" and matching program_enrollment
+		docs = frappe.get_all("Suspend Enrollment Request",
+			fields=["*"],
+			filters={
+				"status": ["like", "%Approved%"],
+				"program_enrollment": program_enrollment
+			},
+			order_by="modified DESC",
+			limit_page_length=1
+		)
+		return docs[0] if docs else None
 
 
 	# @frappe.whitelist()

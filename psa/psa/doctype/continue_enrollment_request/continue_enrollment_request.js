@@ -9,17 +9,17 @@ frappe.ui.form.on("Continue Enrollment Request", {
     if (!frm.is_new()) {
       $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + frm.doc.creation + "<br>");
       if (frm.doc.status == "Approved by Department Head") {
-          $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + frm.doc.modified);
+        $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + frm.doc.modified);
       }
       else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
-          frm.doc.status == "Rejected by Department Head") {
-          $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + frm.doc.modified);
+        frm.doc.status == "Rejected by Department Head") {
+        $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + frm.doc.modified);
       }
-  }
-  else {
+    }
+    else {
       $(frm.fields_dict["request_date_html"].wrapper).html('');
       $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
-  }
+    }
   },
 
   onload(frm) {
@@ -104,7 +104,8 @@ frappe.ui.form.on("Continue Enrollment Request", {
 
       frappe.call({
         method:
-          "psa.api.get_last_approved_suspend_enrollment_request.get_last_approved_suspend_enrollment_request",
+          "get_last_approved_suspend_enrollment_request",
+        doc: frm.doc,
         args: {
           program_enrollment: frm.doc.program_enrollment,
         },

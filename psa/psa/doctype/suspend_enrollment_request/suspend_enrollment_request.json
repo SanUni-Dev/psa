@@ -28,8 +28,9 @@
   "department_council_minutes_decision",
   "section_break_bpbc",
   "fees_status",
-  "status",
-  "amended_from"
+  "amended_from",
+  "column_break_ktjl",
+  "status"
  ],
  "fields": [
   {
@@ -169,12 +170,16 @@
    "fieldname": "modified_request_date_html",
    "fieldtype": "HTML",
    "label": "Modified Request Date"
+  },
+  {
+   "fieldname": "column_break_ktjl",
+   "fieldtype": "Column Break"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-17 15:00:12.397465",
+ "modified": "2024-03-18 05:19:17.404075",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",

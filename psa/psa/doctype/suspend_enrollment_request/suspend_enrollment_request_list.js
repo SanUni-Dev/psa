@@ -12,7 +12,7 @@ frappe.listview_settings['Suspend Enrollment Request'] = {
                     });
                 }
                 else if (checked_item.length == 1) {
-                    frappe.msgprint(__("Clipboard Number for '") + checked_item[0] + __("' is: #########"));
+                    frappe.msgprint(__("Clipboard number for '") + checked_item[0] + __("' is: #########"));
                 }
                 else {
                     frappe.msgprint({
