@@ -8,17 +8,24 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
         if (!frm.is_new()) {
-            $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + frm.doc.creation + "<br>");
+            var creation_date = frm.doc.creation;
+            var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
+
+            var modified_date = frm.doc.modified;
+            var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
+
+            $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + formatted_creation_date + "<br>");
+            
             if (frm.doc.status == "Approved by College Dean" ||
                 frm.doc.status == "Approved by College Council") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + frm.doc.modified);
+                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + formatted_modified_date);
             }
             else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
                 frm.doc.status == "Rejected by Department Head" ||
                 frm.doc.status == "Rejected by Department Council" ||
                 frm.doc.status == "Rejected by College Dean" ||
                 frm.doc.status == "Rejected by College Council") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + frm.doc.modified);
+                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + formatted_modified_date);
             }
         }
         else {
@@ -34,7 +41,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                     var fees_status = frm.doc.fees_status;
                     if (fees_status === "Not Paid") {
                         frm.add_custom_button(__("Get Clipboard Number"), () => {
-                            frappe.msgprint(__("Clipboard Number for '") + frm.doc.name + __("' is: #########"));
+                            frappe.msgprint(__("Clipboard number for '") + frm.doc.name + __("' is: #########"));
                         });
                     }
                 }, 500);
