@@ -79,7 +79,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-10 12:10:37.726951",
+ "modified": "2024-03-20 01:32:43.768101",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Program",
@@ -102,6 +102,21 @@
   {
    "read": 1,
    "role": "Student",
+   "select": 1
+  },
+  {
+   "read": 1,
+   "role": "Finance Officer",
+   "select": 1
+  },
+  {
+   "read": 1,
+   "role": "Director of Graduate Studies",
+   "select": 1
+  },
+  {
+   "read": 1,
+   "role": "Archivist",
    "select": 1
   },
   {

@@ -28,7 +28,7 @@ class workflow_overide extends frappe.ui.form.States {
           added = true;
           me.frm.page.add_action_item(__(d.action), function () {
 
-            if (d.action.includes("Reject") && (me.frm.meta.name === "Suspend Enrollment Request" || me.frm.meta.name === "Continue Enrollment Request")) {
+            if (d.action.includes("Reject") && (me.frm.meta.name === "Suspend Enrollment Request" || me.frm.meta.name === "Continue Enrollment Request" || me.frm.meta.name === "Withdrawal Request")) {
               frappe.prompt([
                 {
                   label: __('Enter reason of rejection'),
@@ -147,7 +147,7 @@ class workflow_overide extends frappe.ui.form.States {
                 __("Are you sure you want to continue?"),
                 __("Continue"));
             }
-            else if (d.action.includes("Confirm") && (me.frm.meta.name === "Suspend Enrollment Request" || me.frm.meta.name === "Continue Enrollment Request") && (me.frm.doc.fees_status === "Not Paid")) {
+            else if (d.action.includes("Confirm") && (me.frm.meta.name === "Suspend Enrollment Request" || me.frm.meta.name === "Continue Enrollment Request" || me.frm.meta.name === "Withdrawal Request") && (me.frm.doc.fees_status === "Not Paid")) {
               frappe.throw(__("Please pay fees first!"));
             }
             else {
