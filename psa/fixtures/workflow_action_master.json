@@ -54,5 +54,26 @@
   "modified": "2024-03-04 22:24:32.603261",
   "name": "Send to College Council",
   "workflow_action_name": "Send to College Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-19 17:28:43.904789",
+  "name": "Send to Director of Graduate Studies",
+  "workflow_action_name": "Send to Director of Graduate Studies"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-19 17:31:50.612474",
+  "name": "Send to Archivist",
+  "workflow_action_name": "Send to Archivist"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-19 19:21:58.522015",
+  "name": "Deliver the File",
+  "workflow_action_name": "Deliver the File"
  }
 ]

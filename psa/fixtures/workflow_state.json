@@ -151,5 +151,59 @@
   "name": "Approved by Department Head",
   "style": "Success",
   "workflow_state_name": "Approved by Department Head"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 16:39:02.060682",
+  "name": "Rejected by Finance Officer",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by Finance Officer"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 17:10:42.604946",
+  "name": "Rejected by Director of Graduate Studies",
+  "style": "Danger",
+  "workflow_state_name": "Rejected by Director of Graduate Studies"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 18:49:31.179849",
+  "name": "Approval Pending by Finance Officer",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Finance Officer"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 18:50:29.967098",
+  "name": "Approval Pending by Director of Graduate Studies",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Director of Graduate Studies"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 19:33:43.204520",
+  "name": "The File Delivered by Archivist",
+  "style": "Inverse",
+  "workflow_state_name": "The File Delivered by Archivist"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 19:28:08.014256",
+  "name": "The File Pending Delivery by the Archivist",
+  "style": "Inverse",
+  "workflow_state_name": "The File Pending Delivery by the Archivist"
  }
 ]

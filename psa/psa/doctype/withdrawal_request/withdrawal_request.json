@@ -216,7 +216,7 @@
    "read": 1,
    "report": 1,
    "role": "No One for Rejected Request",
-   "share": 1
+   "share": 1 
   }
  ],
  "sort_field": "modified",
