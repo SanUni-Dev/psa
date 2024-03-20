@@ -156,10 +156,10 @@ frappe.ui.form.on("Continue Enrollment Request", {
             var formatted_modified_date = modified_date.split(" ")[0];
 
             frm.set_value("suspended_request_number", response.message.name);
-            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('<div><table><tr><th>' +
-              __("Request Date") + ': </th><td>' + formatted_creation_date + '</td></tr><tr><th>' +
-              __("Approval Date") + ': </th><td>' + formatted_modified_date + '</td></tr><th>' +
-              __("Status") + ': </th><td>' + response.message.status + '</td></tr><tr><th>' +
+            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('<div><table><tr class="form-control"><th>' +
+              __("Request Date") + ': </th><td>' + formatted_creation_date + '</td></tr><tr class="form-control"><th>' +
+              __("Approval Date") + ': </th><td>' + formatted_modified_date + '</td></tr><tr class="form-control"><th>' +
+              __("Status") + ': </th><td>' + response.message.status + '</td></tr><tr class="form-control"><th>' +
               __("Suspend Period") + ': </th><td>' + response.message.suspend_period + '</td></tr></table></div>');
           }
           else {
