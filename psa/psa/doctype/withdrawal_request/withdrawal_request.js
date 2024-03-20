@@ -106,7 +106,7 @@ frappe.ui.form.on("Withdrawal Request", {
             $(frm.fields_dict["student_html"].wrapper).html('');
         }
     },
-});
+}); 
 
 
 
