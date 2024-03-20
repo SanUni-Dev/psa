@@ -3,7 +3,7 @@
   "docstatus": 0,
   "doctype": "PSA Settings",
   "enable_auto_validation_for_days": 0,
-  "modified": "2024-03-17 17:11:38.178935",
+  "modified": "2024-03-19 20:10:52.281704",
   "name": "PSA Settings",
   "number_of_days_for_programs": [
    {
@@ -18,7 +18,7 @@
   "number_of_rejected_suspend_requests": 1,
   "number_of_suspend_requests": 1,
   "set_a_limit_of_rejected_suspend_requests": 0,
-  "set_a_limit_of_suspend_requests": 1,
+  "set_a_limit_of_suspend_requests": 0,
   "set_days_of_programs": 1
  }
 ]
