@@ -47,15 +47,10 @@ frappe.ui.form.on("Continue Enrollment Request", {
       get_program_enrollment_status(frm, function (status) {
         get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
           var year_of_enrollment = new Date(creation_date).getFullYear();
-          $(frm.fields_dict["student_html"].wrapper).html('<div><table><tr><th>' +
-            __("Full Name Arabic") + ': </th><td>' + full_name_arabic + '</td></tr><tr><th>' +
-            __("Full Name English") + ': </th><td>' + full_name_english + '</td></tr><th>' +
-            __("Year of Enrollment") + ': </th><td>' + year_of_enrollment + '</td></tr><tr><th>' +
-            __("Program") + ': </th><td>' + program + '</td></tr><tr><th>' +
-            __("College") + ': </th><td>' + college + '</td></tr><tr><th>' +
-            __("Department") + ': </th><td>' + department + '</td></tr><tr><th>' +
-            __("Specialization") + ': </th><td>' + specialization + '</td></tr><tr><th>' +
-            __("Status") + ': </th><td>' + status + '</td></tr></table></div>');
+
+          var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program"), __("College"), __("Department"), __("Specialization"), __("Status")];
+          var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program, college, department, specialization, status];
+          format_multi_html_field(frm, "student_html", array_of_label, array_of_value);
         });
       });
 
@@ -119,15 +114,10 @@ frappe.ui.form.on("Continue Enrollment Request", {
       get_program_enrollment_status(frm, function (status) {
         get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
           var year_of_enrollment = new Date(creation_date).getFullYear();
-          $(frm.fields_dict["student_html"].wrapper).html('<div><table><tr><th>' +
-            __("Full Name Arabic") + ': </th><td>' + full_name_arabic + '</td></tr><tr><th>' +
-            __("Full Name English") + ': </th><td>' + full_name_english + '</td></tr><th>' +
-            __("Year of Enrollment") + ': </th><td>' + year_of_enrollment + '</td></tr><tr><th>' +
-            __("Program") + ': </th><td>' + program + '</td></tr><tr><th>' +
-            __("College") + ': </th><td>' + college + '</td></tr><tr><th>' +
-            __("Department") + ': </th><td>' + department + '</td></tr><tr><th>' +
-            __("Specialization") + ': </th><td>' + specialization + '</td></tr><tr><th>' +
-            __("Status") + ': </th><td>' + status + '</td></tr></table></div>');
+          
+          var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program"), __("College"), __("Department"), __("Specialization"), __("Status")];
+          var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program, college, department, specialization, status];
+          format_multi_html_field(frm, "student_html", array_of_label, array_of_value);
         });
         if (status == "Suspended") {
           frm.set_intro((__(`Current status is ${status}.`)), 'green');
@@ -160,7 +150,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
             var formatted_modified_date = modified_date.split(" ")[0];
 
             frm.set_value("suspended_request_number", response.message.name);
-            
+
             var array_of_label = [__("Request Date"), __("Approval Date"), __("Status"), __("Suspend Period")];
             var array_of_value = [formatted_creation_date, formatted_modified_date, response.message.status, response.message.suspend_period];
             format_multi_html_field(frm, "suspended_request_details_html", array_of_label, array_of_value);
