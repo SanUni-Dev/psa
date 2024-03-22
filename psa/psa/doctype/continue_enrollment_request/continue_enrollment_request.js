@@ -48,9 +48,13 @@ frappe.ui.form.on("Continue Enrollment Request", {
         get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
           var year_of_enrollment = new Date(creation_date).getFullYear();
 
-          var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program"), __("College"), __("Department"), __("Specialization"), __("Status")];
-          var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program, college, department, specialization, status];
-          format_multi_html_field(frm, "student_html", array_of_label, array_of_value);
+          var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
+          var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
+          format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
+
+          var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
+          var array_of_value = [college, department, specialization, status];
+          format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
         });
       });
 
@@ -86,7 +90,8 @@ frappe.ui.form.on("Continue Enrollment Request", {
       }
     }
     else {
-      $(frm.fields_dict["student_html"].wrapper).html('');
+      $(frm.fields_dict["student_html1"].wrapper).html('');
+      $(frm.fields_dict["student_html2"].wrapper).html('');
       $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
     }
   },
@@ -114,10 +119,14 @@ frappe.ui.form.on("Continue Enrollment Request", {
       get_program_enrollment_status(frm, function (status) {
         get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
           var year_of_enrollment = new Date(creation_date).getFullYear();
-          
-          var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program"), __("College"), __("Department"), __("Specialization"), __("Status")];
-          var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program, college, department, specialization, status];
-          format_multi_html_field(frm, "student_html", array_of_label, array_of_value);
+
+          var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
+          var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
+          format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
+
+          var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
+          var array_of_value = [college, department, specialization, status];
+          format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
         });
         if (status == "Suspended") {
           frm.set_intro((__(`Current status is ${status}.`)), 'green');
@@ -163,7 +172,8 @@ frappe.ui.form.on("Continue Enrollment Request", {
       });
     }
     else {
-      $(frm.fields_dict["student_html"].wrapper).html('');
+      $(frm.fields_dict["student_html1"].wrapper).html('');
+      $(frm.fields_dict["student_html2"].wrapper).html('');
       frm.remove_custom_button(__("Go to Suspend Enrollment Request List"));
       frm.set_value("suspended_request_number", "");
       $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
