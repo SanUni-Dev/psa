@@ -7,8 +7,10 @@
  "field_order": [
   "section_break_aexq",
   "program_enrollment",
-  "column_break_ykbu",
-  "student_html",
+  "student_information_section",
+  "student_html1",
+  "column_break_yqwu",
+  "student_html2",
   "section_break_kpjo",
   "fees_status",
   "status",
@@ -25,8 +27,7 @@
  "fields": [
   {
    "fieldname": "section_break_aexq",
-   "fieldtype": "Section Break",
-   "label": "Request Information"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "program_enrollment",
@@ -60,22 +61,13 @@
    "search_index": 1
   },
   {
-   "fieldname": "column_break_ykbu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "student_html",
-   "fieldtype": "HTML",
-   "label": "Student HTML"
-  },
-  {
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
    "read_only": 1
   },
   {
-   "depends_on": "eval: doc.suspended_request_number",
+   "collapsible": 1,
    "fieldname": "last_approved_suspend_enrollment_request_details_section",
    "fieldtype": "Section Break",
    "label": "Last Approved Suspend Enrollment Request Details"
@@ -93,7 +85,8 @@
   },
   {
    "fieldname": "section_break_kpjo",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Request Information"
   },
   {
    "fieldname": "column_break_caxe",
@@ -113,12 +106,33 @@
    "fieldname": "suspended_request_details_html",
    "fieldtype": "HTML",
    "label": "Request Details"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "student_information_section",
+   "fieldtype": "Section Break",
+   "label": "Student Information"
+  },
+  {
+   "fieldname": "student_html1",
+   "fieldtype": "HTML",
+   "label": "Student HTML 1"
+  },
+  {
+   "fieldname": "column_break_yqwu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_html2",
+   "fieldtype": "HTML",
+   "label": "Student HTML 2"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-19 00:35:02.014379",
+ "modified": "2024-03-22 10:59:14.482130",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",

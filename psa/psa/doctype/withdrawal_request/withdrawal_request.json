@@ -8,8 +8,10 @@
  "field_order": [
   "student_information_section",
   "program_enrollment",
-  "column_break_ufsy",
-  "student_html",
+  "section_break_wwpw",
+  "student_html1",
+  "column_break_lszg",
+  "student_html2",
   "request_information_section",
   "reason",
   "excuse",
@@ -28,8 +30,7 @@
  "fields": [
   {
    "fieldname": "student_information_section",
-   "fieldtype": "Section Break",
-   "label": "Student Information"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "program_enrollment",
@@ -37,16 +38,6 @@
    "label": "Student",
    "options": "Program Enrollment",
    "reqd": 1
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "column_break_ufsy",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "student_html",
-   "fieldtype": "HTML",
-   "label": "Student HTML"
   },
   {
    "fieldname": "request_information_section",
@@ -138,12 +129,33 @@
    "mandatory_depends_on": "eval: doc.status == 'Approval Pending by Finance Officer'",
    "options": "\nPaid\nNot Paid",
    "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "section_break_wwpw",
+   "fieldtype": "Section Break",
+   "label": "Student Information"
+  },
+  {
+   "fieldname": "student_html1",
+   "fieldtype": "HTML",
+   "label": "Student HTML 1"
+  },
+  {
+   "fieldname": "column_break_lszg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_html2",
+   "fieldtype": "HTML",
+   "label": "Student HTML 2"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-20 01:18:35.205195",
+ "modified": "2024-03-22 11:01:26.160150",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",
@@ -216,7 +228,7 @@
    "read": 1,
    "report": 1,
    "role": "No One for Rejected Request",
-   "share": 1 
+   "share": 1
   }
  ],
  "sort_field": "modified",

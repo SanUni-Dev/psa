@@ -7,34 +7,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
-        if (!frm.is_new()) {
-            var creation_date = frm.doc.creation;
-            var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
 
-            var modified_date = frm.doc.modified;
-            var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
-
-            $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + formatted_creation_date + "<br>");
-            
-            if (frm.doc.status == "Approved by College Dean" ||
-                frm.doc.status == "Approved by College Council") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + formatted_modified_date);
-            }
-            else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
-                frm.doc.status == "Rejected by Department Head" ||
-                frm.doc.status == "Rejected by Department Council" ||
-                frm.doc.status == "Rejected by College Dean" ||
-                frm.doc.status == "Rejected by College Council") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + formatted_modified_date);
-            }
-        }
-        else {
-            $(frm.fields_dict["request_date_html"].wrapper).html('');
-            $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
-        }
-    },
-
-    onload(frm) {
         if (!frm.is_new()) {
             if (frappe.user_roles.includes("Student")) {
                 setTimeout(() => {
@@ -46,27 +19,59 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                     }
                 }, 500);
             }
+
+            var creation_date = frm.doc.creation;
+            var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
+
+            var modified_date = frm.doc.modified;
+            var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
+
+            format_single_html_field(frm, "request_date_html", __('Request Date'), formatted_creation_date);
+
+            if (frm.doc.status == "Approved by College Dean" ||
+                frm.doc.status == "Approved by College Council") {
+                format_single_html_field(frm, "modified_request_date_html", __('Approval Date'), formatted_modified_date);
+            }
+            else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
+                frm.doc.status == "Rejected by Department Head" ||
+                frm.doc.status == "Rejected by Department Council" ||
+                frm.doc.status == "Rejected by College Dean" ||
+                frm.doc.status == "Rejected by College Council") {
+                format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
+            }
+            else {
+                $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
+            }
         }
+        else {
+            $(frm.fields_dict["request_date_html"].wrapper).html('');
+            $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
+        }
+
         if (frm.doc.program_enrollment) {
             get_program_enrollment_status(frm, function (status) {
                 get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
                     var year_of_enrollment = new Date(creation_date).getFullYear();
-                    $(frm.fields_dict["student_html"].wrapper).html('<div><table><tr><th>' +
-                        __("Full Name Arabic") + ': </th><td>' + full_name_arabic + '</td></tr><tr><th>' +
-                        __("Full Name English") + ': </th><td>' + full_name_english + '</td></tr><th>' +
-                        __("Year of Enrollment") + ': </th><td>' + year_of_enrollment + '</td></tr><tr><th>' +
-                        __("Program") + ': </th><td>' + program + '</td></tr><tr><th>' +
-                        __("College") + ': </th><td>' + college + '</td></tr><tr><th>' +
-                        __("Department") + ': </th><td>' + department + '</td></tr><tr><th>' +
-                        __("Specialization") + ': </th><td>' + specialization + '</td></tr><tr><th>' +
-                        __("Status") + ': </th><td>' + status + '</td></tr></table></div>');
+
+                    var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
+                    var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
+                    format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
+
+                    var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
+                    var array_of_value = [college, department, specialization, status];
+                    format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                 });
             });
         }
         else {
-            $(frm.fields_dict["student_html"].wrapper).html('');
+            $(frm.fields_dict["student_html1"].wrapper).html('');
+            $(frm.fields_dict["student_html2"].wrapper).html('');
         }
     },
+
+    // onload(frm) {
+
+    // },
 
     // before_workflow_action(frm) {
     //     if (frm.selected_workflow_action.includes("Confirm")) {
@@ -87,15 +92,14 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             get_program_enrollment_status(frm, function (status) {
                 get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
                     var year_of_enrollment = new Date(creation_date).getFullYear();
-                    $(frm.fields_dict["student_html"].wrapper).html('<div><table><tr><th>' +
-                        __("Full Name Arabic") + ': </th><td>' + full_name_arabic + '</td></tr><tr><th>' +
-                        __("Full Name English") + ': </th><td>' + full_name_english + '</td></tr><th>' +
-                        __("Year of Enrollment") + ': </th><td>' + year_of_enrollment + '</td></tr><tr><th>' +
-                        __("Program") + ': </th><td>' + program + '</td></tr><tr><th>' +
-                        __("College") + ': </th><td>' + college + '</td></tr><tr><th>' +
-                        __("Department") + ': </th><td>' + department + '</td></tr><tr><th>' +
-                        __("Specialization") + ': </th><td>' + specialization + '</td></tr><tr><th>' +
-                        __("Status") + ': </th><td>' + status + '</td></tr></table></div>');
+
+                    var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
+                    var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
+                    format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
+
+                    var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
+                    var array_of_value = [college, department, specialization, status];
+                    format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                 });
                 if (status == "Continued") {
                     frm.set_intro((__(`Current status is ${status}.`)), 'green');
@@ -114,7 +118,8 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             });
         }
         else {
-            $(frm.fields_dict["student_html"].wrapper).html('');
+            $(frm.fields_dict["student_html1"].wrapper).html('');
+            $(frm.fields_dict["student_html2"].wrapper).html('');
             frm.remove_custom_button(__("Go to Continue Enrollment Request List"));
         }
     },
@@ -203,4 +208,47 @@ function get_program_enrollment_status(frm, callback) {
             callback(status);
         }
     });
+}
+
+
+function format_single_html_field(frm, html_field_name, field_label, field_value) {
+    $(frm.fields_dict[html_field_name].wrapper).html(
+        `<div class="form-group">
+          <div class="clearfix">
+            <label class="control-label" style="padding-right: 0px;">`
+        + field_label +
+        `</label>
+          </div>
+          <div class="control-input-wrapper">
+            <div class="control-value like-disabled-input">`
+        + field_value +
+        `</div>
+          </div>
+        </div>`
+    );
+}
+
+
+function format_multi_html_field(frm, html_field_name, array_of_label, array_of_value) {
+    var html_content = "";
+
+    for (let i = 0; i < array_of_label.length; i++) {
+        const label = array_of_label[i];
+        const value = array_of_value[i];
+
+        html_content = html_content + `<div class="form-group">
+          <div class="clearfix">
+            <label class="control-label" style="padding-right: 0px;">`
+            + label +
+            `</label>
+          </div>
+          <div class="control-input-wrapper">
+            <div class="control-value like-disabled-input">`
+            + value +
+            `</div>
+          </div>
+        </div>`;
+    }
+
+    $(frm.fields_dict[html_field_name].wrapper).html(html_content);
 }
