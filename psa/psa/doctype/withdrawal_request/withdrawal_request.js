@@ -13,14 +13,17 @@ frappe.ui.form.on("Withdrawal Request", {
             var modified_date = frm.doc.modified;
             var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
 
-            $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + formatted_creation_date + "<br>");
+            format_single_html_field(frm, "request_date_html", __('Request Date'), formatted_creation_date);
 
             if (frm.doc.status == "The File Delivered by Archivist") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('File Delivery Date: ') + formatted_modified_date);
+                format_single_html_field(frm, "modified_request_date_html", __('File Delivery Date'), formatted_modified_date);
             }
             else if (frm.doc.status == "Rejected by Finance Officer" ||
                 frm.doc.status == "Rejected by Director of Graduate Studies") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + formatted_modified_date);
+                format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
+            }
+            else {
+                $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
             }
         }
         else {
@@ -106,7 +109,7 @@ frappe.ui.form.on("Withdrawal Request", {
             $(frm.fields_dict["student_html"].wrapper).html('');
         }
     },
-}); 
+});
 
 
 
@@ -192,3 +195,21 @@ function get_program_enrollment_status(frm, callback) {
         }
     });
 }
+
+
+function format_single_html_field(frm, html_field_name, field_label, field_value) {
+    $(frm.fields_dict[html_field_name].wrapper).html(
+      `<div class="form-group">
+          <div class="clearfix">
+            <label class="control-label" style="padding-right: 0px;">`
+      + field_label +
+      `</label>
+          </div>
+          <div class="control-input-wrapper">
+            <div class="control-value like-disabled-input">`
+      + field_value +
+      `</div>
+          </div>
+        </div>`
+    );
+  }

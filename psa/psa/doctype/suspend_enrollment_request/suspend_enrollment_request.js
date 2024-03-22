@@ -14,18 +14,21 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             var modified_date = frm.doc.modified;
             var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
 
-            $(frm.fields_dict["request_date_html"].wrapper).html(__('Request Date: ') + formatted_creation_date + "<br>");
-            
+            format_single_html_field(frm, "request_date_html", __('Request Date'), formatted_creation_date);
+
             if (frm.doc.status == "Approved by College Dean" ||
                 frm.doc.status == "Approved by College Council") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Approval Date: ') + formatted_modified_date);
+                format_single_html_field(frm, "modified_request_date_html", __('Approval Date'), formatted_modified_date);
             }
             else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
                 frm.doc.status == "Rejected by Department Head" ||
                 frm.doc.status == "Rejected by Department Council" ||
                 frm.doc.status == "Rejected by College Dean" ||
                 frm.doc.status == "Rejected by College Council") {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html(__('Rejection Date: ') + formatted_modified_date);
+                format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
+            }
+            else {
+                $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
             }
         }
         else {
@@ -203,4 +206,22 @@ function get_program_enrollment_status(frm, callback) {
             callback(status);
         }
     });
+}
+
+
+function format_single_html_field(frm, html_field_name, field_label, field_value) {
+    $(frm.fields_dict[html_field_name].wrapper).html(
+        `<div class="form-group">
+          <div class="clearfix">
+            <label class="control-label" style="padding-right: 0px;">`
+        + field_label +
+        `</label>
+          </div>
+          <div class="control-input-wrapper">
+            <div class="control-value like-disabled-input">`
+        + field_value +
+        `</div>
+          </div>
+        </div>`
+    );
 }
