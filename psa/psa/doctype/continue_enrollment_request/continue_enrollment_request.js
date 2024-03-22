@@ -76,11 +76,9 @@ frappe.ui.form.on("Continue Enrollment Request", {
               var modified_date = response.message.modified;
               var formatted_modified_date = modified_date.split(" ")[0];
 
-              $(frm.fields_dict["suspended_request_details_html"].wrapper).html('<div><table><tr><th>' +
-                __("Request Date") + ': </th><td>' + formatted_creation_date + '</td></tr><tr><th>' +
-                __("Approval Date") + ': </th><td>' + formatted_modified_date + '</td></tr><th>' +
-                __("Status") + ': </th><td>' + response.message.status + '</td></tr><tr><th>' +
-                __("Suspend Period") + ': </th><td>' + response.message.suspend_period + '</td></tr></table></div>');
+              var array_of_label = [__("Request Date"), __("Approval Date"), __("Status"), __("Suspend Period")];
+              var array_of_value = [formatted_creation_date, formatted_modified_date, response.message.status, response.message.suspend_period];
+              format_multi_html_field(frm, "suspended_request_details_html", array_of_label, array_of_value);
             }
             else {
               $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
@@ -94,6 +92,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
     }
     else {
       $(frm.fields_dict["student_html"].wrapper).html('');
+      $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
     }
   },
 
@@ -161,11 +160,10 @@ frappe.ui.form.on("Continue Enrollment Request", {
             var formatted_modified_date = modified_date.split(" ")[0];
 
             frm.set_value("suspended_request_number", response.message.name);
-            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('<div><table><tr><th>' +
-              __("Request Date") + ': </th><td>' + formatted_creation_date + '</td></tr><tr><th>' +
-              __("Approval Date") + ': </th><td>' + formatted_modified_date + '</td></tr><tr><th>' +
-              __("Status") + ': </th><td>' + response.message.status + '</td></tr><tr><th>' +
-              __("Suspend Period") + ': </th><td>' + response.message.suspend_period + '</td></tr></table></div>');
+            
+            var array_of_label = [__("Request Date"), __("Approval Date"), __("Status"), __("Suspend Period")];
+            var array_of_value = [formatted_creation_date, formatted_modified_date, response.message.status, response.message.suspend_period];
+            format_multi_html_field(frm, "suspended_request_details_html", array_of_label, array_of_value);
           }
           else {
             frm.set_value("suspended_request_number", "");
@@ -284,4 +282,29 @@ function format_single_html_field(frm, html_field_name, field_label, field_value
         </div>
       </div>`
   );
+}
+
+
+function format_multi_html_field(frm, html_field_name, array_of_label, array_of_value) {
+  var html_content = "";
+
+  for (let i = 0; i < array_of_label.length; i++) {
+    const label = array_of_label[i];
+    const value = array_of_value[i];
+
+    html_content = html_content + `<div class="form-group">
+        <div class="clearfix">
+          <label class="control-label" style="padding-right: 0px;">`
+      + label +
+      `</label>
+        </div>
+        <div class="control-input-wrapper">
+          <div class="control-value like-disabled-input">`
+      + value +
+      `</div>
+        </div>
+      </div>`;
+  }
+
+  $(frm.fields_dict[html_field_name].wrapper).html(html_content);
 }
