@@ -6,7 +6,19 @@ frappe.ui.form.on("Continue Enrollment Request", {
     setTimeout(() => {
       frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
     }, 500);
+
     if (!frm.is_new()) {
+      if (frappe.user_roles.includes("Student")) {
+        setTimeout(() => {
+          var fees_status = frm.doc.fees_status;
+          if (fees_status === "Not Paid") {
+            frm.add_custom_button(__("Get Clipboard Number"), () => {
+              frappe.msgprint(__("Clipboard Number for '") + frm.doc.name + __("' is: #########"));
+            });
+          }
+        }, 500);
+      }
+
       var creation_date = frm.doc.creation;
       var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
 
@@ -20,31 +32,17 @@ frappe.ui.form.on("Continue Enrollment Request", {
       }
       else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
         frm.doc.status == "Rejected by Department Head") {
-          format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
+        format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
       }
       else {
         $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
-    }
+      }
     }
     else {
       $(frm.fields_dict["request_date_html"].wrapper).html('');
       $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
     }
-  },
 
-  onload(frm) {
-    if (!frm.is_new()) {
-      if (frappe.user_roles.includes("Student")) {
-        setTimeout(() => {
-          var fees_status = frm.doc.fees_status;
-          if (fees_status === "Not Paid") {
-            frm.add_custom_button(__("Get Clipboard Number"), () => {
-              frappe.msgprint(__("Clipboard Number for '") + frm.doc.name + __("' is: #########"));
-            });
-          }
-        }, 500);
-      }
-    }
     if (frm.doc.program_enrollment) {
       get_program_enrollment_status(frm, function (status) {
         get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
@@ -98,6 +96,10 @@ frappe.ui.form.on("Continue Enrollment Request", {
       $(frm.fields_dict["student_html"].wrapper).html('');
     }
   },
+
+  // onload(frm) {
+
+  // },
 
   // before_workflow_action(frm) {
   //     if (frm.selected_workflow_action.includes("Confirm")) {

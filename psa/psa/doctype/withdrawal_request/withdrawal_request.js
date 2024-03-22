@@ -6,7 +6,22 @@ frappe.ui.form.on("Withdrawal Request", {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
+
+        if (frappe.user.has_role('Finance Officer'))
+            frm.set_df_property('financial_status', 'read_only', false);
+
         if (!frm.is_new()) {
+            if (frappe.user_roles.includes("Student")) {
+                setTimeout(() => {
+                    var fees_status = frm.doc.fees_status;
+                    if (fees_status === "Not Paid") {
+                        frm.add_custom_button(__("Get Clipboard Number"), () => {
+                            frappe.msgprint(__("Clipboard number for '") + frm.doc.name + __("' is: #########"));
+                        });
+                    }
+                }, 500);
+            }
+
             var creation_date = frm.doc.creation;
             var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
 
@@ -30,23 +45,7 @@ frappe.ui.form.on("Withdrawal Request", {
             $(frm.fields_dict["request_date_html"].wrapper).html('');
             $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
         }
-    },
 
-    onload(frm) {
-        if (frappe.user.has_role('Finance Officer'))
-            frm.set_df_property('financial_status', 'read_only', false);
-        if (!frm.is_new()) {
-            if (frappe.user_roles.includes("Student")) {
-                setTimeout(() => {
-                    var fees_status = frm.doc.fees_status;
-                    if (fees_status === "Not Paid") {
-                        frm.add_custom_button(__("Get Clipboard Number"), () => {
-                            frappe.msgprint(__("Clipboard number for '") + frm.doc.name + __("' is: #########"));
-                        });
-                    }
-                }, 500);
-            }
-        }
         if (frm.doc.program_enrollment) {
             get_program_enrollment_status(frm, function (status) {
                 get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
@@ -67,6 +66,10 @@ frappe.ui.form.on("Withdrawal Request", {
             $(frm.fields_dict["student_html"].wrapper).html('');
         }
     },
+
+    // onload(frm) {
+        
+    // },
 
     // before_workflow_action(frm) {
     //     if (frm.selected_workflow_action.includes("Confirm")) {
