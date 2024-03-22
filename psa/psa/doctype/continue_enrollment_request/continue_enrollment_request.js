@@ -83,13 +83,13 @@ frappe.ui.form.on("Continue Enrollment Request", {
                 __("Suspend Period") + ': </th><td>' + response.message.suspend_period + '</td></tr></table></div>');
             }
             else {
-              $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
+              $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
             }
           }
         });
       }
       else {
-        $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
+        $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
       }
     }
     else {
@@ -169,7 +169,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
           }
           else {
             frm.set_value("suspended_request_number", "");
-            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
+            $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
           }
         },
       });

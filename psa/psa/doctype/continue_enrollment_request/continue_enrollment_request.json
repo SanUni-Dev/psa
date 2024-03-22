@@ -75,7 +75,6 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval: doc.suspended_request_number",
    "fieldname": "last_approved_suspend_enrollment_request_details_section",
    "fieldtype": "Section Break",
    "label": "Last Approved Suspend Enrollment Request Details"
@@ -118,7 +117,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-19 00:35:02.014379",
+ "modified": "2024-03-22 07:58:37.084267",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",
