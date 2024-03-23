@@ -3,7 +3,7 @@ frappe.listview_settings['Continue Enrollment Request'] = {
         listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
 
         if(frappe.user_roles.includes("Student")) {
-            listview.page.add_inner_button(__("Get Clipboard Number"), function () {
+            listview.page.add_inner_button(__("Get Code for Fee Payment"), function () {
                 var checked_item = listview.get_checked_items(true);
                 if (checked_item.length == 0) {
                     frappe.msgprint({
@@ -12,7 +12,7 @@ frappe.listview_settings['Continue Enrollment Request'] = {
                     });
                 }
                 else if (checked_item.length == 1) {
-                    frappe.msgprint(__("Clipboard Number for '") + checked_item[0] + __("' is: #########"));
+                    frappe.msgprint(__("Payment code for '") + checked_item[0] + __("' is: #########"));
                 }
                 else {
                     frappe.msgprint({
