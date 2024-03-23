@@ -19,15 +19,14 @@
   "rejection_reason",
   "request_date_html",
   "modified_request_date_html",
-  "councils_section",
-  "college_council_minutes_column",
-  "college_council_minutes_number",
-  "college_council_minutes_date",
-  "college_council_minutes_decision",
-  "department_council_minutes_column",
+  "department_council_minutes_section",
   "department_council_minutes_number",
   "department_council_minutes_date",
   "department_council_minutes_decision",
+  "councils_section",
+  "college_council_minutes_number",
+  "college_council_minutes_date",
+  "college_council_minutes_decision",
   "section_break_bpbc",
   "fees_status",
   "amended_from",
@@ -37,26 +36,31 @@
  "fields": [
   {
    "fieldname": "reason",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Reason",
+   "permlevel": 4,
    "reqd": 1
   },
   {
    "fieldname": "excuse",
    "fieldtype": "Attach",
-   "label": "Excuse"
+   "label": "Excuse",
+   "permlevel": 4
   },
   {
    "default": "Not Paid",
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid"
+   "options": "\nPaid\nNot Paid",
+   "permlevel": 4
   },
   {
+   "collapsible": 1,
    "fieldname": "councils_section",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "College Council Minutes"
   },
   {
    "fieldname": "request_information_section",
@@ -75,43 +79,51 @@
    "in_list_view": 1,
    "label": "Suspend Period",
    "options": "\nSemester\nTwo Semesters",
+   "permlevel": 4,
    "reqd": 1
   },
   {
    "fieldname": "college_council_minutes_number",
    "fieldtype": "Data",
-   "label": "College Council Minutes Number"
+   "label": "College Council Minutes Number",
+   "permlevel": 3
   },
   {
    "fieldname": "college_council_minutes_date",
    "fieldtype": "Date",
-   "label": "College Council Minutes Date"
+   "label": "College Council Minutes Date",
+   "permlevel": 3
   },
   {
    "fieldname": "college_council_minutes_decision",
    "fieldtype": "Data",
-   "label": "College Council Minutes Decision"
+   "label": "College Council Minutes Decision",
+   "permlevel": 3
   },
   {
    "fieldname": "department_council_minutes_number",
    "fieldtype": "Data",
-   "label": "Department Council Minutes Number"
+   "label": "Department Council Minutes Number",
+   "permlevel": 2
   },
   {
    "fieldname": "department_council_minutes_date",
    "fieldtype": "Date",
-   "label": "Department Council Minutes Date"
+   "label": "Department Council Minutes Date",
+   "permlevel": 2
   },
   {
    "fieldname": "department_council_minutes_decision",
    "fieldtype": "Data",
-   "label": "Department Council Minutes Decision"
+   "label": "Department Council Minutes Decision",
+   "permlevel": 2
   },
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Student",
    "options": "Program Enrollment",
+   "permlevel": 4,
    "reqd": 1
   },
   {
@@ -133,16 +145,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "college_council_minutes_column",
-   "fieldtype": "Column Break",
-   "label": "College Council Minutes"
-  },
-  {
-   "fieldname": "department_council_minutes_column",
-   "fieldtype": "Column Break",
-   "label": "Department Council Minutes"
-  },
-  {
    "fieldname": "section_break_bpbc",
    "fieldtype": "Section Break"
   },
@@ -150,6 +152,7 @@
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -186,12 +189,18 @@
    "fieldname": "student_html2",
    "fieldtype": "HTML",
    "label": "Student HTML 2"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "department_council_minutes_section",
+   "fieldtype": "Section Break",
+   "label": "Department Council Minutes"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-22 10:45:11.750630",
+ "modified": "2024-03-23 13:29:44.794162",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
@@ -214,9 +223,59 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
    "create": 1,
    "delete": 1,
    "if_owner": 1,
+   "read": 1,
+   "role": "Student",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 3,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 4,
    "read": 1,
    "role": "Student",
    "write": 1
@@ -234,6 +293,27 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Vice Dean For GSA",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Vice Dean For GSA"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Vice Dean For GSA"
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "Vice Dean For GSA"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -244,6 +324,27 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Department Head",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Department Head"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Department Head"
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "Department Head"
   },
   {
    "email": 1,
@@ -258,6 +359,28 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Department Council Head",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Department Council Head",
+   "write": 1
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Department Council Head"
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "Department Council Head"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -268,6 +391,27 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "College Dean",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "College Dean"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "College Dean"
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "College Dean"
   },
   {
    "email": 1,
@@ -282,6 +426,28 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "College Council Head",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "College Council Head"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "College Council Head",
+   "write": 1
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "College Council Head"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -290,6 +456,26 @@
    "role": "College Director of Graduate Studies",
    "select": 1,
    "share": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "College Director of Graduate Studies"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "College Director of Graduate Studies"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "College Director of Graduate Studies"
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "College Director of Graduate Studies"
   },
   {
    "email": 1,
@@ -302,13 +488,29 @@
    "share": 1
   },
   {
-   "email": 1,
-   "export": 1,
-   "print": 1,
+   "permlevel": 1,
    "read": 1,
-   "report": 1,
+   "role": "Vice Chancellor for Graduate Studies"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Vice Chancellor for Graduate Studies"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Vice Chancellor for Graduate Studies"
+  },
+  {
+   "permlevel": 4,
+   "read": 1,
+   "role": "Vice Chancellor for Graduate Studies"
+  },
+  {
+   "read": 1,
    "role": "No One for Rejected Request",
-   "share": 1
+   "select": 1
   }
  ],
  "sort_field": "modified",
