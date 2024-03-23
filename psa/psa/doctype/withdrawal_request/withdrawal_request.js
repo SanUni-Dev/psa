@@ -15,8 +15,8 @@ frappe.ui.form.on("Withdrawal Request", {
                 setTimeout(() => {
                     var fees_status = frm.doc.fees_status;
                     if (fees_status === "Not Paid") {
-                        frm.add_custom_button(__("Get Clipboard Number"), () => {
-                            frappe.msgprint(__("Clipboard number for '") + frm.doc.name + __("' is: #########"));
+                        frm.add_custom_button(__("Get Code for Fee Payment"), () => {
+                            frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
                         });
                     }
                 }, 500);

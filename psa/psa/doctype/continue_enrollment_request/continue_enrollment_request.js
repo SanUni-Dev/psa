@@ -12,8 +12,8 @@ frappe.ui.form.on("Continue Enrollment Request", {
         setTimeout(() => {
           var fees_status = frm.doc.fees_status;
           if (fees_status === "Not Paid") {
-            frm.add_custom_button(__("Get Clipboard Number"), () => {
-              frappe.msgprint(__("Clipboard Number for '") + frm.doc.name + __("' is: #########"));
+            frm.add_custom_button(__("Get Code for Fee Payment"), () => {
+              frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
             });
           }
         }, 500);
@@ -133,10 +133,20 @@ frappe.ui.form.on("Continue Enrollment Request", {
           frm.remove_custom_button(__("Go to Suspend Enrollment Request List"));
         }
         else if (status == "Continued") {
-          frm.set_intro((__(`Can't add a continue enrollment request, because current status is ${status}!`)), 'red');
-          frm.add_custom_button(__("Go to Suspend Enrollment Request List"), () => {
-            frappe.set_route("List", "Suspend Enrollment Request");
-          });
+          frm.set_intro((
+            `<div class="container">
+                <div class="row">
+                    <div class="col-auto me-auto">` +
+                        __(`Can't add a continue enrollment request, because current status is ${status}!` +
+                    `</div>
+                    <div class="col-auto me-auto">
+                        <a href="/app/suspend-enrollment-request">` +
+                            __(`Go to suspend enrollment request`) +
+                        `</a>
+                    </div>
+                </div>
+            </div>`
+          )), 'red');
         }
         else {
           frm.set_intro((__(`Can't add a continue enrollment request, because current status is ${status}!`)), 'red');
