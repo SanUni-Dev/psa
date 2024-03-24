@@ -14,18 +14,23 @@
   "student_html2",
   "request_information_section",
   "reason",
-  "excuse",
-  "library_eviction",
-  "column_break_cypq",
+  "section_break_qyuf",
+  "status",
   "rejection_reason",
+  "amended_from",
+  "column_break_apfr",
   "request_date_html",
   "modified_request_date_html",
-  "section_break_bpbc",
+  "attachments_tab",
+  "request_attachment",
+  "column_break_izwn",
+  "library_eviction",
+  "section_break_lcuj",
+  "request_attachment_preview_html",
+  "financial_information_tab",
   "financial_status",
-  "fees_status",
-  "column_break_ktjl",
-  "status",
-  "amended_from"
+  "fees_information_tab",
+  "fees_status"
  ],
  "fields": [
   {
@@ -52,15 +57,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "excuse",
-   "fieldtype": "Attach",
-   "label": "Excuse"
-  },
-  {
-   "fieldname": "column_break_cypq",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
@@ -75,10 +71,6 @@
    "fieldname": "modified_request_date_html",
    "fieldtype": "HTML",
    "label": "Modified Request Date"
-  },
-  {
-   "fieldname": "section_break_bpbc",
-   "fieldtype": "Section Break"
   },
   {
    "default": "Not Paid",
@@ -96,10 +88,6 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "column_break_ktjl",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "status",
@@ -150,12 +138,53 @@
    "fieldname": "student_html2",
    "fieldtype": "HTML",
    "label": "Student HTML 2"
+  },
+  {
+   "fieldname": "section_break_qyuf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_apfr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attachments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "request_attachment",
+   "fieldtype": "Attach",
+   "label": "Request Attachment"
+  },
+  {
+   "fieldname": "column_break_izwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "financial_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Financial Information"
+  },
+  {
+   "fieldname": "section_break_lcuj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "request_attachment_preview_html",
+   "fieldtype": "HTML",
+   "label": "Request Attachment Preview"
+  },
+  {
+   "fieldname": "fees_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Fees Information"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-23 13:36:28.822273",
+ "modified": "2024-03-25 02:32:34.016423",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",

@@ -12,17 +12,19 @@
   "column_break_yqwu",
   "student_html2",
   "section_break_kpjo",
-  "fees_status",
   "status",
+  "rejection_reason",
   "amended_from",
   "column_break_caxe",
-  "rejection_reason",
   "request_date_html",
   "modified_request_date_html",
   "last_approved_suspend_enrollment_request_details_section",
   "suspended_request_number",
   "column_break_scdl",
-  "suspended_request_details_html"
+  "suspended_request_details_html",
+  "fees_information_tab",
+  "section_break_rddd",
+  "fees_status"
  ],
  "fields": [
   {
@@ -127,12 +129,21 @@
    "fieldname": "student_html2",
    "fieldtype": "HTML",
    "label": "Student HTML 2"
+  },
+  {
+   "fieldname": "fees_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Fees Information"
+  },
+  {
+   "fieldname": "section_break_rddd",
+   "fieldtype": "Section Break"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-22 10:59:14.482130",
+ "modified": "2024-03-25 02:27:44.204465",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",

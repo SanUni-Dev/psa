@@ -8,16 +8,16 @@ frappe.ui.form.on("Continue Enrollment Request", {
     }, 500);
 
     if (!frm.is_new()) {
-      if (frappe.user_roles.includes("Student")) {
-        setTimeout(() => {
-          var fees_status = frm.doc.fees_status;
-          if (fees_status === "Not Paid") {
-            frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-              frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
-            });
-          }
-        }, 500);
-      }
+      // if (frappe.user_roles.includes("Student")) {
+      //   setTimeout(() => {
+      //     var fees_status = frm.doc.fees_status;
+      //     if (fees_status === "Not Paid") {
+      //       frm.add_custom_button(__("Get Code for Fee Payment"), () => {
+      //         frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
+      //       });
+      //     }
+      //   }, 500);
+      // }
 
       var creation_date = frm.doc.creation;
       var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
