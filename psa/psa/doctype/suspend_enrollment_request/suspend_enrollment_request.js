@@ -9,16 +9,29 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         }, 500);
 
         if (!frm.is_new()) {
-            if (frappe.user_roles.includes("Student")) {
-                setTimeout(() => {
-                    var fees_status = frm.doc.fees_status;
-                    if (fees_status === "Not Paid") {
-                        frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-                            frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
-                        });
-                    }
-                }, 500);
+            if(frm.doc.fees_status == "Not Paid") {
+                frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
             }
+
+            frm.set_df_property("request_attachment", "hidden", false);
+
+            if(frm.doc.request_attachment) {
+                frm.set_df_property("request_attachment", "description", "");
+            }
+            else {
+                frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
+            }
+            
+            // if (frappe.user_roles.includes("Student")) {
+            //     setTimeout(() => {
+            //         var fees_status = frm.doc.fees_status;
+            //         if (fees_status === "Not Paid") {
+            //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
+            //                 frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
+            //             });
+            //         }
+            //     }, 500);
+            // }
 
             var creation_date = frm.doc.creation;
             var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
@@ -66,6 +79,15 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         else {
             $(frm.fields_dict["student_html1"].wrapper).html('');
             $(frm.fields_dict["student_html2"].wrapper).html('');
+        }
+    },
+
+    request_attachment(frm) {
+        if(frm.doc.request_attachment) {
+            frm.set_df_property("request_attachment", "description", "");
+        }
+        else {
+            frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
         }
     },
 

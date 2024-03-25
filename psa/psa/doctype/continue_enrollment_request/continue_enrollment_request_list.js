@@ -2,26 +2,26 @@ frappe.listview_settings['Continue Enrollment Request'] = {
     onload(listview) {
         listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
 
-        if(frappe.user_roles.includes("Student")) {
-            listview.page.add_inner_button(__("Get Code for Fee Payment"), function () {
-                var checked_item = listview.get_checked_items(true);
-                if (checked_item.length == 0) {
-                    frappe.msgprint({
-                        "message" : __("No row selected!"),
-                        "indicator" : "red"
-                    });
-                }
-                else if (checked_item.length == 1) {
-                    frappe.msgprint(__("Payment code for '") + checked_item[0] + __("' is: #########"));
-                }
-                else {
-                    frappe.msgprint({
-                        "message" : __("Select only one row!"),
-                        "indicator" : "red"
-                    });
-                }
-            });
-        }
+        // if(frappe.user_roles.includes("Student")) {
+        //     listview.page.add_inner_button(__("Get Code for Fee Payment"), function () {
+        //         var checked_item = listview.get_checked_items(true);
+        //         if (checked_item.length == 0) {
+        //             frappe.msgprint({
+        //                 "message" : __("No row selected!"),
+        //                 "indicator" : "red"
+        //             });
+        //         }
+        //         else if (checked_item.length == 1) {
+        //             frappe.msgprint(__("Payment code for '") + checked_item[0] + __("' is: #########"));
+        //         }
+        //         else {
+        //             frappe.msgprint({
+        //                 "message" : __("Select only one row!"),
+        //                 "indicator" : "red"
+        //             });
+        //         }
+        //     });
+        // }
 
 
         // listview.page.add_action_item('Test Action Item', function () {
