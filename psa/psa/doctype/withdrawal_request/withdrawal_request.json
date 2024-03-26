@@ -107,8 +107,7 @@
   {
    "fieldname": "library_eviction",
    "fieldtype": "Attach",
-   "label": "Library Eviction",
-   "permlevel": 4
+   "label": "Library Eviction"
   },
   {
    "fieldname": "financial_status",
@@ -155,8 +154,7 @@
   {
    "fieldname": "request_attachment",
    "fieldtype": "Attach",
-   "label": "Request Attachment",
-   "permlevel": 4
+   "label": "Request Attachment"
   },
   {
    "fieldname": "column_break_izwn",
@@ -181,7 +179,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-26 18:23:32.431085",
+ "modified": "2024-03-26 23:20:51.290248",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",

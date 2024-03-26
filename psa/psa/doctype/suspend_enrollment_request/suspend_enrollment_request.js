@@ -87,13 +87,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         }
         else {
             frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
-            frm.get_field("request_attachment_preview_html").$wrapper.html("");
-            frm.set_df_property("preview_section", "hidden", true);
         }
-    },
-
-    preview_file_button(frm) { 
-        preview_file(frm);
     },
 
     // onload(frm) {
@@ -288,45 +282,4 @@ function format_multi_html_field(frm, html_field_name, array_of_label, array_of_
     }
 
     $(frm.fields_dict[html_field_name].wrapper).html(html_content);
-}
-
-
-function preview_file(frm) {
-    frappe.call({
-        method: 'frappe.client.get_value',
-        args: {
-            doctype: 'File',
-            filters: {
-                file_url: frm.doc.request_attachment,
-                attached_to_name: frm.doc.name,
-                attached_to_field: "request_attachment"
-            },
-            fieldname: ['file_type']
-        },
-        callback: function (response) {
-            if (response.message.file_type) {
-                let $preview = "";
-                let file_extension = response.message.file_type.toLowerCase();
-
-                if (file_extension === "pdf") {
-                    $preview = $(`
-                        <div class="img_preview">
-                            <object style="background:#323639;" width="100%">
-                                <embed style="background:#323639;" width="100%" height="1190"
-                                src="${frappe.utils.escape_html(frm.doc.request_attachment)}" type="application/pdf">
-                            </object>
-                        </div>
-                    `);
-                }
-                if ($preview) {
-                    frm.set_df_property("preview_section", "hidden", false);
-                    frm.get_field("request_attachment_preview_html").$wrapper.html($preview);
-                }
-            }
-            else if (!response.message.file_type) {
-                frm.set_df_property("preview_section", "hidden", false);
-                frm.get_field("request_attachment_preview_html").$wrapper.html("File is not exist!");
-            }
-        }
-    });
 }

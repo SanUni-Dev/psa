@@ -35,7 +35,7 @@ frappe.ui.form.on("Withdrawal Request", {
             }
             else {
                 frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
-            }
+             }
 
             var creation_date = frm.doc.creation;
             var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];

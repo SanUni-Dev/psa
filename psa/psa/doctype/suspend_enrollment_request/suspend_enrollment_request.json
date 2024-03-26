@@ -26,9 +26,6 @@
   "attachment_section",
   "column_break_cdpd",
   "request_attachment",
-  "preview_file_button",
-  "preview_section",
-  "request_attachment_preview_html",
   "councils_information_tab",
   "department_council_minutes_section",
   "department_council_minutes_number",
@@ -200,11 +197,6 @@
    "permlevel": 4
   },
   {
-   "fieldname": "request_attachment_preview_html",
-   "fieldtype": "HTML",
-   "label": "Request Attachment Preview"
-  },
-  {
    "fieldname": "column_break_wxzw",
    "fieldtype": "Column Break"
   },
@@ -233,17 +225,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval: doc.request_attachment",
-   "fieldname": "preview_file_button",
-   "fieldtype": "Button",
-   "label": "Preview File"
-  },
-  {
-   "fieldname": "preview_section",
-   "fieldtype": "Section Break",
-   "hidden": 1
-  },
-  {
    "fieldname": "attachment_section",
    "fieldtype": "Section Break",
    "hidden": 1
@@ -252,7 +233,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-26 17:41:54.649276",
+ "modified": "2024-03-26 23:06:37.012678",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
