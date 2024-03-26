@@ -2,6 +2,11 @@
 // For license information, please see license.txt
 
 
+var status_of_before_workflow_action = "";
+var action_of_workflow = "";
+var modified_of_before_workflow_action = "";
+
+
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
         setTimeout(() => {
@@ -94,18 +99,31 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
     // },
 
-    // before_workflow_action(frm) {
-    //     if (frm.selected_workflow_action.includes("Confirm")) {
-    //         if (frm.doc.fees_status === "Not Paid") {
-    //             frappe.throw(__("Please pay fees first!"));
-    //             frappe.validated = false;
-    //         }
-    //     }
-    // },
+    before_workflow_action(frm) {
+        status_of_before_workflow_action = frm.doc.status;
+        action_of_workflow = frm.selected_workflow_action;
+        modified_of_before_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+    },
 
-    // after_workflow_action(frm) {
-    //     frappe.msgprint("after_workflow_action");
-    // },
+    after_workflow_action(frm) {
+        var current_role_of_workflow_action = "";
+        var current_user_of_workflow_action = frappe.session.user_fullname;
+        var status_of_after_workflow_action = frm.doc.status;
+        var modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+
+
+        var new_timeline = frappe.model.add_child(frm.doc, 'timeline_child_table');
+
+        new_timeline.position = current_role_of_workflow_action;
+        new_timeline.full_name = current_user_of_workflow_action;
+        new_timeline.perivious_status = status_of_before_workflow_action;
+        new_timeline.received_date = modified_of_before_workflow_action;
+        new_timeline.action = action_of_workflow;
+        new_timeline.next_status = status_of_after_workflow_action;
+        new_timeline.action_date = modified_of_after_workflow_action;
+
+        frm.save();
+    },
 
     program_enrollment(frm) {
         frm.set_intro('', 'blue');

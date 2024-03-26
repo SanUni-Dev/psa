@@ -37,7 +37,9 @@
   "college_council_minutes_decision",
   "fees_information_tab",
   "section_break_bpbc",
-  "fees_status"
+  "fees_status",
+  "timeline_tab",
+  "timeline_child_table"
  ],
  "fields": [
   {
@@ -228,12 +230,24 @@
    "fieldname": "attachment_section",
    "fieldtype": "Section Break",
    "hidden": 1
+  },
+  {
+   "fieldname": "timeline_tab",
+   "fieldtype": "Tab Break",
+   "label": "Timeline"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "timeline_child_table",
+   "fieldtype": "Table",
+   "options": "Timeline Child Table",
+   "read_only": 1
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-26 23:06:37.012678",
+ "modified": "2024-03-27 02:17:32.396279",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
