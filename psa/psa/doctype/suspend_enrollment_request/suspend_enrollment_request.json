@@ -23,8 +23,11 @@
   "request_date_html",
   "modified_request_date_html",
   "attachments_tab",
+  "attachment_section",
+  "column_break_cdpd",
   "request_attachment",
-  "section_break_wvik",
+  "preview_file_button",
+  "preview_section",
   "request_attachment_preview_html",
   "councils_information_tab",
   "department_council_minutes_section",
@@ -193,13 +196,8 @@
   {
    "fieldname": "request_attachment",
    "fieldtype": "Attach",
-   "hidden": 1,
    "label": "Request Attachment",
    "permlevel": 4
-  },
-  {
-   "fieldname": "section_break_wvik",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "request_attachment_preview_html",
@@ -228,12 +226,33 @@
    "fieldname": "fees_information_tab",
    "fieldtype": "Tab Break",
    "label": "Fees Information"
+  },
+  {
+   "columns": 5,
+   "fieldname": "column_break_cdpd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.request_attachment",
+   "fieldname": "preview_file_button",
+   "fieldtype": "Button",
+   "label": "Preview File"
+  },
+  {
+   "fieldname": "preview_section",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "attachment_section",
+   "fieldtype": "Section Break",
+   "hidden": 1
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-25 02:25:40.482860",
+ "modified": "2024-03-26 17:41:54.649276",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",

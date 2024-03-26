@@ -22,6 +22,21 @@ frappe.ui.form.on("Withdrawal Request", {
             //     }, 500);
             // }
 
+            frm.set_df_property("attachment_section", "hidden", false);
+            if (frm.doc.request_attachment) {
+                frm.set_df_property("request_attachment", "description", "");
+            }
+            else {
+                frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
+            }
+
+            if (frm.doc.library_eviction) {
+                frm.set_df_property("library_eviction", "description", "");
+            }
+            else {
+                frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
+            }
+
             var creation_date = frm.doc.creation;
             var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
 
@@ -64,6 +79,24 @@ frappe.ui.form.on("Withdrawal Request", {
         else {
             $(frm.fields_dict["student_html1"].wrapper).html('');
             $(frm.fields_dict["student_html2"].wrapper).html('');
+        }
+    },
+
+    request_attachment(frm) {
+        if (frm.doc.request_attachment) {
+            frm.set_df_property("request_attachment", "description", "");
+        }
+        else {
+            frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
+        }
+    },
+
+    library_eviction(frm) {
+        if (frm.doc.library_eviction) {
+            frm.set_df_property("library_eviction", "description", "");
+        }
+        else {
+            frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
         }
     },
 
