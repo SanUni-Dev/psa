@@ -14,15 +14,15 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
 
-        $(frm.fields_dict["timeline_html"].wrapper).html('');
-        frm.set_df_property("timeline_section", "hidden", true);
+        // $(frm.fields_dict["timeline_html"].wrapper).html('');
+        // frm.set_df_property("timeline_section", "hidden", true);
 
         if (!frm.is_new()) {
-            if (frm.doc.timeline_child_table && frm.doc.timeline_child_table.length > 0) {
-                format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
-                frm.set_df_property("timeline_section", "hidden", false);
-            }
-            
+            format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+            // if (frm.doc.timeline_child_table && frm.doc.timeline_child_table.length > 0) {
+            //     frm.set_df_property("timeline_section", "hidden", false);
+            // }
+
             if (frm.doc.fees_status == "Not Paid") {
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
             }
@@ -114,27 +114,77 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         modified_of_before_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
     },
 
-    async after_workflow_action(frm) {
-        var current_role_of_workflow_action = frappe.user_roles[0];
+    after_workflow_action(frm) {
+        var current_role_of_workflow_action = "";
         var current_user_of_workflow_action = frappe.session.user_fullname;
         var status_of_after_workflow_action = frm.doc.status;
         var modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
 
-        var new_timeline = await frappe.model.add_child(frm.doc, 'timeline_child_table');
+        // var new_timeline = frappe.model.add_child(frm.doc, 'timeline_child_table');
 
-        new_timeline.position = current_role_of_workflow_action;
-        new_timeline.full_name = current_user_of_workflow_action;
-        new_timeline.previous_status = status_of_before_workflow_action;
-        new_timeline.received_date = modified_of_before_workflow_action;
-        new_timeline.action = action_of_workflow;
-        new_timeline.next_status = status_of_after_workflow_action;
-        new_timeline.action_date = modified_of_after_workflow_action;
-        if (action_of_workflow.includes('Reject') || action_of_workflow.includes('Approve')) {
-            frm.save('Submit');
-        }
-        else {
-            frm.save();
-        }
+        // new_timeline.position = current_role_of_workflow_action;
+        // new_timeline.full_name = current_user_of_workflow_action;
+        // new_timeline.previous_status = status_of_before_workflow_action;
+        // new_timeline.received_date = modified_of_before_workflow_action;
+        // new_timeline.action = action_of_workflow;
+        // new_timeline.next_status = status_of_after_workflow_action;
+        // new_timeline.action_date = modified_of_after_workflow_action;
+
+        frappe.call({
+            method: "insert_new_timeline_child_table",
+            doc: frm.doc,
+            args: {
+                "dictionary_of_values": {
+                    "position": current_role_of_workflow_action,
+                    "full_name": current_user_of_workflow_action,
+                    "previous_status": status_of_before_workflow_action,
+                    "received_date": modified_of_before_workflow_action,
+                    "action": action_of_workflow,
+                    "next_status": status_of_after_workflow_action,
+                    "action_date": modified_of_after_workflow_action
+                }
+            },
+            callback: function (response) {
+
+                
+                location.reload();
+                // frm.refresh_field('timeline_html');
+                // var timeline_html_field = frm.fields_dict.timeline_html.$wrapper;
+                // timeline_html_field.empty();
+                // format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+                console.log("Response:", response);
+                frm.fields_dict.timeline_html.refresh();
+                if (response.message) {
+                    frm.fields_dict.timeline_html.refresh();
+                    console.log("Success:", response.message);
+                    frappe.msgprint("Success: " + response.message); // Display success message
+                    frm.refresh_fields();
+                    format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+                } else if (response.exc) {
+                    frm.fields_dict.timeline_html.refresh();
+                    console.log("Error:", response.exc);
+                    frappe.msgprint("An error occurred on the server side.");
+                }
+            },
+            error: function (xhr, textStatus, error) {
+                frm.fields_dict.timeline_html.refresh();
+                console.log("AJAX Error:", error);
+                frappe.msgprint("An error occurred during the AJAX request.");
+            }
+        });
+        // frm.refresh_fields();
+        // format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+
+
+        // if (action_of_workflow.includes('Reject') || action_of_workflow.includes('Approve')) {
+        //     frm.save('Submit');
+        // }
+        // else {
+        //     frm.save();
+        // }
+
+
+        
     },
 
     program_enrollment(frm) {

@@ -68,6 +68,27 @@ class SuspendEnrollmentRequest(Document):
 			):
 				frappe.throw(_("Can't add a suspend enrollment request, because you have active request that is pending approval!"))
 
+	@frappe.whitelist()
+	def insert_new_timeline_child_table(self, dictionary_of_values):
+		try:
+			if dictionary_of_values:
+				doc = frappe.get_doc('Suspend Enrollment Request', self.name)
+				new_row = doc.append('timeline_child_table', {})
+				new_row.position = dictionary_of_values['position']
+				new_row.full_name = dictionary_of_values['full_name']
+				new_row.previous_status = dictionary_of_values['previous_status']
+				new_row.received_date = dictionary_of_values['received_date']
+				new_row.action = dictionary_of_values['action']
+				new_row.next_status = dictionary_of_values['next_status']
+				new_row.action_date = dictionary_of_values['action_date']			
+				doc.save()
+
+				return True
+			else:
+				frappe.throw("Error: dictionary_of_values is empty")
+		except Exception as e:
+			frappe.throw(f"An error occurred: {str(e)}")
+
 
 
 	# @frappe.whitelist()
