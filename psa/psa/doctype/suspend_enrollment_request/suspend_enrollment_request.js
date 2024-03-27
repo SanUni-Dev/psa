@@ -146,7 +146,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             },
             callback: function (response) {
 
-                
+
                 location.reload();
                 // frm.refresh_field('timeline_html');
                 // var timeline_html_field = frm.fields_dict.timeline_html.$wrapper;
@@ -184,7 +184,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         // }
 
 
-        
+
     },
 
     program_enrollment(frm) {
@@ -227,6 +227,11 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                     frm.remove_custom_button(__("Go to Continue Enrollment Request List"));
                 }
             });
+
+            get_active_suspend_enrollment_request(frm, frm.doc.program_enrollment, function (doc) {
+                var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                frm.set_intro("<br>" + (__(`Can't add a suspend enrollment request, because you have an active request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+            });
         }
         else {
             $(frm.fields_dict["student_html1"].wrapper).html('');
@@ -239,6 +244,20 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
 
 // Custom functions
+function get_active_suspend_enrollment_request(frm, program_enrollment, callback) {
+    frappe.call({
+        method: 'get_active_suspend_enrollment_request',
+        doc: frm.doc,
+        args: {
+            "program_enrollment": program_enrollment
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}
+
+
 function get_program(program, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
