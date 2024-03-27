@@ -40,6 +40,7 @@
   "fees_status",
   "timeline_tab",
   "timeline_section",
+  "column_break_ywwz",
   "timeline_html",
   "timeline_child_table"
  ],
@@ -251,14 +252,17 @@
   },
   {
    "fieldname": "timeline_section",
-   "fieldtype": "Section Break",
-   "hidden": 1
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ywwz",
+   "fieldtype": "Column Break"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-27 07:59:50.069726",
+ "modified": "2024-03-27 21:20:22.344970",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
