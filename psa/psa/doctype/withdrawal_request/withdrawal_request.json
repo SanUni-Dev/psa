@@ -22,11 +22,10 @@
   "request_date_html",
   "modified_request_date_html",
   "attachments_tab",
+  "attachment_section",
   "request_attachment",
   "column_break_izwn",
   "library_eviction",
-  "section_break_lcuj",
-  "request_attachment_preview_html",
   "financial_information_tab",
   "financial_status",
   "fees_information_tab",
@@ -167,24 +166,20 @@
    "label": "Financial Information"
   },
   {
-   "fieldname": "section_break_lcuj",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "request_attachment_preview_html",
-   "fieldtype": "HTML",
-   "label": "Request Attachment Preview"
-  },
-  {
    "fieldname": "fees_information_tab",
    "fieldtype": "Tab Break",
    "label": "Fees Information"
+  },
+  {
+   "fieldname": "attachment_section",
+   "fieldtype": "Section Break",
+   "hidden": 1
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-25 02:32:34.016423",
+ "modified": "2024-03-26 23:20:51.290248",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",

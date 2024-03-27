@@ -2,26 +2,35 @@
 // For license information, please see license.txt
 
 
+// Declare Variables for Timeline
+var status_of_before_workflow_action = "";
+var action_of_workflow = "";
+var modified_of_before_workflow_action = "";
+
+
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
 
+        $(frm.fields_dict["timeline_html"].wrapper).html('');
+
         if (!frm.is_new()) {
-            if(frm.doc.fees_status == "Not Paid") {
+            format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+            
+            if (frm.doc.fees_status == "Not Paid") {
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
             }
 
-            frm.set_df_property("request_attachment", "hidden", false);
-
-            if(frm.doc.request_attachment) {
+            frm.set_df_property("attachment_section", "hidden", false);
+            if (frm.doc.request_attachment) {
                 frm.set_df_property("request_attachment", "description", "");
             }
             else {
                 frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
             }
-            
+
             // if (frappe.user_roles.includes("Student")) {
             //     setTimeout(() => {
             //         var fees_status = frm.doc.fees_status;
@@ -83,7 +92,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     },
 
     request_attachment(frm) {
-        if(frm.doc.request_attachment) {
+        if (frm.doc.request_attachment) {
             frm.set_df_property("request_attachment", "description", "");
         }
         else {
@@ -95,18 +104,36 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
     // },
 
-    // before_workflow_action(frm) {
-    //     if (frm.selected_workflow_action.includes("Confirm")) {
-    //         if (frm.doc.fees_status === "Not Paid") {
-    //             frappe.throw(__("Please pay fees first!"));
-    //             frappe.validated = false;
-    //         }
-    //     }
-    // },
+    before_workflow_action(frm) {
+        status_of_before_workflow_action = frm.doc.status;
+        action_of_workflow = frm.selected_workflow_action;
+        modified_of_before_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+    },
 
-    // after_workflow_action(frm) {
-    //     frappe.msgprint("after_workflow_action");
-    // },
+    after_workflow_action(frm) {
+        var current_role_of_workflow_action = "";
+        // var current_role_of_workflow_action = frappe.user_roles[0];
+        var current_user_of_workflow_action = frappe.session.user_fullname;
+        var status_of_after_workflow_action = frm.doc.status;
+        var modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+
+        var new_timeline = frappe.model.add_child(frm.doc, 'timeline_child_table');
+
+        new_timeline.position = current_role_of_workflow_action;
+        new_timeline.full_name = current_user_of_workflow_action;
+        new_timeline.previous_status = status_of_before_workflow_action;
+        new_timeline.received_date = modified_of_before_workflow_action;
+        new_timeline.action = action_of_workflow;
+        new_timeline.next_status = status_of_after_workflow_action;
+        new_timeline.action_date = modified_of_after_workflow_action;
+
+        if (action_of_workflow.includes('Reject') || action_of_workflow.includes('Approve')) {
+            frm.save('Submit');
+        }
+        else {
+            frm.save();
+        }
+    },
 
     program_enrollment(frm) {
         frm.set_intro('', 'blue');
@@ -132,12 +159,12 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                         `<div class="container">
                             <div class="row">
                                 <div class="col-auto me-auto">` +
-                                    __(`Can't add a suspend enrollment request, because current status is ${status}!` +
-                                `</div>
+                        __(`Can't add a suspend enrollment request, because current status is ${status}!` +
+                            `</div>
                                 <div class="col-auto me-auto">
                                     <a href="/app/continue-enrollment-request">` +
-                                        __(`Go to continue enrollment request`) +
-                                    `</a>
+                            __(`Go to continue enrollment request`) +
+                            `</a>
                                 </div>
                             </div>
                         </div>`
@@ -282,5 +309,54 @@ function format_multi_html_field(frm, html_field_name, array_of_label, array_of_
         </div>`;
     }
 
+    $(frm.fields_dict[html_field_name].wrapper).html(html_content);
+}
+
+
+function format_timeline_html(frm, html_field_name, timeline_child_table_name) {
+    var html_content = `<div class="new-timeline">
+                            <div class="timeline-item activity-title">
+                                <h4>${__('Activity')}</h4>
+                            </div>
+                            <div class="timeline-items">`;
+    for (var i = 0; i < timeline_child_table_name.length; i++) {
+        let record = timeline_child_table_name[i];
+        html_content = html_content + `<div class="timeline-item">
+                                            <div class="timeline-dot"></div>
+                                            <div class="timeline-content ">
+                                                <table>
+                                                    <tr>
+                                                        <th>Role:</th>
+                                                        <td>${record.position}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Name:</th>
+                                                        <td>${record.full_name}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Previous Status:</th>
+                                                        <td>${record.previous_status}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Action:</th>
+                                                        <td>${record.action}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Next Status:</th>
+                                                        <td>${record.next_status}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Recieved Date:</th>
+                                                        <td>${record.received_date}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Action Date:</th>
+                                                        <td>${record.action_date}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>`
+    }
+    html_content = html_content + "</div></div>"
     $(frm.fields_dict[html_field_name].wrapper).html(html_content);
 }
