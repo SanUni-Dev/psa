@@ -44,21 +44,12 @@ class SuspendEnrollmentRequest(Document):
 		count_of_rejected = 0
 
 		for request in student_program_suspend_requests:
-			if(
-				request.status == "Approved by College Council" or
-				request.status == "Approved by College Dean"
-			):
+			if("Approved by" in request.status):
 				if(set_a_limit_of_suspend_requests):
 					count_of_allowed = count_of_allowed + 1
 					if(count_of_allowed >= number_of_suspend_requests):
 						frappe.throw(_("Can't add a suspend enrollment request, because you have been suspended! (Max of allowed suspend enrollment requests = ") + str(number_of_suspend_requests) + ")")
-			elif(
-				request.status == "Rejected by Vice Dean for GSA" or
-				request.status == "Rejected by Department Head" or
-				request.status == "Rejected by Department Council" or
-				request.status == "Rejected by College Dean" or
-				request.status == "Rejected by College Council"
-			):
+			elif("Rejected by" in request.status):
 				if(set_a_limit_of_rejected_suspend_requests):
 					count_of_rejected = count_of_rejected + 1
 					if(count_of_rejected >= number_of_rejected_suspend_requests):
