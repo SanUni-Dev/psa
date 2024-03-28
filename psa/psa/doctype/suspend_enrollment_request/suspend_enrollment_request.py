@@ -116,7 +116,7 @@ class SuspendEnrollmentRequest(Document):
 
 	@frappe.whitelist()
 	def get_current_workflow_role(self, current_status):
-		doc = frappe.get_doc('Workflow', "Suspend Enrollmen Request Workflow")
+		doc = frappe.get_doc('Workflow', "Suspend Enrollment Request Workflow")
 		states = doc.states
 		for state in states:
 			if state.state == current_status:
