@@ -117,8 +117,6 @@ class SuspendEnrollmentRequest(Document):
 		for state in states:
 			if state.state == current_status:
 				return state.allow_edit
-			else:
-				frappe.msgprint("Error in fetching states")
 
 
 
