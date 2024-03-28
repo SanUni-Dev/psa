@@ -66,7 +66,48 @@ class SuspendEnrollmentRequest(Document):
 				request.status != "Approval Pending by College Dean" or
 				request.status != "Approval Pending by College Council"
 			):
-				frappe.throw(_("Can't add a suspend enrollment request, because you have active request that is pending approval!"))
+				url_of_active_request = '<a href="/app/suspend-enrollment-request/{0}" title="{1}">{2}</a>'.format(request.name, _("Click here to show request details"), request.name)
+				frappe.throw(
+					_("Can't add a suspend enrollment request, because you have an active request (") +
+					url_of_active_request +
+					_(") that is {0}!").format(request.status)
+				)
+
+
+	@frappe.whitelist()
+	def insert_new_timeline_child_table(self, dictionary_of_values):
+		try:
+			if dictionary_of_values:
+				doc = frappe.get_doc('Suspend Enrollment Request', self.name)
+				new_row = doc.append('timeline_child_table', {})
+				new_row.position = dictionary_of_values['position']
+				new_row.full_name = dictionary_of_values['full_name']
+				new_row.previous_status = dictionary_of_values['previous_status']
+				new_row.received_date = dictionary_of_values['received_date']
+				new_row.action = dictionary_of_values['action']
+				new_row.next_status = dictionary_of_values['next_status']
+				new_row.action_date = dictionary_of_values['action_date']			
+				doc.save()
+
+				return True
+			else:
+				frappe.throw("Error: dictionary_of_values is empty")
+		except Exception as e:
+			frappe.throw(f"An error occurred: {str(e)}")
+
+
+	@frappe.whitelist()
+	def get_active_suspend_enrollment_request(self, program_enrollment):
+		docs = frappe.get_all("Suspend Enrollment Request",
+			fields=["*"],
+			filters={
+				"status": ["like", "%Approval%"],
+				"program_enrollment": program_enrollment
+			}, 
+			order_by="modified DESC",
+			limit_page_length=1
+		)
+		return docs[0] if docs else None
 
 
 
