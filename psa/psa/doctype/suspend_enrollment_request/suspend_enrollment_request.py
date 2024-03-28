@@ -16,6 +16,10 @@ class SuspendEnrollmentRequest(Document):
 			else:
 				program_enrollment.status = "Suspended"
 				program_enrollment.save()
+		elif(program_enrollment.status == "Suspended"):
+			frappe.throw(_("Failed! Student is already suspended!"))
+		elif(program_enrollment.status == "Withdrawn"):
+			frappe.throw(_("Failed! Student is withdrawn!"))
 
 
 	def before_insert(self):
@@ -97,11 +101,11 @@ class SuspendEnrollmentRequest(Document):
 
 
 	@frappe.whitelist()
-	def get_active_suspend_enrollment_request(self, program_enrollment):
-		docs = frappe.get_all("Suspend Enrollment Request",
+	def get_active_request(self, program_enrollment, doctype_name):
+		docs = frappe.get_all(doctype_name,
 			fields=["*"],
 			filters={
-				"status": ["like", "%Approval%"],
+				"status": ["like", "%Pending%"],
 				"program_enrollment": program_enrollment
 			}, 
 			order_by="modified DESC",
@@ -109,7 +113,7 @@ class SuspendEnrollmentRequest(Document):
 		)
 		return docs[0] if docs else None
 
-	
+
 	@frappe.whitelist()
 	def get_current_workflow_role(self, current_status):
 		doc = frappe.get_doc('Workflow', "Suspend Enrollmen Request Workflow")

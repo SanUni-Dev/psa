@@ -124,7 +124,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             callback: function (response) {
                 if (response.message) {
                     current_role_of_workflow_action = response.message;
-                    
+
                     frappe.call({
                         method: "insert_new_timeline_child_table",
                         doc: frm.doc,
@@ -186,7 +186,6 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                 });
                 if (status == "Continued") {
                     frm.set_intro((__(`Current status is ${status}.`)), 'green');
-                    frm.remove_custom_button(__("Go to Continue Enrollment Request List"));
                 }
                 else if (status == "Suspended") {
                     frm.set_intro((
@@ -204,21 +203,40 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                         </div>`
                         )), 'red');
                 }
-                else {
+                else if (status == "Withdrawn") {
                     frm.set_intro((__(`Can't add a suspend enrollment request, because current status is ${status}!`)), 'red');
-                    frm.remove_custom_button(__("Go to Continue Enrollment Request List"));
                 }
-            });
-
-            get_active_suspend_enrollment_request(frm, frm.doc.program_enrollment, function (doc) {
-                var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                frm.set_intro("<br>" + (__(`Can't add a suspend enrollment request, because you have an active request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                
+                get_active_request(frm, frm.doc.program_enrollment, "Suspend Enrollment Request", function (doc) {
+                    if (doc) {
+                        frm.set_intro('', 'red');
+                        var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                        frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                    }
+                    else {
+                        get_active_request(frm, frm.doc.program_enrollment, "Continue Enrollment Request", function (doc) {
+                            if (doc) {
+                                frm.set_intro('', 'red');
+                                var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                            }
+                            else {
+                                get_active_request(frm, frm.doc.program_enrollment, "Withdrawal Request", function (doc) {
+                                    if (doc) {
+                                        frm.set_intro('', 'red');
+                                        var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                        frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             });
         }
         else {
             $(frm.fields_dict["student_html1"].wrapper).html('');
             $(frm.fields_dict["student_html2"].wrapper).html('');
-            frm.remove_custom_button(__("Go to Continue Enrollment Request List"));
         }
     },
 });
@@ -226,12 +244,13 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
 
 // Custom functions
-function get_active_suspend_enrollment_request(frm, program_enrollment, callback) {
+function get_active_request(frm, program_enrollment, doctype_name, callback) {
     frappe.call({
-        method: 'get_active_suspend_enrollment_request',
+        method: 'get_active_request',
         doc: frm.doc,
         args: {
-            "program_enrollment": program_enrollment
+            "program_enrollment": program_enrollment,
+            "doctype_name": doctype_name
         },
         callback: function (response) {
             callback(response.message);
