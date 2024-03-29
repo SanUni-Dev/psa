@@ -1,10 +1,8 @@
 frappe.listview_settings["Suspend Enrollment Request"] = {
-  refresh: function (listview) {
+  onload(listview) {
     $(".layout-side-section").remove();
     $(".sidebar-toggle-placeholder").remove();
-  },
 
-  onload(listview) {
     // var get_all_list_items = listview.data;
     // var get_checked_list_items = listview.get_checked_items();
     // var get_checked_list_items_names = listview.get_checked_items(true);
