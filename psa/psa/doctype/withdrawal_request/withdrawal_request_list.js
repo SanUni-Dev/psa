@@ -1,6 +1,22 @@
 frappe.listview_settings['Withdrawal Request'] = {
     onload(listview) {
+        // var get_all_list_items = listview.data;
+        // var get_checked_list_items = listview.get_checked_items();
+        // var get_checked_list_items_names = listview.get_checked_items(true);
+        
         listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
+
+        /////////////////////->>>>>> Uncomment it
+        // listview.page.wrapper.on('change', 'input[type="checkbox"]', function () {
+        //     listview.page.actions.find(`[data-label='Delete']`).parent().parent().show();
+
+        //     var checked_items = listview.get_checked_items();
+        //     checked_items.forEach(item => {
+        //         if (item.status.includes("Approv") || item.status.includes("Reject")) {
+        //             listview.page.actions.find(`[data-label='Delete']`).parent().parent().hide();
+        //         }
+        //     });
+        // });
 
         // if(frappe.user_roles.includes("Student")) {
         //     listview.page.add_inner_button(__("Get Code for Fee Payment"), function () {
