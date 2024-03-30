@@ -21,7 +21,7 @@ class ContinueEnrollmentRequest(Document):
 	def before_insert(self):
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
 		if(program_enrollment_status.status == "Continued"):
-			url_of_suspend_enrollment_request = frappe.utils.get_url_to_list('Suspend Enrollment Request')
+			url_of_suspend_enrollment_request = frappe.utils.get_url_to_form('Suspend Enrollment Request', "new")
 			frappe.throw(_("Can't add a continue enrollment request, because current status is continued!") + "<br><br><a href='" + url_of_suspend_enrollment_request + "'>" + _('Do you want to add a suspend enrollment request?') + "</a>")
 		elif(program_enrollment_status.status == "Withdrawn"):
 			frappe.throw(_("Can't add a continue enrollment request, because current status is withdrawn!"))

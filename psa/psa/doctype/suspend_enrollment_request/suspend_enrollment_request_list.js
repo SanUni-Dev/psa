@@ -6,6 +6,7 @@ frappe.listview_settings['Suspend Enrollment Request'] = {
 
         listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
         
+        /////////////////////->>>>>> Uncomment it
         // listview.page.wrapper.on('change', 'input[type="checkbox"]', function () {
         //     listview.page.actions.find(`[data-label='Delete']`).parent().parent().show();
 
