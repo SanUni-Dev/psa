@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestStoppingRequest(FrappeTestCase):
+class TestPSASettings(FrappeTestCase):
 	pass

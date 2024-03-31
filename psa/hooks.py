@@ -4,14 +4,31 @@ app_publisher = "Sana\'a university"
 app_description = "Postgraduate Studies Administration"
 app_email = "sanaa-uni@gmail.com"
 app_license = "mit"
-# required_apps = []
+required_apps = ["wiki"]
+
+
+fixtures = [
+    "Workflow",
+    "Workflow State",
+    "Workflow Action Master",
+    "Notification",
+    "PSA Settings"
+]
+
+
+app_include_js = [
+    "/assets/psa/js/workflow_override.js",
+    ]
+
 
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/psa/css/psa.css"
-# app_include_js = "/assets/psa/js/psa.js"
+# app_include_js = [
+#     "/assets/psa/js/psa.js",
+#     ]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/psa/css/psa.css"
@@ -38,6 +55,13 @@ app_license = "mit"
 #     "Translation",
 #     "ToDo"
 # ]
+
+
+# fixtures = [
+#     export all records from the Category table
+#     "Role"
+# ]
+
 
 # Svg Icons
 # ------------------

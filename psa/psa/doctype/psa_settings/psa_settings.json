@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-03-16 23:36:04.788303",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "semester_settings_section",
+  "set_days_of_programs",
+  "number_of_days_for_programs",
+  "suspend_enrollment_request_settings_section",
+  "set_a_limit_of_suspend_requests",
+  "number_of_suspend_requests",
+  "column_break_ysag",
+  "set_a_limit_of_rejected_suspend_requests",
+  "number_of_rejected_suspend_requests",
+  "continue_enrollment_request_settings_section",
+  "enable_auto_validation_for_days"
+ ],
+ "fields": [
+  {
+   "collapsible": 1,
+   "fieldname": "semester_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Semester Settings"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "suspend_enrollment_request_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Suspend Enrollment Request Settings"
+  },
+  {
+   "default": "1",
+   "depends_on": "eval: doc.set_a_limit_of_suspend_requests",
+   "fieldname": "number_of_suspend_requests",
+   "fieldtype": "Int",
+   "label": "Number of Requests ",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_ysag",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Set a limit on the number of requests a student can create per a program.",
+   "fieldname": "set_a_limit_of_suspend_requests",
+   "fieldtype": "Check",
+   "label": "Set a Limit of Requests"
+  },
+  {
+   "default": "1",
+   "description": "Set a limit on the number of rejected requests a student can create per a program.",
+   "fieldname": "set_a_limit_of_rejected_suspend_requests",
+   "fieldtype": "Check",
+   "label": "Set a Limit of Rejected Requests"
+  },
+  {
+   "default": "2",
+   "depends_on": "eval: doc.set_a_limit_of_rejected_suspend_requests",
+   "fieldname": "number_of_rejected_suspend_requests",
+   "fieldtype": "Int",
+   "label": "Number of Rejected Requests",
+   "non_negative": 1
+  },
+  {
+   "columns": 8,
+   "depends_on": "eval: doc.set_days_of_programs",
+   "fieldname": "number_of_days_for_programs",
+   "fieldtype": "Table",
+   "label": "Number of Days for Programs",
+   "options": "Days of Semester"
+  },
+  {
+   "default": "0",
+   "fieldname": "set_days_of_programs",
+   "fieldtype": "Check",
+   "label": "Set Days of Programs"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "continue_enrollment_request_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Continue Enrollment Request Settings"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.set_days_of_programs",
+   "fieldname": "enable_auto_validation_for_days",
+   "fieldtype": "Check",
+   "label": "Enable Auto Validation for Days"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-03-27 01:31:45.703778",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "PSA Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
