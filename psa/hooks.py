@@ -18,7 +18,7 @@ fixtures = [
 
 app_include_js = [
     "/assets/psa/js/workflow_override.js",
-    "/assets/psa/js/psa.js",
+    "/assets/psa/js/psa_utils.js",
     ]
 
 

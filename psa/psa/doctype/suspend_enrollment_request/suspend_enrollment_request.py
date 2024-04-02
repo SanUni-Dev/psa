@@ -84,29 +84,6 @@ class SuspendEnrollmentRequest(Document):
 
 
 	@frappe.whitelist()
-	def insert_new_timeline_child_table(self, dictionary_of_values):
-		try:
-			if dictionary_of_values:
-				doc = frappe.get_doc('Suspend Enrollment Request', self.name)
-				new_row = doc.append('timeline_child_table', {})
-
-				new_row.position = dictionary_of_values['position']
-				new_row.full_name = dictionary_of_values['full_name']
-				new_row.previous_status = dictionary_of_values['previous_status']
-				new_row.received_date = dictionary_of_values['received_date']
-				new_row.action = dictionary_of_values['action']
-				new_row.next_status = dictionary_of_values['next_status']
-				new_row.action_date = dictionary_of_values['action_date']
-
-				doc.save()
-				return True
-			else:
-				frappe.throw("Error: dictionary_of_values is empty!")
-		except Exception as e:
-			frappe.throw(f"An error occurred: {str(e)}")
-
-
-	@frappe.whitelist()
 	def get_active_request(self, program_enrollment, doctype_name):
 		query = """
         SELECT *
@@ -119,16 +96,6 @@ class SuspendEnrollmentRequest(Document):
 
 		docs = frappe.db.sql(query, ("%Pending%", "%Draft%", program_enrollment), as_dict=True)
 		return docs[0] if docs else None
-
-
-	@frappe.whitelist()
-	def get_current_workflow_role(self, current_status):
-		doc = frappe.get_doc('Workflow', "Suspend Enrollment Request Workflow")
-		states = doc.states
-		for state in states:
-			if state.state == current_status:
-				return state.allow_edit
-
 
 
 	# @frappe.whitelist()
