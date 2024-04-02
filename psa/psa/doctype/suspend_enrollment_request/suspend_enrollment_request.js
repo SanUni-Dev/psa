@@ -105,9 +105,12 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         }
     },
 
-    // onload(frm) {
-
-    // },
+    onload(frm) {
+        // Uncomment it
+        // if (frm.is_new()) {
+        //     psa.set_program_enrollment_for_current_user(frm, "program_enrollment");
+        // }
+    },
 
     before_workflow_action(frm) {
         status_of_before_workflow_action = frm.doc.status;
