@@ -22,7 +22,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         frm.set_df_property("timeline_section", "hidden", true);
 
         if (!frm.is_new()) {
-            format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+            psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
             if (frm.doc.fees_status == "Not Paid") {
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
@@ -53,18 +53,18 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             var modified_date = frm.doc.modified;
             var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
 
-            format_single_html_field(frm, "request_date_html", __('Request Date'), formatted_creation_date);
+            psa_utils.format_single_html_field(frm, "request_date_html", __('Request Date'), formatted_creation_date);
 
             if (frm.doc.status == "Approved by College Dean" ||
                 frm.doc.status == "Approved by College Council") {
-                format_single_html_field(frm, "modified_request_date_html", __('Approval Date'), formatted_modified_date);
+                    psa_utils.format_single_html_field(frm, "modified_request_date_html", __('Approval Date'), formatted_modified_date);
             }
             else if (frm.doc.status == "Rejected by Vice Dean for GSA" ||
                 frm.doc.status == "Rejected by Department Head" ||
                 frm.doc.status == "Rejected by Department Council" ||
                 frm.doc.status == "Rejected by College Dean" ||
                 frm.doc.status == "Rejected by College Council") {
-                format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
+                    psa_utils.format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
             }
             else {
                 $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
@@ -82,11 +82,11 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
                     var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
                     var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
-                    format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
+                    psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
                     var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
                     var array_of_value = [college, department, specialization, status];
-                    format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
+                    psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                 });
             });
         }
@@ -108,7 +108,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     onload(frm) {
         // Uncomment it
         // if (frm.is_new()) {
-        //     psa.set_program_enrollment_for_current_user(frm, "program_enrollment");
+        //     psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
         // }
     },
 
@@ -122,7 +122,28 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         current_user_of_workflow_action = frappe.session.user_fullname;
         status_of_after_workflow_action = frm.doc.status;
         modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
-        get_current_workflow_role_and_insert_new_timeline_child_table(frm);
+
+        psa_utils.get_current_workflow_role(
+            "Suspend Enrollment Request Workflow",
+            status_of_before_workflow_action,
+            function (current_workflow_role) {
+                current_role_of_workflow_action = current_workflow_role;
+                psa_utils.insert_new_timeline_child_table(
+                    "Suspend Enrollment Request",
+                    frm.doc.name,
+                    "timeline_child_table",
+                    {
+                        "position": current_role_of_workflow_action,
+                        "full_name": current_user_of_workflow_action,
+                        "previous_status": status_of_before_workflow_action,
+                        "received_date": modified_of_before_workflow_action,
+                        "action": action_of_workflow,
+                        "next_status": status_of_after_workflow_action,
+                        "action_date": modified_of_after_workflow_action
+                    }
+                );
+            }
+        );
     },
 
     program_enrollment(frm) {
@@ -134,15 +155,15 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
                     var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
                     var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
-                    format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
+                    psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
                     var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
                     var array_of_value = [college, department, specialization, status];
-                    format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
+                    psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                 });
 
                 if (status == "Suspended") {
-                    get_url_to_new_form("Continue Enrollment Request", function (url) {
+                    psa_utils.get_url_to_new_form("Continue Enrollment Request", function (url) {
                         frm.set_intro((
                             `<div class="container">
                                 <div class="row">
@@ -299,159 +320,6 @@ function get_program_enrollment_status(frm, callback) {
         callback: function (response) {
             var status = response.message.status;
             callback(status);
-        }
-    });
-}
-
-
-function format_single_html_field(frm, html_field_name, field_label, field_value) {
-    $(frm.fields_dict[html_field_name].wrapper).html(
-        `<div class="form-group">
-          <div class="clearfix">
-            <label class="control-label" style="padding-right: 0px;">`
-        + field_label +
-        `</label>
-          </div>
-          <div class="control-input-wrapper">
-            <div class="control-value like-disabled-input">`
-        + field_value +
-        `</div>
-          </div>
-        </div>`
-    );
-}
-
-
-function format_multi_html_field(frm, html_field_name, array_of_label, array_of_value) {
-    var html_content = "";
-
-    for (let i = 0; i < array_of_label.length; i++) {
-        const label = array_of_label[i];
-        const value = array_of_value[i];
-
-        html_content = html_content + `<div class="form-group">
-          <div class="clearfix">
-            <label class="control-label" style="padding-right: 0px;">`
-            + label +
-            `</label>
-          </div>
-          <div class="control-input-wrapper">
-            <div class="control-value like-disabled-input">`
-            + value +
-            `</div>
-          </div>
-        </div>`;
-    }
-
-    $(frm.fields_dict[html_field_name].wrapper).html(html_content);
-}
-
-
-function format_timeline_html(frm, html_field_name, timeline_child_table_name) {
-    if (timeline_child_table_name.length > 0) {
-        var html_content = `<div class="new-timeline">
-                            <div class="timeline-item activity-title">
-                                <h4>${__('Activity')}</h4>
-                            </div>
-                            <div class="timeline-items">`;
-        for (var i = 0; i < timeline_child_table_name.length; i++) {
-            let record = timeline_child_table_name[i];
-            html_content = html_content + `<div class="timeline-item">
-                                            <div class="timeline-dot"></div>
-                                            <div class="timeline-content ">
-                                                <table>
-                                                    <tr>
-                                                        <th>Role:</th>
-                                                        <td>${record.position}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Name:</th>
-                                                        <td>${record.full_name}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Previous Status:</th>
-                                                        <td>${record.previous_status}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Action:</th>
-                                                        <td>${record.action}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Next Status:</th>
-                                                        <td>${record.next_status}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Recieved Date:</th>
-                                                        <td>${record.received_date}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Action Date:</th>
-                                                        <td>${record.action_date}</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>`
-        }
-        html_content = html_content + "</div></div>"
-        $(frm.fields_dict[html_field_name].wrapper).html(html_content);
-        frm.set_df_property("timeline_section", "hidden", false);
-    }
-    else {
-        $(frm.fields_dict[html_field_name].wrapper).html("");
-        frm.set_df_property("timeline_section", "hidden", true);
-    }
-}
-
-
-function get_url_to_new_form(doctype_name, callback) {
-    frappe.call({
-        method: 'psa.api.psa_utils.get_url_to_new_form',
-        args: {
-            "doctype_name": doctype_name
-        },
-        callback: function (response) {
-            callback(response.message);
-        }
-    });
-}
-
-
-function get_current_workflow_role_and_insert_new_timeline_child_table(frm) {
-    frappe.call({
-        method: 'get_current_workflow_role',
-        doc: frm.doc,
-        args: {
-            current_status: status_of_before_workflow_action
-        },
-        callback: function (response) {
-            if (response.message) {
-                current_role_of_workflow_action = response.message;
-            }
-
-            frappe.call({
-                method: "insert_new_timeline_child_table",
-                doc: frm.doc,
-                args: {
-                    "dictionary_of_values": {
-                        "position": current_role_of_workflow_action,
-                        "full_name": current_user_of_workflow_action,
-                        "previous_status": status_of_before_workflow_action,
-                        "received_date": modified_of_before_workflow_action,
-                        "action": action_of_workflow,
-                        "next_status": status_of_after_workflow_action,
-                        "action_date": modified_of_after_workflow_action
-                    }
-                },
-                callback: function (response) {
-                    if (response.message) {
-                        // location.reload();
-                    }
-                },
-                error: function (xhr, textStatus, error) {
-                    console.log("AJAX Error:", error);
-                    frappe.msgprint("An error occurred during the AJAX request.");
-                }
-            });
         }
     });
 }
