@@ -3,9 +3,13 @@
 
 
 // Declare Variables for Timeline
+var current_role_of_workflow_action = "";
 var status_of_before_workflow_action = "";
 var action_of_workflow = "";
 var modified_of_before_workflow_action = "";
+var current_user_of_workflow_action = "";
+var status_of_after_workflow_action = "";
+var modified_of_after_workflow_action = "";
 
 
 frappe.ui.form.on("Suspend Enrollment Request", {
@@ -101,9 +105,12 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         }
     },
 
-    // onload(frm) {
-
-    // },
+    onload(frm) {
+        // Uncomment it
+        // if (frm.is_new()) {
+        //     psa.set_program_enrollment_for_current_user(frm, "program_enrollment");
+        // }
+    },
 
     before_workflow_action(frm) {
         status_of_before_workflow_action = frm.doc.status;
@@ -112,65 +119,14 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     },
 
     after_workflow_action(frm) {
-
-        var current_role_of_workflow_action = "";
-
-        frappe.call({
-            method: 'get_current_workflow_role',
-            doc: frm.doc,
-            args: {
-                current_status: status_of_before_workflow_action
-            },
-            callback: function (response) {
-                if (response.message) {
-                    current_role_of_workflow_action = response.message;
-
-                    frappe.call({
-                        method: "insert_new_timeline_child_table",
-                        doc: frm.doc,
-                        args: {
-                            "dictionary_of_values": {
-                                "position": current_role_of_workflow_action,
-                                "full_name": current_user_of_workflow_action,
-                                "previous_status": status_of_before_workflow_action,
-                                "received_date": modified_of_before_workflow_action,
-                                "action": action_of_workflow,
-                                "next_status": status_of_after_workflow_action,
-                                "action_date": modified_of_after_workflow_action
-                            }
-                        },
-                        callback: function (response) {
-                            // location.reload();
-                            // frm.refresh_field('timeline_html');
-                            // frm.fields_dict[timeline_html].refresh();
-                            // format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
-                            // if (response.message) {
-                            //     frm.fields_dict.timeline_html.refresh();
-                            //     frm.refresh_fields();
-                            //     format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
-                            // } else if (response.exc) {
-                            //     frm.fields_dict.timeline_html.refresh();
-                            //     console.log("Error:", response.exc);
-                            //     frappe.msgprint("An error occurred on the server side.");
-                            // }
-                        },
-                        error: function (xhr, textStatus, error) {
-                            // frm.fields_dict.timeline_html.refresh();
-                            console.log("AJAX Error:", error);
-                            frappe.msgprint("An error occurred during the AJAX request.");
-                        }
-                    });
-                }
-            }
-        });
-
-        var current_user_of_workflow_action = frappe.session.user_fullname;
-        var status_of_after_workflow_action = frm.doc.status;
-        var modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+        current_user_of_workflow_action = frappe.session.user_fullname;
+        status_of_after_workflow_action = frm.doc.status;
+        modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+        get_current_workflow_role_and_insert_new_timeline_child_table(frm);
     },
 
     program_enrollment(frm) {
-        frm.set_intro('', 'blue');
+        frm.set_intro('');
         if (frm.doc.program_enrollment) {
             get_program_enrollment_status(frm, function (status) {
                 get_year_of_enrollment(frm, function (creation_date, full_name_arabic, full_name_english, program, college, department, specialization) {
@@ -184,54 +140,60 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                     var array_of_value = [college, department, specialization, status];
                     format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                 });
-                if (status == "Continued") {
-                    frm.set_intro((__(`Current status is ${status}.`)), 'green');
-                }
-                else if (status == "Suspended") {
-                    frm.set_intro((
-                        `<div class="container">
-                            <div class="row">
-                                <div class="col-auto me-auto">` +
-                        __(`Can't add a suspend enrollment request, because current status is ${status}!` +
-                            `</div>
-                                <div class="col-auto me-auto">
-                                    <a href="/app/continue-enrollment-request">` +
-                            __(`Go to continue enrollment request`) +
-                            `</a>
+
+                if (status == "Suspended") {
+                    get_url_to_new_form("Continue Enrollment Request", function (url) {
+                        frm.set_intro((
+                            `<div class="container">
+                                <div class="row">
+                                    <div class="col-auto me-auto">` +
+                            __(`Can't add a suspend enrollment request, because current status is ${status}!` +
+                                `</div>
+                                    <div class="col-auto me-auto">
+                                        <a href="${url}">` +
+                                __(`Do you want to add a continue enrollment request?`) +
+                                `</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>`
-                        )), 'red');
+                            </div>`
+                            )), 'red');
+                    });
                 }
+
                 else if (status == "Withdrawn") {
                     frm.set_intro((__(`Can't add a suspend enrollment request, because current status is ${status}!`)), 'red');
                 }
-                
-                get_active_request(frm, frm.doc.program_enrollment, "Suspend Enrollment Request", function (doc) {
-                    if (doc) {
-                        frm.set_intro('', 'red');
-                        var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                        frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
-                    }
-                    else {
-                        get_active_request(frm, frm.doc.program_enrollment, "Continue Enrollment Request", function (doc) {
-                            if (doc) {
-                                frm.set_intro('', 'red');
-                                var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                                frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
-                            }
-                            else {
-                                get_active_request(frm, frm.doc.program_enrollment, "Withdrawal Request", function (doc) {
-                                    if (doc) {
-                                        frm.set_intro('', 'red');
-                                        var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                                        frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
+
+                else {
+                    get_active_request(frm, frm.doc.program_enrollment, "Suspend Enrollment Request", function (doc) {
+                        if (doc) {
+                            frm.set_intro('');
+                            var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                            frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                        }
+                        else {
+                            get_active_request(frm, frm.doc.program_enrollment, "Continue Enrollment Request", function (doc) {
+                                if (doc) {
+                                    frm.set_intro('');
+                                    var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                    frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                                }
+                                else {
+                                    get_active_request(frm, frm.doc.program_enrollment, "Withdrawal Request", function (doc) {
+                                        if (doc) {
+                                            frm.set_intro('');
+                                            var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                            frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                                        }
+                                        else if (status == "Continued") {
+                                            frm.set_intro((__(`Current status is ${status}.`)), 'green');
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
             });
         }
         else {
@@ -438,4 +400,58 @@ function format_timeline_html(frm, html_field_name, timeline_child_table_name) {
         $(frm.fields_dict[html_field_name].wrapper).html("");
         frm.set_df_property("timeline_section", "hidden", true);
     }
+}
+
+
+function get_url_to_new_form(doctype_name, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_url_to_new_form',
+        args: {
+            "doctype_name": doctype_name
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}
+
+
+function get_current_workflow_role_and_insert_new_timeline_child_table(frm) {
+    frappe.call({
+        method: 'get_current_workflow_role',
+        doc: frm.doc,
+        args: {
+            current_status: status_of_before_workflow_action
+        },
+        callback: function (response) {
+            if (response.message) {
+                current_role_of_workflow_action = response.message;
+            }
+
+            frappe.call({
+                method: "insert_new_timeline_child_table",
+                doc: frm.doc,
+                args: {
+                    "dictionary_of_values": {
+                        "position": current_role_of_workflow_action,
+                        "full_name": current_user_of_workflow_action,
+                        "previous_status": status_of_before_workflow_action,
+                        "received_date": modified_of_before_workflow_action,
+                        "action": action_of_workflow,
+                        "next_status": status_of_after_workflow_action,
+                        "action_date": modified_of_after_workflow_action
+                    }
+                },
+                callback: function (response) {
+                    if (response.message) {
+                        // location.reload();
+                    }
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log("AJAX Error:", error);
+                    frappe.msgprint("An error occurred during the AJAX request.");
+                }
+            });
+        }
+    });
 }
