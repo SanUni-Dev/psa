@@ -168,3 +168,17 @@ psa_utils.insert_new_timeline_child_table = function (doctype_name, doc_name, ti
         }
     });
 }
+
+
+psa_utils.get_active_request = function (doctype_name, program_enrollment, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_active_request',
+        args: {
+            "doctype_name": doctype_name,
+            "program_enrollment": program_enrollment
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}

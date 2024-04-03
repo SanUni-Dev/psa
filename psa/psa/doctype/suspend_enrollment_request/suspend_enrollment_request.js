@@ -186,21 +186,21 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                 }
 
                 else {
-                    get_active_request(frm, frm.doc.program_enrollment, "Suspend Enrollment Request", function (doc) {
+                    psa_utils.get_active_request("Suspend Enrollment Request", frm.doc.program_enrollment, function (doc) {
                         if (doc) {
                             frm.set_intro('');
                             var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
                             frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                         }
                         else {
-                            get_active_request(frm, frm.doc.program_enrollment, "Continue Enrollment Request", function (doc) {
+                            psa_utils.get_active_request("Continue Enrollment Request", frm.doc.program_enrollment, function (doc) {
                                 if (doc) {
                                     frm.set_intro('');
                                     var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
                                     frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                                 }
                                 else {
-                                    get_active_request(frm, frm.doc.program_enrollment, "Withdrawal Request", function (doc) {
+                                    psa_utils.get_active_request("Withdrawal Request", frm.doc.program_enrollment, function (doc) {
                                         if (doc) {
                                             frm.set_intro('');
                                             var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
@@ -227,21 +227,6 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
 
 // Custom functions
-function get_active_request(frm, program_enrollment, doctype_name, callback) {
-    frappe.call({
-        method: 'get_active_request',
-        doc: frm.doc,
-        args: {
-            "program_enrollment": program_enrollment,
-            "doctype_name": doctype_name
-        },
-        callback: function (response) {
-            callback(response.message);
-        }
-    });
-}
-
-
 function get_program(program, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
