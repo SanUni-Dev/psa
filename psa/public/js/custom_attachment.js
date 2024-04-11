@@ -12,6 +12,8 @@ class custom_attachment extends frappe.ui.form.ControlData {
 				// 	me.on_attach_doc_pdf();
 				// },
 			});
+
+
 		this.$value = $(
 			`<div class="attached-file flex justify-between align-center">
 				<div class="ellipsis">
@@ -32,7 +34,9 @@ class custom_attachment extends frappe.ui.form.ControlData {
 
 		frappe.utils.bind_actions_with_object(this.$value, this);
 		this.toggle_reload_button();
+
 	}
+
 	clear_attachment() {
 		let me = this;
 		if (this.frm) {
@@ -51,22 +55,25 @@ class custom_attachment extends frappe.ui.form.ControlData {
 			this.refresh();
 		}
 	}
+
 	reload_attachment() {
 		if (this.file_uploader) {
 			this.file_uploader.uploader.upload_files();
 		}
 	}
+
 	on_attach_click() {
 		this.set_upload_options();
 		this.upload_options.restrictions.allowed_file_types = [".pdf"];
 		this.file_uploader = new frappe.ui.FileUploader(this.upload_options);
 	}
-
+	
 	// on_attach_doc_pdf() {
-	// 	this.set_upload_options();
-	// 	this.upload_options.restrictions.allowed_file_types = [".pdf"];
-	// 	this.file_uploader = new frappe.ui.FileUploader(this.upload_options);
-	// }
+		// 	this.set_upload_options();
+		// 	this.upload_options.restrictions.allowed_file_types = [".pdf"];
+		// 	this.file_uploader = new frappe.ui.FileUploader(this.upload_options);
+		// }
+		
 	set_upload_options() {
 		let options = {
 			allow_multiple: false,
