@@ -1,0 +1,26 @@
+{
+ "allow_roles": [
+  {
+   "role": "Student"
+  }
+ ],
+ "creation": "2024-04-08 04:05:58.096388",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "test url",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2024-04-08 04:06:52.510016",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Suspend",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Role Permissions"
+  }
+ ],
+ "subtitle": "test subtitle",
+ "success_message": "test message",
+ "title": "test title"
+}
