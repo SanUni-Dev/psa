@@ -29,7 +29,12 @@
   "financial_information_tab",
   "financial_status",
   "fees_information_tab",
-  "fees_status"
+  "fees_status",
+  "timeline_tab",
+  "timeline_section",
+  "column_break_ywwz",
+  "timeline_html",
+  "timeline_child_table"
  ],
  "fields": [
   {
@@ -41,6 +46,7 @@
    "fieldtype": "Link",
    "label": "Student",
    "options": "Program Enrollment",
+   "permlevel": 3,
    "reqd": 1
   },
   {
@@ -53,12 +59,14 @@
    "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Reason",
+   "permlevel": 3,
    "reqd": 1
   },
   {
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -76,7 +84,8 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid"
+   "options": "\nPaid\nNot Paid",
+   "permlevel": 3
   },
   {
    "fieldname": "amended_from",
@@ -107,7 +116,8 @@
   {
    "fieldname": "library_eviction",
    "fieldtype": "Attach",
-   "label": "Library Eviction"
+   "label": "Library Eviction",
+   "permlevel": 3
   },
   {
    "fieldname": "financial_status",
@@ -115,6 +125,7 @@
    "label": "Financial Status",
    "mandatory_depends_on": "eval: doc.status == 'Approval Pending by Finance Officer'",
    "options": "\nPaid\nNot Paid",
+   "permlevel": 2,
    "read_only": 1
   },
   {
@@ -154,7 +165,8 @@
   {
    "fieldname": "request_attachment",
    "fieldtype": "Attach",
-   "label": "Request Attachment"
+   "label": "Request Attachment",
+   "permlevel": 3
   },
   {
    "fieldname": "column_break_izwn",
@@ -174,12 +186,37 @@
    "fieldname": "attachment_section",
    "fieldtype": "Section Break",
    "hidden": 1
+  },
+  {
+   "fieldname": "timeline_tab",
+   "fieldtype": "Tab Break",
+   "label": "Timeline"
+  },
+  {
+   "fieldname": "timeline_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ywwz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timeline_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "timeline_child_table",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "options": "Timeline Child Table",
+   "read_only": 1
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-26 23:20:51.290248",
+ "modified": "2024-04-17 21:08:47.109768",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",
@@ -202,9 +239,43 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
    "create": 1,
    "delete": 1,
    "if_owner": 1,
+   "read": 1,
+   "role": "Student",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "permlevel": 3,
    "read": 1,
    "role": "Student",
    "write": 1
@@ -222,6 +293,23 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Finance Officer",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Finance Officer",
+   "write": 1
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Finance Officer"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -234,6 +322,22 @@
    "write": 1
   },
   {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Director of Graduate Studies",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Director of Graduate Studies"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Director of Graduate Studies"
+  },
+  {
    "email": 1,
    "export": 1,
    "print": 1,
@@ -244,6 +348,21 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Archivist"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Archivist"
+  },
+  {
+   "permlevel": 3,
+   "read": 1,
+   "role": "Archivist"
   },
   {
    "email": 1,
