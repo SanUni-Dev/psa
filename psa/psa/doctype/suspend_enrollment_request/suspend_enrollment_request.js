@@ -21,13 +21,24 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         $(frm.fields_dict["timeline_html"].wrapper).html("");
         frm.set_df_property("timeline_section", "hidden", true);
 
-        if (!frm.is_new()) {
-            psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
+        if (!frm.is_new()) {
+
+
+            
+            psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+            
             if (frm.doc.fees_status == "Not Paid") {
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
             }
-
+            
+            if (frm.doc.docstatus == 0) {
+                frm.set_df_property("request_attachment", "reqd", 1);
+            }
+            else {
+                frm.set_df_property("request_attachment", "reqd", 0);
+            }
+            
             frm.set_df_property("attachment_section", "hidden", false);
             if (frm.doc.request_attachment) {
                 frm.set_df_property("request_attachment", "description", "");
@@ -208,15 +219,6 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         else {
             $(frm.fields_dict["student_html1"].wrapper).html('');
             $(frm.fields_dict["student_html2"].wrapper).html('');
-        }
-    },
-
-    request_attachment(frm) {
-        if (frm.doc.request_attachment) {
-            frm.set_df_property("request_attachment", "description", "");
-        }
-        else {
-            frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
         }
     },
 });
