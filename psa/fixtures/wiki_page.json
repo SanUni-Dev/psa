@@ -1,0 +1,44 @@
+[
+ {
+  "allow_guest": 1,
+  "content": "<div><h1 style=\"text-align: right;\">طلب وقف القيد</h1></div>",
+  "docstatus": 0,
+  "doctype": "Wiki Page",
+  "meta_description": null,
+  "meta_image": null,
+  "meta_keywords": null,
+  "modified": "2024-04-18 20:10:36.587593",
+  "name": "b7a1f88b9a",
+  "published": 1,
+  "route": "psa/طلب-وقف-القيد",
+  "title": "طلب وقف القيد"
+ },
+ {
+  "allow_guest": 1,
+  "content": "<div><h1 style=\"text-align: right;\">طلب فتح القيد</h1><p style=\"text-align: right;\"><br class=\"ProseMirror-trailingBreak\"/></p></div>",
+  "docstatus": 0,
+  "doctype": "Wiki Page",
+  "meta_description": null,
+  "meta_image": null,
+  "meta_keywords": null,
+  "modified": "2024-04-18 20:10:15.556645",
+  "name": "d71f46bd8a",
+  "published": 1,
+  "route": "psa/طلب-فتح-القيد",
+  "title": "طلب فتح القيد"
+ },
+ {
+  "allow_guest": 1,
+  "content": "<div><h1 style=\"text-align: right;\">طلب الانسحاب</h1></div>",
+  "docstatus": 0,
+  "doctype": "Wiki Page",
+  "meta_description": null,
+  "meta_image": null,
+  "meta_keywords": null,
+  "modified": "2024-04-18 20:11:17.895720",
+  "name": "466f813614",
+  "published": 1,
+  "route": "psa/طلب-الانسحاب",
+  "title": "طلب الانسحاب"
+ }
+]
