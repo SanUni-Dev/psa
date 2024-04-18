@@ -25,17 +25,6 @@ frappe.ui.form.on("Withdrawal Request", {
 
         if (!frm.is_new()) {
             psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
-            // if (frappe.user_roles.includes("Student")) {
-            //     setTimeout(() => {
-            //         var fees_status = frm.doc.fees_status;
-            //         if (fees_status === "Not Paid") {
-            //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-            //                 frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
-            //             });
-            //         }
-            //     }, 500);
-            // }
-
 
             if (frm.doc.fees_status == "Not Paid") {
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
@@ -69,6 +58,17 @@ frappe.ui.form.on("Withdrawal Request", {
             else {
                 frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
             }
+
+            // if (frappe.user_roles.includes("Student")) {
+            //     setTimeout(() => {
+            //         var fees_status = frm.doc.fees_status;
+            //         if (fees_status === "Not Paid") {
+            //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
+            //                 frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
+            //             });
+            //         }
+            //     }, 500);
+            // }
 
             var creation_date = frm.doc.creation;
             var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];

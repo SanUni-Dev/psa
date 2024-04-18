@@ -27,27 +27,6 @@ class WithdrawalRequest(Document):
             frappe.throw(_("Can't add a withdrawal  request, because current status is withdrawn!"))
         
         else:
-            set_a_limit_of_withdrawal_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_withdrawal_requests')
-            number_of_withdrawal_requests = frappe.db.get_single_value('PSA Settings', 'number_of_withdrawal_requests')
-
-            set_a_limit_of_rejected_withdrawal_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_rejected_withdrawal_requests')
-            number_of_rejected_withdrawal_requests = frappe.db.get_single_value('PSA Settings', 'number_of_rejected_withdrawal_requests')
-            
-            if set_a_limit_of_withdrawal_requests or set_a_limit_of_rejected_withdrawal_requests:
-                student_program_withdrawal_requests = frappe.get_all('Withdrawal Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])
-                count_of_allowed = 0
-                count_of_rejected = 0
-    
-                for request in student_program_withdrawal_requests:
-                    if ("Approved by" in request.status) and (set_a_limit_of_withdrawal_requests):
-                        count_of_allowed += 1
-                        if count_of_allowed >= number_of_withdrawal_requests:
-                            frappe.throw(_("Can't add a withdrawal request, because you have been withdrawaled! (Max of allowed withdrawal requests = ") + str(number_of_withdrawal_requests) + ")")
-                    elif ("Rejected by" in request.status) and (set_a_limit_of_rejected_withdrawal_requests):
-                        count_of_rejected += 1
-                        if count_of_rejected >= number_of_rejected_withdrawal_requests :
-                            frappe.throw(_("Can't add a withdrawal request, because you requested more than limit: ") + str(number_of_rejected_withdrawal_requests) + _(" requests!"))
-            
             active_suspend = get_active_request("Suspend Enrollment Request", self.program_enrollment)
             active_continue = get_active_request("Continue Enrollment Request", self.program_enrollment)
             active_withdrawal = get_active_request("Withdrawal Request", self.program_enrollment)
@@ -75,3 +54,4 @@ class WithdrawalRequest(Document):
                     url_of_active_withdrawal_request +
                     _(") that is {0}!").format(active_withdrawal.status)
                 )
+                
