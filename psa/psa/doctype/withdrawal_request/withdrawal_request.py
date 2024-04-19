@@ -16,14 +16,12 @@ class WithdrawalRequest(Document):
             else:
                 program_enrollment.status = "Withdrawn"
                 program_enrollment.save()
-        elif program_enrollment.status == "Withdrawn":
-            frappe.throw(_("Failed! Student is already withdrawn!"))
 
 
     def before_insert(self):
         program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
 
-        if program_enrollment_status.status == "Withdrawn":
+        if program_enrollment_status.status ==" Withdrawn":
             frappe.throw(_("Can't add a withdrawal  request, because current status is withdrawn!"))
         
         else:
