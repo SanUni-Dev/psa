@@ -38,30 +38,8 @@ frappe.ui.form.on("Continue Enrollment Request", {
       if (frm.doc.fees_status == "Not Paid") {
         frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
     }
-    
-    if (frm.doc.docstatus == 0) {
-        frm.set_df_property("request_attachment", "reqd", 1);
-    }
-    else {
-        frm.set_df_property("request_attachment", "reqd", 0);
-    }
-    
-    frm.set_df_property("attachment_section", "hidden", false);
-    if (frm.doc.request_attachment) {
-        frm.set_df_property("request_attachment", "description", "");
-    }
-    else {
-        frm.set_df_property("request_attachment", "description", __("You can attach only pdf file"));
-    }
 
-
-
-
-
-
-
-    /////////////////////////////////////////////////////////////////////
-
+      
       var creation_date = frm.doc.creation;
       var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
 
