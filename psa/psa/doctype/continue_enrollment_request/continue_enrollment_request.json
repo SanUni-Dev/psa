@@ -41,6 +41,7 @@
    "in_list_view": 1,
    "label": "Student",
    "options": "Program Enrollment",
+   "permlevel": 2,
    "reqd": 1
   },
   {
@@ -48,7 +49,8 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid"
+   "options": "\nPaid\nNot Paid",
+   "permlevel": 2
   },
   {
    "fieldname": "status",
@@ -70,6 +72,7 @@
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -168,7 +171,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-18 08:25:30.620076",
+ "modified": "2024-04-20 18:29:56.065727",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",
@@ -213,28 +216,6 @@
    "write": 1
   },
   {
-   "email": 1,
-   "export": 1,
-   "permlevel": 3,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 4,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
    "create": 1,
    "delete": 1,
    "if_owner": 1,
@@ -260,27 +241,8 @@
    "read": 1,
    "report": 1,
    "role": "Student",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 3,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Student",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 4,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Student",
-   "share": 1
+   "share": 1,
+   "write": 1
   },
   {
    "email": 1,
@@ -318,26 +280,6 @@
   {
    "email": 1,
    "export": 1,
-   "permlevel": 3,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Vice Dean For GSA",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 4,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Vice Dean For GSA",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -362,26 +304,6 @@
    "email": 1,
    "export": 1,
    "permlevel": 2,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Department Head",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 3,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Department Head",
-   "share": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "permlevel": 4,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -425,6 +347,7 @@
    "read": 1,
    "report": 1,
    "role": "No One for Rejected Request",
+   "select": 1,
    "share": 1
   }
  ],

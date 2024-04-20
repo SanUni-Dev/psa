@@ -218,7 +218,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
                           psa_utils.get_active_request("Suspend Enrollment Request", frm.doc.program_enrollment, function (doc) {
                               if (doc) {
                                   frm.set_intro('');
-                                  var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                  var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
                                   frm.set_intro((__(`Can't add a continue enrollment request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                               }
                               else {
