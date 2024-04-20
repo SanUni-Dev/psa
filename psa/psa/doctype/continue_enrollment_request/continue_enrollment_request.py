@@ -4,6 +4,7 @@
 import frappe, json
 from frappe.model.document import Document
 from frappe import _
+from psa.api.psa_utils import get_active_request
 
 
 class ContinueEnrollmentRequest(Document):
@@ -31,32 +32,31 @@ class ContinueEnrollmentRequest(Document):
 
 		elif(program_enrollment_status.status == "Withdrawn"):
 			frappe.throw(_("Can't add a continue enrollment request, because current status is withdrawn!"))
-			# last_approved_suspend_enrollment_request = frappe.get_doc("Suspend Enrollment Request", self.suspended_request_number)
 
 		else:
-			set_a_limit_of_continue_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_continue_requests')
-			number_of_continue_requests = frappe.db.get_single_value('PSA Settings', 'number_of_continue_requests')
+			# set_a_limit_of_continue_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_continue_requests')
+			# number_of_continue_requests = frappe.db.get_single_value('PSA Settings', 'number_of_continue_requests')
 
-			set_a_limit_of_rejected_continue_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_rejected_continue_requests')
-			number_of_rejected_continue_requests = frappe.db.get_single_value('PSA Settings', 'number_of_rejected_continue_requests')
+			# set_a_limit_of_rejected_continue_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_rejected_continue_requests')
+			# number_of_rejected_continue_requests = frappe.db.get_single_value('PSA Settings', 'number_of_rejected_continue_requests')
 			
-			if(set_a_limit_of_continue_requests or set_a_limit_of_rejected_continue_requests):
-				student_program_continue_requests = frappe.get_all('Continue Enrollment Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])
-				count_of_allowed = 0
-				count_of_rejected = 0
+			# if(set_a_limit_of_continue_requests or set_a_limit_of_rejected_continue_requests):
+			# 	student_program_continue_requests = frappe.get_all('Continue Enrollment Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])
+			# 	count_of_allowed = 0
+			# 	count_of_rejected = 0
 
-				for request in student_program_continue_requests:
-					if(("Approved by" in request.status) and (set_a_limit_of_continue_requests)):
-						count_of_allowed = count_of_allowed + 1
-						if(count_of_allowed >= number_of_continue_requests):
-							frappe.throw(_("Can't add a continue enrollment request, because you have been continued! (Max of allowed continue enrollment requests = ") + str(number_of_continue_requests) + ")")
-					elif(("Rejected by" in request.status) and (set_a_limit_of_rejected_continue_requests)):
-						count_of_rejected = count_of_rejected + 1
-						if(count_of_rejected >= number_of_rejected_continue_requests):
-							frappe.throw(_("Can't add a continue enrollment request, because you requested more than limit: ") + str(number_of_rejected_continue_requests) + _(" requests!"))
+			# 	for request in student_program_continue_requests:
+			# 		if(("Approved by" in request.status) and (set_a_limit_of_continue_requests)):
+			# 			count_of_allowed = count_of_allowed + 1
+			# 			if(count_of_allowed >= number_of_continue_requests):
+			# 				frappe.throw(_("Can't add a continue enrollment request, because you have been continued! (Max of allowed continue enrollment requests = ") + str(number_of_continue_requests) + ")")
+			# 		elif(("Rejected by" in request.status) and (set_a_limit_of_rejected_continue_requests)):
+			# 			count_of_rejected = count_of_rejected + 1
+			# 			if(count_of_rejected >= number_of_rejected_continue_requests):
+			# 				frappe.throw(_("Can't add a continue enrollment request, because you requested more than limit: ") + str(number_of_rejected_continue_requests) + _(" requests!"))
 			
-			active_suspend = get_active_request("Suspend Enrollment Request", self.program_enrollment)
 			active_continue = get_active_request("Continue Enrollment Request", self.program_enrollment)
+			active_suspend = get_active_request("Suspend Enrollment Request", self.program_enrollment)
 			active_withdrawal = get_active_request("Withdrawal Request", self.program_enrollment)
 
 			if active_continue:
@@ -68,7 +68,7 @@ class ContinueEnrollmentRequest(Document):
 				)
 
 			elif active_suspend:
-				url_of_active_continue_request = '<a href="/app/suspend-enrollment-request/{0}" title="{1}">{2}</a>'.format(active_suspend.name, _("Click here to show request details"), active_suspend.name)
+				url_of_active_suspend_request = '<a href="/app/suspend-enrollment-request/{0}" title="{1}">{2}</a>'.format(active_suspend.name, _("Click here to show request details"), active_suspend.name)
 				frappe.throw(
 					_("Can't add a continue enrollment request, because you have an active suspend enrollment request (") +
 					url_of_active_suspend_request +
@@ -84,8 +84,7 @@ class ContinueEnrollmentRequest(Document):
 				)
 
 
-
-	@frappe.whitelist(allow_guest=True)
+	@frappe.whitelist()
 	def get_last_approved_suspend_enrollment_request(self, program_enrollment):
 		docs = frappe.get_all("Suspend Enrollment Request",
 			fields=["*"],

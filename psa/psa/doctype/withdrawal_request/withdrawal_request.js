@@ -1,6 +1,7 @@
 // Copyright (c) 2024, Sana'a university and contributors
 // For license information, please see license.txt
 
+
 // Declare Variables for Timeline
 var current_role_of_workflow_action = "";
 var status_of_before_workflow_action = "";
@@ -17,13 +18,22 @@ frappe.ui.form.on("Withdrawal Request", {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
 
-        if (frappe.user.has_role('Finance Officer'))
-            frm.set_df_property('financial_status', 'read_only', false);
-
         $(frm.fields_dict["timeline_html"].wrapper).html("");
         frm.set_df_property("timeline_section", "hidden", true);
 
+
         if (!frm.is_new()) {
+            // if (frappe.user_roles.includes("Student")) {
+            //     setTimeout(() => {
+            //         var fees_status = frm.doc.fees_status;
+            //         if (fees_status === "Not Paid") {
+            //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
+            //                 frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
+            //             });
+            //         }
+            //     }, 500);
+            // }
+
             psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
             if (frm.doc.fees_status == "Not Paid") {
@@ -154,6 +164,9 @@ frappe.ui.form.on("Withdrawal Request", {
                         "action_date": modified_of_after_workflow_action
                     }
                 );
+                setTimeout(() => {
+                    window.location.reload();
+                }, 200);
             }
         );
     },

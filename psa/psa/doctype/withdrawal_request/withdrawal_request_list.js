@@ -1,17 +1,18 @@
 frappe.listview_settings["Withdrawal Request"] = {
   onload(listview) {
-    $(".layout-side-section").remove();
-    $(".sidebar-toggle-placeholder").remove();
-
     // var get_all_list_items = listview.data;
     // var get_checked_list_items = listview.get_checked_items();
     // var get_checked_list_items_names = listview.get_checked_items(true);
 
-    listview.page.actions
-      .find(`[data-label='Edit']`)
-      .parent()
-      .parent()
-      .remove();
+    listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
+
+    $(".layout-side-section").remove();
+    $(".sidebar-toggle-placeholder").remove();
+
+    listview.page.add_inner_button(__("Documentation"), function() {
+      window.location.href = "/psa/طلب-الانسحاب";
+      // window.open("/psa/طلب-الانسحاب", "_blank");
+    });
 
     /////////////////////->>>>>> Uncomment it
     // listview.page.wrapper.on('change', 'input[type="checkbox"]', function () {
