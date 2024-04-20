@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>PSA</b></span>\",\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Requests\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"Users and Roles\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}},{\"id\":\"pBc0boxuOg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
+ "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>PSA</b></span>\",\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Requests\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"Users and Roles\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}},{\"id\":\"pBc0boxuOg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"9qPYZQSoDg\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"exzpljZFst\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PSA Documentation\",\"col\":4}}]",
  "creation": "2024-03-10 02:10:29.764588",
  "custom_blocks": [],
  "docstatus": 0,
@@ -124,8 +124,66 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PSA Settings",
+   "link_count": 0,
+   "link_to": "PSA Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Requests",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Suspend Enrollment Request",
+   "link_count": 0,
+   "link_to": "Suspend Enrollment Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Continue Enrollment Request",
+   "link_count": 0,
+   "link_to": "Continue Enrollment Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Withdrawal Request",
+   "link_count": 0,
+   "link_to": "Withdrawal Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "For Development",
-   "link_count": 5,
+   "link_count": 7,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -183,18 +241,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Settings",
-   "link_count": 1,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "PSA Settings",
+   "label": "Wiki Space",
    "link_count": 0,
-   "link_to": "PSA Settings",
+   "link_to": "Wiki Space",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -202,45 +251,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Requests",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Suspend Enrollment Request",
+   "label": "Wiki Page",
    "link_count": 0,
-   "link_to": "Suspend Enrollment Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Continue Enrollment Request",
-   "link_count": 0,
-   "link_to": "Continue Enrollment Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Withdrawal Request",
-   "link_count": 0,
-   "link_to": "Withdrawal Request",
+   "link_to": "Wiki Page",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2024-04-08 04:29:00.056136",
- "modified_by": "Administrator",
+ "modified": "2024-04-18 20:30:53.755743",
+ "modified_by": "esmailebraheem771@gmail.com",
  "module": "PSA",
  "name": "PSA",
  "number_cards": [],
@@ -250,6 +270,14 @@
  "quick_lists": [],
  "roles": [],
  "sequence_id": 1.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "PSA Documentation",
+   "type": "URL",
+   "url": "/psa"
+  }
+ ],
  "title": "PSA"
 }

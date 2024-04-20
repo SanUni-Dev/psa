@@ -12,7 +12,9 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Notification",
-    "PSA Settings"
+    "PSA Settings",
+    "Wiki Space",
+    "Wiki Page"
 ]
 
 

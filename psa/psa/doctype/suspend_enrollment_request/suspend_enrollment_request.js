@@ -140,6 +140,9 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                         "action_date": modified_of_after_workflow_action
                     }
                 );
+                setTimeout(() => {
+                    window.location.reload();
+                }, 200);
             }
         );
     },
