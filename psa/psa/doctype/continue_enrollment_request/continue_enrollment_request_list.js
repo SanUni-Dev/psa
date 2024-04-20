@@ -7,11 +7,8 @@ frappe.listview_settings["Continue Enrollment Request"] = {
     // var get_checked_list_items = listview.get_checked_items();
     // var get_checked_list_items_names = listview.get_checked_items(true);
 
-    listview.page.actions
-      .find(`[data-label='Edit']`)
-      .parent()
-      .parent()
-      .remove();
+    listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
+
 
     /////////////////////->>>>>> Uncomment it
     // listview.page.wrapper.on('change', 'input[type="checkbox"]', function () {

@@ -24,7 +24,11 @@
   "suspended_request_details_html",
   "fees_information_tab",
   "section_break_rddd",
-  "fees_status"
+  "fees_status",
+  "timeline_tab",
+  "timeline_section",
+  "timeline_html",
+  "timeline_child_table"
  ],
  "fields": [
   {
@@ -37,6 +41,7 @@
    "in_list_view": 1,
    "label": "Student",
    "options": "Program Enrollment",
+   "permlevel": 2,
    "reqd": 1
   },
   {
@@ -44,7 +49,8 @@
    "fieldname": "fees_status",
    "fieldtype": "Select",
    "label": "Fees Status",
-   "options": "\nPaid\nNot Paid"
+   "options": "\nPaid\nNot Paid",
+   "permlevel": 2
   },
   {
    "fieldname": "status",
@@ -66,6 +72,7 @@
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -138,12 +145,33 @@
   {
    "fieldname": "section_break_rddd",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "timeline_tab",
+   "fieldtype": "Tab Break",
+   "label": "Timeline"
+  },
+  {
+   "fieldname": "timeline_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "timeline_child_table",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "options": "Timeline Child Table",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timeline_section",
+   "fieldtype": "Section Break"
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-25 02:27:44.204465",
+ "modified": "2024-04-20 18:29:56.065727",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",
@@ -166,11 +194,54 @@
    "write": 1
   },
   {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
    "create": 1,
    "delete": 1,
    "if_owner": 1,
    "read": 1,
    "role": "Student",
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1,
    "write": 1
   },
   {
@@ -188,6 +259,27 @@
   {
    "email": 1,
    "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Dean For GSA",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Dean For GSA",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
@@ -196,6 +288,27 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Department Head",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Department Head",
+   "share": 1
   },
   {
    "email": 1,
@@ -234,6 +347,7 @@
    "read": 1,
    "report": 1,
    "role": "No One for Rejected Request",
+   "select": 1,
    "share": 1
   }
  ],
