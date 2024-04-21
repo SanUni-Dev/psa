@@ -1,35 +1,29 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-01-21 03:55:38.651035",
+ "creation": "2024-04-01 01:06:52.367585",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "document",
-  "qualification"
+  "qualification_type"
  ],
  "fields": [
   {
-   "fieldname": "document",
-   "fieldtype": "Table",
-   "label": "Document",
-   "options": "Document"
-  },
-  {
-   "fieldname": "qualification",
-   "fieldtype": "Table",
-   "label": "Qualification",
-   "options": "Document"
+   "default": "0",
+   "fieldname": "qualification_type",
+   "fieldtype": "Link",
+   "label": "Qualification Type",
+   "options": "Qualification Type"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-04-01 02:35:24.784471",
+ "modified": "2024-04-01 01:08:50.465912",
  "modified_by": "Administrator",
  "module": "PSA Registration",
- "name": "Requirements Row",
+ "name": "Program Type Qualifications",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

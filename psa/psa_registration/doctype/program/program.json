@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:program_type",
+ "autoname": "naming_series:",
  "creation": "2024-01-16 00:23:23.335429",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -10,6 +10,7 @@
   "program_type",
   "specialization",
   "department",
+  "naming_series",
   "column_break_sdib",
   "college",
   "amount",
@@ -75,15 +76,21 @@
   {
    "fieldname": "section_break_6qhy",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PRO-"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-20 01:32:43.768101",
+ "modified": "2024-04-01 02:22:52.734599",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Program",
- "naming_rule": "By fieldname",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
