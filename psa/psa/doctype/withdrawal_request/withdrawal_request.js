@@ -69,17 +69,6 @@ frappe.ui.form.on("Withdrawal Request", {
                 frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
             }
 
-            // if (frappe.user_roles.includes("Student")) {
-            //     setTimeout(() => {
-            //         var fees_status = frm.doc.fees_status;
-            //         if (fees_status === "Not Paid") {
-            //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-            //                 frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
-            //             });
-            //         }
-            //     }, 500);
-            // }
-
             var creation_date = frm.doc.creation;
             var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
 
@@ -125,14 +114,12 @@ frappe.ui.form.on("Withdrawal Request", {
         }
     },
 
-
     onload(frm) {
         // Uncomment it
         // if (frm.is_new()) {
         //     psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
         // }
     },
-
 
     before_workflow_action(frm) {
         status_of_before_workflow_action = frm.doc.status;
@@ -164,9 +151,8 @@ frappe.ui.form.on("Withdrawal Request", {
                         "action_date": modified_of_after_workflow_action
                     }
                 );
-                setTimeout(() => {
-                    window.location.reload();
-                }, 200);
+
+                window.location.reload();
             }
         );
     },
@@ -229,7 +215,4 @@ frappe.ui.form.on("Withdrawal Request", {
             $(frm.fields_dict["student_html2"].wrapper).html('');
         }
     },
-
 });
-
-

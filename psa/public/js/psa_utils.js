@@ -245,3 +245,19 @@ psa_utils.get_psa_student = function (student, callback) {
         }
     });
 }
+
+
+psa_utils.save_timeline_child_table = function (doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list, callback) {
+    frappe.call({
+        method: "psa.api.psa_utils.save_timeline_child_table",
+        args: {
+            "doctype_name": doctype_name,
+            "doc_name": doc_name,
+            "timeline_child_table_name": timeline_child_table_name,
+            "timeline_child_table_list": timeline_child_table_list
+        },
+        callback: function (response) {
+            callback(response);
+        }
+    });
+}
