@@ -62,3 +62,30 @@ def get_active_request(doctype_name, program_enrollment):
        """.format(doctype_name)
 	docs = frappe.db.sql(query, ("%Pending%", "%Draft%", program_enrollment), as_dict=True)
 	return docs[0] if docs else None
+
+
+@frappe.whitelist()
+def save_timeline_child_table(doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list):
+	try:
+		if timeline_child_table_list:
+			doc = frappe.get_doc(doctype_name, doc_name)
+
+			formated_timeline_child_table_list = json.loads(timeline_child_table_list)
+			
+			for row in formated_timeline_child_table_list:
+				new_row = doc.append(timeline_child_table_name, {})
+				
+				new_row.position = row['position']
+				new_row.full_name = row['full_name']
+				new_row.previous_status = row['previous_status']
+				new_row.received_date = row['received_date']
+				new_row.action = row['action']
+				new_row.next_status = row['next_status']
+				new_row.action_date = row['action_date']
+
+			doc.save()
+			return True
+		else:
+			frappe.throw("Error: timeline_child_table_list is empty!")
+	except Exception as e:
+		frappe.throw(f"An error occurred: {str(e)}")

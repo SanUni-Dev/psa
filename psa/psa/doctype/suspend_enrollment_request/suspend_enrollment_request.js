@@ -11,6 +11,8 @@ var current_user_of_workflow_action = "";
 var status_of_after_workflow_action = "";
 var modified_of_after_workflow_action = "";
 
+var timeline_child_table_list = null;
+
 
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
@@ -137,11 +139,33 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                         "action_date": modified_of_after_workflow_action
                     }
                 );
-                setTimeout(() => {
-                    window.location.reload();
-                }, 200);
+
+                window.location.reload();
             }
         );
+    },
+
+    before_save(frm) {
+        timeline_child_table_list = null;
+        if ((!frm.is_new()) && (frm.is_dirty()) && frm.doc.timeline_child_table) {
+            timeline_child_table_list = frm.doc.timeline_child_table;
+        }
+    },
+
+    after_save(frm) {
+        if (timeline_child_table_list[0]) {
+            psa_utils.save_timeline_child_table(
+                "Suspend Enrollment Request",
+                frm.doc.name,
+                "timeline_child_table",
+                timeline_child_table_list,
+                function(response) {
+                    if (response.message) {
+                        window.location.reload();
+                      }
+                }
+            );
+        }
     },
 
     program_enrollment(frm) {
