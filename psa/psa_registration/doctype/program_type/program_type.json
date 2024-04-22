@@ -1,15 +1,18 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:name1",
+ "autoname": "field:title",
  "creation": "2024-01-16 00:41:37.349479",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "program_type_section",
   "name1",
+  "title",
   "program_fees",
-  "requirements"
+  "requirements_section",
+  "documents",
+  "qualifications"
  ],
  "fields": [
   {
@@ -30,15 +33,32 @@
    "options": "Program Type Fees"
   },
   {
-   "fieldname": "requirements",
+   "fieldname": "requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Requirements"
+  },
+  {
+   "fieldname": "documents",
    "fieldtype": "Table MultiSelect",
-   "label": "Requirements",
-   "options": "Program Type Requirements"
+   "label": "Documents",
+   "options": "Program Type Documents"
+  },
+  {
+   "fieldname": "qualifications",
+   "fieldtype": "Table MultiSelect",
+   "label": "Qualifications",
+   "options": "Program Type Qualifications"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title ",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-21 03:58:33.307195",
+ "modified": "2024-04-01 02:26:30.461199",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Program Type",

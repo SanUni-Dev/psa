@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>PSA</b></span>\",\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Requests\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"Users and Roles\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}},{\"id\":\"pBc0boxuOg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
+ "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>PSA</b></span>\",\"col\":12}},{\"id\":\"zSDRpPFaY2\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"PSA Registration\",\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"Requests\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"Users and Roles\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}},{\"id\":\"pBc0boxuOg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
  "creation": "2024-03-10 02:10:29.764588",
  "custom_blocks": [],
  "docstatus": 0,
@@ -239,7 +239,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-03-19 02:08:37.508065",
+ "modified": "2024-04-01 01:36:53.193652",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA",
