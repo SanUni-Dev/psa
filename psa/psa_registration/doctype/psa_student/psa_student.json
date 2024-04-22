@@ -1,22 +1,23 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "S_.####",
+ "autoname": "naming_series:",
  "creation": "2024-01-15 03:02:34.706856",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "personal_information_section",
+  "naming_series",
   "full_name_arabic",
   "full_name_english",
   "status",
   "gender",
-  "nationality",
   "column_break_fjvk",
   "born_date",
   "born_country",
   "born_city",
   "born_governorate",
+  "nationality",
   "personal_identification_section",
   "issuer",
   "identity_type",
@@ -34,15 +35,16 @@
   "work_information_section",
   "full_name",
   "work_city",
+  "occupation",
+  "current_occupation",
   "column_break_oqvy",
   "employment_entity",
   "relatives__relationship",
-  "column_break_tqjp",
-  "occupation",
-  "current_occupation",
-  "column_break_kmax",
+  "phone_number",
   "work_phone_number",
-  "phone_number"
+  "relative__information_tab",
+  "relative__information_section",
+  "table_fadv"
  ],
  "fields": [
   {
@@ -79,7 +81,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Gender",
-   "options": "\nMail\nFemail",
+   "options": "\nMale\nFemale",
    "reqd": 1
   },
   {
@@ -215,10 +217,6 @@
    "label": "Relatives  Relationship"
   },
   {
-   "fieldname": "column_break_tqjp",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "occupation",
    "fieldtype": "Data",
    "label": "Occupation"
@@ -229,10 +227,6 @@
    "label": "Current Occupation"
   },
   {
-   "fieldname": "column_break_kmax",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "work_phone_number",
    "fieldtype": "Int",
    "label": "Work Phone Number"
@@ -241,15 +235,38 @@
    "fieldname": "phone_number",
    "fieldtype": "Int",
    "label": "Phone Number"
+  },
+  {
+   "fieldname": "relative__information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Relative  Information"
+  },
+  {
+   "fieldname": "relative__information_section",
+   "fieldtype": "Section Break",
+   "label": "Relative  Information"
+  },
+  {
+   "fieldname": "table_fadv",
+   "fieldtype": "Table",
+   "options": "Relative"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Student Series",
+   "no_copy": 1,
+   "options": "Student-",
+   "set_only_once": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-20 01:30:37.003591",
+ "modified": "2024-04-01 02:07:37.857482",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "PSA Student",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
