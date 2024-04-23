@@ -37,6 +37,7 @@ frappe.ui.form.on("Withdrawal Request", {
             psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
             if (frm.doc.fees_status == "Not Paid") {
+                frm.set_intro("");
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
             }
 
