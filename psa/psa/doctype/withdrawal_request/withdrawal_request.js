@@ -11,6 +11,8 @@ var current_user_of_workflow_action = "";
 var status_of_after_workflow_action = "";
 var modified_of_after_workflow_action = "";
 
+var timeline_child_table_list = null;
+
 
 frappe.ui.form.on("Withdrawal Request", {
     refresh(frm) {
@@ -37,20 +39,16 @@ frappe.ui.form.on("Withdrawal Request", {
             psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
             if (frm.doc.fees_status == "Not Paid") {
+                frm.set_intro("");
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
             }
 
             if (frm.doc.docstatus == 0) {
                 frm.set_df_property("request_attachment", "reqd", 1);
-            }
-            else {
-                frm.set_df_property("request_attachment", "reqd", 0);
-            }
-
-            if (frm.doc.docstatus == 0) {
                 frm.set_df_property("library_eviction", "reqd", 1);
             }
             else {
+                frm.set_df_property("request_attachment", "reqd", 0);
                 frm.set_df_property("library_eviction", "reqd", 0);
             }
 
@@ -157,6 +155,29 @@ frappe.ui.form.on("Withdrawal Request", {
         );
     },
 
+    before_save(frm) {
+        timeline_child_table_list = null;
+        if ((!frm.is_new()) && (frm.is_dirty()) && frm.doc.timeline_child_table) {
+            timeline_child_table_list = frm.doc.timeline_child_table;
+        }
+    },
+
+    after_save(frm) {
+        if (timeline_child_table_list[0]) {
+            psa_utils.save_timeline_child_table(
+                "Withdrawal Request",
+                frm.doc.name,
+                "timeline_child_table",
+                timeline_child_table_list,
+                function(response) {
+                    if (response.message) {
+                        window.location.reload();
+                      }
+                }
+            );
+        }
+    },
+
     program_enrollment(frm) {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
@@ -179,25 +200,25 @@ frappe.ui.form.on("Withdrawal Request", {
                 }
 
                 else {
-                    psa_utils.get_active_request("Suspend Enrollment Request", frm.doc.program_enrollment, function (doc) {
+                    psa_utils.get_active_request("Withdrawal Request", frm.doc.program_enrollment, function (doc) {
                         if (doc) {
                             frm.set_intro('');
-                            var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                            frm.set_intro((__(`Can't add a Withdrawal request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                            var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                            frm.set_intro((__(`Can't add a Withdrawal request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                         }
                         else {
-                            psa_utils.get_active_request("Continue Enrollment Request", frm.doc.program_enrollment, function (doc) {
+                            psa_utils.get_active_request("Suspend Enrollment Request", frm.doc.program_enrollment, function (doc) {
                                 if (doc) {
                                     frm.set_intro('');
-                                    var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                                    frm.set_intro((__(`Can't add a Withdrawal request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                                    var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                    frm.set_intro((__(`Can't add a Withdrawal request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                                 }
                                 else {
-                                    psa_utils.get_active_request("Withdrawal Request", frm.doc.program_enrollment, function (doc) {
+                                    psa_utils.get_active_request("Continue Enrollment Request", frm.doc.program_enrollment, function (doc) {
                                         if (doc) {
                                             frm.set_intro('');
-                                            var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                                            frm.set_intro((__(`Can't add a Withdrawal request, because you have an active Withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+                                            var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
+                                            frm.set_intro((__(`Can't add a Withdrawal request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                                         }
                                         else if (status == "Continued" || status == "Suspended") {
                                             frm.set_intro((__(`Current status is ${status}.`)), 'green');
