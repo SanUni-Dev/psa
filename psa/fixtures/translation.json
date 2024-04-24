@@ -1,1 +1,54 @@
-[]
+[
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-24 22:12:15.169357",
+  "name": "12a84d5889",
+  "source_text": "Requests",
+  "translated_text": "الطلبات"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-24 22:13:58.111841",
+  "name": "6d7a8a6a04",
+  "source_text": "Suspend Enrollment Request",
+  "translated_text": "طلب وقف قيد"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-24 22:13:42.437328",
+  "name": "a0c76fecac",
+  "source_text": "Continue Enrollment Request",
+  "translated_text": "طلب فتح قيد"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-24 22:14:19.207049",
+  "name": "8058dd0c18",
+  "source_text": "Withdrawal Request",
+  "translated_text": "طلب انسحاب"
+ }
+]

@@ -1,20 +1,6 @@
 [
  {
   "allow_guest": 1,
-  "content": "Welcome to the homepage of your wiki!",
-  "docstatus": 0,
-  "doctype": "Wiki Page",
-  "meta_description": null,
-  "meta_image": null,
-  "meta_keywords": null,
-  "modified": "2024-04-19 00:32:09.444215",
-  "name": "e30a5f4dc6",
-  "published": 1,
-  "route": "wiki/home",
-  "title": "Home"
- },
- {
-  "allow_guest": 1,
   "content": "<div><h1 style=\"text-align: right;\">طلب وقف القيد</h1><p style=\"text-align: right;\"><strong>يُتيح النظام للطالب تقديم طلب لوقف قيده في برنامج دراسات عليا مُلتحق به ومتابعة حالة الطلب، ويتيح أيضًا للمسؤولين عن المصادقة على وقف القيد القيام بالمصادقة على الطلب ومتابعة حالة الطلبات وتلقيّ إشعارات عبر النظام وعبر الإيميل.</strong></p><h2 style=\"text-align: right;\"><strong>كيفية إنشاء طلب وقف القيد</strong></h2><pre><code> الرئيسية &gt; طلب وقف القيد &gt; إنشاء طلب وقف القيد</code></pre><blockquote><p style=\"text-align: right;\"><strong>ملاحظات:</strong></p><ul><li><p style=\"text-align: right;\">بإمكان الطالب تقديم طلب وقف القيد إذا كانت حالته بالنظام \"مُستمر\" فقط وفي عكس ذلك لا يستطيع تقديم الطلب.</p></li><li><p style=\"text-align: right;\">لا يستطيع الطالب تقديم الطلب في حال لديه طلب وقف قيد آخر في انتظار المصادقة.</p></li><li><p style=\"text-align: right;\">لا يستطيع الطالب تقديم الطلب في حالة لديه طلب فتح قيد أو طلب انسحاب في انتظار المصادقة.</p></li></ul></blockquote><h2 style=\"text-align: right;\">حالات طلب وقف القيد</h2><ol><li><p style=\"text-align: right;\">مسودة</p></li><li><p style=\"text-align: right;\">في انتظار مصادقة نائب العميد للدراسات العليا</p></li><li><p style=\"text-align: right;\">في انتظار مصادقة رئيس القسم</p></li><li><p style=\"text-align: right;\">في انتظار مصادقة مجلس القسم (اختياري)</p></li><li><p style=\"text-align: right;\">في انتظار مصادقة عميد الكلية</p></li><li><p style=\"text-align: right;\">في انتظار مصادقة مجلس الكلية (اختياري)</p></li><li><p style=\"text-align: right;\">مُعتمد أو مرفوض</p></li></ol><blockquote><p style=\"text-align: right;\">ملاحظة: بإمكان الطالب والمسؤولين متابعة حالة الطلب مع التفاصيل ومعرفة الإجراءات المُتخذة عبر تبويب الجدول الزمني.</p></blockquote><p style=\"text-align: right;\"><br class=\"ProseMirror-trailingBreak\"/></p></div>",
   "docstatus": 0,
   "doctype": "Wiki Page",
@@ -54,19 +40,5 @@
   "published": 1,
   "route": "psa/طلب-الانسحاب",
   "title": "طلب الانسحاب"
- },
- {
-  "allow_guest": 1,
-  "content": "Welcome to Wiki Space wiki",
-  "docstatus": 0,
-  "doctype": "Wiki Page",
-  "meta_description": null,
-  "meta_image": null,
-  "meta_keywords": null,
-  "modified": "2024-04-24 00:08:05.144756",
-  "name": "e97928c8ab",
-  "published": 1,
-  "route": "psa/test",
-  "title": "New Wiki Page"
  }
 ]
