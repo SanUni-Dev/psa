@@ -4,6 +4,26 @@
   "docstatus": 0,
   "doctype": "Wiki Space",
   "light_mode_logo": null,
+  "modified": "2024-04-19 00:32:09.940906",
+  "name": "baac14a3bd",
+  "navbar_items": [],
+  "route": "wiki",
+  "wiki_sidebars": [
+   {
+    "hide_on_sidebar": 0,
+    "parent": "baac14a3bd",
+    "parent_label": "Wiki",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "e30a5f4dc6"
+   }
+  ]
+ },
+ {
+  "dark_mode_logo": null,
+  "docstatus": 0,
+  "doctype": "Wiki Space",
+  "light_mode_logo": null,
   "modified": "2024-04-18 20:51:11.459736",
   "name": "905efdcc82",
   "navbar_items": [],
