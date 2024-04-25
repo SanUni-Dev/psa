@@ -1129,5 +1129,70 @@
   "name": "c170eebb4b",
   "source_text": "College Council Head",
   "translated_text": "رئيس مجلس الكلية"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 20:24:28.554500",
+  "name": "f52f62885c",
+  "source_text": "Semester",
+  "translated_text": "ترم"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 20:24:41.749371",
+  "name": "290cf9a042",
+  "source_text": "Two Semesters",
+  "translated_text": "ترمين"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 20:26:49.560578",
+  "name": "07f5045183",
+  "source_text": "Paid",
+  "translated_text": "مدفوعة"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 20:27:11.996381",
+  "name": "cdea48ad18",
+  "source_text": "Not Paid",
+  "translated_text": "ليست مدفوعة"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 20:28:00.843680",
+  "name": "876c0c0484",
+  "source_text": "Clear",
+  "translated_text": "مسح"
  }
 ]
