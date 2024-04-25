@@ -1064,5 +1064,70 @@
   "name": "3089e9b49a",
   "source_text": "Draft",
   "translated_text": "مسودة"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 19:55:08.369432",
+  "name": "6ab9552b33",
+  "source_text": "Vice Dean For GSA",
+  "translated_text": "نائب عميد الدراسات العليا"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 19:55:32.710353",
+  "name": "2ed4532b73",
+  "source_text": "Department Head",
+  "translated_text": "رئيس القسم"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 19:56:00.635665",
+  "name": "3ae9f56fee",
+  "source_text": "Department Council Head",
+  "translated_text": "رئيس مجلس القسم"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 19:56:20.778275",
+  "name": "da83ac25db",
+  "source_text": "College Dean",
+  "translated_text": "عميد الكلية"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ar",
+  "modified": "2024-04-25 19:56:38.066428",
+  "name": "c170eebb4b",
+  "source_text": "College Council Head",
+  "translated_text": "رئيس مجلس الكلية"
  }
 ]
