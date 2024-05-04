@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-04 04:32:22.535930",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "program_degree",
+  "column_break_ggde",
+  "proficiency_test"
+ ],
+ "fields": [
+  {
+   "fieldname": "program_degree",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Program Degree",
+   "options": "\nMaster Degree\nPHD Degree",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ggde",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "proficiency_test",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proficiency Test",
+   "options": "Proficiency Test",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-04 04:41:09.285982",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Program Degree and Proficiency Test Child Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

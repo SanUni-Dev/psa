@@ -1,0 +1,68 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-04 04:34:37.917347",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "column_break_qriw",
+  "effective_date",
+  "section_break_psgk",
+  "conditions"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Prof-Test-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "column_break_qriw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "label": "Effective Date"
+  },
+  {
+   "fieldname": "section_break_psgk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "conditions",
+   "fieldtype": "Table",
+   "label": "Conditions",
+   "options": "Program Degree and Proficiency Test Child Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-04 04:43:03.696595",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Proficiency Test Conditions",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
