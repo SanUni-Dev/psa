@@ -16,7 +16,7 @@
    "fieldname": "meeting_id",
    "fieldtype": "Link",
    "label": "Meeting Id",
-   "options": "Meeting with a Supervisor"
+   "options": "Researcher Meeting"
   },
   {
    "fetch_from": "meeting_id.meeting_date",
@@ -47,10 +47,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-04 04:45:34.824236",
+ "modified": "2024-05-04 18:55:17.372961",
  "modified_by": "Administrator",
  "module": "PSA",
- "name": "Meeting Details Child Table",
+ "name": "Meeting Details",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

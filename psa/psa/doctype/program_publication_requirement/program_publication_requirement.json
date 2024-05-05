@@ -1,8 +1,7 @@
 {
  "actions": [],
  "autoname": "naming_series:",
- "creation": "2024-05-04 04:34:37.917347",
- "default_view": "List",
+ "creation": "2024-05-04 03:46:45.050902",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -17,11 +16,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "PSA-Prof-Test-.YY.-.MM.-.#####."
-  },
-  {
-   "fieldname": "column_break_qriw",
-   "fieldtype": "Column Break"
+   "options": "PSA-Pub-Con-.YY.-.MM.-.#####."
   },
   {
    "fieldname": "effective_date",
@@ -29,22 +24,26 @@
    "label": "Effective Date"
   },
   {
-   "fieldname": "section_break_psgk",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "conditions",
    "fieldtype": "Table",
    "label": "Conditions",
-   "options": "Program Degree and Proficiency Test Child Table"
+   "options": "Publication Condition"
+  },
+  {
+   "fieldname": "column_break_qriw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_psgk",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-04 04:43:03.696595",
+ "modified": "2024-05-04 18:35:11.403126",
  "modified_by": "Administrator",
  "module": "PSA",
- "name": "Proficiency Test Conditions",
+ "name": "Program Publication Requirement",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

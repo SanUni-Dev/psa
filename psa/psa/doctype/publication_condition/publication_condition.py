@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class MeetingAttendeesChildTable(Document):
+class PublicationCondition(Document):
 	pass

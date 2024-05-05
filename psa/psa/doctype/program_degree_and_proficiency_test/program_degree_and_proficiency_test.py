@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ProgramDegreeandProficiencyTestChildTable(Document):
+class ProgramDegreeandProficiencyTest(Document):
 	pass

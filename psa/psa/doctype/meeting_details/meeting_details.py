@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ProficiencyTestConditions(Document):
+class MeetingDetails(Document):
 	pass

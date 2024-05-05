@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestPublicationConditionsforDiscussion(FrappeTestCase):
+class TestProgramPublicationRequirement(FrappeTestCase):
 	pass

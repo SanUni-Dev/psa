@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class MeetingDetailsChildTable(Document):
+class ProgramPublicationRequirement(Document):
 	pass

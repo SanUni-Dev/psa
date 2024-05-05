@@ -13,21 +13,25 @@
   "supervisor",
   "report_date",
   "amended_from",
+  "achievement_in_the_period_section",
+  "from_date",
+  "column_break_wwik",
+  "to_date",
+  "section_break_wrjy",
+  "student_report_period",
+  "overall_achievement_section",
+  "research_achievement_student",
+  "research_overall_achievement",
   "meetings_tab",
   "meetings",
   "supervisor_report_tab",
-  "suspended",
-  "section_break_kblp",
-  "progress_precent",
-  "expected_date_of_discussion",
-  "column_break_hffo",
-  "status",
+  "section_break_half",
   "notes",
-  "section_break_qyan",
-  "suspended_from_date",
-  "column_break_ntoe",
-  "reasons",
-  "decision"
+  "section_break_kblp",
+  "research_achievement_supervisor",
+  "expected_date_of_thesis_submission",
+  "status",
+  "recommended_action"
  ],
  "fields": [
   {
@@ -69,7 +73,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nSatisfied\nNot Satisfied"
+   "options": "\nSatisfied\nUnsatisfied"
   },
   {
    "fieldname": "meetings_tab",
@@ -80,7 +84,7 @@
    "fieldname": "meetings",
    "fieldtype": "Table",
    "label": "Meetings",
-   "options": "Meeting Details Child Table"
+   "options": "Meeting Details"
   },
   {
    "fieldname": "supervisor_report_tab",
@@ -88,69 +92,89 @@
    "label": "Supervisor Report"
   },
   {
-   "default": "0",
-   "fieldname": "suspended",
-   "fieldtype": "Check",
-   "label": "Suspended?"
-  },
-  {
-   "depends_on": "eval: !doc.suspended",
    "fieldname": "section_break_kblp",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "progress_precent",
-   "fieldtype": "Percent",
-   "label": "Progress Precent"
-  },
-  {
-   "fieldname": "expected_date_of_discussion",
-   "fieldtype": "Date",
-   "label": "Expected Date of Discussion"
-  },
-  {
-   "fieldname": "column_break_hffo",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "notes",
-   "fieldtype": "Small Text",
+   "fieldtype": "Text Editor",
    "label": "Notes"
-  },
-  {
-   "depends_on": "eval: doc.suspended",
-   "fieldname": "section_break_qyan",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "suspended_from_date",
-   "fieldtype": "Date",
-   "label": "Suspended from Date"
-  },
-  {
-   "fieldname": "column_break_ntoe",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "reasons",
-   "fieldtype": "Small Text",
-   "label": "Reasons"
-  },
-  {
-   "fieldname": "decision",
-   "fieldtype": "Data",
-   "label": "Decision"
   },
   {
    "fieldname": "supervisor",
    "fieldtype": "Data",
    "label": "Supervisor"
+  },
+  {
+   "fieldname": "expected_date_of_thesis_submission",
+   "fieldtype": "Date",
+   "label": "Expected Date of Thesis Submission"
+  },
+  {
+   "fieldname": "section_break_wrjy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_half",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "achievement_in_the_period_section",
+   "fieldtype": "Section Break",
+   "label": "Achievement in the Period "
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "column_break_wwik",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "description": "Please fill your achievements.",
+   "fieldname": "student_report_period",
+   "fieldtype": "Text Editor",
+   "label": "Student Report"
+  },
+  {
+   "fieldname": "overall_achievement_section",
+   "fieldtype": "Section Break",
+   "label": "Overall Achievement"
+  },
+  {
+   "fieldname": "research_overall_achievement",
+   "fieldtype": "Text Editor",
+   "label": "Research Overall Achievement"
+  },
+  {
+   "depends_on": "eval: doc.status == 'Unsatisfied'",
+   "fieldname": "recommended_action",
+   "fieldtype": "Select",
+   "label": "Recommended Action",
+   "options": "\nNothing\nAlert Researcher"
+  },
+  {
+   "fieldname": "research_achievement_student",
+   "fieldtype": "Percent",
+   "label": "Research Achievement %"
+  },
+  {
+   "fieldname": "research_achievement_supervisor",
+   "fieldtype": "Percent",
+   "label": "Research Achievement %"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-04 04:45:08.683044",
+ "modified": "2024-05-04 20:30:45.654051",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",
