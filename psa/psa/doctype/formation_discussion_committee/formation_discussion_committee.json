@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-05 02:41:11.799892",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_4uxa",
+  "student",
+  "column_break_fcrr",
+  "research_title",
+  "section_break_wfzp",
+  "amended_from",
+  "attachments_tab",
+  "certificate_of_proficiency",
+  "councils_information_tab",
+  "department_council_minutes_section",
+  "department_council_minutes_number",
+  "department_council_minutes_date",
+  "member_of_selected_committee",
+  "financial_information_tab",
+  "financial_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_4uxa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Formation Discussion Committee",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student"
+  },
+  {
+   "fieldname": "column_break_fcrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "research_title",
+   "fieldtype": "Data",
+   "label": "Research Title"
+  },
+  {
+   "fieldname": "section_break_wfzp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "attachments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "councils_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Councils Information"
+  },
+  {
+   "fieldname": "financial_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Financial Information"
+  },
+  {
+   "fieldname": "financial_status",
+   "fieldtype": "Select",
+   "label": "Financial Status",
+   "options": "\nPaid\nNot Paid"
+  },
+  {
+   "fieldname": "certificate_of_proficiency",
+   "fieldtype": "Attach",
+   "label": "Certificate of Proficiency"
+  },
+  {
+   "fieldname": "department_council_minutes_section",
+   "fieldtype": "Section Break",
+   "label": "Department Council Minutes"
+  },
+  {
+   "fieldname": "department_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Number"
+  },
+  {
+   "fieldname": "department_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "Department Council Minutes Date"
+  },
+  {
+   "fieldname": "member_of_selected_committee",
+   "fieldtype": "Table",
+   "label": "Member of Selected Committee",
+   "options": "Selected Committee"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-05 03:28:42.181361",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Formation Discussion Committee",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
