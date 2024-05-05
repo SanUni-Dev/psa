@@ -1,35 +1,37 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:type",
+ "autoname": "field:journal_type",
  "creation": "2024-05-04 04:18:03.788864",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "type",
+  "journal_type",
   "column_break_pmxg",
   "weight"
  ],
  "fields": [
   {
-   "fieldname": "type",
-   "fieldtype": "Data",
-   "label": "Type",
-   "unique": 1
-  },
-  {
    "fieldname": "column_break_pmxg",
    "fieldtype": "Column Break"
   },
   {
+   "description": "Journal with higher type should get higher weight, ex: Indexed Journal with weight = 2; Q4 Journal with weight = 3; ",
    "fieldname": "weight",
    "fieldtype": "Int",
-   "label": "Weight"
+   "label": "Weight",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "journal_type",
+   "fieldtype": "Data",
+   "label": "Journal Type",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-04 04:20:06.352540",
+ "modified": "2024-05-04 18:08:51.172366",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Journal Type",
@@ -51,5 +53,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

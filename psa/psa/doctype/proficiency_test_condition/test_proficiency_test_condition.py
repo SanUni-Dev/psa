@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestProficiencyTestConditions(FrappeTestCase):
+class TestProficiencyTestCondition(FrappeTestCase):
 	pass

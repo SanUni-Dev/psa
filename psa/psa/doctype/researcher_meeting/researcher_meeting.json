@@ -10,14 +10,11 @@
   "student",
   "program_enrollment",
   "meeting_with",
-  "supervisor",
   "column_break_asdq",
   "meeting_date",
   "meeting_time",
   "meeting_period",
   "meeting_place",
-  "section_break_ukoq",
-  "meeting_attendees",
   "section_break_kkar",
   "meeting_details",
   "section_break_ctpi",
@@ -56,7 +53,7 @@
   },
   {
    "fieldname": "meeting_details",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Meeting Details"
   },
   {
@@ -64,7 +61,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Meeting with a Supervisor",
+   "options": "Researcher Meeting",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -86,16 +83,9 @@
    "label": "Meeting Place"
   },
   {
-   "depends_on": "eval: doc.meeting_with == 'Main Supervisor' || doc.meeting_with == 'Co-Supervisor'",
-   "fieldname": "supervisor",
-   "fieldtype": "Data",
-   "label": "Supervisor"
-  },
-  {
    "fieldname": "meeting_with",
-   "fieldtype": "Select",
-   "label": "Meeting with",
-   "options": "\nMain Supervisor\nCo-Supervisor"
+   "fieldtype": "Data",
+   "label": "Meeting with"
   },
   {
    "fieldname": "section_break_ctpi",
@@ -103,27 +93,17 @@
   },
   {
    "fieldname": "supervisor_notes",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Supervisor Notes"
-  },
-  {
-   "fieldname": "meeting_attendees",
-   "fieldtype": "Table",
-   "label": "Meeting Attendees",
-   "options": "Meeting Attendees Child Table"
-  },
-  {
-   "fieldname": "section_break_ukoq",
-   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-04 03:12:21.181199",
+ "modified": "2024-05-04 19:02:12.967320",
  "modified_by": "Administrator",
  "module": "PSA",
- "name": "Meeting with a Supervisor",
+ "name": "Researcher Meeting",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
