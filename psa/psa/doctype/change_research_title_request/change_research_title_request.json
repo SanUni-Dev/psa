@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-06 00:30:16.147236",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_0zie",
+  "student",
+  "program_enrollment",
+  "column_break_zugp",
+  "student_supervisor",
+  "naming_series",
+  "section_break_qpyi",
+  "current_research_title_arabic",
+  "column_break_ftxr",
+  "current_research_title_english",
+  "section_break_ihyd",
+  "new_research_title_arabic",
+  "column_break_aguj",
+  "new_research_title_english",
+  "section_break_gplw",
+  "notes",
+  "section_break_qhzt",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_0zie",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Research Title Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Change-Tit-Req-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "column_break_zugp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_qhzt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "current_research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Current Research Title Arabic"
+  },
+  {
+   "fieldname": "current_research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Current Research Title English"
+  },
+  {
+   "fieldname": "section_break_qpyi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ftxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ihyd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "new_research_title_arabic",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "New Research Title Arabic",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_aguj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "new_research_title_english",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "New Research Title English",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gplw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Fill it with change reasons.",
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Data",
+   "label": "Student Supervisor"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-06 00:51:36.043785",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Change Research Title Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

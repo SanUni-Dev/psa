@@ -7,8 +7,10 @@
  "field_order": [
   "section_break_4uxa",
   "student",
+  "program_enrollment",
   "column_break_fcrr",
   "research_title",
+  "student_supervisor",
   "section_break_wfzp",
   "amended_from",
   "attachments_tab",
@@ -48,7 +50,7 @@
   {
    "fieldname": "research_title",
    "fieldtype": "Data",
-   "label": "Research Title"
+   "label": "Student Research"
   },
   {
    "fieldname": "section_break_wfzp",
@@ -100,12 +102,22 @@
    "fieldtype": "Table",
    "label": "Member of Selected Committee",
    "options": "Selected Committee"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment"
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Data",
+   "label": "Student Supervisor"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-05 03:28:42.181361",
+ "modified": "2024-05-05 04:56:43.615939",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Formation Discussion Committee",
@@ -127,5 +139,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
