@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-01 18:29:25.181852",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "search_title_arabic",
+  "column_break_ockw",
+  "search_title_english",
+  "document_plan",
+  "section_break_cktu",
+  "council_date",
+  "discuss",
+  "discussion_committee",
+  "column_break_ufti",
+  "council_number",
+  "document_discuss"
+ ],
+ "fields": [
+  {
+   "fieldname": "council_number",
+   "fieldtype": "Data",
+   "label": "Council Number"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Request for Research Proposal Defense"
+  },
+  {
+   "fetch_from": "student.search_title_arabic",
+   "fieldname": "search_title_arabic",
+   "fieldtype": "Data",
+   "label": "Search Title Arabic"
+  },
+  {
+   "fieldname": "discuss",
+   "fieldtype": "Data",
+   "label": "Discuss "
+  },
+  {
+   "fieldname": "column_break_ockw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "council_date",
+   "fieldtype": "Data",
+   "label": "Council Date"
+  },
+  {
+   "fetch_from": "student.search_title_english",
+   "fieldname": "search_title_english",
+   "fieldtype": "Data",
+   "label": "Search Title English"
+  },
+  {
+   "fieldname": "discussion_committee",
+   "fieldtype": "Select",
+   "label": "Discussion Committee"
+  },
+  {
+   "fieldname": "document_discuss",
+   "fieldtype": "Attach",
+   "label": "Document Discuss "
+  },
+  {
+   "fieldname": "section_break_cktu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ufti",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "student.document_plan",
+   "fieldname": "document_plan",
+   "fieldtype": "Attach",
+   "label": "Document Plan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-05 18:29:14.559717",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Proceedings Discuss Plan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

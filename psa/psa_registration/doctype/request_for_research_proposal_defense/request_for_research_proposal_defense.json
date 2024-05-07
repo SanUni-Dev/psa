@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-04-30 19:51:06.582148",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "column_break_noae",
+  "program_enrollment",
+  "supervisor",
+  "section_break_zaej",
+  "research_title_english",
+  "column_break_kcii",
+  "research_title_arabic",
+  "research_proposal"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
+  },
+  {
+   "fieldname": "column_break_noae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "student.search_title_english",
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fetch_from": "student.search_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming series",
+   "options": "REQ-."
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
+  },
+  {
+   "fieldname": "section_break_zaej",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_kcii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "research_proposal",
+   "fieldtype": "Attach",
+   "label": "Research Proposal"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-05 18:35:12.893566",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Request for Research Proposal Defense",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
