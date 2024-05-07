@@ -29,20 +29,21 @@ class workflow_overide extends frappe.ui.form.States {
           me.frm.page.add_action_item(__(d.action), function () {
             // Override Workflow if current doctype's module is "PSA"
             if (me.frm.meta.module === "PSA") {
-              if (d.action.includes("Reject") &&
+              if (
+                d.action.includes("Reject") &&
                 (me.frm.meta.name === "Suspend Enrollment Request" ||
                   me.frm.meta.name === "Continue Enrollment Request" ||
-                  me.frm.meta.name === "Withdrawal Request"
-                )
+                  me.frm.meta.name === "Withdrawal Request")
               ) {
-                frappe.prompt([
-                  {
-                    label: __('Enter reason of rejection'),
-                    fieldname: 'reason',
-                    fieldtype: 'Small Text',
-                    reqd: 1,
-                  },
-                ],
+                frappe.prompt(
+                  [
+                    {
+                      label: __("Enter reason of rejection"),
+                      fieldname: "reason",
+                      fieldtype: "Small Text",
+                      reqd: 1,
+                    },
+                  ],
                   function (values) {
                     // Retrieve the value of the reason field and trim any leading/trailing whitespace
                     var reason = values.reason.trim();
@@ -107,7 +108,9 @@ class workflow_overide extends frappe.ui.form.States {
                                         // Show a success message indicating that the workflow action was successfully executed
                                         frappe.show_alert(
                                           {
-                                            message: __(`Successfully rejected.`),
+                                            message: __(
+                                              `Successfully rejected.`
+                                            ),
                                             indicator: "green",
                                           },
                                           5
@@ -136,8 +139,7 @@ class workflow_overide extends frappe.ui.form.States {
                                 );
                               }
                             });
-                        }
-                        else {
+                        } else {
                           // Error occurred while saving the document
                           frappe.msgprint({
                             title: __("Error"),
@@ -151,15 +153,22 @@ class workflow_overide extends frappe.ui.form.States {
                     });
                   },
                   __("Are you sure you want to continue?"),
-                  __("Continue"));
-              }
-              else if (d.action.includes("Confirm") &&
-                (
-                  me.frm.meta.name === "Suspend Enrollment Request" ||
+                  __("Continue")
+                );
+              } else if (
+                d.action.includes("Confirm") &&
+                (me.frm.meta.name === "Suspend Enrollment Request" ||
                   me.frm.meta.name === "Continue Enrollment Request" ||
-                  me.frm.meta.name === "Withdrawal Request"
-                ) && (me.frm.doc.fees_status === "Not Paid")) {
+                  me.frm.meta.name === "Withdrawal Request") &&
+                me.frm.doc.fees_status === "Not Paid"
+              ) {
                 frappe.throw(__("Please pay fees first!"));
+              } else if (
+                me.frm.meta.name === "Suspend Enrollment Request" &&
+                d.action.includes("Confirm") &&
+                (!me.frm.doc.request_attachment)
+              ) {
+                frappe.throw(__("Please attach reason file first!"));
               }
               else {
                 frappe.confirm(
@@ -184,10 +193,13 @@ class workflow_overide extends frappe.ui.form.States {
                             .trigger("before_workflow_action")
                             .then(() => {
                               frappe
-                                .xcall("frappe.model.workflow.apply_workflow", {
-                                  doc: me.frm.doc,
-                                  action: d.action,
-                                })
+                                .xcall(
+                                  "frappe.model.workflow.apply_workflow",
+                                  {
+                                    doc: me.frm.doc,
+                                    action: d.action,
+                                  }
+                                )
                                 .then((doc) => {
                                   frappe.model.sync(doc);
                                   me.frm.refresh();
@@ -242,22 +254,26 @@ class workflow_overide extends frappe.ui.form.States {
                     // transition start
                     // set the workflow_action for use in form scripts
                     me.frm.selected_workflow_action = d.action;
-                    me.frm.script_manager.trigger("before_workflow_action").then(() => {
-                      frappe
-                        .xcall("frappe.model.workflow.apply_workflow", {
-                          doc: me.frm.doc,
-                          action: d.action,
-                        })
-                        .then((doc) => {
-                          frappe.model.sync(doc);
-                          me.frm.refresh();
-                          me.frm.selected_workflow_action = null;
-                          me.frm.script_manager.trigger("after_workflow_action");
-                        })
-                        .finally(() => {
-                          frappe.dom.unfreeze();
-                        });
-                    });
+                    me.frm.script_manager
+                      .trigger("before_workflow_action")
+                      .then(() => {
+                        frappe
+                          .xcall("frappe.model.workflow.apply_workflow", {
+                            doc: me.frm.doc,
+                            action: d.action,
+                          })
+                          .then((doc) => {
+                            frappe.model.sync(doc);
+                            me.frm.refresh();
+                            me.frm.selected_workflow_action = null;
+                            me.frm.script_manager.trigger(
+                              "after_workflow_action"
+                            );
+                          })
+                          .finally(() => {
+                            frappe.dom.unfreeze();
+                          });
+                      });
                     // transition end
                   } else {
                     // set the workflow_action for use in form scripts

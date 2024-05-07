@@ -31,10 +31,12 @@
   "department_council_minutes_number",
   "department_council_minutes_date",
   "department_council_minutes_decision",
+  "department_council_minutes_state",
   "councils_section",
   "college_council_minutes_number",
   "college_council_minutes_date",
   "college_council_minutes_decision",
+  "college_council_minutes_state",
   "fees_information_tab",
   "section_break_bpbc",
   "fees_status",
@@ -258,12 +260,26 @@
   {
    "fieldname": "column_break_ywwz",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department_council_minutes_state",
+   "fieldtype": "Select",
+   "label": "Department Council Minutes State",
+   "options": "\nApproved\nRejected",
+   "permlevel": 2
+  },
+  {
+   "fieldname": "college_council_minutes_state",
+   "fieldtype": "Select",
+   "label": "College Council Minutes State",
+   "options": "\nApproved\nRejected",
+   "permlevel": 3
   }
  ],
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-29 23:31:26.741178",
+ "modified": "2024-04-27 23:47:44.586220",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",

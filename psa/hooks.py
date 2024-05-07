@@ -12,12 +12,16 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Notification",
-    "PSA Settings"
+    "PSA Settings",
+    "Wiki Space",
+    "Wiki Page",
+    "Translation"
 ]
 
 
 app_include_js = [
     "/assets/psa/js/workflow_override.js",
+    "/assets/psa/js/psa_utils.js",
     ]
 
 

@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-06 01:05:45.059829",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_0zie",
+  "student",
+  "program_enrollment",
+  "column_break_zugp",
+  "student_supervisor",
+  "student_research",
+  "naming_series",
+  "section_break_gplw",
+  "reason",
+  "section_break_qhzt",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_0zie",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zugp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Data",
+   "label": "Student Supervisor"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Change-Ext-Req-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "section_break_gplw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_qhzt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Research Title Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Data",
+   "label": "Student Research"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Text Editor",
+   "label": "Reason",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-06 01:08:53.888156",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Extension Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,38 @@
+[
+ {
+  "dark_mode_logo": null,
+  "docstatus": 0,
+  "doctype": "Wiki Space",
+  "light_mode_logo": null,
+  "modified": "2024-04-18 20:51:11.459736",
+  "name": "905efdcc82",
+  "navbar_items": [],
+  "route": "psa",
+  "wiki_sidebars": [
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "طلبات القيد",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "b7a1f88b9a"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "طلبات القيد",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "d71f46bd8a"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "طلبات القيد",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "466f813614"
+   }
+  ]
+ }
+]

@@ -1,0 +1,206 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-05 01:57:21.736467",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nvan",
+  "student",
+  "program_enrollment",
+  "supervisor_type",
+  "current_supervisor",
+  "column_break_olbw",
+  "first_recommended_supervisor",
+  "second_recommended__supervisor",
+  "third_recommended__supervisor",
+  "naming_series",
+  "section_break_eadh",
+  "change_reason",
+  "section_break_pexd",
+  "amended_from",
+  "councils_information_tab",
+  "department_council_minutes_section",
+  "department_council_minutes_number",
+  "department_council_minutes_date",
+  "department_council_minutes_decision",
+  "department_council_minutes_state",
+  "college_council_minutes_section",
+  "college_council_minutes_number",
+  "college_council_minutes_date",
+  "college_council_minutes_decision",
+  "college_council_minutes_state"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_nvan",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Research Supervisor Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_olbw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pexd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "councils_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Councils Information"
+  },
+  {
+   "fieldname": "department_council_minutes_section",
+   "fieldtype": "Section Break",
+   "label": "Department Council Minutes"
+  },
+  {
+   "fieldname": "department_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Number"
+  },
+  {
+   "fieldname": "department_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "Department Council Minutes Date"
+  },
+  {
+   "fieldname": "department_council_minutes_decision",
+   "fieldtype": "Data",
+   "label": "Department Council Minutes Decision"
+  },
+  {
+   "fieldname": "college_council_minutes_section",
+   "fieldtype": "Section Break",
+   "label": "College Council Minutes"
+  },
+  {
+   "fieldname": "college_council_minutes_number",
+   "fieldtype": "Data",
+   "label": "College Council Minutes Number"
+  },
+  {
+   "fieldname": "college_council_minutes_date",
+   "fieldtype": "Date",
+   "label": "College Council Minutes Date"
+  },
+  {
+   "fieldname": "college_council_minutes_decision",
+   "fieldtype": "Data",
+   "label": "College Council Minutes Decision"
+  },
+  {
+   "fieldname": "department_council_minutes_state",
+   "fieldtype": "Select",
+   "label": "Department Council Minutes State",
+   "options": "\nApproved\nRejected"
+  },
+  {
+   "fieldname": "college_council_minutes_state",
+   "fieldtype": "Select",
+   "label": "College Council Minutes State",
+   "options": "\nApproved\nRejected"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment"
+  },
+  {
+   "fieldname": "supervisor_type",
+   "fieldtype": "Select",
+   "label": "Supervisor Type",
+   "options": "\nMain Supervisor\nCo-Supervisor"
+  },
+  {
+   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
+   "fieldname": "current_supervisor",
+   "fieldtype": "Data",
+   "label": "Current Supervisor"
+  },
+  {
+   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
+   "fieldname": "first_recommended_supervisor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "First Recommended Supervisor",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
+   "fieldname": "second_recommended__supervisor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Second Recommended  Supervisor",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
+   "fieldname": "third_recommended__supervisor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Third Recommended  Supervisor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_eadh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "change_reason",
+   "fieldtype": "Small Text",
+   "label": "Change Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Change-Sup-Req-.YY.-.MM.-.#####."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-06 00:21:24.535709",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Change Research Supervisor Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,127 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-04 02:25:40.340461",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "program_enrollment",
+  "meeting_with",
+  "column_break_asdq",
+  "meeting_date",
+  "meeting_time",
+  "meeting_period",
+  "meeting_place",
+  "section_break_kkar",
+  "meeting_details",
+  "section_break_ctpi",
+  "supervisor_notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Meeting-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment"
+  },
+  {
+   "fieldname": "meeting_date",
+   "fieldtype": "Date",
+   "label": "Meeting Date"
+  },
+  {
+   "fieldname": "column_break_asdq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kkar",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "meeting_details",
+   "fieldtype": "Text Editor",
+   "label": "Meeting Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Researcher Meeting",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "meeting_time",
+   "fieldtype": "Time",
+   "label": "Meeting Time"
+  },
+  {
+   "description": "In Hours",
+   "fieldname": "meeting_period",
+   "fieldtype": "Int",
+   "label": "Meeting Period"
+  },
+  {
+   "fieldname": "meeting_place",
+   "fieldtype": "Data",
+   "label": "Meeting Place"
+  },
+  {
+   "fieldname": "meeting_with",
+   "fieldtype": "Data",
+   "label": "Meeting with"
+  },
+  {
+   "fieldname": "section_break_ctpi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "supervisor_notes",
+   "fieldtype": "Text Editor",
+   "label": "Supervisor Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-04 19:02:12.967320",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Researcher Meeting",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,201 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-04 02:42:01.918225",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "program_enrollment",
+  "column_break_teka",
+  "supervisor",
+  "report_date",
+  "amended_from",
+  "achievement_in_the_period_section",
+  "from_date",
+  "column_break_wwik",
+  "to_date",
+  "section_break_wrjy",
+  "student_report_period",
+  "overall_achievement_section",
+  "research_achievement_student",
+  "research_overall_achievement",
+  "meetings_tab",
+  "meetings",
+  "supervisor_report_tab",
+  "section_break_half",
+  "notes",
+  "section_break_kblp",
+  "research_achievement_supervisor",
+  "expected_date_of_thesis_submission",
+  "status",
+  "recommended_action"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Meeting-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Progress Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment"
+  },
+  {
+   "fieldname": "column_break_teka",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "report_date",
+   "fieldtype": "Date",
+   "label": "Report Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nSatisfied\nUnsatisfied"
+  },
+  {
+   "fieldname": "meetings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Meetings"
+  },
+  {
+   "fieldname": "meetings",
+   "fieldtype": "Table",
+   "label": "Meetings",
+   "options": "Meeting Details"
+  },
+  {
+   "fieldname": "supervisor_report_tab",
+   "fieldtype": "Tab Break",
+   "label": "Supervisor Report"
+  },
+  {
+   "fieldname": "section_break_kblp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "expected_date_of_thesis_submission",
+   "fieldtype": "Date",
+   "label": "Expected Date of Thesis Submission"
+  },
+  {
+   "fieldname": "section_break_wrjy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_half",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "achievement_in_the_period_section",
+   "fieldtype": "Section Break",
+   "label": "Achievement in the Period "
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date"
+  },
+  {
+   "fieldname": "column_break_wwik",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date"
+  },
+  {
+   "description": "Please fill your achievements.",
+   "fieldname": "student_report_period",
+   "fieldtype": "Text Editor",
+   "label": "Student Report"
+  },
+  {
+   "fieldname": "overall_achievement_section",
+   "fieldtype": "Section Break",
+   "label": "Overall Achievement"
+  },
+  {
+   "fieldname": "research_overall_achievement",
+   "fieldtype": "Text Editor",
+   "label": "Research Overall Achievement"
+  },
+  {
+   "depends_on": "eval: doc.status == 'Unsatisfied'",
+   "fieldname": "recommended_action",
+   "fieldtype": "Select",
+   "label": "Recommended Action",
+   "options": "\nNothing\nAlert Researcher"
+  },
+  {
+   "fieldname": "research_achievement_student",
+   "fieldtype": "Percent",
+   "label": "Research Achievement %"
+  },
+  {
+   "fieldname": "research_achievement_supervisor",
+   "fieldtype": "Percent",
+   "label": "Research Achievement %"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-04 20:30:45.654051",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Progress Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
