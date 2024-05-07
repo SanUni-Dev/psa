@@ -7,7 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "department_section",
-  "department_name"
+  "department_name",
+  "college"
  ],
  "fields": [
   {
@@ -18,13 +19,23 @@
   {
    "fieldname": "department_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Department Name",
+   "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "college",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "College",
+   "options": "College",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-20 01:34:14.771548",
+ "modified": "2024-04-21 17:51:55.330074",
  "modified_by": "Administrator",
  "module": "PSA Temp",
  "name": "Department",

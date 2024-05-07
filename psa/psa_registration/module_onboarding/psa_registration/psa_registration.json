@@ -10,7 +10,7 @@
  "documentation_url": "http://localhost:82/app",
  "idx": 0,
  "is_complete": 0,
- "modified": "2024-04-01 01:36:30.741389",
+ "modified": "2024-05-05 16:59:01.582404",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "PSA Registration",
@@ -27,6 +27,9 @@
   },
   {
    "step": "Document"
+  },
+  {
+   "step": "Personal information"
   }
  ],
  "subtitle": "PSA Registration",

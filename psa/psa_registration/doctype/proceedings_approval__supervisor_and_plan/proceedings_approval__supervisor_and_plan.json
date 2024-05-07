@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{Student}-{Supervisor}",
+ "creation": "2024-05-01 18:39:23.233032",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "supervisor",
+  "column_break_irbg",
+  "search_title_arabic",
+  "search_title_english",
+  "section_break_vapb",
+  "council_number",
+  "council_date",
+  "column_break_kwwm",
+  "discuss",
+  "document_discuss"
+ ],
+ "fields": [
+  {
+   "fieldname": "council_number",
+   "fieldtype": "Data",
+   "label": "Council Number"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Request Approval  Supervisor And Plan"
+  },
+  {
+   "fetch_from": "student.supervisor",
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "discuss",
+   "fieldtype": "Data",
+   "label": "Discuss "
+  },
+  {
+   "fieldname": "column_break_irbg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "council_date",
+   "fieldtype": "Date",
+   "label": "Council Date"
+  },
+  {
+   "fetch_from": "student.search_title_arabic",
+   "fieldname": "search_title_arabic",
+   "fieldtype": "Data",
+   "label": "Search Title Arabic"
+  },
+  {
+   "fetch_from": "student.search_title_english",
+   "fieldname": "search_title_english",
+   "fieldtype": "Data",
+   "label": "Search Title English"
+  },
+  {
+   "fieldname": "document_discuss",
+   "fieldtype": "Attach",
+   "label": "Document Discuss "
+  },
+  {
+   "fieldname": "section_break_vapb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_kwwm",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-02 01:31:47.032263",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Proceedings Approval  Supervisor And Plan",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
