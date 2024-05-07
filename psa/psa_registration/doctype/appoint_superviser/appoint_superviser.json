@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-05 02:54:01.354838",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "column_break_fesy",
+  "supervisors",
+  "department_council_data_section",
+  "minute_number",
+  "decision",
+  "column_break_sdty",
+  "minute_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student"
+  },
+  {
+   "fieldname": "column_break_fesy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supervisors",
+   "fieldtype": "Data",
+   "label": "Supervisors"
+  },
+  {
+   "fieldname": "department_council_data_section",
+   "fieldtype": "Section Break",
+   "label": "Department Council Data"
+  },
+  {
+   "fieldname": "minute_number",
+   "fieldtype": "Data",
+   "label": "Minute Number"
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Attach",
+   "label": "Decision"
+  },
+  {
+   "fieldname": "column_break_sdty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "minute_date",
+   "fieldtype": "Date",
+   "label": "Minute Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-05 03:04:38.765926",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Appoint Superviser",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
