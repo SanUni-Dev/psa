@@ -9,12 +9,14 @@
   "naming_series",
   "student",
   "program_enrollment",
-  "meeting_with",
+  "student_research",
   "column_break_asdq",
   "meeting_date",
   "meeting_time",
   "meeting_period",
   "meeting_place",
+  "section_break_cxcy",
+  "meeting_with",
   "section_break_kkar",
   "meeting_details",
   "section_break_ctpi",
@@ -30,13 +32,15 @@
   },
   {
    "fieldname": "student",
-   "fieldtype": "Data",
-   "label": "Student"
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
   },
   {
    "fieldname": "program_enrollment",
-   "fieldtype": "Data",
-   "label": "Program Enrollment"
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
   },
   {
    "fieldname": "meeting_date",
@@ -84,8 +88,10 @@
   },
   {
    "fieldname": "meeting_with",
-   "fieldtype": "Data",
-   "label": "Meeting with"
+   "fieldtype": "Table",
+   "label": "Meeting with",
+   "options": "Meeting with",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_ctpi",
@@ -95,12 +101,22 @@
    "fieldname": "supervisor_notes",
    "fieldtype": "Text Editor",
    "label": "Supervisor Notes"
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research"
+  },
+  {
+   "fieldname": "section_break_cxcy",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-04 19:02:12.967320",
+ "modified": "2024-05-08 01:29:03.943960",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Researcher Meeting",

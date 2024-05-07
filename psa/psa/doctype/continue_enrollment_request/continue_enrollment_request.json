@@ -39,7 +39,7 @@
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Student",
+   "label": "Program Enrollment",
    "options": "Program Enrollment",
    "permlevel": 2,
    "reqd": 1
@@ -171,7 +171,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-20 20:28:02.915233",
+ "modified": "2024-05-08 01:41:48.839786",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",

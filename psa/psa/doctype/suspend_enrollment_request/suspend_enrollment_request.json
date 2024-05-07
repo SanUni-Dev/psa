@@ -127,7 +127,7 @@
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
-   "label": "Student",
+   "label": "Program Enrollment",
    "options": "Program Enrollment",
    "permlevel": 4,
    "reqd": 1
@@ -279,7 +279,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-27 23:47:44.586220",
+ "modified": "2024-05-08 01:41:07.347000",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",

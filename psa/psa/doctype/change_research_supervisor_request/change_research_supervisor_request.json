@@ -12,11 +12,9 @@
   "supervisor_type",
   "current_supervisor",
   "column_break_olbw",
-  "first_recommended_supervisor",
-  "second_recommended__supervisor",
-  "third_recommended__supervisor",
   "naming_series",
   "section_break_eadh",
+  "suggested_supervisors",
   "change_reason",
   "section_break_pexd",
   "amended_from",
@@ -114,13 +112,15 @@
   },
   {
    "fieldname": "student",
-   "fieldtype": "Data",
-   "label": "Student"
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
   },
   {
    "fieldname": "program_enrollment",
-   "fieldtype": "Data",
-   "label": "Program Enrollment"
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
   },
   {
    "fieldname": "supervisor_type",
@@ -135,36 +135,13 @@
    "label": "Current Supervisor"
   },
   {
-   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
-   "fieldname": "first_recommended_supervisor",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "First Recommended Supervisor",
-   "reqd": 1
-  },
-  {
-   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
-   "fieldname": "second_recommended__supervisor",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Second Recommended  Supervisor",
-   "reqd": 1
-  },
-  {
-   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
-   "fieldname": "third_recommended__supervisor",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Third Recommended  Supervisor",
-   "reqd": 1
-  },
-  {
    "fieldname": "section_break_eadh",
    "fieldtype": "Section Break"
   },
   {
    "fieldname": "change_reason",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Change Reason",
    "reqd": 1
   },
@@ -173,12 +150,19 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "PSA-Change-Sup-Req-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "suggested_supervisors",
+   "fieldtype": "Table",
+   "label": "Suggested Supervisors",
+   "options": "Suggested Supervisor",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-06 00:21:24.535709",
+ "modified": "2024-05-08 00:37:56.801505",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Supervisor Request",

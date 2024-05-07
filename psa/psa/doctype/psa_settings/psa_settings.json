@@ -15,7 +15,13 @@
   "set_a_limit_of_rejected_suspend_requests",
   "number_of_rejected_suspend_requests",
   "continue_enrollment_request_settings_section",
-  "enable_auto_validation_for_days"
+  "enable_auto_validation_for_days",
+  "supervisors_settings_section",
+  "count_of_allowed_suggested_supervisors",
+  "section_break_evtv",
+  "count_of_progress_reports_per_a_program",
+  "day_of_report",
+  "month_of_report"
  ],
  "fields": [
   {
@@ -90,13 +96,47 @@
    "fieldname": "enable_auto_validation_for_days",
    "fieldtype": "Check",
    "label": "Enable Auto Validation for Days"
+  },
+  {
+   "fieldname": "supervisors_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Supervisors Settings"
+  },
+  {
+   "default": "3",
+   "fieldname": "count_of_allowed_suggested_supervisors",
+   "fieldtype": "Int",
+   "label": "Count of Allowed Suggested Supervisors"
+  },
+  {
+   "fieldname": "section_break_evtv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "4",
+   "fieldname": "count_of_progress_reports_per_a_program",
+   "fieldtype": "Select",
+   "label": "Count of Progress Reports per a Program",
+   "options": "\n1\n2\n3\n4"
+  },
+  {
+   "default": "1",
+   "fieldname": "day_of_report",
+   "fieldtype": "Int",
+   "label": "Day of Report"
+  },
+  {
+   "default": "3",
+   "fieldname": "month_of_report",
+   "fieldtype": "Int",
+   "label": "Month of Report "
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-04-27 00:16:52.819097",
+ "modified": "2024-05-08 01:55:22.610624",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
