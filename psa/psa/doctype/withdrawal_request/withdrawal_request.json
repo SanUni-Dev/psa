@@ -44,7 +44,7 @@
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
-   "label": "Student",
+   "label": "Program Enrollment",
    "options": "Program Enrollment",
    "permlevel": 3,
    "reqd": 1
@@ -205,7 +205,7 @@
  "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-24 01:39:55.103616",
+ "modified": "2024-05-08 01:41:32.563079",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",

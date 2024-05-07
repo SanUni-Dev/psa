@@ -34,9 +34,9 @@
   {
    "depends_on": "eval: doc.journal_type == 'Internal'",
    "fieldname": "journal_name",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Journal Name",
-   "options": "\nSana'a Journal"
+   "options": "Journal"
   },
   {
    "default": "0",
@@ -54,7 +54,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-04 18:43:33.380330",
+ "modified": "2024-05-08 01:51:05.428492",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Publication Condition",

@@ -10,6 +10,7 @@
   "section_break_0zie",
   "student",
   "program_enrollment",
+  "period",
   "column_break_zugp",
   "student_supervisor",
   "student_research",
@@ -26,16 +27,18 @@
   },
   {
    "fieldname": "student",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Student",
+   "options": "Student",
    "reqd": 1
   },
   {
    "fieldname": "program_enrollment",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Program Enrollment",
+   "options": "Program Enrollment",
    "reqd": 1
   },
   {
@@ -44,8 +47,9 @@
   },
   {
    "fieldname": "student_supervisor",
-   "fieldtype": "Data",
-   "label": "Student Supervisor"
+   "fieldtype": "Link",
+   "label": "Student Supervisor",
+   "options": "Student Supervisor"
   },
   {
    "fieldname": "naming_series",
@@ -73,20 +77,26 @@
   },
   {
    "fieldname": "student_research",
-   "fieldtype": "Data",
-   "label": "Student Research"
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research"
   },
   {
    "fieldname": "reason",
    "fieldtype": "Text Editor",
    "label": "Reason",
    "reqd": 1
+  },
+  {
+   "fieldname": "period",
+   "fieldtype": "Data",
+   "label": "Period"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-06 01:08:53.888156",
+ "modified": "2024-05-08 01:08:25.030768",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Extension Request",
