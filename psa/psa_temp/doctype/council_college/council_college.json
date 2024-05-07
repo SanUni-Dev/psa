@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-30 19:42:16.265524",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "name_council",
+  "column_break_dhid",
+  "discuss",
+  "document_discuss"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Council Number"
+  },
+  {
+   "fieldname": "name_council",
+   "fieldtype": "Data",
+   "label": "Council Date"
+  },
+  {
+   "fieldname": "column_break_dhid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discuss",
+   "fieldtype": "Data",
+   "label": "Discuss "
+  },
+  {
+   "fieldname": "document_discuss",
+   "fieldtype": "Attach",
+   "label": "Document Discuss "
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-07 03:02:58.126967",
+ "modified_by": "Administrator",
+ "module": "PSA Temp",
+ "name": "Council College",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
