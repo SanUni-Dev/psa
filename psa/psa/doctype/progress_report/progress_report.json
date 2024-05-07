@@ -52,13 +52,15 @@
   },
   {
    "fieldname": "student",
-   "fieldtype": "Data",
-   "label": "Student"
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
   },
   {
    "fieldname": "program_enrollment",
-   "fieldtype": "Data",
-   "label": "Program Enrollment"
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
   },
   {
    "fieldname": "column_break_teka",
@@ -102,8 +104,9 @@
   },
   {
    "fieldname": "supervisor",
-   "fieldtype": "Data",
-   "label": "Supervisor"
+   "fieldtype": "Link",
+   "label": "Student Supervisor",
+   "options": "Student Supervisor"
   },
   {
    "fieldname": "expected_date_of_thesis_submission",
@@ -174,7 +177,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-04 20:30:45.654051",
+ "modified": "2024-05-08 01:33:13.232303",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",

@@ -25,9 +25,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "College",
+   "label": "Faculty",
    "link_count": 0,
-   "link_to": "College",
+   "link_to": "Faculty",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -35,9 +35,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Department",
+   "label": "Faculty Department",
    "link_count": 0,
-   "link_to": "Department",
+   "link_to": "Faculty Department",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -55,9 +55,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Program",
+   "label": "Academic Program",
    "link_count": 0,
-   "link_to": "Program",
+   "link_to": "Academic Program",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -65,9 +65,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "PSA Student",
+   "label": "Student",
    "link_count": 0,
-   "link_to": "PSA Student",
+   "link_to": "Student",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -269,7 +269,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-04-24 22:14:58.256090",
+ "modified": "2024-05-08 00:11:27.675613",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA",

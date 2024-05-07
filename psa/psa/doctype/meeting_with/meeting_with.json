@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-08 01:23:49.665848",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "supervisor",
+  "type"
+ ],
+ "fields": [
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Student Supervisor"
+  },
+  {
+   "fetch_from": "supervisor.type",
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-08 01:26:40.806425",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Meeting with",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
