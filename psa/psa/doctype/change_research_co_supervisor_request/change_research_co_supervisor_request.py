@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ChangeResearchSupervisorRequest(Document):
+class ChangeResearchCoSupervisorRequest(Document):
 	pass
