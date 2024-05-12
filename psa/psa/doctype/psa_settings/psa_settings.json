@@ -5,9 +5,6 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "semester_settings_section",
-  "set_days_of_programs",
-  "number_of_days_for_programs",
   "suspend_enrollment_request_settings_section",
   "set_a_limit_of_suspend_requests",
   "number_of_suspend_requests",
@@ -16,20 +13,15 @@
   "number_of_rejected_suspend_requests",
   "continue_enrollment_request_settings_section",
   "enable_auto_validation_for_days",
-  "supervisors_settings_section",
-  "count_of_allowed_suggested_supervisors",
   "section_break_evtv",
   "count_of_progress_reports_per_a_program",
   "day_of_report",
-  "month_of_report"
+  "month_of_report",
+  "change_research_supervisor_request_settings_section",
+  "needs_an_approval_of_main_supervisor",
+  "count_of_allowed_suggested_supervisors"
  ],
  "fields": [
-  {
-   "collapsible": 1,
-   "fieldname": "semester_settings_section",
-   "fieldtype": "Section Break",
-   "label": "Semester Settings"
-  },
   {
    "collapsible": 1,
    "fieldname": "suspend_enrollment_request_settings_section",
@@ -71,20 +63,6 @@
    "non_negative": 1
   },
   {
-   "columns": 8,
-   "depends_on": "eval: doc.set_days_of_programs",
-   "fieldname": "number_of_days_for_programs",
-   "fieldtype": "Table",
-   "label": "Number of Days for Programs",
-   "options": "Days of Semester"
-  },
-  {
-   "default": "0",
-   "fieldname": "set_days_of_programs",
-   "fieldtype": "Check",
-   "label": "Set Days of Programs"
-  },
-  {
    "collapsible": 1,
    "fieldname": "continue_enrollment_request_settings_section",
    "fieldtype": "Section Break",
@@ -98,11 +76,6 @@
    "label": "Enable Auto Validation for Days"
   },
   {
-   "fieldname": "supervisors_settings_section",
-   "fieldtype": "Section Break",
-   "label": "Supervisors Settings"
-  },
-  {
    "default": "3",
    "fieldname": "count_of_allowed_suggested_supervisors",
    "fieldtype": "Int",
@@ -110,7 +83,8 @@
   },
   {
    "fieldname": "section_break_evtv",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Progress Report Settings"
   },
   {
    "default": "4",
@@ -130,13 +104,24 @@
    "fieldname": "month_of_report",
    "fieldtype": "Int",
    "label": "Month of Report "
+  },
+  {
+   "fieldname": "change_research_supervisor_request_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Change Research Supervisor Request Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "needs_an_approval_of_main_supervisor",
+   "fieldtype": "Check",
+   "label": "Change Research Co Supervisor Needs an Approval of Main Supervisor"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-08 01:55:22.610624",
+ "modified": "2024-05-13 00:21:24.406784",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",

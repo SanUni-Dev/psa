@@ -2,22 +2,20 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2024-05-05 01:57:21.736467",
+ "creation": "2024-05-12 23:51:24.775652",
+ "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_nvan",
   "student",
   "program_enrollment",
-  "supervisor_type",
   "current_supervisor",
   "column_break_olbw",
   "naming_series",
   "section_break_eadh",
   "suggested_supervisors",
   "change_reason",
-  "section_break_pexd",
-  "amended_from",
   "councils_information_tab",
   "department_council_minutes_section",
   "department_council_minutes_number",
@@ -28,7 +26,8 @@
   "college_council_minutes_number",
   "college_council_minutes_date",
   "college_council_minutes_decision",
-  "college_council_minutes_state"
+  "college_council_minutes_state",
+  "amended_from"
  ],
  "fields": [
   {
@@ -36,22 +35,50 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "amended_from",
+   "fieldname": "student",
    "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Change Research Supervisor Request",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
+   "label": "Student",
+   "options": "Student"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
+  },
+  {
+   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
+   "fieldname": "current_supervisor",
+   "fieldtype": "Data",
+   "label": "Current Supervisor"
   },
   {
    "fieldname": "column_break_olbw",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_pexd",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Change-Sup-Req-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "section_break_eadh",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "suggested_supervisors",
+   "fieldtype": "Table",
+   "label": "Suggested Supervisors",
+   "options": "Suggested Supervisor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "change_reason",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Change Reason",
+   "reqd": 1
   },
   {
    "fieldname": "councils_information_tab",
@@ -79,6 +106,12 @@
    "label": "Department Council Minutes Decision"
   },
   {
+   "fieldname": "department_council_minutes_state",
+   "fieldtype": "Select",
+   "label": "Department Council Minutes State",
+   "options": "\nApproved\nRejected"
+  },
+  {
    "fieldname": "college_council_minutes_section",
    "fieldtype": "Section Break",
    "label": "College Council Minutes"
@@ -99,73 +132,29 @@
    "label": "College Council Minutes Decision"
   },
   {
-   "fieldname": "department_council_minutes_state",
-   "fieldtype": "Select",
-   "label": "Department Council Minutes State",
-   "options": "\nApproved\nRejected"
-  },
-  {
    "fieldname": "college_council_minutes_state",
    "fieldtype": "Select",
    "label": "College Council Minutes State",
    "options": "\nApproved\nRejected"
   },
   {
-   "fieldname": "student",
+   "fieldname": "amended_from",
    "fieldtype": "Link",
-   "label": "Student",
-   "options": "Student"
-  },
-  {
-   "fieldname": "program_enrollment",
-   "fieldtype": "Link",
-   "label": "Program Enrollment",
-   "options": "Program Enrollment"
-  },
-  {
-   "fieldname": "supervisor_type",
-   "fieldtype": "Select",
-   "label": "Supervisor Type",
-   "options": "\nMain Supervisor\nCo-Supervisor"
-  },
-  {
-   "depends_on": "eval: doc.supervisor_type == 'Main Supervisor'",
-   "fieldname": "current_supervisor",
-   "fieldtype": "Data",
-   "label": "Current Supervisor"
-  },
-  {
-   "fieldname": "section_break_eadh",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "change_reason",
-   "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Change Reason",
-   "reqd": 1
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "PSA-Change-Sup-Req-.YY.-.MM.-.#####."
-  },
-  {
-   "fieldname": "suggested_supervisors",
-   "fieldtype": "Table",
-   "label": "Suggested Supervisors",
-   "options": "Suggested Supervisor",
-   "reqd": 1
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Research Main Supervisor Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-08 00:37:56.801505",
+ "modified": "2024-05-12 23:56:42.739243",
  "modified_by": "Administrator",
  "module": "PSA",
- "name": "Change Research Supervisor Request",
+ "name": "Change Research Main Supervisor Request",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

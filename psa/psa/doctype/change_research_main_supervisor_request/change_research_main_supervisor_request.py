@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class DaysofSemester(Document):
+class ChangeResearchMainSupervisorRequest(Document):
 	pass
