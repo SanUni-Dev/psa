@@ -1,12 +1,15 @@
 {
  "actions": [],
- "autoname": "format: PSA-Withdrawal-Req-{YY}-{MM}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2024-03-19 02:02:08.889539",
  "default_view": "List",
  "doctype": "DocType",
+ "documentation": "/psa/\u0637\u0644\u0628-\u0627\u0644\u0627\u0646\u0633\u062d\u0627\u0628",
  "engine": "InnoDB",
  "field_order": [
   "student_information_section",
+  "student",
+  "column_break_lifw",
   "program_enrollment",
   "section_break_wwpw",
   "student_html1",
@@ -21,6 +24,7 @@
   "column_break_apfr",
   "request_date_html",
   "modified_request_date_html",
+  "naming_series",
   "attachments_tab",
   "attachment_section",
   "request_attachment",
@@ -42,6 +46,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": ".",
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Program Enrollment",
@@ -200,16 +205,34 @@
    "hidden": 1,
    "options": "Timeline Child Table",
    "read_only": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "permlevel": 3,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_lifw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Withdrawal-Req-.YY.-.MM.-.#####.",
+   "reqd": 1
   }
  ],
- "hide_toolbar": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-08 01:41:32.563079",
+ "modified": "2024-05-16 03:58:57.100093",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -363,6 +386,7 @@
    "share": 1
   }
  ],
+ "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

@@ -1,11 +1,14 @@
 {
  "actions": [],
- "autoname": "format: PSA-Suspend-Req-{YY}-{MM}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2024-01-25 23:43:02.975918",
  "doctype": "DocType",
+ "documentation": "/psa/\u0637\u0644\u0628-\u0648\u0642\u0641-\u0627\u0644\u0642\u064a\u062f",
  "engine": "InnoDB",
  "field_order": [
   "student_information_section",
+  "student",
+  "column_break_wwcx",
   "program_enrollment",
   "section_break_omsb",
   "student_html1",
@@ -22,6 +25,7 @@
   "column_break_cypq",
   "request_date_html",
   "modified_request_date_html",
+  "naming_series",
   "attachments_tab",
   "attachment_section",
   "column_break_cdpd",
@@ -274,16 +278,39 @@
    "label": "College Council Minutes State",
    "options": "\nApproved\nRejected",
    "permlevel": 3
+  },
+  {
+   "fieldname": "column_break_wwcx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "permlevel": 4,
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Suspend-Req-.YY.-.MM.-.#####.",
+   "reqd": 1
   }
  ],
- "hide_toolbar": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2024-05-08 01:41:07.347000",
+ "links": [
+  {
+   "link_doctype": "Continue Enrollment Request",
+   "link_fieldname": "suspend_enrollment_request"
+  }
+ ],
+ "modified": "2024-05-16 03:59:47.242616",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -592,6 +619,7 @@
    "select": 1
   }
  ],
+ "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

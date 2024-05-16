@@ -1,36 +1,43 @@
 {
  "actions": [],
- "allow_rename": 1,
  "creation": "2024-05-05 03:25:42.955652",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "name1",
-  "degree",
+  "faculty_member",
+  "scientific_degree",
   "adjective"
  ],
  "fields": [
   {
-   "fieldname": "name1",
-   "fieldtype": "Data",
-   "label": "Name"
-  },
-  {
-   "fieldname": "degree",
-   "fieldtype": "Data",
-   "label": "Degree"
-  },
-  {
    "fieldname": "adjective",
-   "fieldtype": "Data",
-   "label": "Adjective"
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Adjective",
+   "options": "\nHead\nMember"
+  },
+  {
+   "fieldname": "faculty_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Faculty Member",
+   "options": "Faculty Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scientific_degree",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Scientific Degree",
+   "options": "Scientific Degree",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-05 03:27:08.979820",
+ "modified": "2024-05-16 01:35:25.089515",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Selected Committee",
