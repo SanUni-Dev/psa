@@ -198,9 +198,9 @@ psa_utils.get_program_enrollment = function (program_enrollment, callback) {
             var status = response.message.status;
             var enrollment_date = response.message.enrollment_date;
             var student = response.message.student;
-            var program = response.message.program;
+            var academic_program = response.message.program;
             
-            callback(status, enrollment_date, student, program);
+            callback(status, enrollment_date, student, academic_program);
         }
     });
 }

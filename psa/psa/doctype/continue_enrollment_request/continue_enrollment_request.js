@@ -71,7 +71,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
     }
 
     if (frm.doc.program_enrollment) {
-      psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, program) {
+      psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
         psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
           psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
             var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Program")];
@@ -193,7 +193,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
   program_enrollment(frm) {
     frm.set_intro('');
     if (frm.doc.program_enrollment) {
-      psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, program) {
+      psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
         psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
           psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
             var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Program")];
