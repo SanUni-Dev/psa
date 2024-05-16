@@ -20,32 +20,42 @@
   "section_break_kkar",
   "meeting_details",
   "section_break_ctpi",
-  "supervisor_notes",
-  "amended_from"
+  "amended_from",
+  "supervisor_notes_tab",
+  "supervisor_notes"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "PSA-Meeting-.YY.-.MM.-.#####."
+   "options": "PSA-Meeting-.YY.-.MM.-.#####.",
+   "reqd": 1
   },
   {
    "fieldname": "student",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Student",
-   "options": "Student"
+   "options": "Student",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Program Enrollment",
-   "options": "Program Enrollment"
+   "options": "Program Enrollment",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "meeting_date",
    "fieldtype": "Date",
-   "label": "Meeting Date"
+   "label": "Meeting Date",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "column_break_asdq",
@@ -58,7 +68,9 @@
   {
    "fieldname": "meeting_details",
    "fieldtype": "Text Editor",
-   "label": "Meeting Details"
+   "label": "Meeting Details",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -73,24 +85,33 @@
   {
    "fieldname": "meeting_time",
    "fieldtype": "Time",
-   "label": "Meeting Time"
+   "label": "Meeting Time",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
-   "description": "In Hours",
    "fieldname": "meeting_period",
-   "fieldtype": "Int",
-   "label": "Meeting Period"
+   "fieldtype": "Duration",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Meeting Period",
+   "non_negative": 1,
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "meeting_place",
    "fieldtype": "Data",
-   "label": "Meeting Place"
+   "label": "Meeting Place",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "meeting_with",
    "fieldtype": "Table",
    "label": "Meeting with",
    "options": "Meeting with",
+   "permlevel": 1,
    "reqd": 1
   },
   {
@@ -100,23 +121,30 @@
   {
    "fieldname": "supervisor_notes",
    "fieldtype": "Text Editor",
-   "label": "Supervisor Notes"
+   "label": "Supervisor Notes",
+   "permlevel": 2
   },
   {
    "fieldname": "student_research",
    "fieldtype": "Link",
    "label": "Student Research",
-   "options": "Student Research"
+   "options": "Student Research",
+   "permlevel": 1,
+   "reqd": 1
   },
   {
    "fieldname": "section_break_cxcy",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "supervisor_notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Supervisor Notes"
   }
  ],
- "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-08 01:29:03.943960",
+ "modified": "2024-05-16 12:03:53.769086",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Researcher Meeting",
@@ -134,8 +162,21 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
   }
  ],
+ "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

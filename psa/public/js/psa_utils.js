@@ -227,7 +227,7 @@ psa_utils.get_program = function (program, callback) {
 }
 
 
-psa_utils.get_psa_student = function (student, callback) {
+psa_utils.get_student = function (student, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
         args: {

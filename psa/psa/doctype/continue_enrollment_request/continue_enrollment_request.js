@@ -73,26 +73,26 @@ frappe.ui.form.on("Continue Enrollment Request", {
     if (frm.doc.program_enrollment) {
       psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, creation, student, program) {
         var year_of_enrollment = new Date(creation).getFullYear();
-        psa_utils.get_psa_student(student, function (full_name_arabic, full_name_english) {
-          psa_utils.get_program(program, function (college, department, specialization) {
+        psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
+          psa_utils.get_program(program, function (faculty, department, specialization) {
             var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
             var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
             psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);//
 
-            var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
-            var array_of_value = [college, department, specialization, status];
+            var array_of_label = [__("Faculty"), __("Department"), __("Specialization"), __("Status")];
+            var array_of_value = [faculty, department, specialization, status];
             psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);//
           });
         });
 
 
-        if (frm.doc.suspended_request_number) {
+        if (frm.doc.suspend_enrollment_request) {
           frappe.call({
             method: 'frappe.client.get_value',
             args: {
               doctype: 'Suspend Enrollment Request',
               filters: {
-                name: frm.doc.suspended_request_number
+                name: frm.doc.suspend_enrollment_request
               },
               fieldname: ['creation', 'modified', 'status', 'suspend_period']
             },
@@ -196,14 +196,14 @@ frappe.ui.form.on("Continue Enrollment Request", {
     if (frm.doc.program_enrollment) {
       psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, creation, student, program) {
         var year_of_enrollment = new Date(creation).getFullYear();
-        psa_utils.get_psa_student(student, function (full_name_arabic, full_name_english) {
-          psa_utils.get_program(program, function (college, department, specialization) {
+        psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
+          psa_utils.get_program(program, function (faculty, department, specialization) {
             var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
             var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
             psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
-            var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
-            var array_of_value = [college, department, specialization, status];
+            var array_of_label = [__("Faculty"), __("Department"), __("Specialization"), __("Status")];
+            var array_of_value = [faculty, department, specialization, status];
             psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
           });
         });
@@ -276,14 +276,14 @@ frappe.ui.form.on("Continue Enrollment Request", {
             var modified_date = response.message.modified;
             var formatted_modified_date = modified_date.split(" ")[0];
 
-            frm.set_value("suspended_request_number", response.message.name);
+            frm.set_value("suspend_enrollment_request", response.message.name);
 
             var array_of_label = [__("Request Date"), __("Approval Date"), __("Status"), __("Suspend Period")];
             var array_of_value = [formatted_creation_date, formatted_modified_date, response.message.status, response.message.suspend_period];
             psa_utils.format_multi_html_field(frm, "suspended_request_details_html", array_of_label, array_of_value);
           }
           else {
-            frm.set_value("suspended_request_number", "");
+            frm.set_value("suspend_enrollment_request", "");
             $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
           }
         },
@@ -293,7 +293,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
       $(frm.fields_dict["student_html1"].wrapper).html('');
       $(frm.fields_dict["student_html2"].wrapper).html('');
 
-      frm.set_value("suspended_request_number", "");
+      frm.set_value("suspend_enrollment_request", "");
       $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
     }
   },

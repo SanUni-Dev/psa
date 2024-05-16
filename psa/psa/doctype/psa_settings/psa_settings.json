@@ -6,6 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "suspend_enrollment_request_settings_section",
+  "test",
+  "section_break_peoy",
   "set_a_limit_of_suspend_requests",
   "number_of_suspend_requests",
   "column_break_ysag",
@@ -19,11 +21,13 @@
   "month_of_report",
   "change_research_supervisor_request_settings_section",
   "needs_an_approval_of_main_supervisor",
-  "count_of_allowed_suggested_supervisors"
+  "count_of_allowed_suggested_supervisors",
+  "researcher_meeting_settings_section",
+  "set_a_limit_of_meetings_in_research",
+  "meeting_count"
  ],
  "fields": [
   {
-   "collapsible": 1,
    "fieldname": "suspend_enrollment_request_settings_section",
    "fieldtype": "Section Break",
    "label": "Suspend Enrollment Request Settings"
@@ -42,14 +46,14 @@
   },
   {
    "default": "1",
-   "description": "Set a limit on the number of requests a student can create per a program.",
+   "description": "Check to set a limit on the number of requests a student can create per a program.",
    "fieldname": "set_a_limit_of_suspend_requests",
    "fieldtype": "Check",
    "label": "Set a Limit of Requests"
   },
   {
    "default": "1",
-   "description": "Set a limit on the number of rejected requests a student can create per a program.",
+   "description": "Check to set a limit on the number of rejected requests a student can create per a program.",
    "fieldname": "set_a_limit_of_rejected_suspend_requests",
    "fieldtype": "Check",
    "label": "Set a Limit of Rejected Requests"
@@ -70,7 +74,6 @@
   },
   {
    "default": "0",
-   "depends_on": "eval: doc.set_days_of_programs",
    "fieldname": "enable_auto_validation_for_days",
    "fieldtype": "Check",
    "label": "Enable Auto Validation for Days"
@@ -115,13 +118,42 @@
    "fieldname": "needs_an_approval_of_main_supervisor",
    "fieldtype": "Check",
    "label": "Change Research Co Supervisor Needs an Approval of Main Supervisor"
+  },
+  {
+   "fieldname": "researcher_meeting_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Researcher Meeting Settings"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_of_meetings_in_research",
+   "fieldname": "meeting_count",
+   "fieldtype": "Int",
+   "label": "Meeting Count",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check to set a limit on the number of meetings a researcher can create per a research.",
+   "fieldname": "set_a_limit_of_meetings_in_research",
+   "fieldtype": "Check",
+   "label": "Set a Limit of Meetings in Research"
+  },
+  {
+   "default": "0",
+   "fieldname": "test",
+   "fieldtype": "Check",
+   "label": "test"
+  },
+  {
+   "fieldname": "section_break_peoy",
+   "fieldtype": "Section Break"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-13 00:21:24.406784",
+ "modified": "2024-05-16 13:18:43.532320",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
