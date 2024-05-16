@@ -85,8 +85,8 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
                 psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
                     psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
-                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Program")];
-                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, program];
+                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Academic Program")];
+                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, academic_program];
                         psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
                         var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];
@@ -103,10 +103,10 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     },
 
     onload(frm) {
-        // Uncomment it
-        // if (frm.is_new()) {
-        //     psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
-        // }
+        if (frm.is_new()) {
+            psa_utils.set_student_for_current_user(frm, "student");
+            psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+        }
     },
 
     before_workflow_action(frm) {
@@ -174,8 +174,8 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
                 psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
                     psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
-                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Program")];
-                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, program];
+                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Academic Program")];
+                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, academic_program];
                         psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
                         var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];

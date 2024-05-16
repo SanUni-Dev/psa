@@ -2,9 +2,38 @@
 var psa_utils = {};
 
 
+psa_utils.set_student_for_current_user = function (frm, field_name) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_student_for_current_user',
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
 psa_utils.set_program_enrollment_for_current_user = function (frm, field_name) {
     frappe.call({
         method: 'psa.api.psa_utils.get_program_enrollment_for_current_user',
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
+psa_utils.set_program_enrollment_for_student = function (frm, field_name, student) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_program_enrollment_for_student',
+        args: {
+            "student": student
+        },
         callback: function(response) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
@@ -218,8 +247,8 @@ psa_utils.get_academic_program = function (academic_program, callback) {
         },
         callback: function (response) {
             var program_abbreviation = response.message.program_abbreviation;
-            var faculty = response.message.college;
-            var faculty_department = response.message.department;
+            var faculty = response.message.faculty;
+            var faculty_department = response.message.faculty_department;
 
             callback(program_abbreviation, faculty, faculty_department);
         }
