@@ -295,4 +295,14 @@ frappe.ui.form.on("Continue Enrollment Request", {
       $(frm.fields_dict["suspended_request_details_html"].wrapper).html('');
     }
   },
+
+  student(frm) {
+    if (frm.doc.student) {
+        psa_utils.set_program_enrollment_for_student(frm, "program_enrollment", frm.doc.student);
+    }
+    else {
+        frm.set_value("program_enrollment", "");
+        refresh_field("program_enrollment");
+    }
+},
 });

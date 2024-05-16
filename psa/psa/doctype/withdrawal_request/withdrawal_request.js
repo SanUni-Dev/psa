@@ -234,4 +234,14 @@ frappe.ui.form.on("Withdrawal Request", {
             $(frm.fields_dict["student_html2"].wrapper).html('');
         }
     },
+
+    student(frm) {
+        if (frm.doc.student) {
+            psa_utils.set_program_enrollment_for_student(frm, "program_enrollment", frm.doc.student);
+        }
+        else {
+            frm.set_value("program_enrollment", "");
+            refresh_field("program_enrollment");
+        }
+    },
 });
