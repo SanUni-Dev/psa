@@ -192,36 +192,36 @@ psa_utils.get_program_enrollment = function (program_enrollment, callback) {
             filters: {
                 name: program_enrollment
             },
-            fieldname: ['status', 'creation', 'program', 'student']
+            fieldname: ['status', 'enrollment_date', 'program', 'student']
         },
         callback: function (response) {
             var status = response.message.status;
-            var creation = response.message.creation;
+            var enrollment_date = response.message.enrollment_date;
             var student = response.message.student;
             var program = response.message.program;
             
-            callback(status, creation, student, program);
+            callback(status, enrollment_date, student, program);
         }
     });
 }
 
 
-psa_utils.get_program = function (program, callback) {
+psa_utils.get_academic_program = function (academic_program, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
         args: {
-            doctype: 'Program',
+            doctype: 'Academic Program',
             filters: {
-                name: program
+                name: academic_program
             },
-            fieldname: ['college', 'department', 'specialization']
+            fieldname: ['program_abbreviation', 'faculty', 'faculty_department']
         },
         callback: function (response) {
-            var college = response.message.college;
-            var department = response.message.department;
-            var specialization = response.message.specialization;
+            var program_abbreviation = response.message.program_abbreviation;
+            var faculty = response.message.college;
+            var faculty_department = response.message.department;
 
-            callback(college, department, specialization);
+            callback(program_abbreviation, faculty, faculty_department);
         }
     });
 }
@@ -231,15 +231,15 @@ psa_utils.get_student = function (student, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
         args: {
-            doctype: 'PSA Student',
+            doctype: 'Student',
             filters: {
                 name: student
             },
-            fieldname: ['full_name_arabic', 'full_name_english']
+            fieldname: ['first_name', 'middle_name', 'last_name', 'first_name_en', 'middle_name_en', 'last_name_en']
         },
         callback: function (response) {
-            var full_name_arabic = response.message.full_name_arabic;
-            var full_name_english = response.message.full_name_english;
+            var full_name_arabic = response.message.first_name + " " + response.message.middle_name + " " + response.message.last_name;
+            var full_name_english = response.message.first_name_en + " " + response.message.middle_name_en + " " + response.message.last_name_en;
 
             callback(full_name_arabic, full_name_english);
         }
