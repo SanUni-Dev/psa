@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "creation": "2024-05-16 17:35:10.209264",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "program_degree"
+ ],
+ "fields": [
+  {
+   "fieldname": "program_degree",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Program Degree",
+   "options": "\nMaster Degree\nPHD Degree",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-16 17:39:19.717134",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Program Degree for Suspend",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

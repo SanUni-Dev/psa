@@ -6,7 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "suspend_enrollment_request_settings_section",
-  "test",
+  "allowed_program_degrees",
+  "column_break_otyr",
   "section_break_peoy",
   "set_a_limit_of_suspend_requests",
   "number_of_suspend_requests",
@@ -14,17 +15,21 @@
   "set_a_limit_of_rejected_suspend_requests",
   "number_of_rejected_suspend_requests",
   "continue_enrollment_request_settings_section",
-  "enable_auto_validation_for_days",
+  "allow_before_end_of_period",
+  "column_break_qogd",
   "section_break_evtv",
   "count_of_progress_reports_per_a_program",
-  "day_of_report",
-  "month_of_report",
+  "first_progress_report_date_column",
+  "first_progress_report_date_day",
+  "first_progress_report_date_month",
   "change_research_supervisor_request_settings_section",
   "needs_an_approval_of_main_supervisor",
+  "column_break_wqln",
   "count_of_allowed_suggested_supervisors",
   "researcher_meeting_settings_section",
   "set_a_limit_of_meetings_in_research",
-  "meeting_count"
+  "meeting_count",
+  "column_break_jfnj"
  ],
  "fields": [
   {
@@ -73,12 +78,6 @@
    "label": "Continue Enrollment Request Settings"
   },
   {
-   "default": "0",
-   "fieldname": "enable_auto_validation_for_days",
-   "fieldtype": "Check",
-   "label": "Enable Auto Validation for Days"
-  },
-  {
    "default": "3",
    "fieldname": "count_of_allowed_suggested_supervisors",
    "fieldtype": "Int",
@@ -95,18 +94,6 @@
    "fieldtype": "Select",
    "label": "Count of Progress Reports per a Program",
    "options": "\n1\n2\n3\n4"
-  },
-  {
-   "default": "1",
-   "fieldname": "day_of_report",
-   "fieldtype": "Int",
-   "label": "Day of Report"
-  },
-  {
-   "default": "3",
-   "fieldname": "month_of_report",
-   "fieldtype": "Int",
-   "label": "Month of Report "
   },
   {
    "fieldname": "change_research_supervisor_request_settings_section",
@@ -139,21 +126,62 @@
    "label": "Set a Limit of Meetings in Research"
   },
   {
-   "default": "0",
-   "fieldname": "test",
-   "fieldtype": "Check",
-   "label": "test"
-  },
-  {
    "fieldname": "section_break_peoy",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_wqln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_progress_report_date_column",
+   "fieldtype": "Column Break",
+   "label": "First Progress Report Date"
+  },
+  {
+   "default": "1",
+   "fieldname": "first_progress_report_date_day",
+   "fieldtype": "Int",
+   "label": "Day"
+  },
+  {
+   "default": "3",
+   "fieldname": "first_progress_report_date_month",
+   "fieldtype": "Int",
+   "label": "Month"
+  },
+  {
+   "fieldname": "column_break_jfnj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allowed_program_degrees",
+   "fieldtype": "Table",
+   "label": "Allowed Program Degrees",
+   "options": "Program Degree for Suspend"
+  },
+  {
+   "default": "0",
+   "description": "Check it to allow students to create a continue enrollment request before the end of period.",
+   "fieldname": "allow_before_end_of_period",
+   "fieldtype": "Check",
+   "label": "Allow Before End of Period"
+  },
+  {
+   "fieldname": "column_break_qogd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_otyr",
+   "fieldtype": "Column Break"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-16 13:18:43.532320",
+ "modified": "2024-05-16 18:31:25.674862",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
