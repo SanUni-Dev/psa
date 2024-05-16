@@ -2,9 +2,38 @@
 var psa_utils = {};
 
 
+psa_utils.set_student_for_current_user = function (frm, field_name) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_student_for_current_user',
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
 psa_utils.set_program_enrollment_for_current_user = function (frm, field_name) {
     frappe.call({
         method: 'psa.api.psa_utils.get_program_enrollment_for_current_user',
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
+psa_utils.set_program_enrollment_for_student = function (frm, field_name, student) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_program_enrollment_for_student',
+        args: {
+            "student": student
+        },
         callback: function(response) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
@@ -192,54 +221,54 @@ psa_utils.get_program_enrollment = function (program_enrollment, callback) {
             filters: {
                 name: program_enrollment
             },
-            fieldname: ['status', 'creation', 'program', 'student']
+            fieldname: ['status', 'enrollment_date', 'program', 'student']
         },
         callback: function (response) {
             var status = response.message.status;
-            var creation = response.message.creation;
+            var enrollment_date = response.message.enrollment_date;
             var student = response.message.student;
-            var program = response.message.program;
+            var academic_program = response.message.program;
             
-            callback(status, creation, student, program);
+            callback(status, enrollment_date, student, academic_program);
         }
     });
 }
 
 
-psa_utils.get_program = function (program, callback) {
+psa_utils.get_academic_program = function (academic_program, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
         args: {
-            doctype: 'Program',
+            doctype: 'Academic Program',
             filters: {
-                name: program
+                name: academic_program
             },
-            fieldname: ['college', 'department', 'specialization']
+            fieldname: ['program_abbreviation', 'faculty', 'faculty_department']
         },
         callback: function (response) {
-            var college = response.message.college;
-            var department = response.message.department;
-            var specialization = response.message.specialization;
+            var program_abbreviation = response.message.program_abbreviation;
+            var faculty = response.message.faculty;
+            var faculty_department = response.message.faculty_department;
 
-            callback(college, department, specialization);
+            callback(program_abbreviation, faculty, faculty_department);
         }
     });
 }
 
 
-psa_utils.get_psa_student = function (student, callback) {
+psa_utils.get_student = function (student, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
         args: {
-            doctype: 'PSA Student',
+            doctype: 'Student',
             filters: {
                 name: student
             },
-            fieldname: ['full_name_arabic', 'full_name_english']
+            fieldname: ['first_name', 'middle_name', 'last_name', 'first_name_en', 'middle_name_en', 'last_name_en']
         },
         callback: function (response) {
-            var full_name_arabic = response.message.full_name_arabic;
-            var full_name_english = response.message.full_name_english;
+            var full_name_arabic = response.message.first_name + " " + response.message.middle_name + " " + response.message.last_name;
+            var full_name_english = response.message.first_name_en + " " + response.message.middle_name_en + " " + response.message.last_name_en;
 
             callback(full_name_arabic, full_name_english);
         }

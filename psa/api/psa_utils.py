@@ -2,12 +2,24 @@ import frappe, json
 
 
 @frappe.whitelist()
-def get_program_enrollment_for_current_user():
+def get_student_for_current_user():
     user = frappe.session.user
+    student = frappe.get_value("Student", {"user_id": user}, "name")
+    return student
 
-    psa_student = frappe.get_value("PSA Student", {"user": user}, "name")
-    program_enrollment = frappe.get_value("Program Enrollment", {"student": psa_student}, "name")
 
+@frappe.whitelist()
+def get_program_enrollment_for_current_user():
+    student = get_student_for_current_user()	
+    # program_enrollment = frappe.get_value("Program Enrollment", {"student": student, 'active': 1}, "name")
+    program_enrollment = frappe.get_value("Program Enrollment", {"student": student}, "name")
+    return program_enrollment
+
+
+@frappe.whitelist()
+def get_program_enrollment_for_student(student):
+    # program_enrollment = frappe.get_value("Program Enrollment", {"student": student, 'active': 1}, "name")
+    program_enrollment = frappe.get_value("Program Enrollment", {"student": student}, "name")
     return program_enrollment
 
 

@@ -3,6 +3,7 @@
  "allow_rename": 1,
  "creation": "2024-05-04 03:23:11.610491",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "meeting_id",
@@ -47,7 +48,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-04 18:55:17.372961",
+ "modified": "2024-05-16 01:32:09.055447",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Meeting Details",

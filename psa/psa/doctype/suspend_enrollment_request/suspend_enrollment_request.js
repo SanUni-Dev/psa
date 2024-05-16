@@ -82,16 +82,15 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         }
 
         if (frm.doc.program_enrollment) {
-            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, creation, student, program) {
-                var year_of_enrollment = new Date(creation).getFullYear();
-                psa_utils.get_psa_student(student, function (full_name_arabic, full_name_english) {
-                    psa_utils.get_program(program, function (college, department, specialization) {
-                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
-                        var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
+            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
+                psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
+                    psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
+                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Academic Program")];
+                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, academic_program];
                         psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
-                        var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
-                        var array_of_value = [college, department, specialization, status];
+                        var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];
+                        var array_of_value = [program_abbreviation, faculty, faculty_department, status];
                         psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                     });
                 });
@@ -104,10 +103,10 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     },
 
     onload(frm) {
-        // Uncomment it
-        // if (frm.is_new()) {
-        //     psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
-        // }
+        if (frm.is_new()) {
+            psa_utils.set_student_for_current_user(frm, "student");
+            psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+        }
     },
 
     before_workflow_action(frm) {
@@ -172,16 +171,15 @@ frappe.ui.form.on("Suspend Enrollment Request", {
     program_enrollment(frm) {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
-            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, creation, student, program) {
-                var year_of_enrollment = new Date(creation).getFullYear();
-                psa_utils.get_psa_student(student, function (full_name_arabic, full_name_english) {
-                    psa_utils.get_program(program, function (college, department, specialization) {
-                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Year of Enrollment"), __("Program")];
-                        var array_of_value = [full_name_arabic, full_name_english, year_of_enrollment, program];
+            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
+                psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
+                    psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
+                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Academic Program")];
+                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, academic_program];
                         psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
 
-                        var array_of_label = [__("College"), __("Department"), __("Specialization"), __("Status")];
-                        var array_of_value = [college, department, specialization, status];
+                        var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];
+                        var array_of_value = [program_abbreviation, faculty, faculty_department, status];
                         psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
                     });
                 });
@@ -244,6 +242,16 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         else {
             $(frm.fields_dict["student_html1"].wrapper).html('');
             $(frm.fields_dict["student_html2"].wrapper).html('');
+        }
+    },
+
+    student(frm) {
+        if (frm.doc.student) {
+            psa_utils.set_program_enrollment_for_student(frm, "program_enrollment", frm.doc.student);
+        }
+        else {
+            frm.set_value("program_enrollment", "");
+            refresh_field("program_enrollment");
         }
     },
 });
