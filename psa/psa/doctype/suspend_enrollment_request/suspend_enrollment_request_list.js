@@ -6,8 +6,9 @@ frappe.listview_settings["Suspend Enrollment Request"] = {
     
     listview.page.actions.find(`[data-label='Edit']`).parent().parent().remove();
     
-    $(".layout-side-section").remove();
-    $(".sidebar-toggle-placeholder").remove();
+    //Code to hide the sidebar
+    // $(".layout-side-section").remove();
+    // $(".sidebar-toggle-placeholder").remove();
 
     listview.page.add_inner_button(__("Documentation"), function() {
       window.location.href = "/psa/طلب-وقف-القيد";
