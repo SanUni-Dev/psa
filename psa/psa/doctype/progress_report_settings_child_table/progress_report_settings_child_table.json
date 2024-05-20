@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-20 21:50:16.737204",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "program_degrees",
+  "count_of_progress_reports_per_a_program",
+  "first_progress_report_date_day",
+  "first_progress_report_date_month"
+ ],
+ "fields": [
+  {
+   "fieldname": "program_degrees",
+   "fieldtype": "Select",
+   "label": "Program Degrees",
+   "options": "\nMaster Degree\nPHD Deegree"
+  },
+  {
+   "fieldname": "count_of_progress_reports_per_a_program",
+   "fieldtype": "Select",
+   "label": "Count of Progress Reports per a Program",
+   "options": "\n1\n2\n3\n4"
+  },
+  {
+   "default": "1",
+   "fieldname": "first_progress_report_date_day",
+   "fieldtype": "Int",
+   "label": "Day"
+  },
+  {
+   "default": "3",
+   "fieldname": "first_progress_report_date_month",
+   "fieldtype": "Int",
+   "label": "Month"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-20 22:01:50.219650",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Progress Report Settings Child Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
