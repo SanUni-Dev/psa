@@ -1038,5 +1038,45 @@
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Withdrawal Request ({{doc.name}}) Pending Approval.",
   "value_changed": "status"
+ },
+ {
+  "attach_print": 0,
+  "channel": "System Notification",
+  "condition": "frappe.utils.add_days(frappe.utils.add_months(doc.creation, 6), -5) == frappe.utils.today()",
+  "date_changed": "creation",
+  "days_in_advance": 5,
+  "docstatus": 0,
+  "doctype": "Notification",
+  "document_type": "Suspend Enrollment Request",
+  "enabled": 1,
+  "event": "Days Before",
+  "is_standard": 0,
+  "message": "Dear {{ doc.student }},\n\nThis is a reminder to continue your enrollment as your suspension period will end soon. Please take the necessary actions to continue your enrollment.\n\nRegards,\nUniversity Administration\n",
+  "method": null,
+  "modified": "2024-05-22 02:40:10.694322",
+  "module": null,
+  "name": "Suspend Enrollment Reminder",
+  "print_format": null,
+  "property_value": null,
+  "recipients": [
+   {
+    "bcc": null,
+    "cc": null,
+    "condition": null,
+    "parent": "Suspend Enrollment Reminder",
+    "parentfield": "recipients",
+    "parenttype": "Notification",
+    "receiver_by_document_field": "owner",
+    "receiver_by_role": "Student"
+   }
+  ],
+  "send_system_notification": 0,
+  "send_to_all_assignees": 0,
+  "sender": null,
+  "sender_email": null,
+  "set_property_after_alert": null,
+  "slack_webhook_url": null,
+  "subject": "Reminder: Continue Enrollment",
+  "value_changed": null
  }
 ]
