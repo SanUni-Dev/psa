@@ -5,6 +5,8 @@ import frappe, json
 from frappe.model.document import Document
 from frappe import _
 from psa.api.psa_utils import get_active_request
+from frappe.utils import add_days, add_months, today
+
 
 
 class SuspendEnrollmentRequest(Document):
@@ -83,6 +85,22 @@ class SuspendEnrollmentRequest(Document):
 					_(") that is {0}!").format(active_withdrawal.status)
 				)
 
+	@staticmethod
+	def send_suspend_enrollment_notification():
+		suspend_requests = frappe.get_all("Suspend Enrollment Request", 
+										  filters={"status": "Active"},
+										  fields=["name", "student", "university_email", "creation"])
+
+		for request in suspend_requests:
+			target_date =add_hours(request.creation, 1) #add_days(add_months(request.creation, 6), -5)
+			if target_date == today():
+				if request.student_email:
+					subject = "Reminder to Resume Enrollment"
+					message = f"Dear {request.student},<br><br>Your suspension period is about to end in 5 days. Please take the necessary actions to resume your enrollment."
+					
+					frappe.sendmail(recipients=[request.student_email],
+									subject=subject,
+									message=message)
 
 	# @frappe.whitelist()
 	# def set_multiple_status(names, status):
