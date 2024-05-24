@@ -40,5 +40,33 @@
   "published": 1,
   "route": "psa/طلب-الانسحاب",
   "title": "طلب الانسحاب"
+ },
+ {
+  "allow_guest": 1,
+  "content": "Welcome to the homepage of your wiki!",
+  "docstatus": 0,
+  "doctype": "Wiki Page",
+  "meta_description": null,
+  "meta_image": null,
+  "meta_keywords": null,
+  "modified": "2024-05-24 00:54:47.632680",
+  "name": "6aadc38146",
+  "published": 1,
+  "route": "wiki/home",
+  "title": "Home"
+ },
+ {
+  "allow_guest": 1,
+  "content": "Welcome to Wiki Space wiki",
+  "docstatus": 0,
+  "doctype": "Wiki Page",
+  "meta_description": null,
+  "meta_image": null,
+  "meta_keywords": null,
+  "modified": "2024-05-24 00:54:48.109921",
+  "name": "897bc6c257",
+  "published": 1,
+  "route": "wiki/new-wiki-page",
+  "title": "New Wiki Page"
  }
 ]

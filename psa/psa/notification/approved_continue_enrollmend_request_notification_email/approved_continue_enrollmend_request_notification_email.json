@@ -1,0 +1,32 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Approved by Department Head\"",
+ "creation": "2024-05-24 21:49:35.745251",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Continue Enrollment Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-05-24 21:49:35.745251",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Approved Continue Enrollmend Request Notification Email",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "\"Approved\", your continue enrollment request ({{doc.name}}) has been {{doc.status}}.",
+ "value_changed": ""
+}

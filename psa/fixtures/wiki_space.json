@@ -34,5 +34,33 @@
     "wiki_page": "466f813614"
    }
   ]
+ },
+ {
+  "dark_mode_logo": null,
+  "docstatus": 0,
+  "doctype": "Wiki Space",
+  "light_mode_logo": null,
+  "modified": "2024-05-24 00:54:48.137762",
+  "name": "2dda052834",
+  "navbar_items": [],
+  "route": "wiki",
+  "wiki_sidebars": [
+   {
+    "hide_on_sidebar": 0,
+    "parent": "2dda052834",
+    "parent_label": "Wiki",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "6aadc38146"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "2dda052834",
+    "parent_label": "New Group",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "897bc6c257"
+   }
+  ]
  }
 ]

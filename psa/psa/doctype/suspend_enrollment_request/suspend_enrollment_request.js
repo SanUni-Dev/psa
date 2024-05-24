@@ -14,6 +14,7 @@ var modified_of_after_workflow_action = "";
 
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
+
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);

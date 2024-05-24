@@ -1,0 +1,37 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Approval Pending by Finance Officer\" or doc.status == \"Approval Pending by Director of Graduate Studies\"",
+ "creation": "2024-05-24 22:22:12.241437",
+ "date_changed": "modified",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "Days After",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "\"Pending Approval\", You have a Withdrawal Request ({{doc.name}}) Pending Approval.",
+ "modified": "2024-05-24 22:22:12.241437",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "New Withdrawal Request Notification Reminder for All Email",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "condition": "doc.status == \"Approval Pending by Finance Officer\"",
+   "receiver_by_role": "Finance Officer"
+  },
+  {
+   "condition": "doc.status == \"Approval Pending by Director of Graduate Studies\"",
+   "receiver_by_role": "Director of Graduate Studies"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "\"Pending Approval\", You have a Withdrawal Request ({{doc.name}}) Pending Approval.",
+ "value_changed": "status"
+}
