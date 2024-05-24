@@ -87,20 +87,25 @@ class SuspendEnrollmentRequest(Document):
 
 	@staticmethod
 	def send_suspend_enrollment_notification():
-		suspend_requests = frappe.get_all("Suspend Enrollment Request", 
-										  filters={"status": "Active"},
-										  fields=["name", "student", "university_email", "creation"])
+    	suspend_requests = frappe.get_all("Suspend Enrollment Request", 
+										filters={"status": "Active"},
+										fields=["name", "student", "creation"])
 
 		for request in suspend_requests:
-			target_date =add_hours(request.creation, 1) #add_days(add_months(request.creation, 6), -5)
+			user_id = frappe.db.get_value("Student", request.student, "user_id")
+			user_email = frappe.db.get_value("User", user_id, "email")
+			target_date = add_hours(request.creation, 1)  #add_days(add_months(request.creation, 6), -5)
+			
 			if target_date == today():
-				if request.student_email:
+				if user_email:
 					subject = "Reminder to Resume Enrollment"
 					message = f"Dear {request.student},<br><br>Your suspension period is about to end in 5 days. Please take the necessary actions to resume your enrollment."
 					
-					frappe.sendmail(recipients=[request.student_email],
+					frappe.sendmail(recipients=[user_email],
 									subject=subject,
 									message=message)
+
+
 
 	# @frappe.whitelist()
 	# def set_multiple_status(names, status):
