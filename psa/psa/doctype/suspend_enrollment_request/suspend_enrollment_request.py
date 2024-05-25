@@ -1,16 +1,11 @@
 # Copyright (c) 2024, Sana'a university and contributors
 # For license information, please see license.txt
 
-import frappe
+import frappe, json
 from frappe.model.document import Document
 from frappe import _
 from psa.api.psa_utils import get_active_request
 from frappe.utils import add_days, add_months, today, now_datetime, get_datetime
-
-def add_hours(datetime_str, hours):
-    
-    datetime_obj = get_datetime(datetime_str)
-    return datetime_obj + timedelta(hours=hours)
 
 class SuspendEnrollmentRequest(Document):
     def on_submit(self):
@@ -114,3 +109,8 @@ class SuspendEnrollmentRequest(Document):
     #         sus = frappe.get_doc("Suspend Enrollment Request", name)
     #         sus.status = status
     #         sus.save()
+
+
+def add_hours(datetime_str, hours):
+    datetime_obj = get_datetime(datetime_str)
+    return datetime_obj + timedelta(hours=hours)
