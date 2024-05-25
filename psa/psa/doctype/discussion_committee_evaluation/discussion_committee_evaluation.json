@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-23 00:46:27.562406",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "faculty_member",
+  "evaluation"
+ ],
+ "fields": [
+  {
+   "fieldname": "faculty_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Faculty Member",
+   "options": "Faculty Member"
+  },
+  {
+   "fieldname": "evaluation",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Evaluation"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-23 00:53:06.291724",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Discussion Committee Evaluation",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
