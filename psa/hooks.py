@@ -15,7 +15,8 @@ fixtures = [
     "PSA Settings",
     "Wiki Space",
     "Wiki Page",
-    "Translation"
+    "Translation",
+    "Email Account"
 ]
 
 

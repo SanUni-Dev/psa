@@ -1,0 +1,1 @@
+"Pending Approval", You have a Suspend Enrollment Request ({{doc.name}}) Pending Approval by you with reason: "{{doc.reason}}" for "{{doc.suspend_period}}".
