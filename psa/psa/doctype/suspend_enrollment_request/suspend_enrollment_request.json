@@ -312,6 +312,7 @@
  "name": "Suspend Enrollment Request",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
+ 
  "permissions": [
   {
    "cancel": 1,

@@ -19,7 +19,8 @@
   "department_council_minutes_section",
   "department_council_minutes_number",
   "department_council_minutes_date",
-  "member_of_selected_committee",
+  "member_of_internal_selected_committee",
+  "member_of_external_selected_committee",
   "financial_information_tab",
   "financial_status"
  ],
@@ -40,8 +41,9 @@
   },
   {
    "fieldname": "student",
-   "fieldtype": "Data",
-   "label": "Student"
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
   },
   {
    "fieldname": "column_break_fcrr",
@@ -49,8 +51,9 @@
   },
   {
    "fieldname": "research_title",
-   "fieldtype": "Data",
-   "label": "Student Research"
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research"
   },
   {
    "fieldname": "section_break_wfzp",
@@ -98,26 +101,34 @@
    "label": "Department Council Minutes Date"
   },
   {
-   "fieldname": "member_of_selected_committee",
-   "fieldtype": "Table",
-   "label": "Member of Selected Committee",
-   "options": "Selected Committee"
-  },
-  {
    "fieldname": "program_enrollment",
-   "fieldtype": "Data",
-   "label": "Program Enrollment"
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
   },
   {
    "fieldname": "student_supervisor",
-   "fieldtype": "Data",
-   "label": "Student Supervisor"
+   "fieldtype": "Link",
+   "label": "Student Supervisor",
+   "options": "Student Supervisor"
+  },
+  {
+   "fieldname": "member_of_internal_selected_committee",
+   "fieldtype": "Table",
+   "label": "Member of Internal Selected Committee",
+   "options": "Selected Committee"
+  },
+  {
+   "fieldname": "member_of_external_selected_committee",
+   "fieldtype": "Table",
+   "label": "Member of \u064f\u0652External Selected Committee ",
+   "options": "Selected Committee"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-05 04:56:43.615939",
+ "modified": "2024-05-23 02:59:44.905649",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Formation Discussion Committee",

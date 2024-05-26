@@ -1,0 +1,1 @@
+You have to Pay Fees of Your Continue Enrollment Request ({{doc.name}}) to complete it.

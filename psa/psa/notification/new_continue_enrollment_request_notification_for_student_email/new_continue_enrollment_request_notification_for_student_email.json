@@ -1,0 +1,32 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "",
+ "creation": "2024-05-24 21:35:42.252774",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Continue Enrollment Request",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Your continue enrollment request \"{{doc.name}}\" pending fee payment.",
+ "modified": "2024-05-24 21:35:42.252774",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "New Continue Enrollment Request Notification for Student Email",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "Your Continue Enrollment Request ({{doc.name}}) Pending Fee Payment.",
+ "value_changed": "status"
+}

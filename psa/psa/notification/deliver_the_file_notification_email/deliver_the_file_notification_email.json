@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"The File Delivered by Archivist\"",
+ "creation": "2024-05-24 22:23:49.461555",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-05-24 22:23:49.461555",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Deliver The File Notification Email",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "\"Delivered\", your file has been delivered to you by the Archivist."
+}

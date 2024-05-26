@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2024-05-22 21:23:18.488540",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Your suspend enrollment request \"{{doc.name}}\" pending fee payment.",
+ "modified": "2024-05-23 01:15:00.999353",
+ "modified_by": "aalywsfy612@gmail.com",
+ "module": "PSA",
+ "name": "New Suspend Enrollment Request Notification for Student Email",
+ "owner": "eyadalolofi2020@gmail.com",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "Your Suspend Enrollment Request ({{doc.name}}) Pending Fee Payment."
+}

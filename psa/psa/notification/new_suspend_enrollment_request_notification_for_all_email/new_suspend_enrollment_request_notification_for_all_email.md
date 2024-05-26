@@ -1,0 +1,1 @@
+Suspend enrollment request "{{doc.name}}" pending approval by you with reason: "{{doc.reason}}" for "{{doc.suspend_period}}".

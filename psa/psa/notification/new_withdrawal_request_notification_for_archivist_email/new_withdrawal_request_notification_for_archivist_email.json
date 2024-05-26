@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"The File Pending Delivery by the Archivist\"",
+ "creation": "2024-05-24 22:24:32.523283",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-05-24 22:24:32.523283",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "New Withdrawal Request Notification for Archivist Email",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "Archivist"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "New Withdrawal Request ({{doc.name}}) Pending File Delivery.",
+ "value_changed": "status"
+}
