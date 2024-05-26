@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Rejected by Vice Dean for GSA\" or doc.status == \"Rejected by Department Head\" or doc.status == \"Rejected by Department Council\" or doc.status == \"Rejected by College Dean\" or doc.status == \"Rejected by College Council\"",
+ "creation": "2024-05-23 01:53:12.077465",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Reason of rejection is: {{doc.rejection_reason}}",
+ "modified": "2024-05-23 01:53:12.077465",
+ "modified_by": "eyadalolofi2020@gmail.com",
+ "module": "PSA",
+ "name": "Rejected Suspend Enrollmend Request Notification Email",
+ "owner": "eyadalolofi2020@gmail.com",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "\"Rejected\", your suspend enrollment request ({{doc.name}}) has been {{doc.status}}."
+}
