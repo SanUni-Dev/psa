@@ -12,6 +12,7 @@
   "selection_supervisor",
   "second_supervisor_name",
   "third_supervisor_name",
+  "sssss",
   "section_break_usae",
   "council_number",
   "council_date",
@@ -48,7 +49,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Student",
-   "options": "Request A Supervisor",
+   "options": "Request Supervisor",
    "reqd": 1
   },
   {
@@ -93,11 +94,17 @@
   {
    "fieldname": "column_break_aztf",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sssss",
+   "fieldtype": "Table MultiSelect",
+   "label": "sssss",
+   "options": "Faculty Member And Supervisor"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-04 02:27:39.815879",
+ "modified": "2024-05-11 02:02:04.876884",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Proceedings Appoint Supervisor",

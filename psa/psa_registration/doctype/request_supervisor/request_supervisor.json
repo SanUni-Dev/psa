@@ -7,13 +7,15 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "student",
-  "research_title_english",
-  "column_break_zmhv",
-  "program_enrollment",
   "type",
-  "research_title_arabic",
+  "column_break_zmhv",
+  "student_name",
+  "program_enrollment",
+  "section_break_minj",
+  "research_title_english",
   "search",
+  "column_break_wifv",
+  "research_title_arabic",
   "section_break_bocy",
   "table_nzsh"
  ],
@@ -22,12 +24,6 @@
    "fieldname": "search",
    "fieldtype": "Text",
    "label": "Search "
-  },
-  {
-   "fieldname": "student",
-   "fieldtype": "Link",
-   "label": "Student",
-   "options": "Student"
   },
   {
    "fieldname": "column_break_zmhv",
@@ -56,12 +52,6 @@
    "options": "Program Enrollment"
   },
   {
-   "fieldname": "type",
-   "fieldtype": "Select",
-   "label": "Type",
-   "options": "\nMain Supervisor\nCo-Supervisor"
-  },
-  {
    "fieldname": "section_break_bocy",
    "fieldtype": "Section Break"
   },
@@ -70,14 +60,35 @@
    "fieldtype": "Table",
    "label": ".......",
    "options": "Request A Supervisor child"
+  },
+  {
+   "fetch_from": "program_enrollment.student_name",
+   "fieldname": "student_name",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
+  },
+  {
+   "fieldname": "section_break_minj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_wifv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nMain Supervisor\nCo-Supervisor"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-07 00:35:42.346120",
+ "modified": "2024-05-11 02:41:24.343268",
  "modified_by": "Administrator",
  "module": "PSA Registration",
- "name": "Request A Supervisor",
+ "name": "Request Supervisor",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
