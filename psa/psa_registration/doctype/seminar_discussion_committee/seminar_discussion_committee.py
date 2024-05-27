@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class RequestASupervisor(Document):
+class SeminarDiscussionCommittee(Document):
 	pass
