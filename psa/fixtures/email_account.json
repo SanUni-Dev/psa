@@ -289,7 +289,7 @@
   "attachment_limit": 25,
   "auth_method": "Basic",
   "auto_reply_message": null,
-  "awaiting_password": 0,
+  "awaiting_password": 1,
   "brand_logo": null,
   "connected_app": null,
   "connected_user": null,

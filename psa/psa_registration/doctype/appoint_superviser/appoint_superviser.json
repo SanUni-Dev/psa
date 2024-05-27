@@ -6,19 +6,24 @@
  "engine": "InnoDB",
  "field_order": [
   "student",
+  "type",
+  "research_title_english",
   "column_break_fesy",
   "supervisors",
+  "research_title_arabic",
   "department_council_data_section",
   "minute_number",
   "decision",
   "column_break_sdty",
-  "minute_date"
+  "minute_date",
+  "supervisor"
  ],
  "fields": [
   {
    "fieldname": "student",
-   "fieldtype": "Data",
-   "label": "Student"
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Request Supervisor"
   },
   {
    "fieldname": "column_break_fesy",
@@ -52,11 +57,35 @@
    "fieldname": "minute_date",
    "fieldtype": "Date",
    "label": "Minute Date"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fetch_from": "student.research_title_english",
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fetch_from": "student.research_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
+  },
+  {
+   "fetch_from": "student.type",
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type",
+   "options": "Request Supervisor"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-05 03:04:38.765926",
+ "modified": "2024-05-11 02:02:05.628438",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Appoint Superviser",
