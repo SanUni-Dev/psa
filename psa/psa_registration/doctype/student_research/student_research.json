@@ -1,15 +1,27 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-05-05 17:38:08.765633",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "student",
-  "research_title_arabic",
-  "column_break_robp",
   "program__enrollment",
+  "column_break_robp",
+  "disable",
+  "status",
+  "section_break_qcdd",
   "research_title_english",
+  "column_break_hrcl",
+  "research_title_arabic",
+  "section_break_wpxd",
+  "reference_doctype",
+  "column_break_phey",
+  "document_name",
+  "section_break_rnvd",
+  "pervious_proposal",
   "section_break_aqlh",
   "supervisor_details_html"
  ],
@@ -47,14 +59,73 @@
    "fieldname": "supervisor_details_html",
    "fieldtype": "HTML",
    "label": "Supervisor Details html"
+  },
+  {
+   "default": "0",
+   "fieldname": "disable",
+   "fieldtype": "Check",
+   "label": "Disable"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nActive\nChanged\nFinished"
+  },
+  {
+   "fieldname": "section_break_wpxd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "section_break_rnvd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pervious_proposal",
+   "fieldtype": "Link",
+   "label": "Pervious Proposal",
+   "options": "Student Research"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "column_break_phey",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PSA-Std-Res-.YY.-.MM.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_qcdd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_hrcl",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-07 01:43:07.393878",
+ "modified": "2024-05-28 00:29:39.135552",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
