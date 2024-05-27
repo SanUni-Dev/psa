@@ -328,7 +328,7 @@
   "no_failed": 9,
   "no_smtp_authentication": 0,
   "notify_if_unreplied": 0,
-  "password": null,
+  "password": "yznbypuktduxyhbh",
   "send_notification_to": null,
   "send_unsubscribe_message": 1,
   "service": "GMail",
