@@ -6,7 +6,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "disable",
+  "enabled",
+  "section_break_jhrk",
   "naming_series",
   "student",
   "program_enrollment",
@@ -51,12 +52,6 @@
    "fieldtype": "Link",
    "label": "Program Enrollment",
    "options": "Program Enrollment"
-  },
-  {
-   "default": "0",
-   "fieldname": "disable",
-   "fieldtype": "Check",
-   "label": "Disable"
   },
   {
    "fieldname": "type",
@@ -110,11 +105,21 @@
    "fieldtype": "Link",
    "label": "Pervious Supervisor",
    "options": "Student Supervisor"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_jhrk",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-28 00:10:16.408476",
+ "modified": "2024-05-29 02:29:09.951425",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Supervisor",
