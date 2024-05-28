@@ -168,24 +168,34 @@ app_include_js = [
 # Scheduled Tasks
 # ---------------
 
-scheduler_events = {
-	"all": [
-		"psa.tasks.all"
-	],
-	"daily": [
-		"psa.tasks.daily",
-        "psa.tasks.send_suspend_enrollment_notification"
-	],
-	"hourly": [
-		"psa.tasks.hourly"
-	],
-	"weekly": [
-		"psa.tasks.weekly"
-	],
-	"monthly": [
-		"psa.tasks.monthly"
-	],
-}
+
+#############################uncomment this scheduler##################################################################
+# scheduler_events = {
+# 	"cron":{
+# 		"0 0 * * *": [
+# 			"psa.tasks.cron.send_suspend_enrollment_notification"
+# 		]
+# 	}
+# }
+#############################                          ###################################################################
+
+# scheduler_events = {
+# 	"all": [
+# 		"psa.tasks.all"
+# 	],
+# 	"daily": [		 
+#         "psa.tasks.daily"
+# 	],
+# 	"hourly": [
+# 		"psa.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"psa.tasks.weekly"
+# 	],
+# 	"monthly": [
+# 		"psa.tasks.monthly"
+# 	],
+# }
 
 # Testing
 # -------
