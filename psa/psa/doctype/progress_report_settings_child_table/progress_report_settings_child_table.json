@@ -15,12 +15,14 @@
   {
    "fieldname": "program_degrees",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Program Degrees",
    "options": "\nMaster Degree\nPHD Deegree"
   },
   {
    "fieldname": "count_of_progress_reports_per_a_program",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Count of Progress Reports per a Program",
    "options": "\n1\n2\n3\n4"
   },
@@ -28,19 +30,21 @@
    "default": "1",
    "fieldname": "first_progress_report_date_day",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Day"
   },
   {
    "default": "3",
    "fieldname": "first_progress_report_date_month",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Month"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-20 22:01:50.219650",
+ "modified": "2024-05-31 03:52:15.186099",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report Settings Child Table",
