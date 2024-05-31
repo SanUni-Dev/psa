@@ -76,6 +76,21 @@ def get_active_request(doctype_name, program_enrollment):
 	return docs[0] if docs else None
 
 
+
+@frappe.whitelist()
+def get_active_request_change_supervisor(doctype_name, program_enrollment):
+	query = """
+       SELECT *
+       FROM `tab{0}`
+       WHERE (`docstatus` = 0)
+           AND `program_enrollment` = %s
+       ORDER BY modified DESC
+       LIMIT 1
+       """.format(doctype_name)
+	docs = frappe.db.sql(query, (program_enrollment), as_dict=True)
+	return docs[0] if docs else None
+
+
 # Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
 # @frappe.whitelist()
 # def save_timeline_child_table(doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list):
