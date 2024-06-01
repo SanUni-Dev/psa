@@ -78,7 +78,7 @@ def get_active_request(doctype_name, program_enrollment):
 
 
 @frappe.whitelist()
-def get_active_request_change_supervisor(doctype_name, program_enrollment):
+def get_active_change_request(doctype_name, program_enrollment):
 	query = """
        SELECT *
        FROM `tab{0}`

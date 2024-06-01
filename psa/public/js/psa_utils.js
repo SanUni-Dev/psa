@@ -213,9 +213,9 @@ psa_utils.get_active_request = function (doctype_name, program_enrollment, callb
 }
 
 
-psa_utils.get_active_request_change_supervisor = function (doctype_name, program_enrollment, callback) {
+psa_utils.get_active_change_request = function (doctype_name, program_enrollment, callback) {
     frappe.call({
-        method: 'psa.api.psa_utils.get_active_request_change_supervisor',
+        method: 'psa.api.psa_utils.get_active_change_request',
         args: {
             "doctype_name": doctype_name,
             "program_enrollment": program_enrollment

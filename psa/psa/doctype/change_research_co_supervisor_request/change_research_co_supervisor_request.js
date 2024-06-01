@@ -37,7 +37,7 @@ frappe.ui.form.on("Change Research Co Supervisor Request", {
                 else {
 
 
-                    // psa_utils.get_active_request_change_supervisor("Change Research Main Supervisor Request", frm.doc.program_enrollment, function (doc) {
+                    // psa_utils.get_active_change_request("Change Research Main Supervisor Request", frm.doc.program_enrollment, function (doc) {
                     //     if (doc) {
                     //         frm.set_intro('');
                     //         var url_of_active_request = `<a href="/app/change-research-main-supervisor-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;

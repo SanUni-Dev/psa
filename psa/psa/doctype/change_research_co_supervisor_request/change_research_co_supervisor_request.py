@@ -4,7 +4,7 @@
 import frappe, json
 from frappe.model.document import Document
 from frappe import _
-from psa.api.psa_utils import get_active_request, get_active_request_change_supervisor
+from psa.api.psa_utils import get_active_request, get_active_change_request
 
 
 class ChangeResearchCoSupervisorRequest(Document):
@@ -21,11 +21,11 @@ class ChangeResearchCoSupervisorRequest(Document):
 	def before_insert(self):
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
 
-		if program_enrollment_status.status == "fb5a6fd301":
+		if program_enrollment_status.status == "fb5a6fd301": # Suspended
 			url_of_continue_enrollment_request = frappe.utils.get_url_to_form('Continue Enrollment Request', "new")
 			frappe.throw(_("Can't add a change research co-supervisor request, because current status is suspended!") + "<br><br><a href='" + url_of_continue_enrollment_request + "'>" + _('Do you want to add a continue enrollment request?') + "</a>")
 
-		elif program_enrollment_status.status == "e1cc273bf5":
+		elif program_enrollment_status.status == "e1cc273bf5": # Withdrawn
 			frappe.throw(_("Can't add a change research co-supervisor request, because current status is withdrawn!"))
 
 		else:
@@ -42,7 +42,7 @@ class ChangeResearchCoSupervisorRequest(Document):
 						if count_of_allowed >= number_of_change_co_supervisor_requests:
 							frappe.throw(_("Can't add a change research co-supervisor request, because you have been Changed! (Max of allowed change research co-supervisor request = ") + str(number_of_change_co_supervisor_requests) + ")")
 			
-			active_change_co_supervisor = get_active_request_change_supervisor("Change Research Co Supervisor Request", self.program_enrollment)
+			active_change_co_supervisor = get_active_change_request("Change Research Co Supervisor Request", self.program_enrollment)
 			active_suspend = get_active_request("Suspend Enrollment Request", self.program_enrollment)
 			active_continue = get_active_request("Continue Enrollment Request", self.program_enrollment)
 			active_withdrawal = get_active_request("Withdrawal Request", self.program_enrollment)
