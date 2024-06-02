@@ -83,6 +83,15 @@ class ContinueEnrollmentRequest(Document):
 					_(") that is {0}!").format(active_withdrawal.status)
 				)
 
+			# implement the condition after prepearing the period in academia
+			allow_before_end_of_period = frappe.db.get_single_value('PSA Settings', 'allow_before_end_of_period')
+			if not allow_before_end_of_period:
+				condition = True
+				if not condition:
+					frappe.throw(
+						_("Can't add a continue enrollment request, because your suspend period has not expired!")
+					)
+
 
 	@frappe.whitelist()
 	def get_last_approved_suspend_enrollment_request(self, program_enrollment):

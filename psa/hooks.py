@@ -4,7 +4,7 @@ app_publisher = "Sana\'a university"
 app_description = "Postgraduate Studies Administration"
 app_email = "sanaa-uni@gmail.com"
 app_license = "mit"
-required_apps = ["wiki"]
+required_apps = ["wiki", "academia"]
 
 
 fixtures = [

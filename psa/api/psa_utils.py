@@ -10,16 +10,14 @@ def get_student_for_current_user():
 
 @frappe.whitelist()
 def get_program_enrollment_for_current_user():
-    student = get_student_for_current_user()	
-    # program_enrollment = frappe.get_value("Program Enrollment", {"student": student, 'active': 1}, "name")
-    program_enrollment = frappe.get_value("Program Enrollment", {"student": student}, "name")
+    student = get_student_for_current_user()
+    program_enrollment = frappe.get_value("Program Enrollment", {"student": student, "enabled": 1}, "name")
     return program_enrollment
 
 
 @frappe.whitelist()
 def get_program_enrollment_for_student(student):
-    # program_enrollment = frappe.get_value("Program Enrollment", {"student": student, 'active': 1}, "name")
-    program_enrollment = frappe.get_value("Program Enrollment", {"student": student}, "name")
+    program_enrollment = frappe.get_value("Program Enrollment", {"student": student, "enabled": 1}, "name")
     return program_enrollment
 
 
