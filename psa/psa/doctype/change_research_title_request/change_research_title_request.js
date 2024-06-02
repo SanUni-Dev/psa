@@ -10,7 +10,7 @@ frappe.ui.form.on("Change Research Title Request", {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
             psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
-                if (status == "fb5a6fd301") { // Suspended
+                if (status == "Suspended") {
                     psa_utils.get_url_to_new_form("Continue Enrollment Request", function (url) {
                         frm.set_intro((
                             `<div class="container">
@@ -29,7 +29,7 @@ frappe.ui.form.on("Change Research Title Request", {
                     });
                 }
 
-                else if (status == "e1cc273bf5") { // Withdrawn
+                else if (status == "Withdrawn") {
                     frm.set_intro((__(`Can't add a change research title request, because current status is ${status}!`)), 'red');
                 }
 
@@ -54,7 +54,7 @@ frappe.ui.form.on("Change Research Title Request", {
                                             var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
                                             frm.set_intro((__(`Can't add a change research title request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                                         }
-                                        else if (status == "489ea39789") { // Continued
+                                        else if (status == "Continued") {
                                             frm.set_intro((__(`Current status is ${status}.`)), 'green');
                                         }
                                     });
