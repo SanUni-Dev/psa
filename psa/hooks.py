@@ -173,7 +173,9 @@ app_include_js = [
 # scheduler_events = {
 # 	"cron":{
 # 		"0 0 * * *": [
-# 			"psa.tasks.cron.send_suspend_enrollment_notification"
+# 			"psa.tasks.cron.send_suspend_enrollment_notification",
+#             "psa.tasks.cron.create_progress_report_and_notify",
+#             "psa.tasks.cron.notify_supervisor_if_no_progress_report"
 # 		]
 # 	}
 # }

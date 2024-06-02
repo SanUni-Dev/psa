@@ -177,7 +177,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-08 01:33:13.232303",
+ "modified": "2024-06-02 01:50:33.209368",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",
@@ -193,6 +193,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Supervisor",
    "share": 1,
    "write": 1
   }
