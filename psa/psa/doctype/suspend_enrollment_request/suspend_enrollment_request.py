@@ -33,26 +33,26 @@ class SuspendEnrollmentRequest(Document):
             frappe.throw(_("Can't add a suspend enrollment request, because current status is withdrawn!"))
 
         else:
-            set_a_limit_of_suspend_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_suspend_requests')
-            number_of_suspend_requests = frappe.db.get_single_value('PSA Settings', 'number_of_suspend_requests')
+            suspend_set_a_limit_on_the_number_of_requests = frappe.db.get_single_value('PSA Settings', 'suspend_set_a_limit_on_the_number_of_requests')
+            suspend_number_of_requests = frappe.db.get_single_value('PSA Settings', 'suspend_number_of_requests')
 
-            set_a_limit_of_rejected_suspend_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_of_rejected_suspend_requests')
-            number_of_rejected_suspend_requests = frappe.db.get_single_value('PSA Settings', 'number_of_rejected_suspend_requests')
+            suspend_set_a_limit_on_the_number_of_rejected_requests = frappe.db.get_single_value('PSA Settings', 'suspend_set_a_limit_on_the_number_of_rejected_requests')
+            suspend_number_of_rejected_requests = frappe.db.get_single_value('PSA Settings', 'suspend_number_of_rejected_requests')
 
-            if set_a_limit_of_suspend_requests or set_a_limit_of_rejected_suspend_requests:
+            if suspend_set_a_limit_on_the_number_of_requests or suspend_set_a_limit_on_the_number_of_rejected_requests:
                 student_program_suspend_requests = frappe.get_all('Suspend Enrollment Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])
                 count_of_allowed = 0
                 count_of_rejected = 0
 
                 for request in student_program_suspend_requests:
-                    if "Approved by" in request.status and set_a_limit_of_suspend_requests:
+                    if "Approved by" in request.status and suspend_set_a_limit_on_the_number_of_requests:
                         count_of_allowed += 1
-                        if count_of_allowed >= number_of_suspend_requests:
-                            frappe.throw(_("Can't add a suspend enrollment request, because you have been suspended! (Max of allowed suspend enrollment requests = ") + str(number_of_suspend_requests) + ")")
-                    elif "Rejected by" in request.status and set_a_limit_of_rejected_suspend_requests:
+                        if count_of_allowed >= suspend_number_of_requests:
+                            frappe.throw(_("Can't add a suspend enrollment request, because you have been suspended! (Max of allowed suspend enrollment requests = ") + str(suspend_number_of_requests) + ")")
+                    elif "Rejected by" in request.status and suspend_set_a_limit_on_the_number_of_rejected_requests:
                         count_of_rejected += 1
-                        if count_of_rejected >= number_of_rejected_suspend_requests:
-                            frappe.throw(_("Can't add a suspend enrollment request, because you requested more than limit: ") + str(number_of_rejected_suspend_requests) + _(" requests!"))
+                        if count_of_rejected >= suspend_number_of_rejected_requests:
+                            frappe.throw(_("Can't add a suspend enrollment request, because you requested more than limit: ") + str(suspend_number_of_rejected_requests) + _(" requests!"))
 
             active_suspend = get_active_request("Suspend Enrollment Request", self.program_enrollment)
             active_continue = get_active_request("Continue Enrollment Request", self.program_enrollment)
