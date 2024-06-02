@@ -213,6 +213,20 @@ psa_utils.get_active_request = function (doctype_name, program_enrollment, callb
 }
 
 
+psa_utils.get_active_change_request = function (doctype_name, program_enrollment, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_active_change_request',
+        args: {
+            "doctype_name": doctype_name,
+            "program_enrollment": program_enrollment
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}
+
+
 psa_utils.get_program_enrollment = function (program_enrollment, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
