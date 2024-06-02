@@ -10,37 +10,33 @@ from psa.api.psa_utils import get_active_request, get_active_change_request
 class ChangeResearchMainSupervisorRequest(Document):
 	def on_submit(self):
 		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-		if program_enrollment.status == "489ea39789": # Continued
+		if program_enrollment.status == "Continued":
 			frappe.msgprint("Success Submited")
-		elif program_enrollment.status == "fb5a6fd301": # Suspended
-			frappe.throw(_("Failed! Student is suspended!"))
-		elif program_enrollment.status == "e1cc273bf5": # Withdrawn
-			frappe.throw(_("Failed! Student is withdrawn!"))
+		else:
+			frappe.throw(_("Failed! Student is {0}!".format(program_enrollment.status)))
 
 
 	def before_insert(self):
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
 
-		if program_enrollment_status.status == "fb5a6fd301": # Suspended
+		if program_enrollment_status.status == "Suspended":
 			url_of_continue_enrollment_request = frappe.utils.get_url_to_form('Continue Enrollment Request', "new")
 			frappe.throw(_("Can't add a change research main supervisor request, because current status is suspended!") + "<br><br><a href='" + url_of_continue_enrollment_request + "'>" + _('Do you want to add a continue enrollment request?') + "</a>")
 
-		elif program_enrollment_status.status == "e1cc273bf5": # Withdrawn
-			frappe.throw(_("Can't add a change research main supervisor request, because current status is withdrawn!"))
+		elif program_enrollment_status.status == "Continued":
+			set_a_limit_on_the_number_of_change_main_supervisor_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_on_the_number_of_change_main_supervisor_requests')
+			change_main_number_of_requests = frappe.db.get_single_value('PSA Settings', 'change_main_number_of_requests')
 
-		else:
-			set_a_limit_of_change_supervisor_requests = frappe.db.get_single_value('PSA Settings', 'set_a_limit_for_supervisor_change_request')
-			number_of_change_supervisor_requests = frappe.db.get_single_value('PSA Settings', 'count_of_request')
 
-			if set_a_limit_of_change_supervisor_requests:
+			if set_a_limit_on_the_number_of_change_main_supervisor_requests:
 				student_program_change_supervisor_requests = frappe.get_all('Change Research Main Supervisor Request', filters={'program_enrollment': self.program_enrollment}, fields=['*'])
 				count_of_allowed = 0
 
 				for request in student_program_change_supervisor_requests:
 					if request.docstatus == 1:
 						count_of_allowed += 1
-						if count_of_allowed >= number_of_change_supervisor_requests:
-							frappe.throw(_("Can't add a change research main supervisor request, because you have been Changed! (Max of allowed change research main supervisor request = ") + str(number_of_change_supervisor_requests) + ")")
+						if count_of_allowed >= change_main_number_of_requests:
+							frappe.throw(_("Can't add a change research main supervisor request, because you have been Changed! (Max of allowed change research main supervisor request = ") + str(change_main_number_of_requests) + ")")
 			
 			active_change_supervisor = get_active_change_request("Change Research Main Supervisor Request", self.program_enrollment)
 			active_suspend = get_active_request("Suspend Enrollment Request", self.program_enrollment)
@@ -78,3 +74,5 @@ class ChangeResearchMainSupervisorRequest(Document):
 					url_of_active_withdrawal_request +
 					_(") that is {0}!").format(active_withdrawal.status)
 				)
+		else:
+			frappe.throw(_("Can t add a change research main supervisor request, because current status is {0}!".format(program_enrollment_status.status)))
