@@ -10,16 +10,14 @@ def get_student_for_current_user():
 
 @frappe.whitelist()
 def get_program_enrollment_for_current_user():
-    student = get_student_for_current_user()	
-    # program_enrollment = frappe.get_value("Program Enrollment", {"student": student, 'active': 1}, "name")
-    program_enrollment = frappe.get_value("Program Enrollment", {"student": student}, "name")
+    student = get_student_for_current_user()
+    program_enrollment = frappe.get_value("Program Enrollment", {"student": student, "enabled": 1}, "name")
     return program_enrollment
 
 
 @frappe.whitelist()
 def get_program_enrollment_for_student(student):
-    # program_enrollment = frappe.get_value("Program Enrollment", {"student": student, 'active': 1}, "name")
-    program_enrollment = frappe.get_value("Program Enrollment", {"student": student}, "name")
+    program_enrollment = frappe.get_value("Program Enrollment", {"student": student, "enabled": 1}, "name")
     return program_enrollment
 
 
@@ -73,6 +71,21 @@ def get_active_request(doctype_name, program_enrollment):
        LIMIT 1
        """.format(doctype_name)
 	docs = frappe.db.sql(query, ("%Pending%", "%Draft%", program_enrollment), as_dict=True)
+	return docs[0] if docs else None
+
+
+
+@frappe.whitelist()
+def get_active_change_request(doctype_name, program_enrollment):
+	query = """
+       SELECT *
+       FROM `tab{0}`
+       WHERE (`docstatus` = 0)
+           AND `program_enrollment` = %s
+       ORDER BY modified DESC
+       LIMIT 1
+       """.format(doctype_name)
+	docs = frappe.db.sql(query, (program_enrollment), as_dict=True)
 	return docs[0] if docs else None
 
 

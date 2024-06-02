@@ -123,7 +123,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
   },
 
   onload(frm) {
-    if (frm.is_new()) {
+    if (frm.is_new() && frappe.user_roles.includes("Student")) {
       psa_utils.set_student_for_current_user(frm, "student");
       psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
     }
@@ -226,7 +226,21 @@ frappe.ui.form.on("Continue Enrollment Request", {
                       frm.set_intro((__(`Can't add a continue enrollment request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                     }
                     else if (status == "Suspended") {
-                      frm.set_intro((__(`Current status is ${status}.`)), 'green');
+                      // implement the condition after prepearing the period in academia
+                      frappe.db.get_single_value('PSA Settings', 'allow_before_end_of_period').then((allow_before_end_of_period)=> {
+                        if (!allow_before_end_of_period) {
+                          var condition = true;
+                          if (!condition) {
+                            frm.set_intro((__("Can't add a continue enrollment request, because your suspend period has not expired!")), 'red');
+                          }
+                          else {
+                            frm.set_intro((__(`Current status is ${status}.`)), 'green');
+                          }
+                        }
+                        else {
+                          frm.set_intro((__(`Current status is ${status}.`)), 'green');
+                        }
+                      });
                     }
                   });
                 }
