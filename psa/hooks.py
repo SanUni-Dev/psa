@@ -12,7 +12,6 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Notification",
-    "PSA Settings",
     "Wiki Space",
     "Wiki Page",
     "Translation",
@@ -170,10 +169,13 @@ app_include_js = [
 
 
 #############################uncomment this scheduler##################################################################
+# Cron Scheduler that be triggered everyday at 12:00:00 AM
 # scheduler_events = {
 # 	"cron":{
 # 		"0 0 * * *": [
-# 			"psa.tasks.cron.send_suspend_enrollment_notification"
+# 			"psa.tasks.cron.send_suspend_enrollment_notification",
+# 			"psa.tasks.cron.create_progress_report_and_notify",
+# 			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
 # 		]
 # 	}
 # }
