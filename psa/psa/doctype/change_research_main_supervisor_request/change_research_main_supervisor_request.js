@@ -11,7 +11,7 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
             psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
-                if (status == "fb5a6fd301") { // Suspended
+                if (status == "Suspended") {
                     psa_utils.get_url_to_new_form("Continue Enrollment Request", function (url) {
                         frm.set_intro((
                             `<div class="container">
@@ -30,13 +30,11 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
                     });
                 }
 
-                else if (status == "e1cc273bf5") { // Withdrawn
+                else if (status == "Withdrawn") {
                     frm.set_intro((__(`Can't add a change research main supervisor request, because current status is ${status}!`)), 'red');
                 }
 
                 else {
-
-
                     psa_utils.get_active_change_request("Change Research Main Supervisor Request", frm.doc.program_enrollment, function (doc) {
                         if (doc) {
                             frm.set_intro('');
