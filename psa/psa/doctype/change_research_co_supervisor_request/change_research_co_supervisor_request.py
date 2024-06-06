@@ -10,22 +10,20 @@ from psa.api.psa_utils import get_active_request, get_active_change_request
 class ChangeResearchCoSupervisorRequest(Document):
 	def on_submit(self):
 		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-		if program_enrollment.status == "489ea39789": # Continued
+		if program_enrollment.status == "Continued":
 			frappe.msgprint("Success Submited")
-		elif program_enrollment.status == "fb5a6fd301": # Suspended
-			frappe.throw(_("Failed! Student is suspended!"))
-		elif program_enrollment.status == "e1cc273bf5": # Withdrawn
-			frappe.throw(_("Failed! Student is withdrawn!"))
+		else:
+			frappe.throw(_("Failed! Student is {0}!".format(program_enrollment.status)))
 
 
 	def before_insert(self):
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)
 
-		if program_enrollment_status.status == "fb5a6fd301": # Suspended
+		if program_enrollment_status.status == "Suspended":
 			url_of_continue_enrollment_request = frappe.utils.get_url_to_form('Continue Enrollment Request', "new")
 			frappe.throw(_("Can't add a change research co-supervisor request, because current status is suspended!") + "<br><br><a href='" + url_of_continue_enrollment_request + "'>" + _('Do you want to add a continue enrollment request?') + "</a>")
 
-		elif program_enrollment_status.status == "e1cc273bf5": # Withdrawn
+		elif program_enrollment_status.status == "Withdrawn":
 			frappe.throw(_("Can't add a change research co-supervisor request, because current status is withdrawn!"))
 
 		else:
