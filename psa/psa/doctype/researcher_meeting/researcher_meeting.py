@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 
 import frappe
-from console import console
 from frappe.model.document import Document
 from frappe import _
 
