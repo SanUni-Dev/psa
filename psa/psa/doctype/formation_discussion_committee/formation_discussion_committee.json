@@ -12,6 +12,8 @@
   "research_title",
   "student_supervisor",
   "section_break_wfzp",
+  "status",
+  "column_break_igxi",
   "amended_from",
   "attachments_tab",
   "certificate_of_proficiency",
@@ -123,12 +125,22 @@
    "fieldtype": "Table",
    "label": "Member of \u064f\u0652External Selected Committee ",
    "options": "Selected Committee"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_igxi",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-23 02:59:44.905649",
+ "modified": "2024-06-06 22:48:08.091247",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Formation Discussion Committee",
