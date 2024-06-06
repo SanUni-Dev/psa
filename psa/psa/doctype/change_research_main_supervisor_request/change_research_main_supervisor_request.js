@@ -107,3 +107,52 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
         }
     },
 });
+
+
+// frappe.ui.form.on('Suggested Supervisor', {
+//     faculty: function(frm, cdt, cdn) {
+//         var d = locals[cdt][cdn];
+//         // d.faculty_member = '';
+//         // cur_frm.refresh_field('suggested_supervisors');
+//         // d.scientific_degree = '';
+
+//         frappe.db.get_value("Faculty", d.faculty, ["company"],
+//             function(value){
+//                 console.log(value.company);
+//                 frm.set_query("faculty_member", () => {
+//                     return {
+//                         filters: {
+//                             company: value.company,
+//                         },
+//                     };
+//                 });
+//             }
+//         );
+//     },
+
+
+//     scientific_degree: function(frm, cdt, cdn) {
+//         var d = locals[cdt][cdn];
+//         frappe.db.get_all("Faculty Member Scientific Qualification",
+//             filters={
+//                 "parenttype": "Faculty Member", "parentfield": "faculty_member_scientific_qualification", "scientific_degree": d.scientific_degree
+//             },
+//             fields=["parent"],
+//             function(scientific_degree_list){
+//                 // d.faculty_member = '';
+//                 // d.scientific_degree = '';
+//                 cur_frm.refresh_field('suggested_supervisors');
+
+//                 var faculty_member_list =[];
+
+//                 // frm.set_query('scientific_degree', function() {
+//                 // 	return {
+//                 // 		filters: {
+//                 // 			'name':  ["in", ll]
+//                 // 		}
+//                 // 	};
+//                 // });
+//             }
+//         );
+//     }
+// });
