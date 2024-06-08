@@ -89,6 +89,20 @@ def get_active_change_request(doctype_name, program_enrollment):
 	return docs[0] if docs else None
 
 
+
+@frappe.whitelist()
+def get_scientific_degree(scientific_degree):
+	query = """
+	select fm.name from
+		`tabFaculty Member Scientific Qualification` as fmsq
+		join `tabFaculty Member` as fm
+		on fmsq.parent = fm.name
+		where fmsq.scientific_degree = %s;
+	"""
+	docs = frappe.db.sql(query, (scientific_degree), as_dict=True)
+	return docs if docs else None
+
+
 # Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
 # @frappe.whitelist()
 # def save_timeline_child_table(doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list):

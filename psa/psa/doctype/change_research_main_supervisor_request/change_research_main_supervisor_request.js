@@ -62,7 +62,7 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
                                                     var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
                                                     frm.set_intro((__(`Can't add a change research main supervisor request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
                                                 }
-                                                else if (status == "489ea39789") { // Continued
+                                                else if (status == "Continued") { 
                                                     frm.set_intro((__(`Current status is ${status}.`)), 'green');
                                                 }
                                             });
@@ -108,29 +108,51 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
     },
 });
 
+frappe.ui.form.on('Suggested Supervisor', {
+    scientific_degree: function(frm, cdt, cdn) {
+        var child =  locals[cdt][cdn];
+        var values = child.scientific_degree;
+        console.log(values);
 
-// frappe.ui.form.on('Suggested Supervisor', {
-//     faculty: function(frm, cdt, cdn) {
-//         var d = locals[cdt][cdn];
-//         // d.faculty_member = '';
-//         // cur_frm.refresh_field('suggested_supervisors');
-//         // d.scientific_degree = '';
+        frappe.call({
+            method: 'psa.api.psa_utils.get_scientific_degree',
+            args: {
+                "scientific_degree": values
+            },
+            callback: function (response) {
+                console.log(response.message);
+                frm.fields_dict.faculty_member.get_query = function(doc,cdt,cdn) {
+                    return {
+                        filters:[
+                            ['name', '=', "ACAD-FM-00004"]
+                        ]
+                    }
+                }
+            }
+        });
+    },
 
-//         frappe.db.get_value("Faculty", d.faculty, ["company"],
-//             function(value){
-//                 console.log(value.company);
-//                 frm.set_query("faculty_member", () => {
-//                     return {
-//                         filters: {
-//                             company: value.company,
-//                         },
-//                     };
-//                 });
-//             }
-//         );
-//     },
+    faculty: function(frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        // d.faculty_member = '';
+        // cur_frm.refresh_field('suggested_supervisors');
+        // d.scientific_degree = '';
 
+        frappe.db.get_value("Faculty", d.faculty, ["company"],
+            function(value){
+                console.log(value.company);
+                frm.set_query("faculty_member", () => {
+                    return {
+                        filters: {
+                            company: value.company,
+                        },
+                    };
+                });
+            }
+        );
+    },
 
+});
 //     scientific_degree: function(frm, cdt, cdn) {
 //         var d = locals[cdt][cdn];
 //         frappe.db.get_all("Faculty Member Scientific Qualification",
