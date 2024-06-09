@@ -43,7 +43,7 @@ def create_progress_report_and_notify():
     progress_report_settings = frappe.get_all(
         'Progress Report Settings Child Table',
         filters={'parent': 'PSA Settings', 'parenttype': 'PSA Settings', 'parentfield': 'program_progress_reports'},
-        fields=['program_degrees', 'count_of_progress_reports_per_a_program', 'first_progress_report_date_day', 'first_progress_report_date_month']
+        fields=['program_degrees', 'number_of_progress_reports_per_a_program', 'first_progress_report_date_day', 'first_progress_report_date_month']
     )
     
     today = datetime.today()
@@ -55,9 +55,9 @@ def create_progress_report_and_notify():
         month = setting['first_progress_report_date_month']
 
         # حساب تواريخ تقارير التقدم
-        for i in range(int(setting['count_of_progress_reports_per_a_program'])):
+        for i in range(int(setting['number_of_progress_reports_per_a_program'])):
             report_dates.append(datetime(today.year, month, day))
-            month += 12 / int(setting['count_of_progress_reports_per_a_program'])  # تقسيم  التقارير على السنة كلها
+            month += int(12 / int(setting['number_of_progress_reports_per_a_program']))  # تقسيم  التقارير على السنة كلها كعدد صحيح
 
         student_supervisors = frappe.get_all('Student Supervisor', filters={'enabled': 1}, fields=['student', 'program_enrollment'])
         program_enrollments = frappe.get_all('Program Enrollment', filters={'name': ['in', [ss['program_enrollment'] for ss in student_supervisors]]}, fields=['name', 'program'])
@@ -71,19 +71,24 @@ def create_progress_report_and_notify():
         for student in students:
             user_id = frappe.db.get_value("Student", student['name'], "user_id")
             user_email = frappe.db.get_value("User", user_id, "email")
+            student_supervisor = get_supervisor_for_student(student['name'])
 
             for report_date in report_dates:
-                if today.date() == report_date.date():                                        
+                # if today.date() == report_date.date(): لما نشتي يرتسل التقرير بالوقت المحدد نفتح هذا التعليق 
+                if True:  # تنفذ بدون تحقق من التاريخ
+                    print("Creating progress report for student:", student['name'])
+                    #pro= frappe.db.get_value("Program Enrollment", filters= {'student':student['name']}, "student")
                     progress_report = frappe.get_doc({
                         "doctype": "Progress Report",
                         "student": student['name'],
-                        "program_enrollment": frappe.db.get_value("Student", student['name'], "program_enrollment"),
+                        "program_enrollment": program_enrollments, #frappe.db.get_value("Student", student['name'], "program_enrollment"),
+                        "supervisor": "PSA-Std-Sup-24-06-0001", # student_supervisor,
                         "report_date": today,
                         "from_date": today - timedelta(days=90),
                         "to_date": today,
                         "status": "Unsatisfied"
                     })
-                    progress_report.insert(ignore_permissions=True)
+                    progress_report.insert()
                     frappe.db.commit()
 
                     if user_email:                        
@@ -105,11 +110,12 @@ def create_progress_report_and_notify():
                         notification_doc.insert(ignore_permissions=True)
                         frappe.db.commit()
 
+
 def notify_supervisor_if_no_progress_report():    
     progress_report_settings = frappe.get_all(
         'Progress Report Settings Child Table',
         filters={'parent': 'PSA Settings', 'parenttype': 'PSA Settings', 'parentfield': 'program_progress_reports'},
-        fields=['program_degrees', 'count_of_progress_reports_per_a_program', 'first_progress_report_date_day', 'first_progress_report_date_month']
+        fields=['program_degrees', 'number_of_progress_reports_per_a_program', 'first_progress_report_date_day', 'first_progress_report_date_month']
     )
     
     today = datetime.today()
@@ -146,7 +152,7 @@ def notify_supervisor_if_no_progress_report():
                 day = setting['first_progress_report_date_day']
                 month = setting['first_progress_report_date_month']
                 last_report_date = datetime(today.year, month, day)
-                for i in range(int(setting['count_of_progress_reports_per_a_program'])):
+                for i in range(int(setting['number_of_progress_reports_per_a_program'])):
                     last_report_date += timedelta(days=90)
 
                 # التحقق من وجود تقارير الانجاز في المدة المحددة
@@ -175,3 +181,12 @@ def notify_supervisor_if_no_progress_report():
                     })
                     notification_doc.insert(ignore_permissions=True)
                     frappe.db.commit()
+
+
+@frappe.whitelist()
+def get_supervisor_for_student(student):
+    supervisor = frappe.get_value("Student Supervisor", {"student": student, "enabled": 1, "type": "Main Supervisor"}, "supervisor")
+    if supervisor:
+        supervisor_name = frappe.get_value("Faculty Member", supervisor, "name")
+        return supervisor_name
+    return None
