@@ -74,6 +74,31 @@ def get_active_request(doctype_name, program_enrollment):
 	return docs[0] if docs else None
 
 
+@frappe.whitelist()
+def active_request(doctype_name, student, program_enrollment, docstatus_list, status_list):
+	fields = "SELECT {0} ".format("*")
+	doctype = "FROM `tab{0}` ".format(doctype_name)
+	where = "where `student` = '{0}' AND `program_enrollment` = '{1}' ".format(student, program_enrollment)
+	if docstatus_list:
+		where_docstatus = ""
+		for docstatus in json.loads(docstatus_list):
+			if where_docstatus != "":
+				where_docstatus = where_docstatus + " OR `docstatus` = " + str(docstatus)
+			else:
+				where_docstatus = "`docstatus` = " + str(docstatus)
+		where = where + "AND ({0}) ".format(where_docstatus)
+	if status_list:
+		where_status = ""
+		for status in json.loads(status_list):
+			if where_status:
+				where_status += " OR `status` LIKE '%{0}%'".format(status)
+			else:
+				where_status += "`status` LIKE '%{0}%'".format(status)
+		where += "AND ({0}) ".format(where_status)
+	query = fields + doctype + where + "ORDER BY modified DESC LIMIT 1"
+	docs = frappe.db.sql(query, as_dict=True)
+	return docs[0] if docs else None
+
 
 @frappe.whitelist()
 def get_active_change_request(doctype_name, program_enrollment):

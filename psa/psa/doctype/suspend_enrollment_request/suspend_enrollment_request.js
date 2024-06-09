@@ -14,6 +14,23 @@ var modified_of_after_workflow_action = "";
 
 frappe.ui.form.on("Suspend Enrollment Request", {
     refresh(frm) {
+        frm.add_custom_button(__("Test Fun"), () => {
+            frappe.call({
+                method: 'psa.api.psa_utils.active_request',
+                args: {
+                    "doctype_name": "Suspend Enrollment Request",
+                    "student": "",
+                    "program_enrollment": "PSA-PE-24-03-000186",
+                    "docstatus_list": [0, 1],
+                    "status_list": ["Draft", "Approved"]
+                },
+                callback: function(response) {
+                    if (response.message) {
+                        console.log(response.message);
+                    }
+                }
+            });
+        });
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
