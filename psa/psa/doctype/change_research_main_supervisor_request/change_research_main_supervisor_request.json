@@ -13,6 +13,7 @@
   "current_supervisor",
   "column_break_olbw",
   "naming_series",
+  "status",
   "section_break_eadh",
   "suggested_supervisors",
   "change_reason",
@@ -153,6 +154,12 @@
    "fieldname": "current_supervisor",
    "fieldtype": "Data",
    "label": "Current Supervisor"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -163,7 +170,7 @@
    "link_fieldname": "document_name"
   }
  ],
- "modified": "2024-05-28 03:37:20.510063",
+ "modified": "2024-06-06 22:49:45.979096",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Main Supervisor Request",

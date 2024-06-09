@@ -20,6 +20,7 @@
   "section_break_kkar",
   "meeting_details",
   "section_break_ctpi",
+  "status",
   "amended_from",
   "supervisor_notes_tab",
   "supervisor_notes"
@@ -140,11 +141,17 @@
    "fieldname": "supervisor_notes_tab",
    "fieldtype": "Tab Break",
    "label": "Supervisor Notes"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-16 12:03:53.769086",
+ "modified": "2024-06-06 22:43:53.013876",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Researcher Meeting",

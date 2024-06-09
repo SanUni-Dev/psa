@@ -12,6 +12,7 @@
   "column_break_teka",
   "supervisor",
   "report_date",
+  "status",
   "amended_from",
   "achievement_in_the_period_section",
   "from_date",
@@ -30,7 +31,7 @@
   "section_break_kblp",
   "research_achievement_supervisor",
   "expected_date_of_thesis_submission",
-  "status",
+  "satisfaction_status",
   "recommended_action"
  ],
  "fields": [
@@ -73,9 +74,9 @@
   },
   {
    "fieldname": "status",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Status",
-   "options": "\nSatisfied\nUnsatisfied"
+   "read_only": 1
   },
   {
    "fieldname": "meetings_tab",
@@ -172,12 +173,18 @@
    "fieldname": "research_achievement_supervisor",
    "fieldtype": "Percent",
    "label": "Research Achievement %"
+  },
+  {
+   "fieldname": "satisfaction_status",
+   "fieldtype": "Select",
+   "label": "Satisfaction Status",
+   "options": "\nSatisfied\nUnsatisfied"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-02 01:50:33.209368",
+ "modified": "2024-06-06 22:46:04.075421",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",

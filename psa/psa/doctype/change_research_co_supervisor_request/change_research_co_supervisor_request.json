@@ -12,6 +12,7 @@
   "current_supervisor",
   "column_break_olbw",
   "naming_series",
+  "status",
   "section_break_eadh",
   "suggested_supervisors",
   "change_reason",
@@ -150,12 +151,18 @@
    "label": "Suggested Supervisors",
    "options": "Suggested Supervisor",
    "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-13 00:04:05.833163",
+ "modified": "2024-06-06 22:50:10.455155",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Co Supervisor Request",
