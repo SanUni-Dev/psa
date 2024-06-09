@@ -1,5 +1,5 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "columns": [
   {
    "fieldname": "student_name",
@@ -43,7 +43,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letterhead": null,
- "modified": "2024-06-04 23:56:37.362101",
+ "modified": "2024-06-05 18:24:53.365717",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Monthly Student Progress Report",
