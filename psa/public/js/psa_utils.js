@@ -2,13 +2,14 @@
 var psa_utils = {};
 
 
-psa_utils.set_student_for_current_user = function (frm, field_name) {
+psa_utils.set_student_for_current_user = function (frm, field_name, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_student_for_current_user',
         callback: function(response) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                callback();
             }
         }
     });

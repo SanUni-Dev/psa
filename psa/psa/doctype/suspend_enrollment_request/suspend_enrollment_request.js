@@ -102,8 +102,9 @@ frappe.ui.form.on("Suspend Enrollment Request", {
 
     onload(frm) {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
-            psa_utils.set_student_for_current_user(frm, "student");
-            psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+            psa_utils.set_student_for_current_user(frm, "student", function () {
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+            });
         }
     },
 
