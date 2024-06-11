@@ -75,29 +75,98 @@ def get_active_request(doctype_name, program_enrollment):
 
 
 @frappe.whitelist()
+def get_program_enrollment_status(program_enrollment):
+    program_enrollment_status = frappe.get_value("Program Enrollment", {"name": program_enrollment}, "status")
+    return program_enrollment_status
+
+
+@frappe.whitelist()
+def check_program_enrollment_status(program_enrollment, accepted_status_list, rejected_status_list):
+	status = get_program_enrollment_status(program_enrollment)
+	if status in accepted_status_list:
+		return True
+	elif status in rejected_status_list:
+		return False
+	else:
+		return False
+
+
+@frappe.whitelist()
 def active_request(doctype_name, student, program_enrollment, docstatus_list, status_list):
-	fields = "SELECT {0} ".format("*")
-	doctype = "FROM `tab{0}` ".format(doctype_name)
-	where = "where `student` = '{0}' AND `program_enrollment` = '{1}' ".format(student, program_enrollment)
-	if docstatus_list:
-		where_docstatus = ""
-		for docstatus in json.loads(docstatus_list):
-			if where_docstatus != "":
-				where_docstatus = where_docstatus + " OR `docstatus` = " + str(docstatus)
+	try:
+		fields = "SELECT {0} ".format("*")
+		doctype = "FROM `tab{0}` ".format(doctype_name)
+		where = "WHERE `student` = '{0}' AND `program_enrollment` = '{1}' ".format(student, program_enrollment)
+		if docstatus_list:
+			where_docstatus = ""
+			for docstatus in docstatus_list:
+				if where_docstatus != "":
+					where_docstatus = where_docstatus + " OR `docstatus` = " + str(docstatus)
+				else:
+					where_docstatus = "`docstatus` = " + str(docstatus)
+			where = where + "AND ({0}) ".format(where_docstatus)
+		if status_list:
+			where_status = ""
+			for status in status_list:
+				if where_status:
+					where_status += " OR `status` LIKE '%{0}%'".format(status)
+				else:
+					where_status += "`status` LIKE '%{0}%'".format(status)
+			where += "AND ({0}) ".format(where_status)
+		query = fields + doctype + where + "ORDER BY modified DESC LIMIT 1"
+		docs = frappe.db.sql(query, as_dict=True)
+		return docs[0] if docs else None
+	except Exception as e:
+		frappe.throw(f"An error occurred: {str(e)}")
+
+
+@frappe.whitelist()
+def check_active_request(student, program_enrollment, doctype_list):
+	try:
+		doctype_names = [
+			"Suspend Enrollment Request",
+			"Continue Enrollment Request",
+			"Withdrawal Request",
+			"Change Research Title Request",
+			"Change Research Main Supervisor Request",
+			"Change Research Co Supervisor Request",
+			"Initial Discussion Request",
+			"Extension Request"
+		]
+
+		doctype_docstatuses = {
+			"Suspend Enrollment Request": [0],
+			"Continue Enrollment Request": [0],
+			"Withdrawal Request": [0],
+			"Change Research Title Request": [0],
+			"Change Research Main Supervisor Request": [0],
+			"Change Research Co Supervisor Request": [0],
+			"Initial Discussion Request": [0],
+			"Extension Request": [0]
+		}
+
+		doctype_statuses = {
+			"Suspend Enrollment Request": ["Draft", "Pending"],
+			"Continue Enrollment Request": ["Draft", "Pending"],
+			"Withdrawal Request": ["Draft", "Pending"],
+			"Change Research Title Request": ["Draft", "Pending"],
+			"Change Research Main Supervisor Request": ["Draft", "Pending"],
+			"Change Research Co Supervisor Request": ["Draft", "Pending"],
+			"Initial Discussion Request": ["Draft", "Pending"],
+			"Extension Request": ["Draft", "Pending"]
+		}
+
+		for doctype in json.loads(doctype_list):
+			if doctype in doctype_names:
+				active_request_doc = active_request(doctype_name=doctype, student=student, program_enrollment=program_enrollment, docstatus_list=doctype_docstatuses[doctype], status_list=doctype_statuses[doctype])
+				if active_request_doc:
+					return [doctype, active_request_doc]
+				else:
+					continue
 			else:
-				where_docstatus = "`docstatus` = " + str(docstatus)
-		where = where + "AND ({0}) ".format(where_docstatus)
-	if status_list:
-		where_status = ""
-		for status in json.loads(status_list):
-			if where_status:
-				where_status += " OR `status` LIKE '%{0}%'".format(status)
-			else:
-				where_status += "`status` LIKE '%{0}%'".format(status)
-		where += "AND ({0}) ".format(where_status)
-	query = fields + doctype + where + "ORDER BY modified DESC LIMIT 1"
-	docs = frappe.db.sql(query, as_dict=True)
-	return docs[0] if docs else None
+				continue
+	except Exception as e:
+		frappe.throw(f"An error occurred: {str(e)}")
 
 
 @frappe.whitelist()
