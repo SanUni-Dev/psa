@@ -1,11 +1,16 @@
 import frappe
 from datetime import datetime, timedelta
 from frappe.utils import get_datetime, now_datetime
+from dateutil.relativedelta import relativedelta
 
 def add_minutes(datetime_str, minutes):
     """إضافة دقائق إلى تاريخ معين"""
     datetime_obj = get_datetime(datetime_str)
     return datetime_obj + timedelta(minutes=minutes)
+
+def add_months(source_date, months):
+    # استخدام relativedelta لإضافة الأشهر مع التعامل مع تجاوز السنة
+    return source_date + relativedelta(months=+months)
 
 def send_suspend_enrollment_notification():
     suspend_requests = frappe.get_all("Suspend Enrollment Request", 
@@ -53,11 +58,11 @@ def create_progress_report_and_notify():
         report_dates = []
         day = setting['first_progress_report_date_day']
         month = setting['first_progress_report_date_month']
+        start_date = datetime(today.year, month, day)
 
         # حساب تواريخ تقارير التقدم
         for i in range(int(setting['number_of_progress_reports_per_a_program'])):
-            report_dates.append(datetime(today.year, month, day))
-            month += int(12 / int(setting['number_of_progress_reports_per_a_program']))  # تقسيم  التقارير على السنة كلها كعدد صحيح
+            report_dates.append(add_months(start_date, i * int(12 / int(setting['number_of_progress_reports_per_a_program']))))  # تقسيم  التقارير على السنة كلها كعدد صحيح
 
         student_supervisors = frappe.get_all('Student Supervisor', filters={'enabled': 1}, fields=['student', 'program_enrollment'])
         program_enrollments = frappe.get_all('Program Enrollment', filters={'name': ['in', [ss['program_enrollment'] for ss in student_supervisors]]}, fields=['name', 'program'])
@@ -74,15 +79,15 @@ def create_progress_report_and_notify():
             student_supervisor = get_supervisor_for_student(student['name'])
 
             for report_date in report_dates:
-                # if today.date() == report_date.date(): لما نشتي يرتسل التقرير بالوقت المحدد نفتح هذا التعليق 
-                if True:  # تنفذ بدون تحقق من التاريخ
-                    print("Creating progress report for student:", student['name'])
+                if today.date() == report_date.date(): #لما نشتي يرتسل التقرير بالوقت المحدد نفتح هذا التعليق 
+                #if True:  # تنفذ بدون تحقق من التاريخ
+                    print("Creating progress report for student:", student['name'], student_supervisor)
                     #pro= frappe.db.get_value("Program Enrollment", filters= {'student':student['name']}, "student")
                     progress_report = frappe.get_doc({
                         "doctype": "Progress Report",
                         "student": student['name'],
                         "program_enrollment": program_enrollments, #frappe.db.get_value("Student", student['name'], "program_enrollment"),
-                        "supervisor": "PSA-Std-Sup-24-06-0001", # student_supervisor,
+                        "supervisor":  "PSA-Std-Sup-24-06-0001",# student_supervisor, #
                         "report_date": today,
                         "from_date": today - timedelta(days=90),
                         "to_date": today,
@@ -132,20 +137,21 @@ def notify_supervisor_if_no_progress_report():
         filtered_student_supervisors = [ss for ss in student_supervisors if ss['program_enrollment'] in [pe['name'] for pe in program_enrollments if pe['program'] in [ap['name'] for ap in academic_programs]]]
         filtered_student_names = [ss['student'] for ss in filtered_student_supervisors]
 
-        students = frappe.get_all('Student', filters={'name': ['in', filtered_student_names]}, fields=['name', 'user_id', 'first_name', 'program_enrollment'])
+        students = frappe.get_all('Student', filters={'name': ['in', filtered_student_names]}, fields=['name', 'user_id', 'first_name'])
 
         for student in students:
             student_name = student['name']
             user_id = student['user_id']
             student_doc_first_name = student['first_name']
-            program_enrollment = student['program_enrollment']
+             
             
             # نفلتر المشرف من قائمة Student Supervisor المرتبط بالطالب
-            supervisor_info = next((ss for ss in filtered_student_supervisors if ss['student'] == student_name and ss['program_enrollment'] == program_enrollment), None)
+            supervisor_info = next((ss for ss in filtered_student_supervisors if ss['student'] == student_name ), None)
             if supervisor_info:
                 supervisor = supervisor_info['supervisor']
                 employee_id = frappe.db.get_value('Faculty Member', supervisor, 'employee')
                 supervisor_user_id = frappe.db.get_value('Employee', employee_id, 'user_id')
+                supervisor_first_name = frappe.db.get_value('Employee', employee_id, 'first_name')
                 supervisor_email = frappe.db.get_value('User', supervisor_user_id, 'email')
 
                 # حساب تاريخ اخر تقرير متوقع
@@ -163,9 +169,10 @@ def notify_supervisor_if_no_progress_report():
 
                 if not progress_reports and supervisor_email:
                     print('Supervisor Email:', supervisor_email)
+                    print('Supervisor name:', supervisor_first_name)
 
                     subject = 'Student has not filled Progress Report'
-                    message = f'Dear {supervisor},<br><br>The student {student_doc_first_name} has not filled the progress report for the current period. Please follow up.'
+                    message = f'Dear {supervisor_first_name},<br><br>The student {student_doc_first_name} has not filled the progress report for the current period. Please follow up.'
                     frappe.sendmail(recipients=[supervisor_email], subject=subject, message=message, now=True)
 
                     
