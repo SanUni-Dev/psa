@@ -156,15 +156,28 @@ def check_active_request(student, program_enrollment, doctype_list):
 			"Extension Request": ["Draft", "Pending"]
 		}
 
-		for doctype in json.loads(doctype_list):
-			if doctype in doctype_names:
-				active_request_doc = active_request(doctype_name=doctype, student=student, program_enrollment=program_enrollment, docstatus_list=doctype_docstatuses[doctype], status_list=doctype_statuses[doctype])
-				if active_request_doc:
-					return [doctype, active_request_doc]
+		if isinstance(doctype_list, str):
+			for doctype in json.loads(doctype_list):
+				if doctype in doctype_names:
+					active_request_doc = active_request(doctype_name=doctype, student=student, program_enrollment=program_enrollment, docstatus_list=doctype_docstatuses[doctype], status_list=doctype_statuses[doctype])
+					if active_request_doc:
+						return [doctype, active_request_doc]
+					else:
+						continue
 				else:
 					continue
-			else:
-				continue
+
+		elif isinstance(doctype_list, list):
+			for doctype in json.loads(json.dumps(doctype_list)):
+				if doctype in doctype_names:
+					active_request_doc = active_request(doctype_name=doctype, student=student, program_enrollment=program_enrollment, docstatus_list=doctype_docstatuses[doctype], status_list=doctype_statuses[doctype])
+					if active_request_doc:
+						return [doctype, active_request_doc]
+					else:
+						continue
+				else:
+					continue
+
 	except Exception as e:
 		frappe.throw(f"An error occurred: {str(e)}")
 
