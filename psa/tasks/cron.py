@@ -209,6 +209,7 @@ def send_report_to_supervisor(report_name):
 
     employee_id = frappe.db.get_value('Faculty Member', supervisor, 'employee')
     supervisor_user_id = frappe.db.get_value('Employee', employee_id, 'user_id')
+    supervisor_first_name = frappe.db.get_value('Employee', employee_id, 'first_name')
     supervisor_email = frappe.db.get_value('User', supervisor_user_id, 'email')
 
     if not supervisor_email:
@@ -220,14 +221,15 @@ def send_report_to_supervisor(report_name):
 
     student_first_name = frappe.db.get_value('Student', report.student, 'first_name')
 
-    subject = f'Progress Report for {report.student}'
-    message = f'Dear {supervisor},<br><br>Please find the attached progress report for the student {student_first_name}.<br><br><a href="{get_url_to_form("Progress Report", report_name)}">View Report</a>'
+    subject = f'Progress Report for {student_first_name}'
+    message = f'Dear {supervisor_first_name },<br><br>Please find the attached progress report for the student {student_first_name}.<br><br><a href="{get_url_to_form("Progress Report", report_name)}">View Report</a>'
 
     frappe.sendmail(
         recipients=[supervisor_email],
         subject=subject,
         message=message,
-        attachments=[{'fname': filename, 'fcontent': pdf_content}]
+        attachments=[{'fname': filename, 'fcontent': pdf_content}],
+        now=True
     )
 
     notification_doc = frappe.get_doc({
