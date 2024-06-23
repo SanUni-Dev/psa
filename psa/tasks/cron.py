@@ -122,7 +122,7 @@ def create_progress_report_and_notify():
                                     notification_doc.insert(ignore_permissions=True)
 
                     else:
-                        print(f"Could not find supervisor for student: {student.name}")
+                        print(f" Could not find supervisor for student: {student.name}")
 
         frappe.db.commit()
 
