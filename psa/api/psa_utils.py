@@ -84,11 +84,11 @@ def get_program_enrollment_status(program_enrollment):
 def check_program_enrollment_status(program_enrollment, accepted_status_list, rejected_status_list):
 	status = get_program_enrollment_status(program_enrollment)
 	if status in accepted_status_list:
-		return True
+		return [True, status]
 	elif status in rejected_status_list:
-		return False
+		return [False, status]
 	else:
-		return False
+		return [False, status]
 
 
 @frappe.whitelist()
