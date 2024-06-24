@@ -15,11 +15,12 @@ class SuspendEnrollmentRequest(Document):
                     frappe.throw(_("Please enter reason of rejection!"))
             else:
                 program_enrollment.status = "Suspended"
+                program_enrollment.enabled = 0
                 program_enrollment.save()
         elif program_enrollment.status == "Suspended":
-            frappe.throw(_("Failed! Student is already suspended!"))
-        elif program_enrollment.status == "Withdrawn":
-            frappe.throw(_("Failed! Student is withdrawn!"))
+            frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
+        else:
+            frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
 
 
     def before_insert(self):
