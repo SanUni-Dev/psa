@@ -5,7 +5,6 @@ import frappe, json
 from frappe.model.document import Document
 from frappe import _
 from psa.api.psa_utils import check_active_request, check_program_enrollment_status
-from frappe.utils import add_days, add_months, today, now_datetime, get_datetime
 
 class SuspendEnrollmentRequest(Document):
     def on_submit(self):
@@ -21,6 +20,7 @@ class SuspendEnrollmentRequest(Document):
             frappe.throw(_("Failed! Student is already suspended!"))
         elif program_enrollment.status == "Withdrawn":
             frappe.throw(_("Failed! Student is withdrawn!"))
+
 
     def before_insert(self):
         program_enrollment_status = check_program_enrollment_status(self.program_enrollment, ['Continued'] ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'])
@@ -64,37 +64,3 @@ class SuspendEnrollmentRequest(Document):
                     url_of_active_request +
                     _(") that is {0}!").format(active_request[1]['status'])
                 )
-
-
-    @staticmethod
-    def send_suspend_enrollment_notification():
-        suspend_requests = frappe.get_all("Suspend Enrollment Request", 
-                                          filters={"status": "Active"},
-                                          fields=["name", "student", "creation"])
-
-        for request in suspend_requests:
-            user_id = frappe.db.get_value("Student", request.student, "user_id")
-            user_email = frappe.db.get_value("User", user_id, "email")
-            target_date = add_hours(request.creation, 1)
-
-            if target_date.date() == today():
-                if user_email:
-                    subject = "Reminder to Resume Enrollment"
-                    message = f"Dear {request.student},<br><br>Your suspension period is about to end in 5 days. Please take the necessary actions to resume your enrollment."
-
-                    frappe.sendmail(recipients=[user_email],
-                                    subject=subject,
-                                    message=message)
-
-    # @frappe.whitelist()
-    # def set_multiple_status(names, status):
-    #     names = json.loads(names)
-    #     for name in names:
-    #         sus = frappe.get_doc("Suspend Enrollment Request", name)
-    #         sus.status = status
-    #         sus.save()
-
-
-def add_hours(datetime_str, hours):
-    datetime_obj = get_datetime(datetime_str)
-    return datetime_obj + timedelta(hours=hours)
