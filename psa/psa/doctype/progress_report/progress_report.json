@@ -107,7 +107,7 @@
    "fieldname": "supervisor",
    "fieldtype": "Link",
    "label": "Student Supervisor",
-   "options": "Student Supervisor"
+   "options": "Faculty Member"
   },
   {
    "fieldname": "expected_date_of_thesis_submission",
@@ -175,6 +175,7 @@
    "label": "Research Achievement %"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "satisfaction_status",
    "fieldtype": "Select",
    "label": "Satisfaction Status",
@@ -184,7 +185,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-06 22:46:04.075421",
+ "modified": "2024-06-23 23:35:12.859645",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",
