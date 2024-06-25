@@ -50,13 +50,14 @@ def send_suspend_enrollment_notification():
 
 def create_progress_report_and_notify():
     try:
+        print("Fetching progress report settings...")
         progress_report_settings = frappe.get_all(
             'Progress Report Settings Child Table',
             filters={'parent': 'PSA Settings', 'parenttype': 'PSA Settings', 'parentfield': 'program_progress_reports'},
             fields=['program_degrees', 'number_of_progress_reports_per_a_program', 'first_progress_report_date_day', 'first_progress_report_date_month']
         )
 
-        today = datetime.today()
+        today = datetime.today()         
 
         for setting in progress_report_settings:
             program_degree = setting.get('program_degrees')
@@ -68,7 +69,9 @@ def create_progress_report_and_notify():
             for i in range(int(setting.get('number_of_progress_reports_per_a_program'))):
                 report_dates.append(add_months(start_date, i * int(12 / int(setting.get('number_of_progress_reports_per_a_program')))))
 
-            student_supervisors = frappe.get_all('Student Supervisor', filters={'enabled': 1}, fields=['student', 'program_enrollment', 'supervisor'])
+            print(f"Report dates calculated: {report_dates}")
+
+            student_supervisors = frappe.get_all('Student Supervisor', filters={'enabled': 1}, fields=['name', 'student', 'program_enrollment', 'supervisor'])
             program_enrollments = frappe.get_all('Program Enrollment', filters={'name': ['in', [ss['program_enrollment'] for ss in student_supervisors]]}, fields=['name', 'program'])
             academic_programs = frappe.get_all('Academic Program', filters={'name': ['in', [pe['program'] for pe in program_enrollments]], 'program_degree': program_degree}, fields=['name'])
 
@@ -79,55 +82,62 @@ def create_progress_report_and_notify():
                     student = frappe.get_doc('Student', ss['student'])
                     user_id = student.user_id
                     user_email = frappe.db.get_value("User", user_id, "email")
+
                     supervisor_name = ss['supervisor']
+                    supervisor_exists = frappe.db.exists('Faculty Member', supervisor_name)
+                    print(f"Supervisor exists: {supervisor_exists}")
 
-                    if supervisor_name:
-                        supervisor_exists = frappe.db.exists('Faculty Member', supervisor_name)
-                        print(f"Supervisor exists: {supervisor_exists}")
+                    if not supervisor_exists:
+                        print(f"Error: Could not find Faculty Member: {supervisor_name}")
+                        continue
 
-                        if not supervisor_exists:
-                            print(f"Supervisor {supervisor_name} does not exist for student {student.name}")
-                            continue
+                    
+                    faculty_member = frappe.get_doc('Faculty Member', supervisor_name)
+                    supervisor_full_name = f"{faculty_member.faculty_member_name}"
+                    print(f"Supervisor Name: {supervisor_full_name}")
 
-                        for report_date in report_dates:
-                            if today.date() == report_date.date():
-                                print("Creating progress report for student:", student.name, supervisor_name)
-                                progress_report = frappe.get_doc({
-                                    "doctype": "Progress Report",
-                                    "student": student.name,
-                                    "program_enrollment": ss['program_enrollment'],
-                                    "supervisor": supervisor_name,
-                                    "report_date": today,
-                                    "from_date": today - timedelta(days=90),
-                                    "to_date": today,
-                                    "status": "Unsatisfied"
+                    for report_date in report_dates:
+                        if today.date() == report_date.date():
+                            print(f"Creating progress report for student: {student.name}, Supervisor: {supervisor_full_name}")
+                            progress_report = frappe.get_doc({
+                                "doctype": "Progress Report",
+                                "student": student.name,
+                                "program_enrollment": ss['program_enrollment'],
+                                "supervisor": ss['name'],  
+                                "supervisor_name": supervisor_full_name, 
+                                "report_date": today,
+                                "from_date": today - timedelta(days=90),
+                                "to_date": today,
+                                "status": "Unsatisfied"
+                            })
+                            progress_report.insert(ignore_permissions=True)
+                            print(f"Progress report created: {progress_report.name}")
+
+                            if user_email:
+                                subject = "New Progress Report Created"
+                                message = f"Dear {student.first_name},<br><br>A new progress report has been created. Please fill it by the end of the period.<br>Report Link: {frappe.utils.get_url_to_form('Progress Report', progress_report.name)}"
+                                print(f"Sending email to {user_email} with subject: {subject}")
+                                frappe.sendmail(recipients=[user_email], subject=subject, message=message, now=True)
+
+                                notification_doc = frappe.get_doc({
+                                    "doctype": "Notification Log",
+                                    "subject": subject,
+                                    "email_content": message,
+                                    "type": "Alert",
+                                    "document_type": "Progress Report",
+                                    "document_name": progress_report.name,
+                                    "from_user": frappe.session.user,
+                                    "for_user": user_id,
                                 })
-                                progress_report.insert(ignore_permissions=True)
-
-                                if user_email:
-                                    subject = "New Progress Report Created"
-                                    message = f"Dear {student.first_name},<br><br>A new progress report has been created. Please fill it by the end of the period.<br>Report Link: {frappe.utils.get_url_to_form('Progress Report', progress_report.name)}"
-                                    frappe.sendmail(recipients=[user_email], subject=subject, message=message, now=True)
-
-                                    notification_doc = frappe.get_doc({
-                                        "doctype": "Notification Log",
-                                        "subject": subject,
-                                        "email_content": message,
-                                        "type": "Alert",
-                                        "document_type": "Progress Report",
-                                        "document_name": progress_report.name,
-                                        "from_user": frappe.session.user,
-                                        "for_user": user_id,
-                                    })
-                                    notification_doc.insert(ignore_permissions=True)
-
-                    else:
-                        print(f" Could not find supervisor for student: {student.name}")
+                                notification_doc.insert(ignore_permissions=True)
+                                print(f"Notification log created for user: {user_id}")
 
         frappe.db.commit()
+        print("All changes committed successfully.")
 
     except Exception as e:
         frappe.log_error(f"Failed to create notification log for progress report: {str(e)}")
+        print(f"Error: {str(e)}")
 
 def notify_supervisor_if_no_progress_report():
     progress_report_settings = frappe.get_all(
@@ -201,8 +211,8 @@ def notify_supervisor_if_no_progress_report():
 
 
 @frappe.whitelist()
-def get_supervisor_for_student(student):
-    supervisor = frappe.db.get_value("Student Supervisor", {"student": student, "enabled": 1, "type": "Main Supervisor"}, "supervisor")
+def get_supervisor_for_student(student,program_enrollment):
+    supervisor = frappe.db.get_value("Student Supervisor", {"student": student,"program_enrollment" :program_enrollment, "enabled": 1, "type": "Main Supervisor"}, "supervisor")
     if supervisor:
         supervisor_name = frappe.db.get_value("Faculty Member", supervisor, "name")
         return supervisor_name

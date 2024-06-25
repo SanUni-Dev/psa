@@ -13,6 +13,7 @@
   "program_enrollment",
   "column_break_twux",
   "supervisor",
+  "supervisor_name",
   "type",
   "status",
   "section_break_apcp",
@@ -115,11 +116,18 @@
   {
    "fieldname": "section_break_jhrk",
    "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "supervisor.faculty_member_name",
+   "fieldname": "supervisor_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-29 02:29:09.951425",
+ "modified": "2024-06-26 01:04:53.518053",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Supervisor",
@@ -139,7 +147,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "supervisor_name"
 }
