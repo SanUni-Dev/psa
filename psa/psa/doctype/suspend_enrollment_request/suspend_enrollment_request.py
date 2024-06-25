@@ -9,7 +9,7 @@ from psa.api.psa_utils import check_active_request, check_program_enrollment_sta
 class SuspendEnrollmentRequest(Document):
     def on_submit(self):
         program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-        if program_enrollment.status == "Continued":
+        if program_enrollment.status in ["Continued"]:
             if "Rejected" in self.status:
                 if not self.rejection_reason:
                     frappe.throw(_("Please enter reason of rejection!"))

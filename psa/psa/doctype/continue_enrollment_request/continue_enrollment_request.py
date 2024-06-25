@@ -10,18 +10,19 @@ from psa.api.psa_utils import get_active_request
 class ContinueEnrollmentRequest(Document):
 	def on_submit(self):
 		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-		if(program_enrollment.status == "Suspended"):
-			if("Rejected" in self.status):
-				if(not self.rejection_reason):
+		if program_enrollment.status in ["Suspended"]:
+			if "Rejected" in self.status:
+				if not self.rejection_reason:
 					frappe.throw(_("Please enter reason of rejection!"))
 			else:
 				program_enrollment.status = "Continued"
+				program_enrollment.enabled = 0
 				program_enrollment.save()
-		elif(program_enrollment.status == "Continued"):
-			frappe.throw(_("Failed! Student is already Continued!"))
-		elif(program_enrollment.status == "Withdrawn"):
-			frappe.throw(_("Failed! Student is withdrawn!"))
-
+		elif program_enrollment.status == "Continued":
+			frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
+		else:
+			frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
+		
 
 	def before_insert(self):
 		program_enrollment_status = frappe.get_doc('Program Enrollment', self.program_enrollment)

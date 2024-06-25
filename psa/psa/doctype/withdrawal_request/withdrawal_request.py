@@ -9,13 +9,18 @@ from psa.api.psa_utils import get_active_request
 class WithdrawalRequest(Document):
     def on_submit(self):
         program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-        if program_enrollment.status == "Continued" or program_enrollment.status == "Suspended":
+        if program_enrollment.status in ["Continued", "Suspended"]:
             if "Rejected" in self.status:
                 if not self.rejection_reason:
                     frappe.throw(_("Please enter reason of rejection!"))
             else:
                 program_enrollment.status = "Withdrawn"
+                program_enrollment.enabled = 0
                 program_enrollment.save()
+        elif program_enrollment.status == "Withdrawn":
+            frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
+        else:
+            frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
 
 
     def before_insert(self):
