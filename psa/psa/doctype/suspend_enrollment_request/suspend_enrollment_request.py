@@ -24,7 +24,7 @@ class SuspendEnrollmentRequest(Document):
 
 
     def before_insert(self):
-        program_enrollment_status = check_program_enrollment_status(self.program_enrollment, ['Continued'] ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'])
+        program_enrollment_status = check_program_enrollment_status(self.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'])
         if not program_enrollment_status[0]:
             if program_enrollment_status[1] == "Suspended":
                 url_of_continue_enrollment_request = frappe.utils.get_url_to_form('Continue Enrollment Request', "new")
