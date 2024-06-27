@@ -4,7 +4,7 @@
 import frappe, json
 from frappe.model.document import Document
 from frappe import _
-from psa.api.psa_utils import check_active_request
+from psa.api.psa_utils import check_active_request, check_program_enrollment_status
 
 class ContinueEnrollmentRequest(Document):
 	def on_submit(self):
