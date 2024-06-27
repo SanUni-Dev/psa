@@ -28,7 +28,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
             //         var fees_status = frm.doc.fees_status;
             //         if (fees_status === "Not Paid") {
             //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-            //                 frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
+            //                 frappe.msgprint(__("Payment code for '{0}' is: #########", [frm.doc.name]));
             //             });
             //         }
             //     }, 500);

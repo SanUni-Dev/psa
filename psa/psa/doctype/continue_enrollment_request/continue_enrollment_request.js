@@ -29,7 +29,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
       //     var fees_status = frm.doc.fees_status;
       //     if (fees_status === "Not Paid") {
       //       frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-      //         frappe.msgprint(__("Payment code for '") + frm.doc.name + __("' is: #########"));
+      //         frappe.msgprint(__("Payment code for '{0}' is: #########", [frm.doc.name]));
       //       });
       //     }
       //   }, 500);
@@ -256,6 +256,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
         doc: frm.doc,
         args: {
           program_enrollment: frm.doc.program_enrollment,
+          student: frm.doc.student
         },
         callback: function (response) {
           if (response.message) {
