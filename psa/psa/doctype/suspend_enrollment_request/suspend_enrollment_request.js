@@ -157,51 +157,51 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                         var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];
                         var array_of_value = [program_abbreviation, faculty, faculty_department, status];
                         psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
-                    });
-                });
 
-                psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'],
-                    function(program_enrollment_status) {
-                        if (!program_enrollment_status[0]) {
-                            if (program_enrollment_status[1] == "Suspended") {
-                                psa_utils.get_url_to_new_form('Continue Enrollment Request',
-                                    function(url_of_continue_enrollment_request) {
-                                        frm.set_intro((
-                                            `<div class="container">
-                                                <div class="row">
-                                                    <div class="col-auto me-auto">` +
-                                                        __(`Can't add a suspend enrollment request, because current status is {0}!`, [program_enrollment_status[1]]) +
-                                                    `</div>
-                                                    <div class="col-auto me-auto">
-                                                        <a href="${url_of_continue_enrollment_request}">` +
-                                                            __(`Do you want to add a continue enrollment request?`) +
-                                                        `</a>
-                                                    </div>
-                                                </div>
-                                            </div>`
-                                        ), 'red');
-                                    }
-                                );
-                            }
-                            else {
-                                frm.set_intro((__("Can't add a suspend enrollment request, because current status is {0}!", [program_enrollment_status[1]])), 'red');
-                            }
-                        }
-                        else if (program_enrollment_status[0]) {
-                            psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Suspend Enrollment Request', 'Continue Enrollment Request', 'Withdrawal Request'],
-                                function (active_request) {
-                                    if (active_request) {
-                                        var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
-                                        frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
+                        psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'],
+                            function(program_enrollment_status) {
+                                if (!program_enrollment_status[0]) {
+                                    if (program_enrollment_status[1] == "Suspended") {
+                                        psa_utils.get_url_to_new_form('Continue Enrollment Request',
+                                            function(url_of_continue_enrollment_request) {
+                                                frm.set_intro((
+                                                    `<div class="container">
+                                                        <div class="row">
+                                                            <div class="col-auto me-auto">` +
+                                                                __(`Can't add a suspend enrollment request, because current status is {0}!`, [program_enrollment_status[1]]) +
+                                                            `</div>
+                                                            <div class="col-auto me-auto">
+                                                                <a href="${url_of_continue_enrollment_request}">` +
+                                                                    __(`Do you want to add a continue enrollment request?`) +
+                                                                `</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>`
+                                                ), 'red');
+                                            }
+                                        );
                                     }
                                     else {
-                                        frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
+                                        frm.set_intro((__("Can't add a suspend enrollment request, because current status is {0}!", [program_enrollment_status[1]])), 'red');
                                     }
                                 }
-                            );
-                        }
-                    }
-                );
+                                else if (program_enrollment_status[0]) {
+                                    psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Suspend Enrollment Request', 'Continue Enrollment Request', 'Withdrawal Request'],
+                                        function (active_request) {
+                                            if (active_request) {
+                                                var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
+                                                frm.set_intro((__(`Can't add a suspend enrollment request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
+                                            }
+                                            else {
+                                                frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
+                                            }
+                                        }
+                                    );
+                                }
+                            }
+                        );
+                    });
+                });
             });
         }
         else {
