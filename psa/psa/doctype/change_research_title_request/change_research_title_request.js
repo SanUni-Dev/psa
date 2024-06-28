@@ -2,68 +2,60 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Change Research Title Request", {
-	refresh(frm) {
-        
-	},
+    refresh(frm) {
+        setTimeout(() => {
+            frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
+        }, 500);
+    },
+
+    onload(frm) {
+        if (frm.is_new() && frappe.user_roles.includes("Student")) {
+            psa_utils.set_student_for_current_user(frm, "student", function () {
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+            });
+        }
+    },
 
     program_enrollment(frm) {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
-            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
-                if (status == "Suspended") {
-                    psa_utils.get_url_to_new_form("Continue Enrollment Request", function (url) {
-                        frm.set_intro((
-                            `<div class="container">
-                                    <div class="row">
-                                        <div class="col-auto me-auto">` +
-                            __(`Can't add a change research title request, because current status is ${status}!` +
-                                `</div>
-                                        <div class="col-auto me-auto">
-                                            <a href="${url}">` +
-                                __(`Do you want to add a continue enrollment request?`) +
-                                `</a>
-                                        </div>
-                                    </div>
-                                </div>`
-                            )), 'red');
-                    });
-                }
-
-                else if (status == "Withdrawn") {
-                    frm.set_intro((__(`Can't add a change research title request, because current status is ${status}!`)), 'red');
-                }
-
-                else {                    
-                    psa_utils.get_active_request("Suspend Enrollment Request", frm.doc.program_enrollment, function (doc) {
-                        if (doc) {
-                            frm.set_intro('');
-                            var url_of_active_request = `<a href="/app/suspend-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                            frm.set_intro((__(`Can't add a change research title request, because you have an active suspend enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
-                        }
-                        else {
-                            psa_utils.get_active_request("Continue Enrollment Request", frm.doc.program_enrollment, function (doc) {
-                                if (doc) {
-                                    frm.set_intro('');
-                                    var url_of_active_request = `<a href="/app/continue-enrollment-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                                    frm.set_intro((__(`Can't add a change research title request, because you have an active continue enrollment request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
-                                }
-                                else {
-                                    psa_utils.get_active_request("Withdrawal Request", frm.doc.program_enrollment, function (doc) {
-                                        if (doc) {
-                                            frm.set_intro('');
-                                            var url_of_active_request = `<a href="/app/withdrawal-request/${doc.name}" title="${__("Click here to show request details")}"> ${doc.name} </a>`;
-                                            frm.set_intro((__(`Can't add a change research title request, because you have an active withdrawal request (`) + url_of_active_request + __(`) that is ${doc.status}!`)), 'red');
+            psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'],
+                function (program_enrollment_status) {
+                    if (!program_enrollment_status[0]) {
+                        frm.set_intro((__("Can't add a change research title request, because current status is {0}!", [program_enrollment_status[1]])), 'red');
+                    }
+                    else if (program_enrollment_status[0]) {
+                        frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                            if (check_active_requests_before_insert) {
+                                psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Change Research Title Request', 'Suspend Enrollment Request', 'Continue Enrollment Request', 'Withdrawal Request'],
+                                    function (active_request) {
+                                        if (active_request) {
+                                            var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
+                                            frm.set_intro((__(`Can't add a change research title request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
                                         }
-                                        else if (status == "Continued") {
-                                            frm.set_intro((__(`Current status is ${status}.`)), 'green');
+                                        else {
+                                            frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
                                         }
-                                    });
-                                }
-                            });
-                        }
-                    });
+                                    }
+                                );
+                            }
+                            else {
+                                frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
+                            }
+                        });
+                    }
                 }
-            });
+            );
+        }
+    },
+
+    student(frm) {
+        if (frm.doc.student) {
+            psa_utils.set_program_enrollment_for_student(frm, "program_enrollment", frm.doc.student);
+        }
+        else {
+            frm.set_value("program_enrollment", "");
+            refresh_field("program_enrollment");
         }
     },
 });
