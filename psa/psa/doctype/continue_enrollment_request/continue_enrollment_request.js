@@ -208,17 +208,24 @@ frappe.ui.form.on("Continue Enrollment Request", {
                                     }
                                 }
                                 else if (program_enrollment_status[0]) {
-                                    psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Continue Enrollment Request', 'Suspend Enrollment Request', 'Withdrawal Request'],
-                                        function (active_request) {
-                                            if (active_request) {
-                                                var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
-                                                frm.set_intro((__(`Can't add a continue enrollment request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
-                                            }
-                                            else {
-                                                frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
-                                            }
+                                    frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                                        if (check_active_requests_before_insert) {
+                                            psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Continue Enrollment Request', 'Suspend Enrollment Request', 'Withdrawal Request'],
+                                                function (active_request) {
+                                                    if (active_request) {
+                                                        var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
+                                                        frm.set_intro((__(`Can't add a continue enrollment request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
+                                                    }
+                                                    else {
+                                                        frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
+                                                    }
+                                                }
+                                            );
                                         }
-                                    );
+                                        else {
+                                            frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
+                                        }
+                                    });
 
                                     // implement the condition after prepearing the period in academia
                                     frappe.db.get_single_value('PSA Settings', 'allow_before_end_of_period').then((allow_before_end_of_period) => {
