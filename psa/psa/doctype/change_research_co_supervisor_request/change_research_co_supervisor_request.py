@@ -31,9 +31,11 @@ class ChangeResearchCoSupervisorRequest(Document):
 						if count_of_allowed >= change_co_number_of_requests:
 							frappe.throw(_("Can't add a change research co-supervisor request, because you have been Changed! (Max of allowed change research co-supervisor request = {0})").format(str(change_co_number_of_requests)))			
 
-			active_request = check_active_request(self.student, self.program_enrollment, ["Change Research Co Supervisor Request", "Suspend Enrollment Request", "Continue Enrollment Request", "Withdrawal Request"])
-			if active_request:
-				url_of_active_request = '<a href="/app/{0}/{1}" title="{2}">{3}</a>'.format((active_request[0]).lower().replace(" ", "-"), active_request[1]['name'], _("Click here to show request details"), active_request[1]['name'])
-				frappe.throw(
-                    _("Can't add a change research co-supervisor request, because you have an active {0} ({1}) that is {2}!").format(active_request[0], url_of_active_request, active_request[1]['status'])
-                )
+			check_active_requests_before_insert = frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert')
+			if check_active_requests_before_insert:
+				active_request = check_active_request(self.student, self.program_enrollment, ["Change Research Co Supervisor Request", "Suspend Enrollment Request", "Continue Enrollment Request", "Withdrawal Request"])
+				if active_request:
+					url_of_active_request = '<a href="/app/{0}/{1}" title="{2}">{3}</a>'.format((active_request[0]).lower().replace(" ", "-"), active_request[1]['name'], _("Click here to show request details"), active_request[1]['name'])
+					frappe.throw(
+						_("Can't add a change research co-supervisor request, because you have an active {0} ({1}) that is {2}!").format(active_request[0], url_of_active_request, active_request[1]['status'])
+					)
