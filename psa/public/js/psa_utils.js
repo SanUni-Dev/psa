@@ -200,20 +200,6 @@ psa_utils.insert_new_timeline_child_table = function (doctype_name, doc_name, ti
 }
 
 
-psa_utils.get_active_request = function (doctype_name, program_enrollment, callback) {
-    frappe.call({
-        method: 'psa.api.psa_utils.get_active_request',
-        args: {
-            "doctype_name": doctype_name,
-            "program_enrollment": program_enrollment
-        },
-        callback: function (response) {
-            callback(response.message);
-        }
-    });
-}
-
-
 psa_utils.get_program_enrollment_status = function (program_enrollment, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_program_enrollment_status',
@@ -266,20 +252,6 @@ psa_utils.check_active_request = function (student, program_enrollment, doctype_
             "student": student,
             "program_enrollment": program_enrollment,
             "doctype_list": doctype_list
-        },
-        callback: function (response) {
-            callback(response.message);
-        }
-    });
-}
-
-
-psa_utils.get_active_change_request = function (doctype_name, program_enrollment, callback) {
-    frappe.call({
-        method: 'psa.api.psa_utils.get_active_change_request',
-        args: {
-            "doctype_name": doctype_name,
-            "program_enrollment": program_enrollment
         },
         callback: function (response) {
             callback(response.message);

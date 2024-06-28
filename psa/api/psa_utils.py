@@ -61,20 +61,6 @@ def insert_new_timeline_child_table(doctype_name, doc_name, timeline_child_table
 
 
 @frappe.whitelist()
-def get_active_request(doctype_name, program_enrollment):
-	query = """
-       SELECT *
-       FROM `tab{0}`
-       WHERE (`status` LIKE %s OR `status` LIKE %s)
-           AND `program_enrollment` = %s
-       ORDER BY modified DESC
-       LIMIT 1
-       """.format(doctype_name)
-	docs = frappe.db.sql(query, ("%Pending%", "%Draft%", program_enrollment), as_dict=True)
-	return docs[0] if docs else None
-
-
-@frappe.whitelist()
 def get_program_enrollment_status(program_enrollment):
     program_enrollment_status = frappe.get_value("Program Enrollment", {"name": program_enrollment}, "status")
     return program_enrollment_status
@@ -180,21 +166,6 @@ def check_active_request(student, program_enrollment, doctype_list):
 
 	except Exception as e:
 		frappe.throw(f"An error occurred: {str(e)}")
-
-
-@frappe.whitelist()
-def get_active_change_request(doctype_name, program_enrollment):
-	query = """
-       SELECT *
-       FROM `tab{0}`
-       WHERE (`docstatus` = 0)
-           AND `program_enrollment` = %s
-       ORDER BY modified DESC
-       LIMIT 1
-       """.format(doctype_name)
-	docs = frappe.db.sql(query, (program_enrollment), as_dict=True)
-	return docs[0] if docs else None
-
 
 
 @frappe.whitelist()
