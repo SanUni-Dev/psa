@@ -54,7 +54,7 @@ class ContinueEnrollmentRequest(Document):
 			# 			if count_of_rejected >= continue_number_of_rejected_requests:
 			# 				frappe.throw(_("Can't add a continue enrollment request, because you requested more than limit: {0} requests!").format(str(continue_number_of_rejected_requests)))
 							
-			active_request = check_active_request(self.student, self.program_enrollment, ["Suspend Enrollment Request", "Continue Enrollment Request", "Withdrawal Request"])
+			active_request = check_active_request(self.student, self.program_enrollment, ["Continue Enrollment Request", "Suspend Enrollment Request", "Withdrawal Request"])
 			if active_request:
 				url_of_active_request = '<a href="/app/{0}/{1}" title="{2}">{3}</a>'.format((active_request[0]).lower().replace(" ", "-"), active_request[1]['name'], _("Click here to show request details"), active_request[1]['name'])
 				frappe.throw(
