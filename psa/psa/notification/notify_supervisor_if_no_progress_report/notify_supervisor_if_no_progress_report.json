@@ -1,0 +1,35 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2024-06-02 00:13:16.309500",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Progress Report",
+ "enabled": 1,
+ "event": "Method",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Dear {supervisor},<br><br>\nThe student {student_doc.first_name} has not filled the progress report for the current period. Please follow up.\n",
+ "method": "psa.tasks.cron.notify_supervisor_if_no_progress_report",
+ "modified": "2024-06-05 03:15:13.854656",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "notify_supervisor_if_no_progress_report",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Supervisor"
+  },
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "Student has not filled Progress Report"
+}

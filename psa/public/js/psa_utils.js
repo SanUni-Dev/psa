@@ -2,13 +2,14 @@
 var psa_utils = {};
 
 
-psa_utils.set_student_for_current_user = function (frm, field_name) {
+psa_utils.set_student_for_current_user = function (frm, field_name, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_student_for_current_user',
         callback: function(response) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                callback();
             }
         }
     });
@@ -199,12 +200,58 @@ psa_utils.insert_new_timeline_child_table = function (doctype_name, doc_name, ti
 }
 
 
-psa_utils.get_active_request = function (doctype_name, program_enrollment, callback) {
+psa_utils.get_program_enrollment_status = function (program_enrollment, callback) {
     frappe.call({
-        method: 'psa.api.psa_utils.get_active_request',
+        method: 'psa.api.psa_utils.get_program_enrollment_status',
+        args: {
+            "program_enrollment": program_enrollment
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}
+
+
+psa_utils.check_program_enrollment_status = function (program_enrollment, accepted_status_list, rejected_status_list, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.check_program_enrollment_status',
+        args: {
+            "program_enrollment": program_enrollment,
+            "accepted_status_list": accepted_status_list,
+            "rejected_status_list": rejected_status_list
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}
+
+
+psa_utils.active_request = function (doctype_name, student, program_enrollment, docstatus_list, status_list, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.active_request',
         args: {
             "doctype_name": doctype_name,
-            "program_enrollment": program_enrollment
+            "student": student,
+            "program_enrollment": program_enrollment,
+            "docstatus_list": docstatus_list,
+            "status_list": status_list
+        },
+        callback: function (response) {
+            callback(response.message);
+        }
+    });
+}
+
+
+psa_utils.check_active_request = function (student, program_enrollment, doctype_list, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.check_active_request',
+        args: {
+            "student": student,
+            "program_enrollment": program_enrollment,
+            "doctype_list": doctype_list
         },
         callback: function (response) {
             callback(response.message);
@@ -271,6 +318,65 @@ psa_utils.get_student = function (student, callback) {
             var full_name_english = response.message.first_name_en + " " + response.message.middle_name_en + " " + response.message.last_name_en;
 
             callback(full_name_arabic, full_name_english);
+        }
+    });
+}
+
+
+psa_utils.get_supervisor = function (student, callback) {
+    frappe.call({
+        method: 'frappe.client.get_value',
+        args: {
+            doctype: 'Student Supervisor',
+            filters: {
+                student: student,
+                enabled: 1,
+                type: 'Main Supervisor'
+            },
+            fieldname: ['supervisor']
+        },
+        callback: function (response) {
+            if (response.message) {
+                var supervisor = response.message.supervisor;
+                frappe.call({
+                    method: 'frappe.client.get_value',
+                    args: {
+                        doctype: 'Faculty Member',
+                        filters: {
+                            name: supervisor
+                        },
+                        fieldname: ['employee']
+                    },
+                    callback: function (response) {
+                        if (response.message) {
+                            var employee = response.message.employee;
+                            callback(employee);
+                        } else {
+                            callback(null);
+                        }
+                    }
+                });
+            } else {
+                callback(null);
+            }
+        }
+    });
+}
+
+
+psa_utils.set_supervisor_for_student = function (frm, field_name, student) {
+    frappe.call({
+        method: 'psa.tasks.cron.get_supervisor_for_student',
+        args: {
+            "student": student
+        },
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            } else {
+                frappe.msgprint(__('لم يتم العثور على مشرف.'));
+            }
         }
     });
 }

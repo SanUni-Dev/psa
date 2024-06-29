@@ -5,6 +5,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "general_tab",
+  "check_active_requests_before_insert",
   "enrollment_requests_tab",
   "section_break_pdzj",
   "allowed_program_degrees",
@@ -287,12 +289,24 @@
    "fieldtype": "Table",
    "label": "Program progress reports",
    "options": "Progress Report Settings Child Table"
+  },
+  {
+   "fieldname": "general_tab",
+   "fieldtype": "Tab Break",
+   "label": "General"
+  },
+  {
+   "default": "0",
+   "description": "Check it to prevent adding a new request if there is another request that is draft or pending approval.",
+   "fieldname": "check_active_requests_before_insert",
+   "fieldtype": "Check",
+   "label": "Check Active Requests Before Insert"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-06-02 03:58:44.897929",
+ "modified": "2024-06-29 01:31:26.292818",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
