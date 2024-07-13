@@ -30,7 +30,8 @@
    "fieldname": "student",
    "fieldtype": "Link",
    "label": "Student",
-   "options": "Student"
+   "options": "Student",
+   "reqd": 1
   },
   {
    "fieldname": "status",
@@ -46,13 +47,15 @@
    "fieldname": "supervisor",
    "fieldtype": "Link",
    "label": "Supervisor",
-   "options": "Faculty Member"
+   "options": "Faculty Member",
+   "reqd": 1
   },
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Program Enrollment",
-   "options": "Program Enrollment"
+   "options": "Program Enrollment",
+   "reqd": 1
   },
   {
    "fieldname": "type",
@@ -127,7 +130,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-26 01:04:53.518053",
+ "modified": "2024-07-14 01:53:18.269368",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Supervisor",

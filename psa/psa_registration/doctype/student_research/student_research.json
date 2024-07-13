@@ -10,7 +10,7 @@
   "section_break_styg",
   "naming_series",
   "student",
-  "program__enrollment",
+  "program_enrollment",
   "column_break_robp",
   "status",
   "section_break_qcdd",
@@ -28,11 +28,6 @@
  ],
  "fields": [
   {
-   "fieldname": "program__enrollment",
-   "fieldtype": "Data",
-   "label": "Program  Enrollment"
-  },
-  {
    "fieldname": "research_title_arabic",
    "fieldtype": "Small Text",
    "label": "Research Title Arabic"
@@ -46,7 +41,8 @@
    "fieldname": "student",
    "fieldtype": "Link",
    "label": "Student",
-   "options": "Student"
+   "options": "Student",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_robp",
@@ -122,11 +118,18 @@
   {
    "fieldname": "section_break_styg",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-29 02:29:28.952680",
+ "modified": "2024-07-14 01:52:46.535708",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
