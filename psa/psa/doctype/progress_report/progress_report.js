@@ -12,7 +12,9 @@ frappe.ui.form.on("Progress Report", {
     onload(frm) {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
-                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function () {
+                    psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
+                });
             });
         }
     },
@@ -20,6 +22,7 @@ frappe.ui.form.on("Progress Report", {
     program_enrollment(frm) {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
+            psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
             psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'],
                 function (program_enrollment_status) {
                     if (!program_enrollment_status[0]) {
@@ -31,6 +34,10 @@ frappe.ui.form.on("Progress Report", {
                 }
             );
         }
+        else {
+            frm.set_value("supervisor", "");
+            refresh_field("supervisor");
+        }
     },
 
     student(frm) {
@@ -40,6 +47,8 @@ frappe.ui.form.on("Progress Report", {
         else {
             frm.set_value("program_enrollment", "");
             refresh_field("program_enrollment");
+            frm.set_value("supervisor", "");
+            refresh_field("supervisor");
         }
     },
 });

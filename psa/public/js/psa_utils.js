@@ -16,13 +16,14 @@ psa_utils.set_student_for_current_user = function (frm, field_name, callback) {
 }
 
 
-psa_utils.set_program_enrollment_for_current_user = function (frm, field_name) {
+psa_utils.set_program_enrollment_for_current_user = function (frm, field_name, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_program_enrollment_for_current_user',
         callback: function(response) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                callback();
             }
         }
     });
@@ -34,6 +35,40 @@ psa_utils.set_program_enrollment_for_student = function (frm, field_name, studen
         method: 'psa.api.psa_utils.get_program_enrollment_for_student',
         args: {
             "student": student
+        },
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
+psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_student_supervisor_for_student_and_program_enrollment',
+        args: {
+            "student": student,
+            "program_enrollment": program_enrollment
+        },
+        callback: function(response) {
+            if (response.message) {
+                frm.set_value(field_name, response.message);
+                refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
+psa_utils.set_student_research_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_student_research_for_student_and_program_enrollment',
+        args: {
+            "student": student,
+            "program_enrollment": program_enrollment
         },
         callback: function(response) {
             if (response.message) {
@@ -286,7 +321,7 @@ psa_utils.get_academic_program = function (academic_program, callback) {
     frappe.call({
         method: 'frappe.client.get_value',
         args: {
-            doctype: 'Academic Program',
+            doctype: 'Program Specification',
             filters: {
                 name: academic_program
             },
