@@ -16,6 +16,7 @@
   {
    "fieldname": "meeting_id",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Meeting Id",
    "options": "Researcher Meeting"
   },
@@ -23,6 +24,7 @@
    "fetch_from": "meeting_id.meeting_date",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Date",
    "read_only": 1
   },
@@ -30,6 +32,7 @@
    "fetch_from": "meeting_id.meeting_with",
    "fieldname": "with",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "With",
    "read_only": 1
   },
@@ -37,6 +40,7 @@
    "fetch_from": "meeting_id.supervisor",
    "fieldname": "supervisor_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Name",
    "read_only": 1
   },
@@ -48,7 +52,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-16 01:32:09.055447",
+ "modified": "2024-07-13 23:55:50.238310",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Meeting Details",
