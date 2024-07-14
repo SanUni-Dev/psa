@@ -22,6 +22,18 @@ def get_program_enrollment_for_student(student):
 
 
 @frappe.whitelist()
+def get_student_supervisor_for_student_and_program_enrollment(student, program_enrollment):
+    student_supervisor = frappe.get_value("Student Supervisor", {"student": student, "program_enrollment": program_enrollment, "enabled": 1, "status": "Active"}, "name")
+    return student_supervisor
+
+
+@frappe.whitelist()
+def get_student_research_for_student_and_program_enrollment(student, program_enrollment):
+    student_research = frappe.get_value("Student Research", {"student": student, "program_enrollment": program_enrollment, "enabled": 1, "status": "Active"}, "name")
+    return student_research
+
+
+@frappe.whitelist()
 def get_url_to_new_form(doctype_name):
     return frappe.utils.get_url_to_form(doctype_name, "new")
 

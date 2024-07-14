@@ -7,11 +7,12 @@ frappe.ui.form.on('Researcher Meeting', {
             return {
                 "filters": {
                     "program_enrollment": frm.doc.program_enrollment,
-                    "student": frm.doc.student
+                    "student": frm.doc.student,
+                    "status": "Active",
+                    "enabled": 1
                 }
             };
         });
-
     },
 
     refresh(frm) {
@@ -23,7 +24,9 @@ frappe.ui.form.on('Researcher Meeting', {
     onload(frm) {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
-                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function() {
+                    psa_utils.set_student_research_for_student_and_program_enrollment(frm, "student_research", frm.doc.student, frm.doc.program_enrollment);
+                });
             });
         }
     },
@@ -31,6 +34,8 @@ frappe.ui.form.on('Researcher Meeting', {
     program_enrollment(frm) {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
+            frm.set_value("student_research", "");
+            psa_utils.set_student_research_for_student_and_program_enrollment(frm, "student_research", frm.doc.student, frm.doc.program_enrollment);
             psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'],
                 function (program_enrollment_status) {
                     if (!program_enrollment_status[0]) {
@@ -59,6 +64,12 @@ frappe.ui.form.on('Researcher Meeting', {
                 }
             );
         }
+        else {
+            frm.set_value("student_research", "");
+            refresh_field("student_research");
+            frm.set_value("meeting_with", null);
+            refresh_field("meeting_with");
+        }
     },
 
     student(frm) {
@@ -68,6 +79,23 @@ frappe.ui.form.on('Researcher Meeting', {
         else {
             frm.set_value("program_enrollment", "");
             refresh_field("program_enrollment");
+            frm.set_value("student_research", "");
+            refresh_field("student_research");
         }
     },
+});
+
+
+frappe.ui.form.on('Meeting with', {
+    student_supervisor: function(frm, cdt, cdn) {
+        var d = locals[cdt][cdn];
+        $.each(frm.doc.meeting_with, function(i, row) {
+            if (row.student_supervisor === d.student_supervisor && row.name != d.name) {
+               frappe.msgprint(__("Duplicated Rows!<br><br>Can't add a student supervisor more than once."));
+               frappe.model.remove_from_locals(cdt, cdn);
+               frm.refresh_field('meeting_with');
+               return false;
+            }
+        });
+    }
 });

@@ -7,10 +7,10 @@ from frappe import _
 from psa.api.psa_utils import check_active_request, check_program_enrollment_status
 
 class ResearcherMeeting(Document):
-    def on_submit(self):
-        program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-        if program_enrollment.status != "Continued":
-            frappe.throw(_("Failed! Student is {0}!".format(program_enrollment.status)))
+    def before_save(self):
+        meeting_with_rows = [row.student_supervisor for row in self.meeting_with]
+        if len(meeting_with_rows) != len(set(meeting_with_rows)):
+            frappe.throw(_("Duplicated Rows!<br><br>Can't add a student supervisor more than once."))
 
 
     def before_insert(self):

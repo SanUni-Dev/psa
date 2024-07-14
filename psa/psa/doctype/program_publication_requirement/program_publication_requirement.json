@@ -5,11 +5,13 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "naming_series",
+  "program_degree",
   "column_break_qriw",
   "effective_date",
   "section_break_psgk",
-  "conditions"
+  "conditions",
+  "section_break_gmpy",
+  "naming_series"
  ],
  "fields": [
   {
@@ -21,7 +23,9 @@
   {
    "fieldname": "effective_date",
    "fieldtype": "Date",
-   "label": "Effective Date"
+   "in_list_view": 1,
+   "label": "Effective Date",
+   "reqd": 1
   },
   {
    "fieldname": "conditions",
@@ -36,11 +40,22 @@
   {
    "fieldname": "section_break_psgk",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "program_degree",
+   "fieldtype": "Link",
+   "label": "Program Degree",
+   "options": "Program Degree",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gmpy",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-04 18:35:11.403126",
+ "modified": "2024-07-12 05:30:30.240999",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Program Publication Requirement",
