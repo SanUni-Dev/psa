@@ -165,11 +165,11 @@ app_include_js = [
 # }
 
 
-doc_events = {
-    "Progress Report": {
-        "on_submit": "psa.tasks.cron.on_submit"
-    }
-}
+# doc_events = {
+#     "Progress Report": {
+#         "on_submit": "psa.tasks.cron.on_submit"
+#     }
+# }
 
 # Scheduled Tasks
 # ---------------
