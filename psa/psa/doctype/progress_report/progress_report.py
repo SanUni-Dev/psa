@@ -21,3 +21,11 @@ class ProgressReport(Document):
 					frappe.throw(
 						_("Can't add a progress report, because you have an active {0} ({1}) that is {2}!").format(active_request[0], url_of_active_request, active_request[1]['status'])
 					)
+
+	def validate(self):
+		if not (self.report_date >= self.to_date):
+			frappe.throw(_("'Report Date' can't be smaller than 'To Date', please choose another date!"))
+		elif self.from_date > self.to_date:
+			frappe.throw(_("'From Date' can't be bigger than 'To Date', please choose another date!"))
+		elif self.to_date < self.from_date:
+			frappe.throw(_("'To Date' can't be smaller than 'From Date', please choose another date!"))

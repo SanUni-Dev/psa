@@ -193,6 +193,12 @@ def get_scientific_degree(scientific_degree):
 	return docs if docs else None
 
 
+@frappe.whitelist()
+def get_researcher_meetings(student, program_enrollment, from_date, to_date):
+	researcher_meetings = frappe.db.get_all("Researcher Meeting", filters={"student": student, "program_enrollment": program_enrollment, "meeting_date": ["between", [from_date, to_date]]}, fields=["name", "meeting_date"], order_by="meeting_date asc")
+	return researcher_meetings
+
+
 # Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
 # @frappe.whitelist()
 # def save_timeline_child_table(doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list):
