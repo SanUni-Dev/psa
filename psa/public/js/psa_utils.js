@@ -417,6 +417,27 @@ psa_utils.set_supervisor_for_student = function (frm, field_name, student) {
 }
 
 
+psa_utils.set_researcher_meetings = function (frm, field_name, student, program_enrollment, from_date, to_date) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_researcher_meetings',
+        args: {
+            student: student,
+            program_enrollment: program_enrollment,
+            from_date: from_date,
+            to_date: to_date
+        },
+        callback: function (response) {
+            for (let meeting of response.message) {
+                var new_meeting = frm.add_child(field_name);
+                new_meeting.meeting_id = meeting['name'];
+                new_meeting.date = meeting['meeting_date'];
+                frm.refresh_field(field_name);
+            }
+        }
+    });
+}
+
+
 // Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
 // psa_utils.save_timeline_child_table = function (doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list, callback) {
 //     frappe.call({
