@@ -16,6 +16,7 @@
   "amended_from",
   "achievement_in_the_period_section",
   "from_date",
+  "go_to_meetings",
   "column_break_wwik",
   "to_date",
   "section_break_wrjy",
@@ -25,6 +26,7 @@
   "research_overall_achievement",
   "meetings_tab",
   "meetings",
+  "meetings_status",
   "supervisor_report_tab",
   "section_break_half",
   "notes",
@@ -38,9 +40,9 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Naming Series",
-   "options": "PSA-Progress-.YY.-.MM.-.#####."
+   "options": "PSA-Progress-.YY.-.MM.-.#####.",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -55,16 +57,20 @@
   {
    "fieldname": "student",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Student",
    "options": "Student",
+   "read_only": 1,
    "reqd": 1
   },
   {
    "depends_on": "eval: doc.student",
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Program Enrollment",
    "options": "Program Enrollment",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -74,6 +80,7 @@
   {
    "fieldname": "report_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Report Date",
    "reqd": 1
   },
@@ -86,13 +93,15 @@
   {
    "fieldname": "meetings_tab",
    "fieldtype": "Tab Break",
-   "label": "Meetings"
+   "label": "Meetings",
+   "read_only": 1
   },
   {
    "fieldname": "meetings",
    "fieldtype": "Table",
    "label": "Meetings",
-   "options": "Meeting Details"
+   "options": "Meeting Details",
+   "read_only": 1
   },
   {
    "fieldname": "supervisor_report_tab",
@@ -104,9 +113,11 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "notes",
    "fieldtype": "Text Editor",
-   "label": "Notes"
+   "label": "Notes",
+   "permlevel": 1
   },
   {
    "depends_on": "eval: doc.program_enrollment",
@@ -114,12 +125,15 @@
    "fieldtype": "Link",
    "label": "Student Supervisor",
    "options": "Student Supervisor",
+   "read_only": 1,
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "expected_date_of_thesis_submission",
    "fieldtype": "Date",
-   "label": "Expected Date of Thesis Submission"
+   "label": "Expected Date of Thesis Submission",
+   "permlevel": 1
   },
   {
    "fieldname": "section_break_wrjy",
@@ -168,11 +182,13 @@
    "label": "Research Overall Achievement"
   },
   {
+   "allow_on_submit": 1,
    "depends_on": "eval: doc.satisfaction_status == 'Unsatisfied'",
    "fieldname": "recommended_action",
    "fieldtype": "Select",
    "label": "Recommended Action",
-   "options": "\nNothing\nAlert Researcher"
+   "options": "\nNothing\nAlert Researcher",
+   "permlevel": 1
   },
   {
    "fieldname": "research_achievement_student",
@@ -180,22 +196,35 @@
    "label": "Research Achievement %"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "research_achievement_supervisor",
    "fieldtype": "Percent",
-   "label": "Research Achievement %"
+   "label": "Research Achievement %",
+   "permlevel": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "satisfaction_status",
    "fieldtype": "Select",
    "label": "Satisfaction Status",
-   "options": "\nSatisfied\nUnsatisfied"
+   "options": "\nSatisfied\nUnsatisfied",
+   "permlevel": 1
+  },
+  {
+   "depends_on": "eval: doc.meetings",
+   "fieldname": "go_to_meetings",
+   "fieldtype": "Button",
+   "label": "Show Meetings in the Period"
+  },
+  {
+   "fieldname": "meetings_status",
+   "fieldtype": "HTML"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-14 03:25:57.761843",
+ "modified": "2024-07-15 05:27:12.652382",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",
@@ -215,15 +244,38 @@
    "write": 1
   },
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,
+   "if_owner": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Supervisor",
+   "role": "Student",
+   "select": 1,
    "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student",
+   "select": 1
+  },
+  {
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1,
    "write": 1
   }
  ],
