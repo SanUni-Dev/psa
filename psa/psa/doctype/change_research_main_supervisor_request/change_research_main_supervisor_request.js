@@ -6,19 +6,92 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
+        if (frm.doc.status === "Approved by College Dean") {
+            frm.add_custom_button(__('change supervisor'), function() {
+                frappe.new_doc('Student Supervisor', {
+                    student: frm.doc.student,
+                    program_enrollment: frm.doc.program_enrollment,
+                    type: "Main Supervisor",
+                    reference_doctype: frm.doc.doctype,
+                    document_name: frm.doc.name,
+                    status:"Active",
+                    pervious_supervisor: frm.doc.current_supervisor
+                }, function(new_doc) {                     
+                    frappe.set_route('Form', 'Student Supervisor', new_doc.name);
+                });
+
+            });
+        }
+    }
+});
+
+frappe.ui.form.on('Student Supervisor', {
+    after_save: function(frm) {
+         
+        if (frm.doc.previous_supervisor) {
+            frappe.call({
+                method: 'frappe.client.get_list',
+                args: {
+                    doctype: 'Student Supervisor',
+                    filters: {
+                        'student': frm.doc.student,
+                        'status': "Active",
+                        'supervisor': frm.doc.previous_supervisor
+                    },
+                    fields: ['name']
+                },
+                callback: function(response) {
+                    let old_supervisors = response.message || [];
+
+                    
+                    old_supervisors.forEach(function(record) {
+                        frappe.call({
+                            method: 'frappe.client.set_value',
+                            args: {
+                                doctype: 'Student Supervisor',
+                                name: record.name,
+                                fieldname: 'status',
+                                value:"Changed"
+                            },
+                            callback: function() {
+                                console.log(`Record ${record.name} disabled successfully.`);
+                            }
+                        });
+                    });
+                }
+                   
+    
+
+
+
+
+
+            });
+        }
     },
 
     onload(frm) {
+        // if (frm.is_new() && frappe.user_roles.includes("Student")) {
+        //     psa_utils.set_student_for_current_user(frm, "student", function () {
+        //         psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+        //     });
+        // }
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
-                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function () {
+                    psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
+                });
             });
         }
     },
 
     program_enrollment(frm) {
         frm.set_intro('');
+        frm.set_value("current_supervisor", "");
+        refresh_field("current_supervisor");
         if (frm.doc.program_enrollment) {
+            psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "current_supervisor", frm.doc.student, frm.doc.program_enrollment);
+            
             psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Continued'], ['Suspended', 'Withdrawn', 'Graduated', 'Transferred'],
                 function (program_enrollment_status) {
                     if (!program_enrollment_status[0]) {
