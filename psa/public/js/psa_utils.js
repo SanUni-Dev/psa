@@ -43,7 +43,7 @@ psa_utils.set_program_enrollment_for_student = function (frm, field_name, studen
             }
         }
     });
-} 
+}
 
 
 psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
