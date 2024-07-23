@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-16 03:17:41.529130",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "program_enrollment",
+  "column_break_ktid",
+  "supervisor",
+  "section_break_acsd",
+  "committee_report"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment"
+  },
+  {
+   "fieldname": "column_break_ktid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "section_break_acsd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 11,
+   "fieldname": "committee_report",
+   "fieldtype": "Table",
+   "label": "Committee Report",
+   "options": "Discussion Committee Seminar Faculty Member"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-16 04:03:58.641207",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Seminar Discussion Committee Membe Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

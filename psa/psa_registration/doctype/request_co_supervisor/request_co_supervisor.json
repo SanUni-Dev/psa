@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-07-08 18:16:26.203588",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student_name",
+  "column_break_xhbm",
+  "program_enrollment",
+  "supervisor",
+  "section_break_lbre",
+  "research_title_english",
+  "search",
+  "column_break_pign",
+  "research_title_arabic",
+  "section_break_qtzf",
+  "table_nxrm"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "ADM-SAP-.YYYY.-"
+  },
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Link",
+   "label": "Student Name",
+   "options": "Student"
+  },
+  {
+   "fieldname": "column_break_xhbm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Student Main Supervisor"
+  },
+  {
+   "fieldname": "section_break_lbre",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fieldname": "search",
+   "fieldtype": "Text",
+   "label": "Search"
+  },
+  {
+   "fieldname": "column_break_pign",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
+  },
+  {
+   "fieldname": "section_break_qtzf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_nxrm",
+   "fieldtype": "Table",
+   "options": "Request A Supervisor child"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-13 23:45:02.569046",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Request Co-Supervisor",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
