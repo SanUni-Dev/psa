@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-16 03:16:13.721834",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "column_break_obzz",
+  "doctor",
+  "program_enrollment",
+  "section_break_nrzo",
+  "research_title_english",
+  "research_title_arabic",
+  "column_break_gjto",
+  "description",
+  "section_break_jzib",
+  "statues"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_obzz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "doctor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Doctor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_nrzo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": ".research_title_english",
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Research Title English",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_gjto",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": ".research_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Research Title Arabic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_jzib",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "statues",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Statues",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-16 04:13:21.578720",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Discussion Committee Seminar Faculty Member",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
