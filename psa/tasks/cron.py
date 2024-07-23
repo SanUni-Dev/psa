@@ -73,7 +73,7 @@ def create_progress_report_and_notify():
 
             student_supervisors = frappe.get_all('Student Supervisor', filters={'enabled': 1}, fields=['name', 'student', 'program_enrollment', 'supervisor'])
             program_enrollments = frappe.get_all('Program Enrollment', filters={'name': ['in', [ss['program_enrollment'] for ss in student_supervisors]]}, fields=['name', 'program'])
-            academic_programs = frappe.get_all('Academic Program', filters={'name': ['in', [pe['program'] for pe in program_enrollments]], 'program_degree': program_degree}, fields=['name'])
+            academic_programs = frappe.get_all('Program Specification', filters={'name': ['in', [pe['program'] for pe in program_enrollments]], 'program_degree': program_degree}, fields=['name'])
 
             for ss in student_supervisors:
                 print(f"Checking supervisor: {ss['supervisor']} for student: {ss['student']}")
@@ -105,6 +105,7 @@ def create_progress_report_and_notify():
                                 "program_enrollment": ss['program_enrollment'],
                                 "supervisor": ss['name'],  
                                 "supervisor_name": supervisor_full_name, 
+                                "student_report_period":"text",
                                 "report_date": today,
                                 "from_date": today - timedelta(days=90),
                                 "to_date": today,
@@ -153,7 +154,7 @@ def notify_supervisor_if_no_progress_report():
 
         student_supervisors = frappe.get_all('Student Supervisor', filters={'enabled': 1, 'type': 'Main Supervisor'}, fields=['student', 'program_enrollment', 'supervisor'])
         program_enrollments = frappe.get_all('Program Enrollment', filters={'name': ['in', [ss['program_enrollment'] for ss in student_supervisors]]}, fields=['name', 'program'])
-        academic_programs = frappe.get_all('Academic Program', filters={'name': ['in', [pe['program'] for pe in program_enrollments]], 'program_degree': program_degree}, fields=['name'])
+        academic_programs = frappe.get_all('Program Specification', filters={'name': ['in', [pe['program'] for pe in program_enrollments]], 'program_degree': program_degree}, fields=['name'])
 
         # الطلاب الذين يطابقون الفلترة
         filtered_student_supervisors = [ss for ss in student_supervisors if ss['program_enrollment'] in [pe['name'] for pe in program_enrollments if pe['program'] in [ap['name'] for ap in academic_programs]]]
@@ -271,3 +272,77 @@ def send_report_to_supervisor(report_name):
     })
     notification_doc.insert(ignore_permissions=True)
     frappe.db.commit()
+
+
+
+def on_update_after_submit(doc, method):
+    print("on_update_after_submit called for Progress Report:", doc.name)
+    if doc.satisfaction_status == 'Unsatisfied':
+        print("Satisfaction status is Unsatisfied")
+        notify_student_unsatisfied(doc)
+
+    else:
+         print("Satisfaction status is satisfied")
+         notify_student_satisfied(doc)
+
+def notify_student_unsatisfied(report):
+    
+    student = frappe.get_doc('Student', report.student)
+    user_id = student.user_id
+    user_email = frappe.db.get_value("User", user_id, "email")
+    
+    print(f"Preparing to send notification to {student.first_name} ({user_email})")
+
+    
+    if user_email:
+        subject = "Supervisor is not satisfied with your progress report"
+        message = f"Dear {student.first_name},<br><br>Your supervisor is not satisfied with your recent progress report. Please review the feedback and take the necessary actions.<br>Report Link: {get_url_to_form('Progress Report', report.name)}"
+        
+        frappe.sendmail(recipients=[user_email], subject=subject, message=message, now=True)
+        
+        notification_doc = frappe.get_doc({
+            "doctype": "Notification Log",
+            "subject": subject,
+            "email_content": message,
+            "type": "Alert",
+            "document_type": "Progress Report",
+            "document_name": report.name,
+            "from_user": frappe.session.user,
+            "for_user": user_id,
+        })
+        notification_doc.insert(ignore_permissions=True)
+        print(f"Notification sent to student: {student.first_name} for report: {report.name}")
+    else:
+        print(f"No email found for student: {student.first_name}")
+
+
+
+def notify_student_satisfied(report):
+    
+    student = frappe.get_doc('Student', report.student)
+    user_id = student.user_id
+    user_email = frappe.db.get_value("User", user_id, "email")
+    
+    print(f"Preparing to send notification to {student.first_name} ({user_email})")
+
+    
+    if user_email:
+        subject = "Supervisor is satisfied with your progress report"
+        message = f"Dear {student.first_name},<br><br>Your supervisor is  satisfied with your recent progress report. Please review the feedback and take the necessary actions.<br>Report Link: {get_url_to_form('Progress Report', report.name)}"
+        
+        frappe.sendmail(recipients=[user_email], subject=subject, message=message, now=True)
+        
+        notification_doc = frappe.get_doc({
+            "doctype": "Notification Log",
+            "subject": subject,
+            "email_content": message,
+            "type": "Alert",
+            "document_type": "Progress Report",
+            "document_name": report.name,
+            "from_user": frappe.session.user,
+            "for_user": user_id,
+        })
+        notification_doc.insert(ignore_permissions=True)
+        print(f"Notification sent to student: {student.first_name} for report: {report.name}")
+    else:
+        print(f"No email found for student: {student.first_name}")

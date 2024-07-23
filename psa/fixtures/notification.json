@@ -47,6 +47,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Notification for new fiscal year {{ doc.name }}",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -87,6 +88,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "{{ doc.name }} has been received",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -127,6 +129,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Progress Report Created",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -177,6 +180,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Student has not filled Progress Report",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -217,6 +221,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Reminder to Resume Enrollment",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -257,6 +262,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Suspend Enrollment Request ({{doc.name}}) Pending Fee Payment.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -297,6 +303,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Approved\", your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -337,6 +344,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Rejected\", your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -417,6 +425,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Suspend Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -457,6 +466,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Suspend Enrollment Request ({{doc.name}}) {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -537,6 +547,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Suspend Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -577,6 +588,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "You have to Pay Fees of Your Suspend Enrollment Request ({{doc.name}}) to complete it.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -627,6 +639,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Continue Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -667,6 +680,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "You have to Pay Fees of Your Continue Enrollment Request ({{doc.name}}) to complete it.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -707,6 +721,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Continue Enrollment Request ({{doc.name}}) Pending Fee Payment.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -747,6 +762,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Continue Enrollment Request ({{doc.name}}) {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -797,6 +813,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Continue Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -837,6 +854,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Approved\", your continue enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": ""
  },
  {
@@ -877,6 +895,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Rejected\", your continue enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": ""
  },
  {
@@ -927,6 +946,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Withdrawal Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -967,6 +987,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "You have to Pay Fees of Your Withdrawal Request ({{doc.name}}) to complete it.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1007,6 +1028,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Delivered\", your file has been delivered to you by the Archivist.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -1047,6 +1069,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Withdrawal Request ({{doc.name}}) Pending File Delivery.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1097,6 +1120,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Withdrawal Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1137,6 +1161,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Take Your File\", Your Withdrawal Request ({{doc.name}}) Approved by Director of Graduate Studies.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1177,6 +1202,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Withdrawal Request ({{doc.name}}) {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1217,6 +1243,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Withdrawal Request ({{doc.name}}) Pending Fee Payment.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -1257,6 +1284,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Rejected\", your withdrawal request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -1297,6 +1325,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Approved\", your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": ""
  },
  {
@@ -1337,6 +1366,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Rejected\", your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": ""
  },
  {
@@ -1417,6 +1447,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Suspend Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1457,6 +1488,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Suspend Enrollment Request ({{doc.name}}) Pending Fee Payment.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1497,6 +1529,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Suspend Enrollment Request ({{doc.name}}) {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1537,6 +1570,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Approved\", your continue enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": ""
  },
  {
@@ -1577,6 +1611,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Rejected\", your continue enrollment request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": ""
  },
  {
@@ -1627,6 +1662,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Continue Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1667,6 +1703,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Continue Enrollment Request ({{doc.name}}) {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1707,6 +1744,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Continue Enrollment Request ({{doc.name}}) Pending Fee Payment.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1747,6 +1785,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Delivered\", your file has been delivered to you by the Archivist.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -1787,6 +1826,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Withdrawal Request ({{doc.name}}) {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1827,6 +1867,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Rejected\", your withdrawal request ({{doc.name}}) has been {{doc.status}}.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -1867,6 +1908,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "Your Withdrawal Request ({{doc.name}}) Pending Fee Payment.",
+  "twilio_number": null,
   "value_changed": null
  },
  {
@@ -1917,6 +1959,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Withdrawal Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1957,6 +2000,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Take Your File\", Your Withdrawal Request ({{doc.name}}) Approved by Director of Graduate Studies.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -1997,6 +2041,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "New Withdrawal Request ({{doc.name}}) Pending File Delivery.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -2037,6 +2082,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "You have to Pay Fees of Your Suspend Enrollment Request ({{doc.name}}) to complete it.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -2077,6 +2123,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "You have to Pay Fees of Your Continue Enrollment Request ({{doc.name}}) to complete it.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -2117,6 +2164,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "You have to Pay Fees of Your Withdrawal Request ({{doc.name}}) to complete it.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -2197,6 +2245,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Suspend Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -2247,6 +2296,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Continue Enrollment Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  },
  {
@@ -2297,6 +2347,7 @@
   "set_property_after_alert": null,
   "slack_webhook_url": null,
   "subject": "\"Pending Approval\", You have a Withdrawal Request ({{doc.name}}) Pending Approval.",
+  "twilio_number": null,
   "value_changed": "status"
  }
 ]
