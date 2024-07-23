@@ -24,7 +24,8 @@
   "section_break_rnvd",
   "pervious_proposal",
   "section_break_aqlh",
-  "supervisor_details_html"
+  "supervisor_details_html",
+  "amended_from"
  ],
  "fields": [
   {
@@ -58,6 +59,7 @@
    "label": "Supervisor Details html"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -110,6 +112,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "enabled",
    "fieldtype": "Check",
@@ -125,11 +128,22 @@
    "label": "Program Enrollment",
    "options": "Program Enrollment",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Student Research",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-07-14 01:52:46.535708",
+ "modified": "2024-07-23 20:58:54.751539",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
@@ -151,5 +165,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

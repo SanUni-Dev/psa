@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-08 12:37:41.614193",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "naming_series",
+  "column_break_obzz",
+  "doctor",
+  "program_enrollment",
+  "section_break_nrzo",
+  "research_title_english",
+  "description",
+  "column_break_gjto",
+  "research_title_arabic",
+  "section_break_jzib",
+  "statues"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
+  },
+  {
+   "fieldname": "column_break_obzz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "doctor",
+   "fieldtype": "Data",
+   "label": "Doctor"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_break_jzib",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": ".research_title_english",
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fetch_from": ".research_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment"
+  },
+  {
+   "fieldname": "section_break_nrzo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gjto",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "PSA-Std-Res-.YY.-.MM.-.####"
+  },
+  {
+   "fieldname": "statues",
+   "fieldtype": "Select",
+   "label": "Statues",
+   "options": "\nApprove\nUnapproved"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-16 04:10:39.954143",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Seminar Discussion Faculty Member Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
