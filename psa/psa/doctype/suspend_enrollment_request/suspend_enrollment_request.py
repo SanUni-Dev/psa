@@ -61,6 +61,3 @@ class SuspendEnrollmentRequest(Document):
                     frappe.throw(
                         _("Can't add a suspend enrollment request, because you have an active {0} ({1}) that is {2}!").format(active_request[0], url_of_active_request, active_request[1]['status'])
                     )
-
-
-        
