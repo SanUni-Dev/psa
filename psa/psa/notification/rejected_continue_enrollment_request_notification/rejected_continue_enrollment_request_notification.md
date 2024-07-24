@@ -1,0 +1,1 @@
+Reason of rejection is: {{doc.rejection_reason}}

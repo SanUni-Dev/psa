@@ -1,0 +1,28 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"Rejected by Finance Officer\" or doc.status == \"Rejected by Director of Graduate Studies\"",
+ "creation": "2024-07-24 22:53:12.043728",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Reason of rejection is: {{doc.rejection_reason}}",
+ "modified": "2024-07-25 01:12:30.861978",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "Rejected Withdrawal Request Notification",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "\"Rejected\", your withdrawal request ({{doc.name}}) has been {{doc.status}}."
+}

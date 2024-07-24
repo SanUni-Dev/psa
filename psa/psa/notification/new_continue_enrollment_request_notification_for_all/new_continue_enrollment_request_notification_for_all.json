@@ -1,0 +1,33 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"Approval Pending by Vice Dean for GSA\" or doc.status == \"Approval Pending by Department Head\"",
+ "creation": "2024-07-24 22:53:11.508945",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Continue Enrollment Request",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Continue enrollment request \"{{doc.name}}\" pending approval by you.",
+ "modified": "2024-07-25 01:10:26.482628",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "New Continue Enrollment Request Notification for All",
+ "recipients": [
+  {
+   "condition": "doc.status == \"Approval Pending by Vice Dean for GSA\"",
+   "receiver_by_role": "Vice Dean For GSA"
+  },
+  {
+   "condition": "doc.status == \"Approval Pending by Department Head\"",
+   "receiver_by_role": "Department Head"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "New Continue Enrollment Request ({{doc.name}}) Pending Approval.",
+ "value_changed": "status"
+}
