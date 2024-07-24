@@ -1,0 +1,1 @@
+"Pending Approval", You have a Withdrawal Request ({{doc.name}}) Pending Approval.

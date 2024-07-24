@@ -1,0 +1,46 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"Approval Pending by Vice Dean for GSA\" or doc.status == \"Approval Pending by Department Head\" or doc.status == \"Approval Pending by Department Council\" or doc.status == \"Approval Pending by College Dean\" or doc.status == \"Approval Pending by College Council\"",
+ "creation": "2024-07-24 22:53:13.005962",
+ "date_changed": "modified",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "Days After",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "\"Pending Approval\", You have a Suspend Enrollment Request ({{doc.name}}) Pending Approval by you with reason: \"{{doc.reason}}\" for \"{{doc.suspend_period}}\".",
+ "modified": "2024-07-25 00:58:38.290779",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "New Suspend Enrollment Request Notification Reminder for All",
+ "recipients": [
+  {
+   "condition": "doc.status == \"Approval Pending by Vice Dean for GSA\"",
+   "receiver_by_role": "Vice Dean For GSA"
+  },
+  {
+   "condition": "doc.status == \"Approval Pending by Department Head\"",
+   "receiver_by_role": "Department Head"
+  },
+  {
+   "condition": "doc.status == \"Approval Pending by Department Council\"",
+   "receiver_by_role": "Department Council Head"
+  },
+  {
+   "condition": "doc.status == \"Approval Pending by College Dean\"",
+   "receiver_by_role": "College Dean"
+  },
+  {
+   "condition": "doc.status == \"Approval Pending by College Council\"",
+   "receiver_by_role": "College Council Head"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "\"Pending Approval\", You have a Suspend Enrollment Request ({{doc.name}}) Pending Approval.",
+ "value_changed": "status"
+}

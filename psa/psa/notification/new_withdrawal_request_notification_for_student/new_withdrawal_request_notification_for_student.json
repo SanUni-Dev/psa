@@ -1,0 +1,27 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "creation": "2024-07-24 22:53:12.166278",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Your withdrawal request ({{doc.name}}) pending fee payment.",
+ "modified": "2024-07-25 01:12:34.124280",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "New Withdrawal Request Notification for Student",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Your Withdrawal Request ({{doc.name}}) Pending Fee Payment."
+}

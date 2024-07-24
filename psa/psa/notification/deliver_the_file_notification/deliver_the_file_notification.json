@@ -1,0 +1,28 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"The File Delivered by Archivist\"",
+ "creation": "2024-07-24 22:53:11.824891",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-07-25 01:12:52.445159",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "Deliver The File Notification",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "\"Delivered\", your file has been delivered to you by the Archivist."
+}

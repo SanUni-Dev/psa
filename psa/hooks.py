@@ -11,7 +11,6 @@ fixtures = [
     "Workflow",
     "Workflow State",
     "Workflow Action Master",
-    "Notification",
     "Wiki Space",
     "Wiki Page",
     "Translation",

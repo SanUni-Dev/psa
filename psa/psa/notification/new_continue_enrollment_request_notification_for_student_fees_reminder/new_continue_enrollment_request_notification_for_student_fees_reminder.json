@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.fees_status==\"Not Paid\"",
+ "creation": "2024-07-24 22:53:12.694551",
+ "date_changed": "creation",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Continue Enrollment Request",
+ "enabled": 1,
+ "event": "Days After",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "You have to Pay Fees of Your Continue Enrollment Request ({{doc.name}}) to complete it.",
+ "modified": "2024-07-25 01:10:37.883660",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "New Continue Enrollment Request Notification for Student Fees Reminder",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "You have to Pay Fees of Your Continue Enrollment Request ({{doc.name}}) to complete it.",
+ "value_changed": "status"
+}
