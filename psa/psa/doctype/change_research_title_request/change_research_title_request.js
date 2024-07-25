@@ -6,12 +6,32 @@ frappe.ui.form.on("Change Research Title Request", {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
+        if (frm.doc.status === "Approved by College Dean") {
+            frm.add_custom_button(__('change title'), function() {
+                frappe.new_doc('Student Research', {
+                    student: frm.doc.student,
+                    program_enrollment: frm.doc.program_enrollment,
+                    research_title_arabic: frm.doc.new_research_title_arabic,//يتم ادخال القيمة يدويا هنا 
+                    research_title_english:frm.doc.new_research_title_english,
+                    reference_doctype: frm.doc.doctype,
+                    document_name: frm.doc.name,
+                    status:"Active",
+                    enabled:"true",
+                    pervious_proposal: frm.doc.student_research
+                }, function(new_doc) {                     
+                    frappe.set_route('Form', 'Student Research', new_doc.name);
+                });
+
+            });
+        }
     },
 
     onload(frm) {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
-                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function () {
+                    psa_utils.set_student_research_for_student_and_program_enrollment(frm, "student_research", frm.doc.student, frm.doc.program_enrollment);
+                });
             });
         }
     },

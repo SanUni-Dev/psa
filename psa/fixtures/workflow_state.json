@@ -2,6 +2,24 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-07-04 14:50:17.203212",
+  "name": "Pending Evaluation",
+  "style": "Primary",
+  "workflow_state_name": "Pending Evaluation"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-07-04 14:50:24.941953",
+  "name": "Pending Approval",
+  "style": "Primary",
+  "workflow_state_name": "Pending Approval"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
   "icon": "question-sign",
   "modified": "2024-01-29 16:05:48.688358",
   "name": "Pending",
@@ -84,6 +102,24 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
+  "modified": "2024-07-22 00:56:43.579988",
+  "name": "approved by  Director of Graduate Studies",
+  "style": "Success",
+  "workflow_state_name": "approved by  Director of Graduate Studies"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-19 18:50:29.967098",
+  "name": "Approval Pending by Director of Graduate Studies",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Director of Graduate Studies"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
   "modified": "2024-03-04 20:53:32.698451",
   "name": "Rejected by Department Head",
   "style": "Danger",
@@ -138,51 +174,6 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-03-04 20:48:02.304348",
-  "name": "Approval Pending by Department Council",
-  "style": "Inverse",
-  "workflow_state_name": "Approval Pending by Department Council"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-03-04 20:51:07.128966",
-  "name": "Approval Pending by College Council",
-  "style": "Inverse",
-  "workflow_state_name": "Approval Pending by College Council"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-03-04 20:45:50.134626",
-  "name": "Approval Pending by Department Head",
-  "style": "Inverse",
-  "workflow_state_name": "Approval Pending by Department Head"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-03-04 20:50:30.803823",
-  "name": "Approval Pending by College Dean",
-  "style": "Inverse",
-  "workflow_state_name": "Approval Pending by College Dean"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
-  "modified": "2024-07-22 00:56:43.579988",
-  "name": "approved by  Director of Graduate Studies",
-  "style": "Success",
-  "workflow_state_name": "approved by  Director of Graduate Studies"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow State",
-  "icon": "",
   "modified": "2024-03-04 20:53:07.644254",
   "name": "Rejected by Vice Dean for GSA",
   "style": "Danger",
@@ -201,10 +192,19 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-03-19 18:50:29.967098",
-  "name": "Approval Pending by Director of Graduate Studies",
+  "modified": "2024-03-04 20:48:02.304348",
+  "name": "Approval Pending by Department Council",
   "style": "Inverse",
-  "workflow_state_name": "Approval Pending by Director of Graduate Studies"
+  "workflow_state_name": "Approval Pending by Department Council"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:51:07.128966",
+  "name": "Approval Pending by College Council",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by College Council"
  },
  {
   "docstatus": 0,
@@ -214,5 +214,23 @@
   "name": "Approval Pending by Vice Dean for GSA",
   "style": "Inverse",
   "workflow_state_name": "Approval Pending by Vice Dean for GSA"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:45:50.134626",
+  "name": "Approval Pending by Department Head",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by Department Head"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-04 20:50:30.803823",
+  "name": "Approval Pending by College Dean",
+  "style": "Inverse",
+  "workflow_state_name": "Approval Pending by College Dean"
  }
 ]

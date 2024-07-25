@@ -74,13 +74,15 @@
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "student_research.research_title_arabic",
    "fieldname": "current_research_title_arabic",
-   "fieldtype": "Small Text",
+   "fieldtype": "Data",
    "label": "Current Research Title Arabic"
   },
   {
+   "fetch_from": "student_research.research_title_english",
    "fieldname": "current_research_title_english",
-   "fieldtype": "Small Text",
+   "fieldtype": "Data",
    "label": "Current Research Title English"
   },
   {
@@ -150,7 +152,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-06 22:49:13.752264",
+ "modified": "2024-07-25 15:06:47.292864",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Title Request",
@@ -168,6 +170,18 @@
    "role": "System Manager",
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1,
    "write": 1
   }
  ],
