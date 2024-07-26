@@ -151,8 +151,9 @@
   },
   {
    "fieldname": "current_supervisor",
-   "fieldtype": "Data",
-   "label": "Current Supervisor"
+   "fieldtype": "Link",
+   "label": "Current Supervisor",
+   "options": "Student Supervisor"
   },
   {
    "fieldname": "status",
@@ -169,7 +170,7 @@
    "link_fieldname": "document_name"
   }
  ],
- "modified": "2024-07-22 01:13:47.850317",
+ "modified": "2024-07-25 15:07:15.264318",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Main Supervisor Request",
@@ -198,7 +199,6 @@
    "read": 1,
    "report": 1,
    "role": "Student",
-   "select": 1,
    "share": 1,
    "write": 1
   },

@@ -1,9 +1,14 @@
 # Copyright (c) 2024, Sana'a university and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
 
 
 class StudentSupervisor(Document):
-	pass
+	def on_submit(self):
+		sup_record = frappe.get_doc('Student Supervisor', self.pervious_supervisor)
+		sup_record.status = 'Changed'
+		sup_record.enabled = 0
+		sup_record.save()
+		
