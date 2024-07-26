@@ -11,19 +11,25 @@ frappe.ui.form.on("Change Research Title Request", {
                 frappe.new_doc('Student Research', {
                     student: frm.doc.student,
                     program_enrollment: frm.doc.program_enrollment,
-                    research_title_arabic: frm.doc.new_research_title_arabic,//يتم ادخال القيمة يدويا هنا 
-                    research_title_english:frm.doc.new_research_title_english,
                     reference_doctype: frm.doc.doctype,
                     document_name: frm.doc.name,
                     status:"Active",
                     enabled:"true",
                     pervious_proposal: frm.doc.student_research
-                }, function(new_doc) {                     
-                    frappe.set_route('Form', 'Student Research', new_doc.name);
+                }, function(new_doc) {
+                    frappe.model.set_value(new_doc.doctype, new_doc.name, 'research_title_arabic', frm.doc.new_research_title_arabic);
+                    frappe.model.set_value(new_doc.doctype, new_doc.name, 'research_title_english', frm.doc.new_research_title_english);
+                    
+                    frappe.set_route('Form', new_doc.doctype, new_doc.name).then(() => {
+                        let doc = locals[new_doc.doctype][new_doc.name];
+                        doc.research_title_arabic = frm.doc.new_research_title_arabic;
+                        doc.research_title_english = frm.doc.new_research_title_english;
+                        cur_frm.refresh_fields(['research_title_arabic', 'research_title_english']);
+                    });
                 });
-
             });
         }
+    
     },
 
     onload(frm) {
