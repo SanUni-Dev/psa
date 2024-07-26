@@ -2,6 +2,20 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
+  "modified": "2024-07-04 14:45:57.007096",
+  "name": "Send Request",
+  "workflow_action_name": "Send Request"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-07-04 14:46:40.911229",
+  "name": "Send Evaluation",
+  "workflow_action_name": "Send Evaluation"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
   "modified": "2024-01-29 16:05:48.821166",
   "name": "Review",
   "workflow_action_name": "Review"
@@ -19,6 +33,13 @@
   "modified": "2024-03-19 19:21:58.522015",
   "name": "Deliver the File",
   "workflow_action_name": "Deliver the File"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-19 17:28:43.904789",
+  "name": "Send to Director of Graduate Studies",
+  "workflow_action_name": "Send to Director of Graduate Studies"
  },
  {
   "docstatus": 0,
@@ -44,23 +65,16 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
-  "modified": "2024-03-04 22:14:45.487878",
-  "name": "Send to College Dean",
-  "workflow_action_name": "Send to College Dean"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow Action Master",
-  "modified": "2024-03-19 17:28:43.904789",
-  "name": "Send to Director of Graduate Studies",
-  "workflow_action_name": "Send to Director of Graduate Studies"
- },
- {
-  "docstatus": 0,
-  "doctype": "Workflow Action Master",
   "modified": "2024-03-04 22:08:44.012546",
   "name": "Confirm",
   "workflow_action_name": "Confirm"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-04 22:14:45.487878",
+  "name": "Send to College Dean",
+  "workflow_action_name": "Send to College Dean"
  },
  {
   "docstatus": 0,

@@ -6,24 +6,31 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "enabled",
-  "section_break_jhrk",
   "naming_series",
+  "section_break_rgae",
+  "enabled",
+  "column_break_uuuw",
+  "status",
+  "section_break_jhrk",
   "student",
   "program_enrollment",
   "column_break_twux",
+  "section_break_cssm",
   "supervisor",
   "supervisor_name",
+  "column_break_lirc",
   "type",
-  "status",
   "section_break_apcp",
   "reference_doctype",
   "column_break_cdqb",
   "document_name",
   "section_break_fppk",
   "pervious_supervisor",
+  "column_break_egdd",
+  "supervisor_appointment_date",
   "section_break_gbik",
   "research_details_html",
+  "section_break_iblh",
   "amended_from"
  ],
  "fields": [
@@ -36,6 +43,7 @@
   },
   {
    "allow_on_submit": 1,
+   "default": "Active",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -114,7 +122,7 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "0",
+   "default": "1",
    "fieldname": "enabled",
    "fieldtype": "Check",
    "label": "Enabled"
@@ -139,12 +147,42 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "column_break_egdd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "supervisor_appointment_date",
+   "fieldtype": "Date",
+   "label": "Supervisor Appointment Date"
+  },
+  {
+   "fieldname": "section_break_rgae",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_uuuw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cssm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lirc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_iblh",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 21:00:19.381177",
+ "modified": "2024-07-27 02:24:01.141853",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Supervisor",

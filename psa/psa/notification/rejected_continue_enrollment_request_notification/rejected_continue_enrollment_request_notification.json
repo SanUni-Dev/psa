@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"Rejected by Vice Dean for GSA\" or doc.status == \"Rejected by Department Head\"",
+ "creation": "2024-07-24 22:53:11.398284",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Continue Enrollment Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Reason of rejection is: {{doc.rejection_reason}}",
+ "modified": "2024-07-25 01:10:22.072874",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "Rejected Continue Enrollment Request Notification",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "\"Rejected\", your continue enrollment request ({{doc.name}}) has been {{doc.status}}.",
+ "value_changed": ""
+}

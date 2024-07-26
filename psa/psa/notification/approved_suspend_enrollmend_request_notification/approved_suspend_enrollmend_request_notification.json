@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"Approved by College Dean\" or doc.status == \"Approved by College Council\"",
+ "creation": "2024-07-24 22:53:10.637586",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "Submit",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-07-25 00:54:51.370329",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "Approved Suspend Enrollmend Request Notification",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "\"Approved\", your suspend enrollment request ({{doc.name}}) has been {{doc.status}}.",
+ "value_changed": ""
+}

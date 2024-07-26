@@ -11,10 +11,12 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
                 frappe.new_doc('Student Supervisor', {
                     student: frm.doc.student,
                     program_enrollment: frm.doc.program_enrollment,
+                    supervisor:"",//يتم ادخال القيمة يدويا هنا 
                     type: "Main Supervisor",
                     reference_doctype: frm.doc.doctype,
                     document_name: frm.doc.name,
                     status:"Active",
+                    enabled:"true",
                     pervious_supervisor: frm.doc.current_supervisor
                 }, function(new_doc) {                     
                     frappe.set_route('Form', 'Student Supervisor', new_doc.name);
@@ -22,53 +24,14 @@ frappe.ui.form.on("Change Research Main Supervisor Request", {
 
             });
         }
-    }
-});
-
-frappe.ui.form.on('Student Supervisor', {
-    after_save: function(frm) {
-         
-        if (frm.doc.previous_supervisor) {
-            frappe.call({
-                method: 'frappe.client.get_list',
-                args: {
-                    doctype: 'Student Supervisor',
-                    filters: {
-                        'student': frm.doc.student,
-                        'status': "Active",
-                        'supervisor': frm.doc.previous_supervisor
-                    },
-                    fields: ['name']
-                },
-                callback: function(response) {
-                    let old_supervisors = response.message || [];
-
-                    
-                    old_supervisors.forEach(function(record) {
-                        frappe.call({
-                            method: 'frappe.client.set_value',
-                            args: {
-                                doctype: 'Student Supervisor',
-                                name: record.name,
-                                fieldname: 'status',
-                                value:"Changed"
-                            },
-                            callback: function() {
-                                console.log(`Record ${record.name} disabled successfully.`);
-                            }
-                        });
-                    });
-                }
-                   
-    
-
-
-
-
-
-            });
-        }
     },
+
+
+
+
+
+
+    
 
     onload(frm) {
         // if (frm.is_new() && frappe.user_roles.includes("Student")) {
@@ -79,7 +42,7 @@ frappe.ui.form.on('Student Supervisor', {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
                 psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function () {
-                    psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
+                    psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "current_supervisor", frm.doc.student, frm.doc.program_enrollment);
                 });
             });
         }
@@ -134,51 +97,10 @@ frappe.ui.form.on('Student Supervisor', {
 });
 
 
-frappe.ui.form.on('Suggested Supervisor', {
-    scientific_degree: function(frm, cdt, cdn) {
-        var child =  locals[cdt][cdn];
-        var values = child.scientific_degree;
-        console.log(values);
 
-        frappe.call({
-            method: 'psa.api.psa_utils.get_scientific_degree',
-            args: {
-                "scientific_degree": values
-            },
-            callback: function (response) {
-                console.log(response.message);
-                frm.fields_dict.faculty_member.get_query = function(doc,cdt,cdn) {
-                    return {
-                        filters:[
-                            ['name', '=', "ACAD-FM-00004"]
-                        ]
-                    }
-                }
-            }
-        });
-    },
 
-    faculty: function(frm, cdt, cdn) {
-        var d = locals[cdt][cdn];
-        // d.faculty_member = '';
-        // cur_frm.refresh_field('suggested_supervisors');
-        // d.scientific_degree = '';
 
-        frappe.db.get_value("Faculty", d.faculty, ["company"],
-            function(value){
-                console.log(value.company);
-                frm.set_query("faculty_member", () => {
-                    return {
-                        filters: {
-                            company: value.company,
-                        },
-                    };
-                });
-            }
-        );
-    },
 
-});
 
 //     scientific_degree: function(frm, cdt, cdn) {
 //         var d = locals[cdt][cdn];

@@ -23,7 +23,7 @@ def get_program_enrollment_for_student(student):
 
 @frappe.whitelist()
 def get_student_supervisor_for_student_and_program_enrollment(student, program_enrollment):
-    student_supervisor = frappe.get_value("Student Supervisor", {"student": student, "program_enrollment": program_enrollment, "enabled": 1, "status": "Active"}, "name")
+    student_supervisor = frappe.get_value("Student Supervisor", {"student": student, "program_enrollment": program_enrollment, "enabled": 1, "status": "Active", "type": "Main Supervisor"}, "name")
     return student_supervisor
 
 

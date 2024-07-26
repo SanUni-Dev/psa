@@ -346,3 +346,190 @@ def notify_student_satisfied(report):
         print(f"Notification sent to student: {student.first_name} for report: {report.name}")
     else:
         print(f"No email found for student: {student.first_name}")
+
+
+
+ 
+
+
+@frappe.whitelist()
+def notify_on_supervisor_change(doc, method):
+    try:
+        student = doc.student
+        program_enrollment = doc.program_enrollment
+
+        new_supervisor_id = frappe.db.get_value(
+            "Student Supervisor",
+            {"student": student, "program_enrollment": program_enrollment, "enabled": 1, "type": "Main Supervisor"},
+            "supervisor"
+        )
+        if not new_supervisor_id:
+            raise ValueError("No new supervisor found.")
+        print(f"New Supervisor ID: {new_supervisor_id}")
+
+        previous_supervisor_id = doc.pervious_supervisor
+        print(f"Previous Supervisor ID: {previous_supervisor_id}")
+
+        student_doc = frappe.get_doc('Student', student)
+        student_user_id = student_doc.user_id
+        student_email = frappe.db.get_value("User", student_user_id, "email")
+        student_name = student_doc.first_name
+
+        print(f"Student Email: {student_email}")
+
+        if new_supervisor_id:
+            employee_id = frappe.db.get_value('Faculty Member', new_supervisor_id, 'employee')
+            new_supervisor_user_id = frappe.db.get_value('Employee', employee_id, 'user_id')
+            new_supervisor_name = frappe.db.get_value('Employee', employee_id, 'first_name')
+            new_supervisor_email = frappe.db.get_value('User', new_supervisor_user_id, 'email')
+
+            print(f"New Supervisor Name: {new_supervisor_name}")
+            print(f"New Supervisor Email: {new_supervisor_email}")
+
+        if previous_supervisor_id:
+            previous_supervisor_doc = frappe.get_doc("Student Supervisor", previous_supervisor_id)
+            previous_supervisor = previous_supervisor_doc.supervisor
+            if not previous_supervisor:
+                raise ValueError("No supervisor found for previous supervisor ID.")
+            previous_employee_id = frappe.db.get_value('Faculty Member', previous_supervisor, 'employee')
+            previous_supervisor_user_id = frappe.db.get_value('Employee', previous_employee_id, 'user_id')
+            previous_supervisor_name = frappe.db.get_value('Employee', previous_employee_id, 'first_name')
+            previous_supervisor_email = frappe.db.get_value('User', previous_supervisor_user_id, 'email')
+
+            print(f"Previous Supervisor Name: {previous_supervisor_name}")
+            print(f"Previous Supervisor Email: {previous_supervisor_email}")
+
+            if previous_supervisor_email:
+                previous_supervisor_subject = "Change of Supervision"
+                previous_supervisor_message = f"Dear {previous_supervisor_name},<br><br>You have been removed as the supervisor for student {student_name}.<br>Best regards,<br>PSA Administration"
+                
+                frappe.sendmail(recipients=[previous_supervisor_email],
+                                subject=previous_supervisor_subject,
+                                message=previous_supervisor_message,
+                                now=True)
+                
+                previous_supervisor_notification = frappe.get_doc({
+                    "doctype": "Notification Log",
+                    "subject": previous_supervisor_subject,
+                    "email_content": previous_supervisor_message,
+                    "type": "Alert",
+                    "document_type": "Student Supervisor",
+                    "document_name": doc.name,
+                    "from_user": frappe.session.user,
+                    "for_user": previous_supervisor_user_id,
+                })
+                previous_supervisor_notification.insert(ignore_permissions=True)
+            else:
+                print("Previous Supervisor Email is missing.")
+        else:
+            print("Previous Supervisor ID is missing.")
+
+        if student_email:
+            student_subject = "Approval of Supervisor Change"
+            student_message = f"Dear {student_name},<br><br>Your request to change supervisor has been approved. Your new supervisor is {new_supervisor_name}.<br>Best regards,<br>PSA Administration"
+            
+            frappe.sendmail(recipients=[student_email],
+                            subject=student_subject,
+                            message=student_message,
+                            now=True)
+            
+            student_notification = frappe.get_doc({
+                "doctype": "Notification Log",
+                "subject": student_subject,
+                "email_content": student_message,
+                "type": "Alert",
+                "document_type": "Student Supervisor",
+                "document_name": doc.name,
+                "from_user": frappe.session.user,
+                "for_user": student_user_id,
+            })
+            student_notification.insert(ignore_permissions=True)
+
+        if new_supervisor_email:
+            new_supervisor_subject = "New Supervision Assignment"
+            new_supervisor_message = f"Dear {new_supervisor_name},<br><br>You have been assigned as the supervisor for student {student_name}.<br>Best regards,<br>PSA Administration"
+            
+            frappe.sendmail(recipients=[new_supervisor_email],
+                            subject=new_supervisor_subject,
+                            message=new_supervisor_message,
+                            now=True)
+            
+            new_supervisor_notification = frappe.get_doc({
+                "doctype": "Notification Log",
+                "subject": new_supervisor_subject,
+                "email_content": new_supervisor_message,
+                "type": "Alert",
+                "document_type": "Student Supervisor",
+                "document_name": doc.name,
+                "from_user": frappe.session.user,
+                "for_user": new_supervisor_user_id,
+            })
+            new_supervisor_notification.insert(ignore_permissions=True)
+
+        frappe.db.commit()
+        print("Notifications sent successfully.")
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "notify_on_supervisor_change Error")
+        print(f"Error: {e}")
+
+
+
+
+@frappe.whitelist()
+def notify_student_on_research_title_change(doc_name):
+    try:
+        research_doc = frappe.get_doc("Student Research", doc_name)
+        
+        student_id = research_doc.student
+        student_doc = frappe.get_doc('Student', student_id)
+        student_user_id = student_doc.user_id
+        student_email = frappe.db.get_value("User", student_user_id, "email")
+        student_name = student_doc.first_name
+
+        previous_proposal_id = research_doc.pervious_proposal
+        previous_proposal_title_english = None
+        previous_proposal_title_arabic = None
+        if previous_proposal_id:
+            previous_proposal_doc = frappe.get_doc("Student Research", previous_proposal_id)
+            previous_proposal_title_english = previous_proposal_doc.research_title_english
+            previous_proposal_title_arabic = previous_proposal_doc.research_title_arabic
+
+        new_research_title_english = research_doc.research_title_english
+        new_research_title_arabic = research_doc.research_title_arabic
+
+        if student_email:
+            subject = "Approval of Research Title Change"
+            message = f"""Dear {student_name},<br><br>
+                          Your request to change the research title has been approved.<br>
+                          Previous Research Title (English): {previous_proposal_title_english if previous_proposal_title_english else "N/A"}<br>
+                          Previous Research Title (Arabic): {previous_proposal_title_arabic if previous_proposal_title_arabic else "N/A"}<br>
+                          New Research Title (English): {new_research_title_english}<br>
+                          New Research Title (Arabic): {new_research_title_arabic}<br><br>
+                          Best regards,<br>
+                          PSA Administration"""
+
+            frappe.sendmail(recipients=[student_email],
+                            subject=subject,
+                            message=message,
+                            now=True)
+
+            notification_log = frappe.get_doc({
+                "doctype": "Notification Log",
+                "subject": subject,
+                "email_content": message,
+                "type": "Alert",
+                "document_type": "Student Research",
+                "document_name": doc_name,
+                "from_user": frappe.session.user,
+                "for_user": student_user_id,
+            })
+            notification_log.insert(ignore_permissions=True)
+
+        frappe.db.commit()
+        print("Notification sent successfully.")
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "notify_student_on_research_title_change Error")
+        print(f"Error: {e}")
+
