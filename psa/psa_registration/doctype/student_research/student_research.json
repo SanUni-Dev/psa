@@ -6,13 +6,15 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "enabled",
-  "section_break_styg",
   "naming_series",
+  "section_break_rxwo",
+  "enabled",
+  "column_break_ntxd",
+  "status",
+  "section_break_styg",
   "student",
   "program_enrollment",
   "column_break_robp",
-  "status",
   "section_break_qcdd",
   "research_title_english",
   "column_break_hrcl",
@@ -23,8 +25,11 @@
   "document_name",
   "section_break_rnvd",
   "pervious_proposal",
+  "column_break_veqc",
+  "date_of_approval_of_the_research_title",
   "section_break_aqlh",
   "supervisor_details_html",
+  "section_break_cugz",
   "amended_from"
  ],
  "fields": [
@@ -60,6 +65,7 @@
   },
   {
    "allow_on_submit": 1,
+   "default": "Active",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -138,12 +144,34 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "section_break_rxwo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ntxd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_veqc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date_of_approval_of_the_research_title",
+   "fieldtype": "Date",
+   "label": "Date of Approval of the Research Title"
+  },
+  {
+   "fieldname": "section_break_cugz",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-25 02:36:39.136071",
+ "modified": "2024-07-27 02:22:15.065900",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
