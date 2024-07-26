@@ -6,12 +6,42 @@ frappe.ui.form.on("Change Research Co Supervisor Request", {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
+        if (frm.doc.status === "Approved by College Dean") {
+            frm.add_custom_button(__('change co supervisor'), function() {
+                frappe.new_doc('Student Supervisor', {
+                    student: frm.doc.student,
+                    program_enrollment: frm.doc.program_enrollment,
+                    supervisor:"",//يتم ادخال القيمة يدويا هنا 
+                    type: "Co-Supervisor",
+                    reference_doctype: frm.doc.doctype,
+                    document_name: frm.doc.name,
+                    status:"Active",
+                    enabled:"true",
+                    pervious_supervisor: frm.doc.current_supervisor
+                }, function(new_doc) {                     
+                    frappe.set_route('Form', 'Student Supervisor', new_doc.name);
+                });
+
+            });
+        }
     },
 
     onload(frm) {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
-                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment");
+                psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function () {
+                    frm.set_query("current_supervisor",function(){
+                        return {
+                            "filters": {
+                                "student": frm.doc.student,
+                                "program_enrollment": frm.doc.program_enrollment,                                
+                                "status": "Active",
+                                "enabled": 1,
+                                "type": "Co-Supervisor"
+                            }
+                        };
+                    });
+                });
             });
         }
     },

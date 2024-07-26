@@ -113,7 +113,7 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "0",
+   "default": "1",
    "fieldname": "enabled",
    "fieldtype": "Check",
    "label": "Enabled"
@@ -143,7 +143,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-23 20:58:54.751539",
+ "modified": "2024-07-25 02:36:39.136071",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
