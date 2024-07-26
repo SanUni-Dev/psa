@@ -16,9 +16,9 @@
   "program_enrollment",
   "column_break_robp",
   "section_break_qcdd",
-  "research_title_english",
-  "column_break_hrcl",
   "research_title_arabic",
+  "column_break_hrcl",
+  "research_title_english",
   "section_break_wpxd",
   "reference_doctype",
   "column_break_phey",
@@ -30,7 +30,9 @@
   "section_break_aqlh",
   "supervisor_details_html",
   "section_break_cugz",
-  "amended_from"
+  "amended_from",
+  "attachments_tab",
+  "attachment"
  ],
  "fields": [
   {
@@ -166,12 +168,22 @@
   {
    "fieldname": "section_break_cugz",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "attachments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-27 02:22:15.065900",
+ "modified": "2024-07-27 02:29:02.266197",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
