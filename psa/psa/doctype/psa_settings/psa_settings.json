@@ -54,7 +54,14 @@
   "section_break_kjqc",
   "minimum_number_of_suggested_committee_members",
   "column_break_iala",
-  "maximum_number_of_suggested_committee_members"
+  "maximum_number_of_suggested_committee_members",
+  "research_supervisor_limit_tab",
+  "main_supervisor_section",
+  "set_limit_on_number_researches_faculty_member_main_supervisor",
+  "number_of_researches_main",
+  "section_break_odch",
+  "set_limit_on_number_researches_faculty_member_co_supervisor",
+  "number_of_researches_co"
  ],
  "fields": [
   {
@@ -343,12 +350,55 @@
    "fieldtype": "Int",
    "label": "Maximum number of suggested committee members",
    "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed researches a faculty member can be a main supervisor for.",
+   "fieldname": "set_limit_on_number_researches_faculty_member_main_supervisor",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researches a faculty member can be a main supervisor for"
+  },
+  {
+   "fieldname": "research_supervisor_limit_tab",
+   "fieldtype": "Tab Break",
+   "label": "Research Supervisor Limit"
+  },
+  {
+   "fieldname": "main_supervisor_section",
+   "fieldtype": "Section Break",
+   "label": "Main Supervisor"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_supervisors;",
+   "fieldname": "number_of_researches_main",
+   "fieldtype": "Int",
+   "label": "Number of researches",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_odch",
+   "fieldtype": "Section Break",
+   "label": "Co-Supervisor"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed researches a faculty member can be a co-supervisor for.",
+   "fieldname": "set_limit_on_number_researches_faculty_member_co_supervisor",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researches a faculty member can be a co-supervisor for"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_supervisors;",
+   "fieldname": "number_of_researches_co",
+   "fieldtype": "Int",
+   "label": "Number of researches",
+   "non_negative": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-07-27 03:38:47.994630",
+ "modified": "2024-07-27 04:02:38.730629",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
