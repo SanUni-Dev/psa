@@ -48,7 +48,13 @@
   "section_break_vxxp",
   "set_a_limit_on_the_number_of_researcher_meetings",
   "number_of_meetings",
-  "column_break_jfnj"
+  "column_break_jfnj",
+  "formation_discussion_committee_tab",
+  "set_a_limit_on_the_number_of_suggested_committee_members",
+  "section_break_kjqc",
+  "minimum_number_of_suggested_committee_members",
+  "column_break_iala",
+  "maximum_number_of_suggested_committee_members"
  ],
  "fields": [
   {
@@ -301,12 +307,48 @@
    "fieldname": "check_active_requests_before_insert",
    "fieldtype": "Check",
    "label": "Check Active Requests Before Insert"
+  },
+  {
+   "fieldname": "formation_discussion_committee_tab",
+   "fieldtype": "Tab Break",
+   "label": "Formation Discussion Committee"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed suggested committee members a supervisor can select.",
+   "fieldname": "set_a_limit_on_the_number_of_suggested_committee_members",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of suggested committee members"
+  },
+  {
+   "fieldname": "section_break_kjqc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_committee_members;",
+   "description": "Set the value to 0 to set no minimum.",
+   "fieldname": "minimum_number_of_suggested_committee_members",
+   "fieldtype": "Int",
+   "label": "Minimum number of suggested committee members",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_iala",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_committee_members;",
+   "description": "Set the value to 0 to set no maximum.",
+   "fieldname": "maximum_number_of_suggested_committee_members",
+   "fieldtype": "Int",
+   "label": "Maximum number of suggested committee members",
+   "non_negative": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-06-29 01:31:26.292818",
+ "modified": "2024-07-27 03:38:47.994630",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
