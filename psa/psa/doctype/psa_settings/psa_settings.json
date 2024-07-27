@@ -44,6 +44,8 @@
   "progress_reports_tab",
   "section_break_kmfc",
   "program_progress_reports",
+  "section_break_bqtn",
+  "number_of_days_a_student_can_delay",
   "researcher_meetings_tab",
   "section_break_vxxp",
   "set_a_limit_on_the_number_of_researcher_meetings",
@@ -393,12 +395,22 @@
    "fieldtype": "Int",
    "label": "Number of researches",
    "non_negative": 1
+  },
+  {
+   "fieldname": "number_of_days_a_student_can_delay",
+   "fieldtype": "Int",
+   "label": "Number of days a student can delay submitting a progress report before notifying the supervisor",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_bqtn",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-07-27 04:02:38.730629",
+ "modified": "2024-07-27 04:22:13.575297",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",
