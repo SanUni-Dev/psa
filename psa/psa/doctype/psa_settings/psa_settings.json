@@ -44,11 +44,26 @@
   "progress_reports_tab",
   "section_break_kmfc",
   "program_progress_reports",
+  "section_break_bqtn",
+  "number_of_days_a_student_can_delay",
   "researcher_meetings_tab",
   "section_break_vxxp",
   "set_a_limit_on_the_number_of_researcher_meetings",
   "number_of_meetings",
-  "column_break_jfnj"
+  "column_break_jfnj",
+  "formation_discussion_committee_tab",
+  "set_a_limit_on_the_number_of_suggested_committee_members",
+  "section_break_kjqc",
+  "minimum_number_of_suggested_committee_members",
+  "column_break_iala",
+  "maximum_number_of_suggested_committee_members",
+  "research_supervisor_limit_tab",
+  "main_supervisor_section",
+  "set_limit_on_number_researches_faculty_member_main_supervisor",
+  "number_of_researches_main",
+  "section_break_odch",
+  "set_limit_on_number_researches_faculty_member_co_supervisor",
+  "number_of_researches_co"
  ],
  "fields": [
   {
@@ -301,12 +316,101 @@
    "fieldname": "check_active_requests_before_insert",
    "fieldtype": "Check",
    "label": "Check Active Requests Before Insert"
+  },
+  {
+   "fieldname": "formation_discussion_committee_tab",
+   "fieldtype": "Tab Break",
+   "label": "Formation Discussion Committee"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed suggested committee members a supervisor can select.",
+   "fieldname": "set_a_limit_on_the_number_of_suggested_committee_members",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of suggested committee members"
+  },
+  {
+   "fieldname": "section_break_kjqc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_committee_members;",
+   "description": "Set the value to 0 to set no minimum.",
+   "fieldname": "minimum_number_of_suggested_committee_members",
+   "fieldtype": "Int",
+   "label": "Minimum number of suggested committee members",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_iala",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_committee_members;",
+   "description": "Set the value to 0 to set no maximum.",
+   "fieldname": "maximum_number_of_suggested_committee_members",
+   "fieldtype": "Int",
+   "label": "Maximum number of suggested committee members",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed researches a faculty member can be a main supervisor for.",
+   "fieldname": "set_limit_on_number_researches_faculty_member_main_supervisor",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researches a faculty member can be a main supervisor for"
+  },
+  {
+   "fieldname": "research_supervisor_limit_tab",
+   "fieldtype": "Tab Break",
+   "label": "Research Supervisor Limit"
+  },
+  {
+   "fieldname": "main_supervisor_section",
+   "fieldtype": "Section Break",
+   "label": "Main Supervisor"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_supervisors;",
+   "fieldname": "number_of_researches_main",
+   "fieldtype": "Int",
+   "label": "Number of researches",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_odch",
+   "fieldtype": "Section Break",
+   "label": "Co-Supervisor"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed researches a faculty member can be a co-supervisor for.",
+   "fieldname": "set_limit_on_number_researches_faculty_member_co_supervisor",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researches a faculty member can be a co-supervisor for"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_supervisors;",
+   "fieldname": "number_of_researches_co",
+   "fieldtype": "Int",
+   "label": "Number of researches",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "number_of_days_a_student_can_delay",
+   "fieldtype": "Int",
+   "label": "Number of days a student can delay submitting a progress report before notifying the supervisor",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_bqtn",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-06-29 01:31:26.292818",
+ "modified": "2024-07-27 04:22:13.575297",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA Settings",

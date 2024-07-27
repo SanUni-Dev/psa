@@ -322,7 +322,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Masters",
-   "link_count": 12,
+   "link_count": 13,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -446,9 +446,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Program Publication Requirement",
+   "link_count": 0,
+   "link_to": "Program Publication Requirement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-06-06 13:47:43.712341",
+ "modified": "2024-07-27 03:23:20.437666",
  "modified_by": "esmailebraheem771@gmail.com",
  "module": "PSA",
  "name": "PSA",
