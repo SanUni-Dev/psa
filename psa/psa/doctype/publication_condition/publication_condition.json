@@ -46,13 +46,14 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Requirement",
+   "mandatory_depends_on": "eval: doc.journal_type == 'Internal'",
    "options": "\nRequired\nAt Least"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-12 05:28:35.914410",
+ "modified": "2024-07-27 03:17:16.851038",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Publication Condition",
