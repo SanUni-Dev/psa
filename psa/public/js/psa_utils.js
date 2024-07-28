@@ -9,7 +9,9 @@ psa_utils.set_student_for_current_user = function (frm, field_name, callback) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
-                callback();
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
@@ -23,14 +25,16 @@ psa_utils.set_program_enrollment_for_current_user = function (frm, field_name, c
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
-                callback();
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
 }
 
 
-psa_utils.set_program_enrollment_for_student = function (frm, field_name, student) {
+psa_utils.set_program_enrollment_for_student = function (frm, field_name, student, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_program_enrollment_for_student',
         args: {
@@ -40,13 +44,16 @@ psa_utils.set_program_enrollment_for_student = function (frm, field_name, studen
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
 }
 
 
-psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
+psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_student_supervisor_for_student_and_program_enrollment',
         args: {
@@ -57,13 +64,16 @@ psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
 }
 
 
-psa_utils.set_student_research_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
+psa_utils.set_student_research_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_student_research_for_student_and_program_enrollment',
         args: {
@@ -74,6 +84,9 @@ psa_utils.set_student_research_for_student_and_program_enrollment = function (fr
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
