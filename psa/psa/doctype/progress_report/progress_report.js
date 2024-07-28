@@ -21,7 +21,9 @@ frappe.ui.form.on("Progress Report", {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
             psa_utils.set_student_for_current_user(frm, "student", function () {
                 psa_utils.set_program_enrollment_for_current_user(frm, "program_enrollment", function () {
-                    psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
+                    psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment, function () {
+                        psa_utils.set_student_research_for_student_and_program_enrollment(frm, "research", frm.doc.student, frm.doc.program_enrollment);
+                    });
                 });
             });
         }
@@ -31,11 +33,14 @@ frappe.ui.form.on("Progress Report", {
         frm.set_intro('');
         frm.set_value("supervisor", "");
         refresh_field("supervisor");
+        frm.set_value("research", "");
+        refresh_field("research");
         frm.set_value("meetings", null);
         refresh_field("meetings");
 
         if (frm.doc.program_enrollment) {
             psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
+            psa_utils.set_student_research_for_student_and_program_enrollment(frm, "research", frm.doc.student, frm.doc.program_enrollment);
             
             if (frm.doc.student && frm.doc.program_enrollment && frm.doc.from_date && frm.doc.to_date) {
                 psa_utils.set_researcher_meetings(frm, "meetings", frm.doc.student, frm.doc.program_enrollment, frm.doc.from_date, frm.doc.to_date);

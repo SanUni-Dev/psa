@@ -7,13 +7,18 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "section_break_dgwb",
+  "status",
+  "section_break_dvtw",
   "student",
   "program_enrollment",
   "column_break_teka",
   "supervisor",
+  "research",
+  "section_break_occk",
+  "information",
+  "section_break_zgxx",
   "report_date",
-  "status",
-  "amended_from",
   "achievement_in_the_period_section",
   "from_date",
   "go_to_meetings",
@@ -24,9 +29,13 @@
   "overall_achievement_section",
   "research_achievement_student",
   "research_overall_achievement",
+  "section_break_cikk",
+  "amended_from",
   "meetings_tab",
   "meetings",
   "meetings_status",
+  "attachments_tab",
+  "attachment",
   "supervisor_report_tab",
   "section_break_half",
   "notes",
@@ -219,12 +228,56 @@
   {
    "fieldname": "meetings_status",
    "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "section_break_dgwb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_dvtw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_zgxx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_cikk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "research",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Supervisor",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_occk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "information",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "attachments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-16 03:53:05.591571",
+ "modified": "2024-07-28 03:46:25.213061",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",
