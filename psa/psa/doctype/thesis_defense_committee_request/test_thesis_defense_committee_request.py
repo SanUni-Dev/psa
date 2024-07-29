@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestFormationDiscussionCommittee(FrappeTestCase):
+class TestThesisDefenseCommitteeRequest(FrappeTestCase):
 	pass
