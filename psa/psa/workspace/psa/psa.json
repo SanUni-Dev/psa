@@ -430,7 +430,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Thesis Defense Committee Request",
+   "label": "Formation Discussion Committee",
    "link_count": 0,
    "link_to": "Thesis Defense Committee Request",
    "link_type": "DocType",
@@ -448,7 +448,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-07-28 23:25:07.674749",
+ "modified": "2024-07-29 22:40:27.171301",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA",
