@@ -412,11 +412,12 @@ psa_utils.get_supervisor = function (student, callback) {
 }
 
 
-psa_utils.set_supervisor_for_student = function (frm, field_name, student) {
+psa_utils.set_supervisor_for_student = function (frm, field_name, student, program_enrollment) {
     frappe.call({
         method: 'psa.tasks.cron.get_supervisor_for_student',
         args: {
-            "student": student
+            "student": student,
+            "program_enrollment": program_enrollment
         },
         callback: function(response) {
             if (response.message) {

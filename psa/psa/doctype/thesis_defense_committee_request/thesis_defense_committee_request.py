@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class FormationDiscussionCommittee(Document):
+class ThesisDefenseCommitteeRequest(Document):
 	pass
