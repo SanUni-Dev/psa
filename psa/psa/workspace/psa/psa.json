@@ -163,135 +163,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Requests",
-   "link_count": 12,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Suspend Enrollment Request",
-   "link_count": 0,
-   "link_to": "Suspend Enrollment Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Continue Enrollment Request",
-   "link_count": 0,
-   "link_to": "Continue Enrollment Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Withdrawal Request",
-   "link_count": 0,
-   "link_to": "Withdrawal Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Change Research Title Request",
-   "link_count": 0,
-   "link_to": "Change Research Title Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Change Research Main Supervisor Request",
-   "link_count": 0,
-   "link_to": "Change Research Main Supervisor Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Change Research Co Supervisor Request",
-   "link_count": 0,
-   "link_to": "Change Research Co Supervisor Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Initial Discussion Request",
-   "link_count": 0,
-   "link_to": "Initial Discussion Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Initial Discussion",
-   "link_count": 0,
-   "link_to": "Initial Discussion",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Researcher Meeting",
-   "link_count": 0,
-   "link_to": "Researcher Meeting",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Extension Request",
-   "link_count": 0,
-   "link_to": "Extension Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Formation Discussion Committee",
-   "link_count": 0,
-   "link_to": "Formation Discussion Committee",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Progress Report",
-   "link_count": 0,
-   "link_to": "Progress Report",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "PSA Masters",
    "link_count": 2,
    "link_type": "DocType",
@@ -322,7 +193,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Masters",
-   "link_count": 13,
+   "link_count": 12,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -450,6 +321,135 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Requests",
+   "link_count": 12,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Suspend Enrollment Request",
+   "link_count": 0,
+   "link_to": "Suspend Enrollment Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Continue Enrollment Request",
+   "link_count": 0,
+   "link_to": "Continue Enrollment Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Withdrawal Request",
+   "link_count": 0,
+   "link_to": "Withdrawal Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Change Research Title Request",
+   "link_count": 0,
+   "link_to": "Change Research Title Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Change Research Main Supervisor Request",
+   "link_count": 0,
+   "link_to": "Change Research Main Supervisor Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Change Research Co Supervisor Request",
+   "link_count": 0,
+   "link_to": "Change Research Co Supervisor Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Initial Discussion Request",
+   "link_count": 0,
+   "link_to": "Initial Discussion Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Initial Discussion",
+   "link_count": 0,
+   "link_to": "Initial Discussion",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Researcher Meeting",
+   "link_count": 0,
+   "link_to": "Researcher Meeting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Extension Request",
+   "link_count": 0,
+   "link_to": "Extension Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Formation Discussion Committee",
+   "link_count": 0,
+   "link_to": "Thesis Defense Committee Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Progress Report",
+   "link_count": 0,
+   "link_to": "Progress Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Program Publication Requirement",
    "link_count": 0,
    "link_to": "Program Publication Requirement",
@@ -458,8 +458,8 @@
    "type": "Link"
   }
  ],
- "modified": "2024-07-27 03:23:20.437666",
- "modified_by": "esmailebraheem771@gmail.com",
+ "modified": "2024-07-29 22:40:27.171301",
+ "modified_by": "Administrator",
  "module": "PSA",
  "name": "PSA",
  "number_cards": [],

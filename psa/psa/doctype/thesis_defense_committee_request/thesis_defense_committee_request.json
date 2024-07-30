@@ -11,20 +11,17 @@
   "column_break_fcrr",
   "research_title",
   "student_supervisor",
+  "section_break_zsvh",
+  "information",
+  "section_break_ymbg",
+  "member_of_internal_selected_committee",
+  "member_of_external_selected_committee",
   "section_break_wfzp",
   "status",
   "column_break_igxi",
   "amended_from",
   "attachments_tab",
-  "certificate_of_proficiency",
-  "councils_information_tab",
-  "department_council_minutes_section",
-  "department_council_minutes_number",
-  "department_council_minutes_date",
-  "member_of_internal_selected_committee",
-  "member_of_external_selected_committee",
-  "financial_information_tab",
-  "financial_status"
+  "request_attachment"
  ],
  "fields": [
   {
@@ -36,7 +33,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Formation Discussion Committee",
+   "options": "Formation Discussion Committee Request",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -67,42 +64,6 @@
    "label": "Attachments"
   },
   {
-   "fieldname": "councils_information_tab",
-   "fieldtype": "Tab Break",
-   "label": "Councils Information"
-  },
-  {
-   "fieldname": "financial_information_tab",
-   "fieldtype": "Tab Break",
-   "label": "Financial Information"
-  },
-  {
-   "fieldname": "financial_status",
-   "fieldtype": "Select",
-   "label": "Financial Status",
-   "options": "\nPaid\nNot Paid"
-  },
-  {
-   "fieldname": "certificate_of_proficiency",
-   "fieldtype": "Attach",
-   "label": "Certificate of Proficiency"
-  },
-  {
-   "fieldname": "department_council_minutes_section",
-   "fieldtype": "Section Break",
-   "label": "Department Council Minutes"
-  },
-  {
-   "fieldname": "department_council_minutes_number",
-   "fieldtype": "Data",
-   "label": "Department Council Minutes Number"
-  },
-  {
-   "fieldname": "department_council_minutes_date",
-   "fieldtype": "Date",
-   "label": "Department Council Minutes Date"
-  },
-  {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Program Enrollment",
@@ -118,13 +79,13 @@
    "fieldname": "member_of_internal_selected_committee",
    "fieldtype": "Table",
    "label": "Member of Internal Selected Committee",
-   "options": "Selected Committee"
+   "options": "Internal Discussion Committee"
   },
   {
    "fieldname": "member_of_external_selected_committee",
    "fieldtype": "Table",
-   "label": "Member of \u064f\u0652External Selected Committee ",
-   "options": "Selected Committee"
+   "label": "Member of External Selected Committee ",
+   "options": "External Discussion Committee"
   },
   {
    "fieldname": "status",
@@ -135,15 +96,33 @@
   {
    "fieldname": "column_break_igxi",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ymbg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "request_attachment",
+   "fieldtype": "Attach",
+   "label": "Request Attachment"
+  },
+  {
+   "fieldname": "section_break_zsvh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-06 22:48:08.091247",
+ "modified": "2024-07-28 00:51:24.334267",
  "modified_by": "Administrator",
  "module": "PSA",
- "name": "Formation Discussion Committee",
+ "name": "Thesis Defense Committee Request",
  "owner": "Administrator",
  "permissions": [
   {
