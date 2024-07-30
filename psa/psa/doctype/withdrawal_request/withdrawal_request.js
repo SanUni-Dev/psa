@@ -14,41 +14,17 @@ var modified_of_after_workflow_action = "";
 
 frappe.ui.form.on("Withdrawal Request", {
     refresh(frm) {
-        setTimeout(() => {
-            frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
-        }, 500);
-
+        $(frm.fields_dict["information"].wrapper).html("");
         $(frm.fields_dict["timeline_html"].wrapper).html("");
         frm.set_df_property("timeline_section", "hidden", true);
 
-
         if (!frm.is_new()) {
-            // if (frappe.user_roles.includes("Student")) {
-            //     setTimeout(() => {
-            //         var fees_status = frm.doc.fees_status;
-            //         if (fees_status === "Not Paid") {
-            //             frm.add_custom_button(__("Get Code for Fee Payment"), () => {
-            //                 frappe.msgprint(__("Payment code for '{0}' is: #########", [frm.doc.name]));
-            //             });
-            //         }
-            //     }, 500);
-            // }
-
             psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
             if (frm.doc.fees_status == "Not Paid") {
                 frm.set_intro("");
                 frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
-            }
-
-            if (frm.doc.docstatus == 0) {
-                frm.set_df_property("request_attachment", "reqd", 1);
-                frm.set_df_property("library_eviction", "reqd", 1);
-            }
-            else {
-                frm.set_df_property("request_attachment", "reqd", 0);
-                frm.set_df_property("library_eviction", "reqd", 0);
-            }
+            }            
 
             frm.set_df_property("attachment_section", "hidden", false);
             if (frm.doc.request_attachment) {
@@ -65,47 +41,20 @@ frappe.ui.form.on("Withdrawal Request", {
                 frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
             }
 
-            var creation_date = frm.doc.creation;
-            var formatted_creation_date = creation_date.split(" ")[0] + " " + (creation_date.split(" ")[1]).split(".")[0];
-
-            var modified_date = frm.doc.modified;
-            var formatted_modified_date = modified_date.split(" ")[0] + " " + (modified_date.split(" ")[1]).split(".")[0];
-
-            psa_utils.format_single_html_field(frm, "request_date_html", __('Request Date'), formatted_creation_date);
-
             if (frm.doc.status.includes("Delivered by")) {
-                psa_utils.format_single_html_field(frm, "modified_request_date_html", __('File Delivery Date'), formatted_modified_date);
+                frm.set_df_property("modified_request_date", "label", __("File Delivered Date"));
+                frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+                frm.refresh_field('modified_request_date');
             }
-            else if (frm.doc.status.includes("Rejected by")) {
-                psa_utils.format_single_html_field(frm, "modified_request_date_html", __('Rejection Date'), formatted_modified_date);
+            else if (frm.doc.status.includes("Rejected")) {
+                frm.set_df_property("modified_request_date", "label", __("Rejection Date"));
+                frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+                frm.refresh_field('modified_request_date');
             }
-            else {
-                $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
-            }
-        }
-        else {
-            $(frm.fields_dict["request_date_html"].wrapper).html('');
-            $(frm.fields_dict["modified_request_date_html"].wrapper).html('');
         }
 
-        if (frm.doc.program_enrollment) {
-            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
-                psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
-                    psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
-                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Academic Program")];
-                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, academic_program];
-                        psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
-
-                        var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];
-                        var array_of_value = [program_abbreviation, faculty, faculty_department, status];
-                        psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
-                    });
-                });
-            });
-        }
-        else {
-            $(frm.fields_dict["student_html1"].wrapper).html('');
-            $(frm.fields_dict["student_html2"].wrapper).html('');
+        if (frm.doc.student && frm.doc.program_enrollment) {
+            psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
         }
     },
 
@@ -116,6 +65,28 @@ frappe.ui.form.on("Withdrawal Request", {
             });
         }
     },
+
+    // before_submit(frm) {
+    //     frappe.throw("yfyufuygf");
+    //     if (!frm.doc.request_attachment) {
+    //         frm.set_df_property("request_attachment", "reqd", 1);
+    //         frappe.throw(__("Please upload your attachments!"));
+    //     }
+    //     else {
+    //         frm.set_df_property("request_attachment", "reqd", 0);
+    //     }
+    //     if (!frm.doc.library_eviction){
+    //         frm.set_df_property("library_eviction", "reqd", 1);
+    //         frappe.throw(__("Please upload your library eviction!"));
+    //     }
+    //     else {
+    //         frm.set_df_property("library_eviction", "reqd", 0);
+    //     }
+
+    //     if (frm.doc.fees_status != "Paid") {
+    //         frappe.throw(__("Please pay the request fees!"));
+    //     }
+    // },
 
     before_workflow_action(frm) {
         status_of_before_workflow_action = frm.doc.status;
@@ -156,51 +127,38 @@ frappe.ui.form.on("Withdrawal Request", {
     program_enrollment(frm) {
         frm.set_intro('');
         if (frm.doc.program_enrollment) {
-            psa_utils.get_program_enrollment(frm.doc.program_enrollment, function (status, enrollment_date, student, academic_program) {
-                psa_utils.get_student(student, function (full_name_arabic, full_name_english) {
-                    psa_utils.get_academic_program(academic_program, function (program_abbreviation, faculty, faculty_department) {
-                        var array_of_label = [__("Full Name Arabic"), __("Full Name English"), __("Enrollment Date"), __("Academic Program")];
-                        var array_of_value = [full_name_arabic, full_name_english, enrollment_date, academic_program];
-                        psa_utils.format_multi_html_field(frm, "student_html1", array_of_label, array_of_value);
-
-                        var array_of_label = [__("Program Abbreviation"), __("Faculty"), __("Faculty Department"), __("Status")];
-                        var array_of_value = [program_abbreviation, faculty, faculty_department, status];
-                        psa_utils.format_multi_html_field(frm, "student_html2", array_of_label, array_of_value);
-
-                        psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Suspended', 'Continued'], ['Withdrawn', 'Graduated', 'Transferred'],
-                            function(program_enrollment_status) {
-                                if (!program_enrollment_status[0]) {
-                                    frm.set_intro((__("Can't add a withdrawal request, because current status is {0}!", [program_enrollment_status[1]])), 'red');
-                                }
-                                else if (program_enrollment_status[0]) {
-                                    frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
-                                        if (check_active_requests_before_insert) {
-                                            psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Withdrawal Request', 'Suspend Enrollment Request', 'Continue Enrollment Request'],
-                                                function (active_request) {
-                                                    if (active_request) {
-                                                        var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
-                                                        frm.set_intro((__(`Can't add a withdrawal request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
-                                                    }
-                                                    else {
-                                                        frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
-                                                    }
-                                                }
-                                            );
+            psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
+            
+            psa_utils.check_program_enrollment_status(frm.doc.program_enrollment, ['Suspended', 'Continued'], ['Withdrawn', 'Graduated', 'Transferred'],
+                function(program_enrollment_status) {
+                    if (!program_enrollment_status[0]) {
+                        frm.set_intro((__("Can't add a withdrawal request, because current status is {0}!", [program_enrollment_status[1]])), 'red');
+                    }
+                    else if (program_enrollment_status[0]) {
+                        frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                            if (check_active_requests_before_insert) {
+                                psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Withdrawal Request', 'Suspend Enrollment Request', 'Continue Enrollment Request'],
+                                    function (active_request) {
+                                        if (active_request) {
+                                            var url_of_active_request = `<a href="/app/${active_request[0].toLowerCase().replace(/\s+/g, "-")}/${active_request[1]['name']}" title="${__("Click here to show request details")}"> ${active_request[1]['name']} </a>`;
+                                            frm.set_intro((__(`Can't add a withdrawal request, because you have an active {0} ({1}) that is {2}!`, [active_request[0], url_of_active_request, active_request[1]['status']])), 'red');
                                         }
                                         else {
                                             frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
                                         }
-                                    });
-                                }
+                                    }
+                                );
                             }
-                        );
-                    });
-                });
-            });
+                            else {
+                                frm.set_intro((__(`Current status is {0}.`, [program_enrollment_status[1]])), 'green');
+                            }
+                        });
+                    }
+                }
+            );
         }
         else {
-            $(frm.fields_dict["student_html1"].wrapper).html('');
-            $(frm.fields_dict["student_html2"].wrapper).html('');
+            $(frm.fields_dict["information"].wrapper).html("");
         }
     },
 
@@ -214,30 +172,3 @@ frappe.ui.form.on("Withdrawal Request", {
         }
     },
 });
-
-
-// Variable and two trigger functions to save timeline child table rows to a variable then save them (before fixing it by check "In List View" in Timeline Child Table's fields)
-// var timeline_child_table_list = null;
-
-// before_save(frm) {
-//     timeline_child_table_list = null;
-//     if ((!frm.is_new()) && (frm.is_dirty()) && frm.doc.timeline_child_table) {
-//         timeline_child_table_list = frm.doc.timeline_child_table;
-//     }
-// },
-
-// after_save(frm) {
-//     if (timeline_child_table_list[0]) {
-//         psa_utils.save_timeline_child_table(
-//             "Withdrawal Request",
-//             frm.doc.name,
-//             "timeline_child_table",
-//             timeline_child_table_list,
-//             function(response) {
-//                 if (response.message) {
-//                     window.location.reload();
-//                   }
-//             }
-//         );
-//     }
-// },

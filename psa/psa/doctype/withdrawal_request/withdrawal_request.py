@@ -8,19 +8,39 @@ from psa.api.psa_utils import check_active_request, check_program_enrollment_sta
 
 class WithdrawalRequest(Document):
     def on_submit(self):
-        program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-        if program_enrollment.status in ["Continued", "Suspended"]:
-            if "Rejected" in self.status:
-                if not self.rejection_reason:
-                    frappe.throw(_("Please enter reason of rejection!"))
-            else:
-                program_enrollment.status = "Withdrawn"
-                program_enrollment.enabled = 0
-                program_enrollment.save()
-        elif program_enrollment.status == "Withdrawn":
-            frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
-        else:
-            frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
+        if not self.request_attachment:
+            frappe.throw(_("Please upload your attachments!"))
+        if not self.library_eviction:
+            frappe.throw(_("Please upload your library eviction!"))
+        # program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
+        # if program_enrollment.status in ["Continued", "Suspended"]:
+        #     if "Rejected" in self.status:
+        #         if not self.rejection_reason:
+        #             frappe.throw(_("Please enter reason of rejection!"))
+        #     else:
+        #         program_enrollment.status = "Withdrawn"
+        #         program_enrollment.enabled = 0
+        #         program_enrollment.save()
+        # elif program_enrollment.status == "Withdrawn":
+        #     frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
+        # else:
+        #     frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
+
+    # def before_change(self):
+    #     if self.status == "The File Delivered by Archivist":
+    #         program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
+    #         if program_enrollment.status in ["Continued", "Suspended"]:
+    #             if "Rejected" in self.status:
+    #                 if not self.rejection_reason:
+    #                     frappe.throw(_("Please enter reason of rejection!"))
+    #             else:
+    #                 program_enrollment.status = "Withdrawn"
+    #                 program_enrollment.enabled = 0
+    #                 program_enrollment.save()
+    #         elif program_enrollment.status == "Withdrawn":
+    #             frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
+    #         else:
+    #             frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
 
 
     def before_insert(self):

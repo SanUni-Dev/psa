@@ -7,24 +7,25 @@
  "documentation": "/psa/\u0637\u0644\u0628-\u0627\u0644\u0627\u0646\u0633\u062d\u0627\u0628",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "student_information_section",
   "student",
   "column_break_lifw",
   "program_enrollment",
-  "section_break_wwpw",
-  "student_html1",
-  "column_break_lszg",
-  "student_html2",
+  "section_break_feig",
+  "information",
   "request_information_section",
   "reason",
-  "section_break_qyuf",
+  "section_break_nmhn",
+  "request_date",
+  "column_break_ljoe",
   "status",
+  "section_break_trts",
+  "modified_request_date",
+  "column_break_safd",
   "rejection_reason",
+  "section_break_ggch",
   "amended_from",
-  "column_break_apfr",
-  "request_date_html",
-  "modified_request_date_html",
-  "naming_series",
   "attachments_tab",
   "attachment_section",
   "request_attachment",
@@ -32,13 +33,13 @@
   "library_eviction",
   "financial_information_tab",
   "financial_status",
-  "fees_information_tab",
-  "fees_status",
   "timeline_tab",
   "timeline_section",
   "column_break_ywwz",
   "timeline_html",
-  "timeline_child_table"
+  "timeline_child_table",
+  "fees_information_tab",
+  "fees_status"
  ],
  "fields": [
   {
@@ -52,6 +53,7 @@
    "label": "Program Enrollment",
    "options": "Program Enrollment",
    "permlevel": 3,
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -68,21 +70,12 @@
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
    "label": "Rejection Reason",
    "permlevel": 1,
    "read_only": 1
-  },
-  {
-   "fieldname": "request_date_html",
-   "fieldtype": "HTML",
-   "label": "Request Date"
-  },
-  {
-   "fieldname": "modified_request_date_html",
-   "fieldtype": "HTML",
-   "label": "Modified Request Date"
   },
   {
    "default": "Not Paid",
@@ -103,6 +96,7 @@
    "search_index": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
@@ -115,41 +109,13 @@
    "permlevel": 3
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "financial_status",
    "fieldtype": "Select",
    "label": "Financial Status",
    "mandatory_depends_on": "eval: doc.status == 'Approval Pending by Finance Officer'",
    "options": "\nPaid\nNot Paid",
    "permlevel": 2
-  },
-  {
-   "collapsible": 1,
-   "depends_on": "eval: doc.program_enrollment",
-   "fieldname": "section_break_wwpw",
-   "fieldtype": "Section Break",
-   "label": "Student Information"
-  },
-  {
-   "fieldname": "student_html1",
-   "fieldtype": "HTML",
-   "label": "Student HTML 1"
-  },
-  {
-   "fieldname": "column_break_lszg",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "student_html2",
-   "fieldtype": "HTML",
-   "label": "Student HTML 2"
-  },
-  {
-   "fieldname": "section_break_qyuf",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_apfr",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "attachments_tab",
@@ -174,7 +140,7 @@
   {
    "fieldname": "fees_information_tab",
    "fieldtype": "Tab Break",
-   "label": "Fees Information"
+   "label": "Fees Information (For_Remove)"
   },
   {
    "fieldname": "attachment_section",
@@ -212,6 +178,7 @@
    "label": "Student",
    "options": "Student",
    "permlevel": 3,
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -224,11 +191,61 @@
    "label": "Naming Series",
    "options": "PSA-Withdrawal-Req-.YY.-.MM.-.#####.",
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_nmhn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ljoe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "section_break_feig",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "section_break_ggch",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_trts",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_safd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-16 03:58:57.100093",
+ "modified": "2024-07-29 22:19:59.915989",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",
@@ -274,6 +291,7 @@
    "if_owner": 1,
    "read": 1,
    "role": "Student",
+   "submit": 1,
    "write": 1
   },
   {
