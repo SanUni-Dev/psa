@@ -144,7 +144,7 @@
   "doctype": "Workflow",
   "document_type": "Suspend Enrollment Request",
   "is_active": 1,
-  "modified": "2024-04-18 22:26:17.763154",
+  "modified": "2024-07-30 17:51:16.870804",
   "name": "Suspend Enrollment Request Workflow",
   "override_status": 0,
   "send_email_alert": 0,
@@ -167,7 +167,7 @@
    {
     "allow_edit": "Vice Dean For GSA",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -197,7 +197,7 @@
    {
     "allow_edit": "Department Head",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -227,7 +227,7 @@
    {
     "allow_edit": "Department Council Head",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -257,7 +257,7 @@
    {
     "allow_edit": "College Dean",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -302,7 +302,7 @@
    {
     "allow_edit": "College Council Head",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -512,7 +512,7 @@
   "doctype": "Workflow",
   "document_type": "Continue Enrollment Request",
   "is_active": 1,
-  "modified": "2024-03-14 23:42:37.383604",
+  "modified": "2024-07-30 17:42:33.627099",
   "name": "Continue Enrollment Request Workflow",
   "override_status": 0,
   "send_email_alert": 0,
@@ -535,7 +535,7 @@
    {
     "allow_edit": "Vice Dean For GSA",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -565,7 +565,7 @@
    {
     "allow_edit": "Department Head",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -679,7 +679,7 @@
   "doctype": "Workflow",
   "document_type": "Withdrawal Request",
   "is_active": 1,
-  "modified": "2024-03-20 01:11:51.688669",
+  "modified": "2024-07-30 17:05:32.617272",
   "name": "Withdrawal Request Workflow",
   "override_status": 0,
   "send_email_alert": 0,
@@ -702,7 +702,7 @@
    {
     "allow_edit": "Finance Officer",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -732,7 +732,7 @@
    {
     "allow_edit": "Director of Graduate Studies",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -762,7 +762,7 @@
    {
     "allow_edit": "Archivist",
     "avoid_status_override": 0,
-    "doc_status": "0",
+    "doc_status": "1",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,

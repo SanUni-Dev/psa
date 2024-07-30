@@ -9,7 +9,9 @@ psa_utils.set_student_for_current_user = function (frm, field_name, callback) {
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
-                callback();
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
@@ -23,14 +25,16 @@ psa_utils.set_program_enrollment_for_current_user = function (frm, field_name, c
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
-                callback();
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
 }
 
 
-psa_utils.set_program_enrollment_for_student = function (frm, field_name, student) {
+psa_utils.set_program_enrollment_for_student = function (frm, field_name, student, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_program_enrollment_for_student',
         args: {
@@ -40,13 +44,16 @@ psa_utils.set_program_enrollment_for_student = function (frm, field_name, studen
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
 }
 
 
-psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
+psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_student_supervisor_for_student_and_program_enrollment',
         args: {
@@ -57,13 +64,16 @@ psa_utils.set_student_supervisor_for_student_and_program_enrollment = function (
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
 }
 
 
-psa_utils.set_student_research_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment) {
+psa_utils.set_student_research_for_student_and_program_enrollment = function (frm, field_name, student, program_enrollment, callback) {
     frappe.call({
         method: 'psa.api.psa_utils.get_student_research_for_student_and_program_enrollment',
         args: {
@@ -74,6 +84,9 @@ psa_utils.set_student_research_for_student_and_program_enrollment = function (fr
             if (response.message) {
                 frm.set_value(field_name, response.message);
                 refresh_field(field_name);
+                if (typeof callback === 'function') {
+                    callback();
+                }
             }
         }
     });
@@ -437,6 +450,121 @@ psa_utils.set_researcher_meetings = function (frm, field_name, student, program_
         }
     });
 }
+
+
+psa_utils.set_program_enrollment_information = function (frm, field_name, student, program_enrollment) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_program_enrollment_information',
+        args: {
+            student: student,
+            program_enrollment: program_enrollment
+        },
+        callback: function (response) {
+            var data = response.message || {};
+            
+            var full_name_arabic = data.full_name_arabic || "--";
+            var full_name_english = data.full_name_english || "--";
+            var enrollment_date = data.enrollment_date || "--";
+            var program_enrollment_faculty = data.program_enrollment_faculty || "--";
+            var program = data.program || "--";
+            var status = data.status || "--";
+            var program_name = data.program_name || "--";
+            var program_faculty = data.program_faculty || "--";
+            var program_faculty_department = data.program_faculty_department || "--";
+            var program_degree = data.program_degree || "--";
+            var research_title_arabic = data.research_title_arabic || "--";
+            var research_title_english = data.research_title_english || "--";
+            var date_of_approval_of_the_research_title = data.date_of_approval_of_the_research_title || "--";
+            var main_student_supervisor_id = data.main_student_supervisor_id || "--";
+            var main_supervisor_faculty_member = data.main_supervisor_faculty_member || "--";
+            var main_supervisor_name_arabic = data.main_supervisor_name_arabic || "--";
+            var main_supervisor_appointment_date = data.main_supervisor_appointment_date || "--";
+            var main_supervisor_faculty_member_faculty = data.main_supervisor_faculty_member_faculty || "--";
+            var main_supervisor_name_english = data.main_supervisor_name_english || "--";
+            var main_supervisor_academic_rank = data.main_supervisor_academic_rank || "--";
+            var co_supervisors = null;
+
+            if (data.co_supervisors.length != 0) {
+                co_supervisors =
+                    `
+                    <tr><td colspan="2"><p><strong>${__("Co-Supervisors:")}</strong></p></td></tr>
+                    <tr><td colspan="2">
+                        <table class="table table-striped table-bordered mt-0">
+                            <tbody>
+                                <tr><td>#</td><td>${__("Name (Arabic):")}</td><td>${__("Appointment Date:")}</td>
+                    `;
+                co_supervisors += (data.co_supervisors).map(function (co_supervisor, index) {
+                    return `
+                        <tr>
+                            <td><p>${index + 1}</p></td>
+                            <td><p>${co_supervisor.name || "--"}</p></td>
+                            <td><p>${co_supervisor.appointment_date || "--"}</p></td>
+                        </tr>
+                    `;
+                }).join('');
+
+                co_supervisors += 
+                `
+                            </tbody>
+                        </table>
+                    </td></tr>
+                `;
+            }
+            else {
+                co_supervisors = `<tr><td><p><strong>${__("Co-Supervisors:")}</strong></p></td><td>--</td></tr>`;
+            }
+
+            $(frm.fields_dict[field_name].wrapper).html(`
+                <div id="program_enrollment_information" class="program-enrollment-information">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-section">
+                                <h3>${__("Student Details:")}</h3>
+                                <table class="table table-striped ml-2">
+                                    <tbody>
+                                        <tr><td><p><strong>${__("Full Name (Arabic):")}</strong></td><td>${full_name_arabic}</p></td></tr>
+                                        <tr><td><p><strong>${__("Full Name (English):")}</strong></td><td>${full_name_english}</p></td></tr>
+                                        <tr><td><p><strong>${__("Program Enrollment Date:")}</strong></td><td>${enrollment_date}</p></td></tr>
+                                        <tr><td><p><strong>${__("Program Enrollment Status:")}</strong></td><td>${status}</p></td></tr>
+                                        <tr><td><p><strong>${__("Program Name:")}</strong></td><td>${program_name}</p></td></tr>
+                                        <tr><td><p><strong>${__("Student Faculty:")}</strong></td><td>${program_enrollment_faculty}</p></td></tr>
+                                        <tr><td><p><strong>${__("Program Specification:")}</strong></td><td>${program}</p></td></tr>
+                                        <tr><td><p><strong>${__("Program Faculty:")}</strong></td><td>${program_faculty}</p></td></tr>
+                                        <tr><td><p><strong>${__("Faculty Department:")}</strong></td><td>${program_faculty_department}</p></td></tr>
+                                        <tr><td><p><strong>${__("Program Degree:")}</strong></td><td>${program_degree}</p></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-section">
+                                <h3>${__("Research Details:")}</h3>
+                                <table class="table table-striped ml-2">
+                                    <tbody>
+                                        <tr><td><p><strong>${__("Research Title (Arabic):")}</strong></td><td>${research_title_arabic}</p></td></tr>
+                                        <tr><td><p><strong>${__("Research Title (English):")}</strong></td><td>${research_title_english}</p></td></tr>
+                                        <tr><td><p><strong>${__("Date of Approval:")}</strong></td><td>${date_of_approval_of_the_research_title}</p></td></tr>
+                                        <tr><td><p><strong>${__("Main Supervisor Name (Arabic):")}</strong></td><td>${main_supervisor_name_arabic}</p></td></tr>
+                                        <tr><td><p><strong>${__("Main Supervisor Name (English):")}</strong></td><td>${main_supervisor_name_english}</p></td></tr>
+                                        <tr><td><p><strong>${__("Main Supervisor's Appointment Date:")}</strong></td><td>${main_supervisor_appointment_date}</p></td></tr>
+                                        <tr><td><p><strong>${__("Main Supervisor's Academic Rank:")}</strong></td><td>${main_supervisor_academic_rank}</p></td></tr>
+                                        <tr><td><p><strong>${__("Main Supervisor's Faculty:")}</strong></td><td>${main_supervisor_faculty_member_faculty}</p></td></tr>
+                                        ${co_supervisors}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            frm.refresh_field(field_name);
+        },
+        error: function (error) {
+            $(frm.fields_dict[field_name].wrapper).html('<div class="alert alert-danger">' + __('Failed to retrieve program enrollment information.') + '</div>');
+        }
+    });
+};
 
 
 // Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
