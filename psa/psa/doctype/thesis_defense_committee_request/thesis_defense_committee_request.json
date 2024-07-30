@@ -1,10 +1,11 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-05-05 02:41:11.799892",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "section_break_4uxa",
   "student",
   "program_enrollment",
@@ -17,8 +18,10 @@
   "member_of_internal_selected_committee",
   "member_of_external_selected_committee",
   "section_break_wfzp",
-  "status",
+  "request_date",
   "column_break_igxi",
+  "status",
+  "section_break_pgpg",
   "amended_from",
   "attachments_tab",
   "request_attachment"
@@ -33,7 +36,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Formation Discussion Committee Request",
+   "options": "Thesis Defense Committee Request",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -88,6 +91,7 @@
    "options": "External Discussion Committee"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
@@ -99,7 +103,8 @@
   },
   {
    "fieldname": "section_break_ymbg",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Request Information"
   },
   {
    "fieldname": "request_attachment",
@@ -107,22 +112,46 @@
    "label": "Request Attachment"
   },
   {
+   "collapsible": 1,
    "fieldname": "section_break_zsvh",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "More Information"
   },
   {
    "fieldname": "information",
    "fieldtype": "HTML",
    "label": "Information"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PSA-TDC-Req-.YY.-.MM.-.#####.",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_pgpg",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-28 00:51:24.334267",
+ "modified": "2024-07-30 22:51:29.729288",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Thesis Defense Committee Request",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
