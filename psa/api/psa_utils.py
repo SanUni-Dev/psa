@@ -1,5 +1,5 @@
 import frappe, json, datetime
-
+from frappe import _
 
 @frappe.whitelist()
 def get_student_for_current_user():
@@ -380,6 +380,31 @@ def get_program_enrollment_information(student, program_enrollment):
 
     except Exception as e:
         return {"error": f"An error occurred in fetching information: {str(e)}"}
+
+
+@frappe.whitelist()
+def get_students_by_supervisor():
+    user_id = frappe.session.user
+
+    employee = frappe.db.get_value('Employee', {'user_id': user_id}, 'name')
+    if not employee:
+        frappe.throw(_("No Employee found for the current user."))
+
+    supervisor = frappe.db.get_value('Faculty Member', {'employee': employee}, 'name')
+    if not supervisor:
+        frappe.throw(_("No Supervisor found for the employee."))
+
+    students = frappe.db.sql("""
+        SELECT student.name
+        FROM `tabStudent` AS student
+        JOIN `tabStudent Supervisor` AS supervisor
+        ON student.name = supervisor.student
+        WHERE supervisor.supervisor = %s
+    """, (supervisor,), as_dict=True)
+
+    return students
+
+
 
 
 # Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)

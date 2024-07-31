@@ -21,6 +21,10 @@
   "request_date",
   "column_break_igxi",
   "status",
+  "section_break_hwbq",
+  "modified_request_date",
+  "column_break_yhuk",
+  "rejection_reason",
   "section_break_pgpg",
   "amended_from",
   "attachments_tab",
@@ -118,6 +122,7 @@
    "label": "More Information"
   },
   {
+   "depends_on": "eval: doc.program_enrollment",
    "fieldname": "information",
    "fieldtype": "HTML",
    "label": "Information"
@@ -142,12 +147,34 @@
   {
    "fieldname": "section_break_pgpg",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_hwbq",
+   "fieldtype": "Section Break",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Date",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yhuk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-30 22:51:29.729288",
+ "modified": "2024-07-31 19:08:06.571279",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Thesis Defense Committee Request",
@@ -163,9 +190,33 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",

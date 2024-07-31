@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "university",
+  "external_faculty",
   "academic_rank",
   "faculty_member"
  ],
@@ -31,12 +32,19 @@
    "in_list_view": 1,
    "label": "Faculty Member",
    "options": "Faculty Member"
+  },
+  {
+   "fieldname": "external_faculty",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "External Faculty",
+   "options": "External Faculty"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-28 00:33:40.548314",
+ "modified": "2024-07-30 23:19:16.739634",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "External Discussion Committee",
