@@ -384,20 +384,16 @@ def get_program_enrollment_information(student, program_enrollment):
 
 @frappe.whitelist()
 def get_students_by_supervisor():
-    # Get the user_id from the session
     user_id = frappe.session.user
 
-    # Find the employee associated with this user_id
     employee = frappe.db.get_value('Employee', {'user_id': user_id}, 'name')
     if not employee:
         frappe.throw(_("No Employee found for the current user."))
 
-    # Find the supervisor associated with the employee
     supervisor = frappe.db.get_value('Faculty Member', {'employee': employee}, 'name')
     if not supervisor:
         frappe.throw(_("No Supervisor found for the employee."))
 
-    # Find the students associated with this supervisor in Student Supervisor
     students = frappe.db.sql("""
         SELECT student.name
         FROM `tabStudent` AS student
