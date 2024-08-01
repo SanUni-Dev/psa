@@ -232,6 +232,17 @@ frappe.ui.form.on("Internal Discussion Committee", {
                 }
             };
         };
+    },
+
+
+    faculty_member: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        let duplicate = frm.doc.member_of_internal_selected_committee.some((r) => r.faculty === row.faculty && r.academic_rank === row.academic_rank && r.faculty_member === row.faculty_member && r.idx !== row.idx);
+
+        if (duplicate) {
+            frappe.msgprint(__('This Faculty Member with the same faculty and academic rank is already selected. Please choose a different one.'));
+            frappe.model.set_value(cdt, cdn, 'faculty_member', '');
+        }
     }
 });
 
@@ -296,6 +307,17 @@ frappe.ui.form.on("External Discussion Committee", {
                 }
             };
         };
+    },
+
+
+    faculty_member: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        let duplicate = frm.doc.member_of_external_selected_committee.some((r) => r.university === row.university && r.external_faculty === row.external_faculty  && r.academic_rank === row.academic_rank && r.faculty_member === row.faculty_member && r.idx !== row.idx);
+
+        if (duplicate) {
+            frappe.msgprint(__('This Faculty Member with the same university, external faculty, and academic rank is already selected. Please choose a different one.'));
+            frappe.model.set_value(cdt, cdn, 'faculty_member', '');
+        }
     }
 });
 
