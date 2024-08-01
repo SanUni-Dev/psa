@@ -170,6 +170,7 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
    "fieldname": "more_information_section",
    "fieldtype": "Section Break",
    "label": "More Information"
@@ -222,7 +223,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-01 22:33:46.872389",
+ "modified": "2024-08-02 02:07:24.829795",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Continue Enrollment Request",

@@ -199,11 +199,13 @@
   },
   {
    "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
    "fieldname": "more_information_section",
    "fieldtype": "Section Break",
    "label": "More Information"
   },
   {
+   "depends_on": "eval: doc.program_enrollment",
    "fieldname": "information",
    "fieldtype": "HTML",
    "label": "Information"
@@ -259,7 +261,7 @@
    "link_fieldname": "suspend_enrollment_request"
   }
  ],
- "modified": "2024-08-01 22:30:19.363266",
+ "modified": "2024-08-02 02:08:24.179395",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Suspend Enrollment Request",
