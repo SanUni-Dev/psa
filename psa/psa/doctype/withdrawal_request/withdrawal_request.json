@@ -39,7 +39,9 @@
   "timeline_html",
   "timeline_child_table",
   "fees_information_tab",
-  "fees_status"
+  "fees_status",
+  "transaction_information_tab",
+  "transaction_information"
  ],
  "fields": [
   {
@@ -140,7 +142,7 @@
   {
    "fieldname": "fees_information_tab",
    "fieldtype": "Tab Break",
-   "label": "Fees Information (For_Remove)"
+   "label": "Fees Information"
   },
   {
    "fieldname": "attachment_section",
@@ -150,6 +152,7 @@
   {
    "fieldname": "timeline_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Timeline"
   },
   {
@@ -169,6 +172,7 @@
    "fieldname": "timeline_child_table",
    "fieldtype": "Table",
    "hidden": 1,
+   "label": "Timeline",
    "options": "Timeline Child Table",
    "read_only": 1
   },
@@ -241,11 +245,21 @@
    "is_virtual": 1,
    "label": "Modified Request Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "transaction_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "transaction_information",
+   "fieldtype": "HTML",
+   "label": "Transaction Information"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-29 22:19:59.915989",
+ "modified": "2024-08-01 22:36:51.238122",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Withdrawal Request",
@@ -291,6 +305,7 @@
    "if_owner": 1,
    "read": 1,
    "role": "Student",
+   "select": 1,
    "submit": 1,
    "write": 1
   },
@@ -319,7 +334,6 @@
    "role": "Finance Officer",
    "select": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
@@ -348,7 +362,6 @@
    "role": "Director of Graduate Studies",
    "select": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
@@ -376,7 +389,6 @@
    "role": "Archivist",
    "select": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
