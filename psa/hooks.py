@@ -23,6 +23,26 @@ app_include_js = [
     ]
 
 
+# doc_events = {
+#     "Progress Report": {
+#         "on_submit": "psa.tasks.cron.on_submit",
+#         "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
+#     }
+# }
+
+
+# Cron Scheduler that be triggered everyday at 12:00:00 AM
+# scheduler_events = {
+# 	"cron":{
+# 		"0 0 * * *": [
+# 			"psa.tasks.cron.send_suspend_enrollment_notification",
+# 			"psa.tasks.cron.create_progress_report_and_notify",
+# 			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
+# 		]
+# 	}
+# }
+
+
 ########## stopped workflow override
 # app_include_js = [
 #     "/assets/psa/js/workflow_override.js"
@@ -34,6 +54,9 @@ app_include_js = [
 #     "Workflow State",
 #     "Workflow Action Master"
 # ]
+
+
+############################################################################################################################################
 
 
 # Includes in <head>
@@ -176,30 +199,8 @@ app_include_js = [
 # }
 
 
-doc_events = {
-    "Progress Report": {
-        "on_submit": "psa.tasks.cron.on_submit",
-        "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
-    }
-}
-
 # Scheduled Tasks
 # ---------------
-
-
-#############################uncomment this scheduler##################################################################
-# Cron Scheduler that be triggered everyday at 12:00:00 AM
-scheduler_events = {
-	"cron":{
-		"0 0 * * *": [
-			"psa.tasks.cron.send_suspend_enrollment_notification",
-			"psa.tasks.cron.create_progress_report_and_notify",
-			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
-		]
-	}
-}
-#############################                          ###################################################################
-
 # scheduler_events = {
 # 	"all": [
 # 		"psa.tasks.all"
@@ -216,6 +217,11 @@ scheduler_events = {
 # 	"monthly": [
 # 		"psa.tasks.monthly"
 # 	],
+#     "cron": {
+#             "0 0 * * *": [
+#                 "psa.tasks.function"
+#             ]
+#     },
 # }
 
 # Testing
