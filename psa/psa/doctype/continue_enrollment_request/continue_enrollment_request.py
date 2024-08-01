@@ -1,28 +1,14 @@
 # Copyright (c) 2024, Sana'a university and contributors
 # For license information, please see license.txt
 
-import frappe, json
+
+import frappe
 from frappe.model.document import Document
 from frappe import _
 from psa.api.psa_utils import check_active_request, check_program_enrollment_status
 
-class ContinueEnrollmentRequest(Document):
-	def on_submit(self):
-		program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
-		if program_enrollment.status in ["Suspended"]:
-			if "Rejected" in self.status:
-				if not self.rejection_reason:
-					frappe.throw(_("Please enter reason of rejection!"))
-			else:
-				program_enrollment.status = "Continued"
-				program_enrollment.enabled = 0
-				program_enrollment.save()
-		elif program_enrollment.status == "Continued":
-			frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
-		else:
-			frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
-		
 
+class ContinueEnrollmentRequest(Document):
 	def before_insert(self):
 		program_enrollment_status = check_program_enrollment_status(self.program_enrollment, ['Suspended'], ['Continued', 'Withdrawn', 'Graduated', 'Transferred'])
 		if not program_enrollment_status[0]:
@@ -32,28 +18,6 @@ class ContinueEnrollmentRequest(Document):
 			else:
 				frappe.throw(_("Can't add a continue enrollment request, because current status is {0}!").format(program_enrollment_status[1]))
 		elif program_enrollment_status[0]:
-			# If we need setting for limit of requests, add fields to settings then uncomment the code below:#
-			# continue_set_a_limit_on_the_number_of_requests = frappe.db.get_single_value('PSA Settings', 'continue_set_a_limit_on_the_number_of_requests')
-			# continue_number_of_requests = frappe.db.get_single_value('PSA Settings', 'continue_number_of_requests')
-			
-			# continue_set_a_limit_on_the_number_of_rejected_requests = frappe.db.get_single_value('PSA Settings', 'continue_set_a_limit_on_the_number_of_rejected_requests')
-			# continue_number_of_rejected_requests = frappe.db.get_single_value('PSA Settings', 'continue_number_of_rejected_requests')
-			
-			# if continue_set_a_limit_on_the_number_of_requests or continue_set_a_limit_on_the_number_of_rejected_requests:
-			# 	student_program_continue_requests = frappe.get_all('Continue Enrollment Request', filters={'program_enrollment': self.program_enrollment, 'student': self.student}, fields=['*'])
-			# 	count_of_allowed = 0
-			# 	count_of_rejected = 0
-				
-			# 	for request in student_program_continue_requests:
-			# 		if "Approved by" in request.status and continue_set_a_limit_on_the_number_of_requests:
-			# 			count_of_allowed += 1
-			# 			if count_of_allowed >= continue_number_of_requests:
-			# 				frappe.throw(_("Can't add a continue enrollment request, because you have been continued! (Max of allowed continue enrollment requests = {0})").format(str(continue_number_of_requests)))
-			# 		elif "Rejected by" in request.status and continue_set_a_limit_on_the_number_of_rejected_requests:
-			# 			count_of_rejected += 1
-			# 			if count_of_rejected >= continue_number_of_rejected_requests:
-			# 				frappe.throw(_("Can't add a continue enrollment request, because you requested more than limit: {0} requests!").format(str(continue_number_of_rejected_requests)))
-
 			check_active_requests_before_insert = frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert')
 			if check_active_requests_before_insert:
 				active_request = check_active_request(self.student, self.program_enrollment, ["Continue Enrollment Request", "Suspend Enrollment Request", "Withdrawal Request"])
@@ -73,16 +37,41 @@ class ContinueEnrollmentRequest(Document):
 					)
 
 
-	@frappe.whitelist()
-	def get_last_approved_suspend_enrollment_request(self, program_enrollment, student):
-		docs = frappe.get_all("Suspend Enrollment Request",
-			fields=["*"],
-			filters={
-				"status": ["like", "%Approved%"],
-				"program_enrollment": program_enrollment,
-				"student": student
-			},
-			order_by="modified DESC",
-			limit_page_length=1
-		)
-		return docs[0] if docs else None
+	def on_submit(self):
+		if self.fees_status != "Paid":
+			frappe.throw(_("You have to pay fees of request before submit it!"))
+
+
+	# def on_update(self):
+	# 	if self.status == "Approved by Department Head":
+	# 		try:
+	# 			program_enrollment = frappe.get_doc('Program Enrollment', self.program_enrollment)
+	# 			if program_enrollment.status in ["Suspended"]:
+	# 				if "Rejected" in self.status:
+	# 					if not self.rejection_reason:
+	# 						frappe.throw(_("Please enter reason of rejection!"))
+	# 				else:
+	# 					program_enrollment.status = "Continued"
+	# 					program_enrollment.enabled = 0
+	# 					program_enrollment.save()
+	# 			elif program_enrollment.status == "Continued":
+	# 				frappe.throw(_("Failed! Student is already {0}!").format(program_enrollment.status))
+	# 			else:
+	# 				frappe.throw(_("Failed! Student is {0}!").format(program_enrollment.status))
+	# 		except Exception as e:
+	# 			frappe.throw(f"An error occurred: {str(e)}")
+
+
+	# @frappe.whitelist()
+	# def get_last_approved_suspend_enrollment_request(self, program_enrollment, student):
+	# 	docs = frappe.get_all("Suspend Enrollment Request",
+	# 		fields=["*"],
+	# 		filters={
+	# 			"status": ["like", "%Approved%"],
+	# 			"program_enrollment": program_enrollment,
+	# 			"student": student
+	# 		},
+	# 		order_by="modified DESC",
+	# 		limit_page_length=1
+	# 	)
+	# 	return docs[0] if docs else None
