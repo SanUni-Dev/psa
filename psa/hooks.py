@@ -19,9 +19,21 @@ fixtures = [
 
 
 app_include_js = [
-    "/assets/psa/js/workflow_override.js",
-    "/assets/psa/js/psa_utils.js",
+    "/assets/psa/js/psa_utils.js"
     ]
+
+
+########## stopped workflow override
+# app_include_js = [
+#     "/assets/psa/js/workflow_override.js"
+#     ]
+
+########## deleted because of no need of workflow
+# fixtures = [
+#     "Workflow",
+#     "Workflow State",
+#     "Workflow Action Master"
+# ]
 
 
 # Includes in <head>

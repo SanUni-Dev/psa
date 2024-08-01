@@ -3,28 +3,34 @@
 
 
 // Declare Variables for Timeline
-var current_role_of_workflow_action = "";
-var status_of_before_workflow_action = "";
-var action_of_workflow = "";
-var modified_of_before_workflow_action = "";
-var current_user_of_workflow_action = "";
-var status_of_after_workflow_action = "";
-var modified_of_after_workflow_action = "";
+// var current_role_of_workflow_action = "";
+// var status_of_before_workflow_action = "";
+// var action_of_workflow = "";
+// var modified_of_before_workflow_action = "";
+// var current_user_of_workflow_action = "";
+// var status_of_after_workflow_action = "";
+// var modified_of_after_workflow_action = "";
 
 
 frappe.ui.form.on("Withdrawal Request", {
     refresh(frm) {
         $(frm.fields_dict["information"].wrapper).html("");
-        $(frm.fields_dict["timeline_html"].wrapper).html("");
-        frm.set_df_property("timeline_section", "hidden", true);
+        $(frm.fields_dict["transaction_information"].wrapper).html("");
+
+        // $(frm.fields_dict["timeline_html"].wrapper).html("");
+        // frm.set_df_property("timeline_section", "hidden", true);
+
+        if (frm.doc.student && frm.doc.program_enrollment) {
+            psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
+        }
 
         if (!frm.is_new()) {
-            psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
+            // psa_utils.format_timeline_html(frm, "timeline_html", frm.doc.timeline_child_table);
 
-            if (frm.doc.fees_status == "Not Paid") {
+            if (frm.doc.fees_status != "Paid") {
                 frm.set_intro("");
-                frm.set_intro((__(`You have to pay fees of request before confirm it!`)), 'red');
-            }            
+                frm.set_intro((__(`You have to pay fees of request before submit it!`)), 'red');
+            }
 
             frm.set_df_property("attachment_section", "hidden", false);
             if (frm.doc.request_attachment) {
@@ -40,21 +46,14 @@ frappe.ui.form.on("Withdrawal Request", {
             else {
                 frm.set_df_property("library_eviction", "description", __("You can attach only pdf file"));
             }
-
-            if (frm.doc.status.includes("Delivered by")) {
-                frm.set_df_property("modified_request_date", "label", __("File Delivered Date"));
-                frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
-                frm.refresh_field('modified_request_date');
-            }
-            else if (frm.doc.status.includes("Rejected")) {
-                frm.set_df_property("modified_request_date", "label", __("Rejection Date"));
-                frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
-                frm.refresh_field('modified_request_date');
-            }
         }
 
-        if (frm.doc.student && frm.doc.program_enrollment) {
-            psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
+        if (frm.doc.docstatus == 1) {
+            frm.set_df_property("modified_request_date", "label", __("Transaction Creation Date"));
+            frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+            frm.refresh_field('modified_request_date');
+            
+            $(frm.fields_dict["transaction_information"].wrapper).html("");
         }
     },
 
@@ -66,63 +65,41 @@ frappe.ui.form.on("Withdrawal Request", {
         }
     },
 
-    // before_submit(frm) {
-    //     frappe.throw("yfyufuygf");
-    //     if (!frm.doc.request_attachment) {
-    //         frm.set_df_property("request_attachment", "reqd", 1);
-    //         frappe.throw(__("Please upload your attachments!"));
-    //     }
-    //     else {
-    //         frm.set_df_property("request_attachment", "reqd", 0);
-    //     }
-    //     if (!frm.doc.library_eviction){
-    //         frm.set_df_property("library_eviction", "reqd", 1);
-    //         frappe.throw(__("Please upload your library eviction!"));
-    //     }
-    //     else {
-    //         frm.set_df_property("library_eviction", "reqd", 0);
-    //     }
-
-    //     if (frm.doc.fees_status != "Paid") {
-    //         frappe.throw(__("Please pay the request fees!"));
-    //     }
+    // before_workflow_action(frm) {
+    //     status_of_before_workflow_action = frm.doc.status;
+    //     action_of_workflow = frm.selected_workflow_action;
+    //     modified_of_before_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
     // },
 
-    before_workflow_action(frm) {
-        status_of_before_workflow_action = frm.doc.status;
-        action_of_workflow = frm.selected_workflow_action;
-        modified_of_before_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
-    },
+    // after_workflow_action(frm) {
+    //     current_user_of_workflow_action = frappe.session.user_fullname;
+    //     status_of_after_workflow_action = frm.doc.status;
+    //     modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
 
-    after_workflow_action(frm) {
-        current_user_of_workflow_action = frappe.session.user_fullname;
-        status_of_after_workflow_action = frm.doc.status;
-        modified_of_after_workflow_action = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+    //     psa_utils.get_current_workflow_role(
+    //         "Withdrawal Request Workflow",
+    //         status_of_before_workflow_action,
+    //         function (current_workflow_role) {
+    //             current_role_of_workflow_action = current_workflow_role;
+    //             psa_utils.insert_new_timeline_child_table(
+    //                 "Withdrawal Request",
+    //                 frm.doc.name,
+    //                 "timeline_child_table",
+    //                 {
+    //                     "position": current_role_of_workflow_action,
+    //                     "full_name": current_user_of_workflow_action,
+    //                     "previous_status": status_of_before_workflow_action,
+    //                     "received_date": modified_of_before_workflow_action,
+    //                     "action": action_of_workflow,
+    //                     "next_status": status_of_after_workflow_action,
+    //                     "action_date": modified_of_after_workflow_action
+    //                 }
+    //             );
 
-        psa_utils.get_current_workflow_role(
-            "Withdrawal Request Workflow",
-            status_of_before_workflow_action,
-            function (current_workflow_role) {
-                current_role_of_workflow_action = current_workflow_role;
-                psa_utils.insert_new_timeline_child_table(
-                    "Withdrawal Request",
-                    frm.doc.name,
-                    "timeline_child_table",
-                    {
-                        "position": current_role_of_workflow_action,
-                        "full_name": current_user_of_workflow_action,
-                        "previous_status": status_of_before_workflow_action,
-                        "received_date": modified_of_before_workflow_action,
-                        "action": action_of_workflow,
-                        "next_status": status_of_after_workflow_action,
-                        "action_date": modified_of_after_workflow_action
-                    }
-                );
-
-                window.location.reload();
-            }
-        );
-    },
+    //             window.location.reload();
+    //         }
+    //     );
+    // },
 
     program_enrollment(frm) {
         frm.set_intro('');
