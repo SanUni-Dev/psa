@@ -395,7 +395,7 @@ def get_students_by_supervisor():
         frappe.throw(_("No Supervisor found for the employee."))
 
     students = frappe.db.sql("""
-        SELECT student.name
+        SELECT DISTINCT student.name
         FROM `tabStudent` AS student
         JOIN `tabStudent Supervisor` AS supervisor
         ON student.name = supervisor.student

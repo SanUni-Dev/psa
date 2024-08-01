@@ -36,38 +36,73 @@ frappe.ui.form.on("Thesis Defense Committee Request", {
 
         frm.fields_dict['member_of_internal_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
             const row = locals[cdt][cdn];
-            return {
-                filters: {
-                    'faculty': row.faculty,
-                    'academic_rank': row.academic_rank,
-                    // 'from_another_university': ['', null],
-                    // 'contract_status': 1
-                }
-            };
+            if (row.faculty == null || row.academic_rank == null) {
+                return {
+                    filters: {
+                        'faculty': null,
+                        'academic_rank': null,
+                        // 'from_another_university': ['', null],
+                        // 'contract_status': 1
+                    }
+                };
+            }
+            else {
+                return {
+                    filters: {
+                        'faculty': row.faculty,
+                        'academic_rank': row.academic_rank,
+                        // 'from_another_university': ['', null],
+                        // 'contract_status': 1
+                    }
+                };
+            }
+            
         };
 
 
         frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
             const row = locals[cdt][cdn];
-            return {
-                filters: {
-                    'from_another_university': row.university,
-                    'external_faculty': row.external_faculty,
-                    'academic_rank': row.academic_rank,
-                    // 'from_another_university': ['', null],
-                    // 'contract_status': 1
-                }
-            };
+            if (row.university == null || row.external_faculty == null || row.academic_rank == null) {
+                return {
+                    filters: {
+                        'from_another_university': null,
+                        'external_faculty': null,
+                        'academic_rank': null,
+                        // 'from_another_university': ['', null],
+                        // 'contract_status': 1
+                    }
+                };
+            }
+            else {
+                return {
+                    filters: {
+                        'from_another_university': row.university,
+                        'external_faculty': row.external_faculty,
+                        'academic_rank': row.academic_rank,
+                        // 'from_another_university': ['', null],
+                        // 'contract_status': 1
+                    }
+                };
+            }
         };
 
 
         frm.fields_dict['member_of_external_selected_committee'].grid.get_field('external_faculty').get_query = function (doc, cdt, cdn) {
             let row = locals[cdt][cdn];
-            return {
-                filters: {
-                    'university': row.university
-                }
-            };
+            if (row.university == null) {
+                return {
+                    filters: {
+                        'university': null
+                    }
+                };
+            }
+            else {
+                return {
+                    filters: {
+                        'university': row.university
+                    }
+                };
+            }
         };
 
 
