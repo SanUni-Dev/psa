@@ -1,32 +1,39 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2024-05-06 00:30:16.147236",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "section_break_0zie",
   "student",
   "program_enrollment",
-  "column_break_zugp",
+  "column_break_zjmz",
   "student_supervisor",
   "student_research",
-  "naming_series",
+  "more_information_section",
+  "information",
   "section_break_qpyi",
   "current_research_title_arabic",
+  "new_research_title_arabic",
   "column_break_ftxr",
   "current_research_title_english",
-  "section_break_ihyd",
-  "new_research_title_arabic",
-  "column_break_aguj",
   "new_research_title_english",
   "section_break_gplw",
   "notes",
   "section_break_qhzt",
   "status",
+  "request_date",
   "column_break_zfum",
-  "amended_from"
+  "date_of_approval_of_the_research_title",
+  "amended_from",
+  "section_break_gpxp",
+  "modified_request_date",
+  "column_break_nobi",
+  "rejection_reason",
+  "transaction_information_tab",
+  "transaction_information"
  ],
  "fields": [
   {
@@ -49,6 +56,7 @@
    "in_list_view": 1,
    "label": "Student",
    "options": "Student",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -57,6 +65,7 @@
    "in_list_view": 1,
    "label": "Program Enrollment",
    "options": "Program Enrollment",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -66,10 +75,6 @@
    "options": "PSA-Change-Tit-Req-.YY.-.MM.-.#####."
   },
   {
-   "fieldname": "column_break_zugp",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_qhzt",
    "fieldtype": "Section Break"
   },
@@ -77,25 +82,24 @@
    "fetch_from": "student_research.research_title_arabic",
    "fieldname": "current_research_title_arabic",
    "fieldtype": "Data",
-   "label": "Current Research Title Arabic"
+   "label": "Current Research Title Arabic",
+   "read_only": 1
   },
   {
    "fetch_from": "student_research.research_title_english",
    "fieldname": "current_research_title_english",
    "fieldtype": "Data",
-   "label": "Current Research Title English"
+   "label": "Current Research Title English",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_qpyi",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Request Information"
   },
   {
    "fieldname": "column_break_ftxr",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_ihyd",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "new_research_title_arabic",
@@ -103,10 +107,6 @@
    "in_list_view": 1,
    "label": "New Research Title Arabic",
    "reqd": 1
-  },
-  {
-   "fieldname": "column_break_aguj",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "new_research_title_english",
@@ -130,15 +130,18 @@
    "fieldname": "student_supervisor",
    "fieldtype": "Link",
    "label": "Student Supervisor",
-   "options": "Student Supervisor"
+   "options": "Student Supervisor",
+   "read_only": 1
   },
   {
    "fieldname": "student_research",
    "fieldtype": "Link",
    "label": "Student Research",
-   "options": "Student Research"
+   "options": "Student Research",
+   "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
@@ -147,12 +150,78 @@
   {
    "fieldname": "column_break_zfum",
    "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date_of_approval_of_the_research_title",
+   "fieldtype": "Data",
+   "label": "Date of Approval of the Research Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zjmz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "section_break_gpxp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nobi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "transaction_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "transaction_information",
+   "fieldtype": "HTML",
+   "label": "Transaction Information"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-25 15:06:47.292864",
+ "modified": "2024-08-02 01:29:22.788429",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Title Request",
