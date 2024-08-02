@@ -7,12 +7,17 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "section_break_aipr",
   "student",
+  "column_break_gxpz",
   "program_enrollment",
   "student_research",
-  "column_break_asdq",
+  "more_information_section",
+  "information",
+  "meeting_details_section",
   "meeting_date",
   "meeting_time",
+  "column_break_asdq",
   "meeting_period",
   "meeting_place",
   "section_break_cxcy",
@@ -21,6 +26,7 @@
   "meeting_details",
   "section_break_ctpi",
   "status",
+  "section_break_taai",
   "amended_from",
   "supervisor_notes_tab",
   "supervisor_notes"
@@ -40,6 +46,7 @@
    "label": "Student",
    "options": "Student",
    "permlevel": 1,
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -50,6 +57,7 @@
    "label": "Program Enrollment",
    "options": "Program Enrollment",
    "permlevel": 1,
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -134,6 +142,7 @@
    "label": "Student Research",
    "options": "Student Research",
    "permlevel": 1,
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -146,15 +155,46 @@
    "label": "Supervisor Notes"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_aipr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gxpz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "meeting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Meeting Details"
+  },
+  {
+   "fieldname": "section_break_taai",
+   "fieldtype": "Section Break"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-14 02:30:39.565934",
+ "modified": "2024-08-02 06:15:14.338404",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Researcher Meeting",
@@ -170,6 +210,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -177,12 +218,68 @@
    "permlevel": 1,
    "read": 1,
    "role": "System Manager",
+   "select": 1,
    "write": 1
   },
   {
    "permlevel": 2,
    "read": 1,
    "role": "System Manager",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student",
+   "select": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Supervisor",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1,
    "write": 1
   }
  ],

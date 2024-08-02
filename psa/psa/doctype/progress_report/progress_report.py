@@ -1,7 +1,8 @@
 # Copyright (c) 2024, Sana'a university and contributors
 # For license information, please see license.txt
 
-import frappe, json
+
+import frappe
 from frappe.model.document import Document
 from frappe import _
 from psa.api.psa_utils import check_active_request, check_program_enrollment_status
@@ -29,3 +30,8 @@ class ProgressReport(Document):
 			frappe.throw(_("'From Date' can't be bigger than 'To Date', please choose another date!"))
 		elif self.to_date < self.from_date:
 			frappe.throw(_("'To Date' can't be smaller than 'From Date', please choose another date!"))
+
+
+	def on_submit(self):
+			if (not self.notes) or (not self.research_achievement_supervisor) or (not self.expected_date_of_thesis_submission) or (not self.satisfaction_status):
+				frappe.throw(_("Please write your notes to submit!"))
