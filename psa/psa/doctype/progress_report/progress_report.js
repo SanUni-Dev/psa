@@ -49,9 +49,9 @@ frappe.ui.form.on("Progress Report", {
         frm.set_value("meetings", null);
         refresh_field("meetings");
 
-        psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
-
+        
         if (frm.doc.program_enrollment) {
+            psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
             psa_utils.set_student_supervisor_for_student_and_program_enrollment(frm, "supervisor", frm.doc.student, frm.doc.program_enrollment);
             psa_utils.set_student_research_for_student_and_program_enrollment(frm, "research", frm.doc.student, frm.doc.program_enrollment);
             
