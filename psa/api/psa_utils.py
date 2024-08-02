@@ -405,6 +405,10 @@ def get_students_by_supervisor():
     return students
 
 
+@frappe.whitelist()
+def get_single_value(doctype_name, field):
+    result = frappe.db.get_single_value(doctype_name, str(field))
+    return result
 
 
 # Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)

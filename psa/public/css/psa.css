@@ -1,0 +1,55 @@
+/* Logo styling */
+.navbar-brand .app-logo {
+    width: 38px !important;
+}
+
+.page-card-head img {
+    max-height: 122px !important;
+}
+
+.navbar-brand img {
+    display: inline-block;
+    max-width: 38px;
+    max-height: 42px;
+}
+
+/* Button Primary Colors */
+.btn-primary {
+    background-color: #065a14 !important; /* Dark green */
+    border-color: #065a14;
+    color: #ffffff !important; /* White text */
+}
+
+.btn-primary:hover {
+    background-color: #0a9220 !important; /* Lighter green */
+    border-color: #0a9220 !important;
+    color: #ffffff !important; /* White text */
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(245, 241, 43, 0.5) !important; /* Yellow shadow */
+    color: #ffffff !important; /* White text */
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background-color: #0a9220 !important; /* Lighter green */
+    border-color: #0a9220 !important;
+    color: #ffffff !important; /* White text */
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show>.btn-primary.dropdown-toggle {
+    background-color: #f1ef65 !important; /* Lighter yellow */
+    border-color: #c57e40 !important; /* Dark red/orange */
+    color: #065a14 !important; /* Dark green text for contrast */
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 155, 66, 0.5) !important; /* Orange shadow */
+    color: #065a14 !important; /* Dark green text for contrast */
+}

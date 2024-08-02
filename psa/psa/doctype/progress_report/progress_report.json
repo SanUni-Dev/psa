@@ -7,15 +7,13 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "section_break_dgwb",
-  "status",
   "section_break_dvtw",
   "student",
   "program_enrollment",
   "column_break_teka",
   "supervisor",
   "research",
-  "section_break_occk",
+  "more_information_section",
   "information",
   "section_break_zgxx",
   "report_date",
@@ -29,12 +27,15 @@
   "overall_achievement_section",
   "research_achievement_student",
   "research_overall_achievement",
+  "section_break_dgwb",
+  "status",
   "section_break_cikk",
   "amended_from",
   "meetings_tab",
   "meetings",
   "meetings_status",
   "attachments_tab",
+  "attachments_section",
   "attachment",
   "supervisor_report_tab",
   "section_break_half",
@@ -69,6 +70,7 @@
    "in_list_view": 1,
    "label": "Student",
    "options": "Student",
+   "permlevel": 1,
    "read_only": 1,
    "reqd": 1
   },
@@ -79,6 +81,7 @@
    "in_list_view": 1,
    "label": "Program Enrollment",
    "options": "Program Enrollment",
+   "permlevel": 1,
    "read_only": 1,
    "reqd": 1
   },
@@ -91,9 +94,11 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Report Date",
+   "permlevel": 1,
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
@@ -122,11 +127,10 @@
    "fieldtype": "Section Break"
   },
   {
-   "allow_on_submit": 1,
    "fieldname": "notes",
    "fieldtype": "Text Editor",
    "label": "Notes",
-   "permlevel": 1
+   "permlevel": 2
   },
   {
    "depends_on": "eval: doc.program_enrollment",
@@ -134,15 +138,15 @@
    "fieldtype": "Link",
    "label": "Student Supervisor",
    "options": "Student Supervisor",
+   "permlevel": 1,
    "read_only": 1,
    "reqd": 1
   },
   {
-   "allow_on_submit": 1,
    "fieldname": "expected_date_of_thesis_submission",
    "fieldtype": "Date",
    "label": "Expected Date of Thesis Submission",
-   "permlevel": 1
+   "permlevel": 2
   },
   {
    "fieldname": "section_break_wrjy",
@@ -161,6 +165,7 @@
    "fieldname": "from_date",
    "fieldtype": "Date",
    "label": "From Date",
+   "permlevel": 1,
    "reqd": 1
   },
   {
@@ -171,6 +176,7 @@
    "fieldname": "to_date",
    "fieldtype": "Date",
    "label": "To Date",
+   "permlevel": 1,
    "reqd": 1
   },
   {
@@ -178,6 +184,7 @@
    "fieldname": "student_report_period",
    "fieldtype": "Text Editor",
    "label": "Student Report",
+   "permlevel": 1,
    "reqd": 1
   },
   {
@@ -188,36 +195,36 @@
   {
    "fieldname": "research_overall_achievement",
    "fieldtype": "Text Editor",
-   "label": "Research Overall Achievement"
+   "label": "Research Overall Achievement",
+   "permlevel": 1
   },
   {
-   "allow_on_submit": 1,
    "depends_on": "eval: doc.satisfaction_status == 'Unsatisfied'",
    "fieldname": "recommended_action",
    "fieldtype": "Select",
    "label": "Recommended Action",
+   "mandatory_depends_on": "eval: doc.satisfaction_status == 'Unsatisfied'",
    "options": "\nNothing\nAlert Researcher",
-   "permlevel": 1
+   "permlevel": 2
   },
   {
    "fieldname": "research_achievement_student",
-   "fieldtype": "Percent",
-   "label": "Research Achievement %"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "research_achievement_supervisor",
    "fieldtype": "Percent",
    "label": "Research Achievement %",
    "permlevel": 1
   },
   {
-   "allow_on_submit": 1,
+   "fieldname": "research_achievement_supervisor",
+   "fieldtype": "Percent",
+   "label": "Research Achievement %",
+   "permlevel": 2
+  },
+  {
    "fieldname": "satisfaction_status",
    "fieldtype": "Select",
    "label": "Satisfaction Status",
    "options": "\nSatisfied\nUnsatisfied",
-   "permlevel": 1
+   "permlevel": 2
   },
   {
    "depends_on": "eval: doc.meetings",
@@ -250,18 +257,16 @@
    "fieldname": "research",
    "fieldtype": "Link",
    "label": "Student Research",
-   "options": "Student Supervisor",
+   "options": "Student Research",
+   "permlevel": 1,
    "read_only": 1,
    "reqd": 1
   },
   {
-   "collapsible": 1,
-   "fieldname": "section_break_occk",
-   "fieldtype": "Section Break"
-  },
-  {
+   "depends_on": "eval: doc.program_enrollment",
    "fieldname": "information",
-   "fieldtype": "HTML"
+   "fieldtype": "HTML",
+   "label": "Information"
   },
   {
    "fieldname": "attachments_tab",
@@ -271,13 +276,26 @@
   {
    "fieldname": "attachment",
    "fieldtype": "Attach",
-   "label": "Attachment"
+   "label": "Attachment",
+   "permlevel": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "hidden": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-28 03:46:25.213061",
+ "modified": "2024-08-02 06:50:29.937748",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Progress Report",
@@ -285,6 +303,7 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -293,12 +312,26 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "submit": 1,
    "write": 1
   },
   {
-   "cancel": 1,
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "write": 1
+  },
+  {
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -310,7 +343,6 @@
    "role": "Student",
    "select": 1,
    "share": 1,
-   "submit": 1,
    "write": 1
   },
   {
@@ -322,12 +354,27 @@
    "write": 1
   },
   {
+   "if_owner": 1,
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student",
+   "select": 1
+  },
+  {
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
    "read": 1,
    "role": "Supervisor",
    "select": 1
   },
   {
-   "permlevel": 1,
+   "permlevel": 2,
    "read": 1,
    "role": "Supervisor",
    "select": 1,

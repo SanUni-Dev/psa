@@ -567,6 +567,22 @@ psa_utils.set_program_enrollment_information = function (frm, field_name, studen
 };
 
 
+psa_utils.get_single_value = function(doctype_name, field, callback) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_single_value',
+        args: {
+            doctype_name: doctype_name,
+            field: field
+        },
+        callback: function(r) {
+            if (typeof callback === 'function') {
+                callback(r.message);
+            }
+        }
+    });
+};
+
+
 // Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
 // psa_utils.save_timeline_child_table = function (doctype_name, doc_name, timeline_child_table_name, timeline_child_table_list, callback) {
 //     frappe.call({

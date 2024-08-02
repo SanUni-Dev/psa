@@ -5,6 +5,8 @@ from dateutil.relativedelta import relativedelta
 from frappe.utils.pdf import get_pdf
 from frappe.utils.file_manager import save_file
 from frappe.utils import get_url_to_form
+from frappe import get_all, get_doc, DoesNotExistError
+
 
 def add_minutes(datetime_str, minutes):
     """إضافة دقائق إلى تاريخ معين"""
@@ -47,6 +49,7 @@ def send_suspend_enrollment_notification():
                 })
                 notification_doc.insert(ignore_permissions=True)
  
+
 
 def create_progress_report_and_notify():
     try:
@@ -139,6 +142,8 @@ def create_progress_report_and_notify():
     except Exception as e:
         frappe.log_error(f"Failed to create notification log for progress report: {str(e)}")
         print(f"Error: {str(e)}")
+
+
 
 def notify_supervisor_if_no_progress_report():
     progress_report_settings = frappe.get_all(
@@ -533,3 +538,133 @@ def notify_student_on_research_title_change(doc_name):
         frappe.log_error(frappe.get_traceback(), "notify_student_on_research_title_change Error")
         print(f"Error: {e}")
 
+
+
+ 
+
+@frappe.whitelist()
+def get_supervisor_main_workload():
+    faculty_members_data = {}
+    supervisor_limit_exceeded = []
+
+    supervisor_docs = get_all(
+        'Student Supervisor', 
+        filters={'enabled': 1, 'status': 'Active', 'type': 'Main Supervisor'}, 
+        fields=['supervisor', 'program_enrollment', 'student']
+    )
+
+    for supervisor_doc in supervisor_docs:
+        supervisor_id = supervisor_doc.get('supervisor')
+        student_name = supervisor_doc.get('student')
+
+        if not supervisor_id:
+            print(f"Warning: No supervisor ID found for document with student {student_name}")
+            continue
+
+        # هنا نحاول اخذ بيانات الفاكيوليتي ممبر من حقه الدوكتايب
+        try:
+            faculty_member_doc = get_doc('Faculty Member', supervisor_id)
+        except DoesNotExistError:
+            print(f"Warning: No faculty member document found for ID {supervisor_id}")
+            continue
+
+        supervisor_name = getattr(faculty_member_doc, 'faculty_member_name', None)
+
+        if not supervisor_name:
+            print(f"Warning: No faculty member name found for ID {supervisor_id}")
+            continue
+
+        if supervisor_id not in faculty_members_data:
+            faculty_members_data[supervisor_id] = {
+                'name': supervisor_name,
+                'student_count': 0,
+                'students': set()  # استخدام set() لضمان عدم تكرار أسماء الطلاب
+            }
+
+        faculty_members_data[supervisor_id]['student_count'] += 1
+        faculty_members_data[supervisor_id]['students'].add(student_name)
+
+    settings = get_doc('PSA Settings', 'PSA Settings')
+    number_of_researches_main = settings.number_of_researches_main
+    set_limit_on_number_researches = settings.set_limit_on_number_researches_faculty_member_co_supervisor
+
+    if set_limit_on_number_researches:
+        for supervisor_id, data in faculty_members_data.items():
+            if data['student_count'] >= number_of_researches_main:
+                supervisor_limit_exceeded.append(supervisor_id)
+
+    result = []
+    for supervisor_id, data in faculty_members_data.items():
+        if not set_limit_on_number_researches or supervisor_id not in supervisor_limit_exceeded:
+            result.append({
+                'supervisor_id': supervisor_id,
+                'supervisor_name': data['name'],
+                'student_count': data['student_count'],
+                'students': list(data['students'])
+            })
+
+    return result, supervisor_limit_exceeded
+
+
+@frappe.whitelist()
+def get_supervisor_co_workload():
+    faculty_members_data = {}
+    supervisor_limit_exceeded = []
+
+    supervisor_docs = get_all(
+        'Student Supervisor', 
+        filters={'enabled': 1, 'status': 'Active', 'type': 'Co-Supervisor'}, 
+        fields=['supervisor', 'program_enrollment', 'student']
+    )
+
+    for supervisor_doc in supervisor_docs:
+        supervisor_id = supervisor_doc.get('supervisor')
+        student_name = supervisor_doc.get('student')
+
+        if not supervisor_id:
+            print(f"Warning: No supervisor ID found for document with student {student_name}")
+            continue
+
+        # هنا نحاول اخذ بيانات الفاكيوليتي ممبر من حقه الدوكتايب
+        try:
+            faculty_member_doc = get_doc('Faculty Member', supervisor_id)
+        except DoesNotExistError:
+            print(f"Warning: No faculty member document found for ID {supervisor_id}")
+            continue
+
+        supervisor_name = getattr(faculty_member_doc, 'faculty_member_name', None)
+
+        if not supervisor_name:
+            print(f"Warning: No faculty member name found for ID {supervisor_id}")
+            continue
+
+        if supervisor_id not in faculty_members_data:
+            faculty_members_data[supervisor_id] = {
+                'name': supervisor_name,
+                'student_count': 0,
+                'students': set()  # استخدام set() لضمان عدم تكرار أسماء الطلاب
+            }
+
+        faculty_members_data[supervisor_id]['student_count'] += 1
+        faculty_members_data[supervisor_id]['students'].add(student_name)
+
+    settings = get_doc('PSA Settings', 'PSA Settings')
+    number_of_researches_co = settings.number_of_researches_co
+    set_limit_on_number_researches = settings.set_limit_on_number_researches_faculty_member_main_supervisor
+
+    if set_limit_on_number_researches:
+        for supervisor_id, data in faculty_members_data.items():
+            if data['student_count'] >= number_of_researches_co:
+                supervisor_limit_exceeded.append(supervisor_id)
+
+    result = []
+    for supervisor_id, data in faculty_members_data.items():
+        if not set_limit_on_number_researches or supervisor_id not in supervisor_limit_exceeded:
+            result.append({
+                'supervisor_id': supervisor_id,
+                'supervisor_name': data['name'],
+                'student_count': data['student_count'],
+                'students': list(data['students'])
+            })
+
+    return result, supervisor_limit_exceeded

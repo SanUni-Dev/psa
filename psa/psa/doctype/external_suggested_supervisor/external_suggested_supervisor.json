@@ -1,21 +1,24 @@
 {
  "actions": [],
- "creation": "2024-05-08 00:19:17.428772",
+ "creation": "2024-07-27 20:25:10.355293",
+ "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "faculty",
+  "university",
+  "external_faculty",
   "academic_rank",
   "faculty_member"
  ],
  "fields": [
   {
-   "fieldname": "faculty",
+   "fetch_from": ".from_another_university",
+   "fieldname": "university",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Faculty",
-   "options": "Faculty",
+   "label": "University",
+   "options": "University",
    "reqd": 1
   },
   {
@@ -23,7 +26,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Faculty Member",
-   "options": "Faculty Member"
+   "options": "Faculty Member",
+   "reqd": 1
   },
   {
    "fieldname": "academic_rank",
@@ -32,15 +36,23 @@
    "label": "Academic Rank",
    "options": "Academic Rank",
    "reqd": 1
+  },
+  {
+   "fieldname": "external_faculty",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Faculty",
+   "options": "External Faculty",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-01 03:21:48.108320",
+ "modified": "2024-08-02 00:51:29.943188",
  "modified_by": "Administrator",
  "module": "PSA",
- "name": "Suggested Supervisor",
+ "name": "External Suggested Supervisor",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

@@ -14,13 +14,35 @@ fixtures = [
     "Wiki Space",
     "Wiki Page",
     "Translation",
-    "Email Account"
+    "Email Account",
+    "Website Settings",
+    "Navbar Settings"
 ]
 
 
 app_include_js = [
     "/assets/psa/js/psa_utils.js"
     ]
+
+
+# doc_events = {
+#     "Progress Report": {
+#         "on_submit": "psa.tasks.cron.on_submit",
+#         "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
+#     }
+# }
+
+
+# Cron Scheduler that be triggered everyday at 12:00:00 AM
+# scheduler_events = {
+# 	"cron":{
+# 		"0 0 * * *": [
+# 			"psa.tasks.cron.send_suspend_enrollment_notification",
+# 			"psa.tasks.cron.create_progress_report_and_notify",
+# 			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
+# 		]
+# 	}
+# }
 
 
 ########## stopped workflow override
@@ -34,6 +56,21 @@ app_include_js = [
 #     "Workflow State",
 #     "Workflow Action Master"
 # ]
+
+
+####################### Logo and theme
+app_logo_url = "/assets/psa/images/san_logo.png"
+brand_html = '<img src="/assets/psa/images/san_logo.svg" alt="PSA" class="app-logo"/>'
+website_context = {
+    "favicon": "/assets/psa/images/san_logo.svg",
+    "splash_image": "/assets/psa/images/san_logo.svg"
+}
+web_include_css = "/assets/psa/css/psa.css"
+app_include_css = "/assets/psa/css/psa.css"
+######################################
+
+
+############################################################################################################################################
 
 
 # Includes in <head>
@@ -176,30 +213,8 @@ app_include_js = [
 # }
 
 
-doc_events = {
-    "Progress Report": {
-        "on_submit": "psa.tasks.cron.on_submit",
-        "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
-    }
-}
-
 # Scheduled Tasks
 # ---------------
-
-
-#############################uncomment this scheduler##################################################################
-# Cron Scheduler that be triggered everyday at 12:00:00 AM
-scheduler_events = {
-	"cron":{
-		"0 0 * * *": [
-			"psa.tasks.cron.send_suspend_enrollment_notification",
-			"psa.tasks.cron.create_progress_report_and_notify",
-			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
-		]
-	}
-}
-#############################                          ###################################################################
-
 # scheduler_events = {
 # 	"all": [
 # 		"psa.tasks.all"
@@ -216,6 +231,11 @@ scheduler_events = {
 # 	"monthly": [
 # 		"psa.tasks.monthly"
 # 	],
+#     "cron": {
+#             "0 0 * * *": [
+#                 "psa.tasks.function"
+#             ]
+#     },
 # }
 
 # Testing
