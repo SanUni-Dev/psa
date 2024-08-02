@@ -136,7 +136,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
                             $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
                         }
 
-                        frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                        psa_utils.get_single_value('PSA Settings', 'check_active_requests_before_insert', function(check_active_requests_before_insert) {
                             if (check_active_requests_before_insert) {
                                 psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Continue Enrollment Request', 'Suspend Enrollment Request', 'Withdrawal Request'],
                                     function (active_request) {
