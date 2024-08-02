@@ -298,6 +298,36 @@ frappe.ui.form.on('Suggested Supervisor', {
 faculty_member: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
         let selected_faculty_member_id = row.faculty_member;
+
+        let duplicate = frm.doc.suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.idx !== row.idx);
+        if (duplicate) {
+            frappe.call({
+                method: "frappe.client.get",
+                args: {
+                    doctype: "Faculty Member",  
+                    name: selected_faculty_member_id
+                },
+                callback: function(member_response) {
+                    let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
+                    var duplicateMessage = frappe._(
+                        'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
+                        [member_name]
+                    );
+                    frappe.msgprint(`
+                        <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
+                            <p style="font-size: 16px; color: #721c24;">
+                                ${duplicateMessage}
+                            </p>
+                        </div>
+                    `);
+                    frappe.model.set_value(cdt, cdn, 'faculty_member', '');
+                },
+                error: function(error) {
+                    console.error("Error in fetching Faculty Member details:", error);
+                }
+            });
+
+        }
         checkFacultyMemberLimit(frm, cdt, cdn, selected_faculty_member_id);
     }     
      
@@ -395,6 +425,35 @@ frappe.ui.form.on('External Suggested Supervisor', {
     faculty_member: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
         let selected_faculty_member_id = row.faculty_member;
+        let duplicate = frm.doc.external_suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.academic_rank === locals[cdt][cdn].academic_rank && r.idx !== locals[cdt][cdn].idx);
+        if (duplicate) {
+            frappe.call({
+                method: "frappe.client.get",
+                args: {
+                    doctype: "Faculty Member",  
+                    name: selected_faculty_member_id
+                },
+                callback: function(member_response) {
+                    let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
+                    var duplicateMessage = frappe._(
+                        'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
+                        [member_name]
+                    );
+                    frappe.msgprint(`
+                        <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
+                            <p style="font-size: 16px; color: #721c24;">
+                                ${duplicateMessage}
+                            </p>
+                        </div>
+                    `);
+                    frappe.model.set_value(cdt, cdn, 'faculty_member', '');
+                },
+                error: function(error) {
+                    console.error("Error in fetching Faculty Member details:", error);
+                }
+            });
+
+        }
         checkFacultyMemberLimit(frm, cdt, cdn, selected_faculty_member_id);
     }
 });
@@ -473,75 +532,15 @@ function checkFacultyMemberLimit(frm, cdt, cdn, selected_faculty_member_id) {
                                         console.error("Error in fetching Faculty Member details:", error);
                                     }
                                 });
-                            } else {
-                                let duplicateInInternal = frm.doc.suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.idx !== locals[cdt][cdn].idx);
-                                let duplicateInExternal = frm.doc.external_suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.academic_rank === locals[cdt][cdn].academic_rank && r.idx !== locals[cdt][cdn].idx);
-
-                                if (duplicateInInternal ||duplicateInExternal) {
-                                    frappe.call({
-                                        method: "frappe.client.get",
-                                        args: {
-                                            doctype: "Faculty Member",   
-                                            name: selected_faculty_member_id
-                                        },
-                                        callback: function(member_response) {
-                                            let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
-                                            var duplicateMessage = frappe._(
-                                                'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
-                                                [member_name]
-                                            );
-                                            frappe.msgprint(`
-                                                <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
-                                                    <p style="font-size: 16px; color: #721c24;">
-                                                        ${duplicateMessage}
-                                                    </p>
-                                                </div>
-                                            `);
-                                            frappe.model.set_value(cdt, cdn, 'faculty_member', '');
-                                        },
-                                        error: function(error) {
-                                            console.error("Error in fetching Faculty Member details:", error);
-                                        }
-                                    });
-                                }
-                            }
+                            } 
+                       
                         },
                         error: function(error) {
                             console.error("Error in fetching supervisor workload:", error);
                         }
                     });
-                } else {
-                    let duplicateInInternal = frm.doc.suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.idx !== locals[cdt][cdn].idx);
-                    let duplicateInExternal = frm.doc.external_suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.academic_rank === locals[cdt][cdn].academic_rank && r.idx !== locals[cdt][cdn].idx);
-
-                    if (duplicateInInternal ||duplicateInExternal) {
-                        frappe.call({
-                            method: "frappe.client.get",
-                            args: {
-                                doctype: "Faculty Member",  
-                                name: selected_faculty_member_id
-                            },
-                            callback: function(member_response) {
-                                let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
-                                var duplicateMessage = frappe._(
-                                    'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
-                                    [member_name]
-                                );
-                                frappe.msgprint(`
-                                    <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
-                                        <p style="font-size: 16px; color: #721c24;">
-                                            ${duplicateMessage}
-                                        </p>
-                                    </div>
-                                `);
-                                frappe.model.set_value(cdt, cdn, 'faculty_member', '');
-                            },
-                            error: function(error) {
-                                console.error("Error in fetching Faculty Member details:", error);
-                            }
-                        });
-                    }
-                }
+                } 
+               
             } else {
                 console.error("No PSA Settings found.");
             }
