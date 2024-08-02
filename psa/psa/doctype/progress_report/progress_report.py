@@ -1,7 +1,8 @@
 # Copyright (c) 2024, Sana'a university and contributors
 # For license information, please see license.txt
 
-import frappe, json
+
+import frappe
 from frappe.model.document import Document
 from frappe import _
 from psa.api.psa_utils import check_active_request, check_program_enrollment_status
