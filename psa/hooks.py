@@ -14,7 +14,9 @@ fixtures = [
     "Wiki Space",
     "Wiki Page",
     "Translation",
-    "Email Account"
+    "Email Account",
+    "Website Settings",
+    "Navbar Settings"
 ]
 
 
@@ -54,6 +56,18 @@ app_include_js = [
 #     "Workflow State",
 #     "Workflow Action Master"
 # ]
+
+
+####################### Logo and theme
+app_logo_url = "/assets/psa/images/san_logo.png"
+brand_html = '<img src="/assets/psa/images/san_logo.svg" alt="PSA" class="app-logo"/>'
+website_context = {
+    "favicon": "/assets/psa/images/san_logo.svg",
+    "splash_image": "/assets/psa/images/san_logo.svg"
+}
+web_include_css = "/assets/psa/css/psa.css"
+app_include_css = "/assets/psa/css/psa.css"
+######################################
 
 
 ############################################################################################################################################
