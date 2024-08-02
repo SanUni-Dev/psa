@@ -7,8 +7,9 @@ frappe.ui.form.on("Change Research Title Request", {
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
-
-        if (frm.doc.status.includes("Approved by")) {
+        
+        if (frm.doc.docstatus == 1) {
+       // if (frm.doc.status.includes("Approved by")) {
             frm.add_custom_button(__('Change Title'), function() {
                 frappe.new_doc('Student Research', {
                     student: frm.doc.student,
