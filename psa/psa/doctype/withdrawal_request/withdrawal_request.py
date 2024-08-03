@@ -5,7 +5,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe import _
-from psa.api.psa_utils import check_active_request, check_program_enrollment_status
+from psa.api.psa_utils import check_active_request, check_program_enrollment_status, create_psa_transaction
 
 
 class WithdrawalRequest(Document):
@@ -33,6 +33,19 @@ class WithdrawalRequest(Document):
 
         if self.fees_status != "Paid":
             frappe.throw(_("You have to pay fees of request before submit it!"))
+        
+        ################ Creating a New Transaction ################
+        # applicants = [
+        #     {'applicant_type': "Student", 'applicant': self.student, 'applicant_name': "إسماعيل"},
+        #     {'applicant_type': "Employee", 'applicant': "HR-EMP-00001", 'applicant_name': "Ahmed"}
+        # ]
+        applicants = []
+        transaction_id = create_psa_transaction(self.doctype, self.name, applicants)
+        if 'error' in transaction_id:
+            frappe.throw(transaction_id['error'])
+        else:
+            frappe.msgprint(_('Transaction created successfully with ID: {0}<br><br><br><a onclick="psa_utils.scroll_to_transaction_information(cur_frm, `transaction_information`)"><i>Show Transaction Details</i></a>').format(transaction_id['transaction_id']))
+        ############################################################
 
 
     # def on_update(self):
