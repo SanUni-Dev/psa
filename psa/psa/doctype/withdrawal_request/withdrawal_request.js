@@ -112,7 +112,7 @@ frappe.ui.form.on("Withdrawal Request", {
                         frm.set_intro((__("Can't add a withdrawal request, because current status is {0}!", [program_enrollment_status[1]])), 'red');
                     }
                     else if (program_enrollment_status[0]) {
-                        frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                        psa_utils.get_single_value('PSA Settings', 'check_active_requests_before_insert', function(check_active_requests_before_insert) {
                             if (check_active_requests_before_insert) {
                                 psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Withdrawal Request', 'Suspend Enrollment Request', 'Continue Enrollment Request'],
                                     function (active_request) {

@@ -128,7 +128,7 @@ frappe.ui.form.on("Suspend Enrollment Request", {
                         }
                     }
                     else if (program_enrollment_status[0]) {
-                        frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                        psa_utils.get_single_value('PSA Settings', 'check_active_requests_before_insert', function(check_active_requests_before_insert) {
                             if (check_active_requests_before_insert) {
                                 psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Suspend Enrollment Request', 'Continue Enrollment Request', 'Withdrawal Request'],
                                     function (active_request) {
