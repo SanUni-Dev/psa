@@ -138,7 +138,8 @@
    "fieldtype": "Link",
    "label": "Student Research",
    "options": "Student Research",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "allow_on_submit": 1,
@@ -221,7 +222,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-02 01:29:22.788429",
+ "modified": "2024-08-02 20:14:39.773653",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Title Request",

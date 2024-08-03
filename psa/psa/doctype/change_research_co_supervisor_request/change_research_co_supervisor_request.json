@@ -62,20 +62,23 @@
    "fieldtype": "Link",
    "label": "Student",
    "options": "Student",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Program Enrollment",
    "options": "Program Enrollment",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "current_supervisor",
    "fieldtype": "Link",
    "label": "Current Supervisor",
-   "options": "Student Supervisor"
+   "options": "Student Supervisor",
+   "reqd": 1
   },
   {
    "fieldname": "change_reason",
@@ -202,7 +205,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-02 01:28:37.497908",
+ "modified": "2024-08-02 20:14:11.424946",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Change Research Co Supervisor Request",
