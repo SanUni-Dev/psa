@@ -10,6 +10,42 @@ frappe.ui.form.on("Thesis Defense Committee Request", {
     },
 
     refresh(frm) {
+
+        if (frm.doc.docstatus === 1) {
+            frm.add_custom_button(__('Confirm Request'), function() {
+                var new_doc = frappe.model.get_new_doc('Thesis Defense Committee');
+                
+                new_doc.student = frm.doc.student;
+                new_doc.program_enrollment = frm.doc.program_enrollment;
+                new_doc.research_title = frm.doc.research_title;
+                new_doc.student_supervisor = frm.doc.student_supervisor;
+                new_doc.reference_doctype = frm.doc.doctype;
+                new_doc.document_name = frm.doc.name;
+                
+                new_doc.member_of_internal_selected_committee = [];
+                frm.doc.member_of_internal_selected_committee.forEach(function(row) {
+                    var new_row = frappe.model.add_child(new_doc, 'Member of Internal Selected Committee', 'member_of_internal_selected_committee');
+                    new_row.faculty = row.faculty;
+                    new_row.academic_rank = row.academic_rank;
+                    new_row.faculty_member = row.faculty_member;
+                });
+        
+                new_doc.member_of_external_selected_committee = [];
+                frm.doc.member_of_external_selected_committee.forEach(function(row) {
+                    var new_row = frappe.model.add_child(new_doc, 'Member of External Selected Committee', 'member_of_external_selected_committee');
+                    new_row.university = row.university;
+                    new_row.external_faculty = row.external_faculty;
+                    new_row.academic_rank = row.academic_rank;
+                    new_row.faculty_member = row.faculty_member;
+                });
+        
+                frappe.db.insert(new_doc).then(function(response) {
+                    frappe.set_route('Form', response.doctype, response.name);
+                });
+            });
+        }
+
+
         $(frm.fields_dict["information"].wrapper).html("");
 
         frappe.call({
