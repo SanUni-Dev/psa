@@ -590,6 +590,11 @@ psa_utils.go_to_transaction = function(refrenced_transaction) {
 };
 
 
+psa_utils.scroll_to_transaction_information = function(frm, field_name) {
+    frm.scroll_to_field(field_name, focus = true);
+};
+
+
 psa_utils.set_transaction_information = function(frm, field_name, doctype_name, doc_name) {
     frappe.call({
         method: 'psa.api.psa_utils.get_transaction_information',
