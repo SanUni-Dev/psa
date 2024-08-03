@@ -26,10 +26,10 @@ app_include_js = [
 
 
 doc_events = {
-    "Progress Report": {
-        "on_submit": "psa.tasks.cron.on_submit",
-        "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
-    },
+    # "Progress Report": {
+    #     "on_submit": "psa.tasks.cron.on_submit",
+    #     "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
+    # },
     "Student Research": {
         "on_submit": "psa.tasks.cron.notify_student_on_research_title_change"
     },
