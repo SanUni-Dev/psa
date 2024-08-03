@@ -487,7 +487,7 @@ psa_utils.set_program_enrollment_information = function (frm, field_name, studen
             if (data.co_supervisors.length != 0) {
                 co_supervisors =
                     `
-                    <tr><td colspan="2"><p><strong>${__("Co-Supervisors:")}</strong></p></td></tr>
+                    <tr><td colspan="2"><strong>${__("Co-Supervisors:")}</strong></td></tr>
                     <tr><td colspan="2">
                         <table class="table table-striped table-bordered mt-0">
                             <tbody>
@@ -496,9 +496,9 @@ psa_utils.set_program_enrollment_information = function (frm, field_name, studen
                 co_supervisors += (data.co_supervisors).map(function (co_supervisor, index) {
                     return `
                         <tr>
-                            <td><p>${index + 1}</p></td>
-                            <td><p>${co_supervisor.name || "--"}</p></td>
-                            <td><p>${co_supervisor.appointment_date || "--"}</p></td>
+                            <td>${index + 1}</td>
+                            <td>${co_supervisor.name || "--"}</td>
+                            <td>${co_supervisor.appointment_date || "--"}</td>
                         </tr>
                     `;
                 }).join('');
@@ -522,16 +522,16 @@ psa_utils.set_program_enrollment_information = function (frm, field_name, studen
                                 <h3>${__("Student Details:")}</h3>
                                 <table class="table table-striped ml-2">
                                     <tbody>
-                                        <tr><td><p><strong>${__("Full Name (Arabic):")}</strong></td><td>${full_name_arabic}</p></td></tr>
-                                        <tr><td><p><strong>${__("Full Name (English):")}</strong></td><td>${full_name_english}</p></td></tr>
-                                        <tr><td><p><strong>${__("Program Enrollment Date:")}</strong></td><td>${enrollment_date}</p></td></tr>
-                                        <tr><td><p><strong>${__("Program Enrollment Status:")}</strong></td><td>${status}</p></td></tr>
-                                        <tr><td><p><strong>${__("Program Name:")}</strong></td><td>${program_name}</p></td></tr>
-                                        <tr><td><p><strong>${__("Student Faculty:")}</strong></td><td>${program_enrollment_faculty}</p></td></tr>
-                                        <tr><td><p><strong>${__("Program Specification:")}</strong></td><td>${program}</p></td></tr>
-                                        <tr><td><p><strong>${__("Program Faculty:")}</strong></td><td>${program_faculty}</p></td></tr>
-                                        <tr><td><p><strong>${__("Faculty Department:")}</strong></td><td>${program_faculty_department}</p></td></tr>
-                                        <tr><td><p><strong>${__("Program Degree:")}</strong></td><td>${program_degree}</p></td></tr>
+                                        <tr><td><strong>${__("Full Name (Arabic):")}</strong></td><td>${full_name_arabic}</td></tr>
+                                        <tr><td><strong>${__("Full Name (English):")}</strong></td><td>${full_name_english}</td></tr>
+                                        <tr><td><strong>${__("Program Enrollment Date:")}</strong></td><td>${enrollment_date}</td></tr>
+                                        <tr><td><strong>${__("Program Enrollment Status:")}</strong></td><td>${status}</td></tr>
+                                        <tr><td><strong>${__("Program Name:")}</strong></td><td>${program_name}</td></tr>
+                                        <tr><td><strong>${__("Student Faculty:")}</strong></td><td>${program_enrollment_faculty}</td></tr>
+                                        <tr><td><strong>${__("Program Specification:")}</strong></td><td>${program}</td></tr>
+                                        <tr><td><strong>${__("Program Faculty:")}</strong></td><td>${program_faculty}</td></tr>
+                                        <tr><td><strong>${__("Faculty Department:")}</strong></td><td>${program_faculty_department}</td></tr>
+                                        <tr><td><strong>${__("Program Degree:")}</strong></td><td>${program_degree}</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -541,14 +541,14 @@ psa_utils.set_program_enrollment_information = function (frm, field_name, studen
                                 <h3>${__("Research Details:")}</h3>
                                 <table class="table table-striped ml-2">
                                     <tbody>
-                                        <tr><td><p><strong>${__("Research Title (Arabic):")}</strong></td><td>${research_title_arabic}</p></td></tr>
-                                        <tr><td><p><strong>${__("Research Title (English):")}</strong></td><td>${research_title_english}</p></td></tr>
-                                        <tr><td><p><strong>${__("Date of Approval:")}</strong></td><td>${date_of_approval_of_the_research_title}</p></td></tr>
-                                        <tr><td><p><strong>${__("Main Supervisor Name (Arabic):")}</strong></td><td>${main_supervisor_name_arabic}</p></td></tr>
-                                        <tr><td><p><strong>${__("Main Supervisor Name (English):")}</strong></td><td>${main_supervisor_name_english}</p></td></tr>
-                                        <tr><td><p><strong>${__("Main Supervisor's Appointment Date:")}</strong></td><td>${main_supervisor_appointment_date}</p></td></tr>
-                                        <tr><td><p><strong>${__("Main Supervisor's Academic Rank:")}</strong></td><td>${main_supervisor_academic_rank}</p></td></tr>
-                                        <tr><td><p><strong>${__("Main Supervisor's Faculty:")}</strong></td><td>${main_supervisor_faculty_member_faculty}</p></td></tr>
+                                        <tr><td><strong>${__("Research Title (Arabic):")}</strong></td><td>${research_title_arabic}</td></tr>
+                                        <tr><td><strong>${__("Research Title (English):")}</strong></td><td>${research_title_english}</td></tr>
+                                        <tr><td><strong>${__("Date of Approval:")}</strong></td><td>${date_of_approval_of_the_research_title}</td></tr>
+                                        <tr><td><strong>${__("Main Supervisor Name (Arabic):")}</strong></td><td>${main_supervisor_name_arabic}</td></tr>
+                                        <tr><td><strong>${__("Main Supervisor Name (English):")}</strong></td><td>${main_supervisor_name_english}</td></tr>
+                                        <tr><td><strong>${__("Main Supervisor's Appointment Date:")}</strong></td><td>${main_supervisor_appointment_date}</td></tr>
+                                        <tr><td><strong>${__("Main Supervisor's Academic Rank:")}</strong></td><td>${main_supervisor_academic_rank}</td></tr>
+                                        <tr><td><strong>${__("Main Supervisor's Faculty:")}</strong></td><td>${main_supervisor_faculty_member_faculty}</td></tr>
                                         ${co_supervisors}
                                     </tbody>
                                 </table>
@@ -577,6 +577,96 @@ psa_utils.get_single_value = function(doctype_name, field, callback) {
         callback: function(r) {
             if (typeof callback === 'function') {
                 callback(r.message);
+            }
+        }
+    });
+};
+
+
+psa_utils.go_to_transaction = function(refrenced_transaction) {
+    if (refrenced_transaction){
+        frappe.set_route('Form', 'Transaction', refrenced_transaction);
+    }
+};
+
+
+psa_utils.set_transaction_information = function(frm, field_name, doctype_name, doc_name) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_transaction_information',
+        args: {
+            doctype_name: doctype_name,
+            doc_name: doc_name
+        },
+        callback: function(response) {
+            if(response.message) {
+                var transaction_name = response.message.name;
+                var transaction_date = response.message.date;
+                var transaction_status = response.message.status;
+
+                var transaction_actions = [];
+                var transaction_timeline = ``;
+
+                if (transaction_actions.length == 0) {
+                    transaction_timeline = `
+                        <tr><td><strong class="text-danger">${__("There is No Action")}</strong></td></tr>
+                    `;
+                }
+                else {
+                    transaction_timeline = `
+                        <tr><td><strong class="text-danger">${__("There is No Action")}</strong></td></tr>
+                    `;
+                }
+                
+                $(frm.fields_dict[field_name].wrapper).html(`
+                    <div id="transaction_information" class="transaction-information">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h3>${__("Transaction Details:")}</h3>
+                                    <table class="table table-striped ml-2">
+                                        <tbody>
+                                            <tr><td><strong>${__("Transaction ID:")}</strong></td><td><u><a onclick="psa_utils.go_to_transaction('${transaction_name}')">${transaction_name}</a></u></td></tr>
+                                            <tr><td><strong>${__("Transaction Date:")}</strong></td><td>${transaction_date}</td></tr>
+                                            <tr><td><strong>${__("Transaction Status:")}</strong></td><td><p class="text-danger">${transaction_status}</p></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h3>${__("Transaction Timeline:")}</h3>
+                                    <table class="table table-striped ml-2">
+                                        <tbody>
+                                            ${transaction_timeline}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                frm.refresh_field(field_name);
+            }
+            else {
+                $(frm.fields_dict[field_name].wrapper).html(`
+                    <div id="transaction_information" class="transaction-information">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info-section">
+                                    <h3>${__("Transaction Details:")}</h3>
+                                    <table class="table table-striped ml-2">
+                                        <tbody>
+                                            <tr><td><strong class="text-danger">${__("There is No Transaction")}</strong></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                frm.refresh_field(field_name);
             }
         }
     });
