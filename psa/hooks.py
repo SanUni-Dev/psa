@@ -17,6 +17,8 @@ fixtures = [
     "Email Account",
     "Website Settings",
     "Navbar Settings"
+    "Transaction Category Template",
+    "Transaction Category"
 ]
 
 

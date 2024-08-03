@@ -1,0 +1,116 @@
+[
+ {
+  "description": "<div class=\"ql-editor read-mode\"><h2><strong>Suspend Enrollment Request Details:</strong></h2><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student ID:</strong> {{student}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Name:</strong> {{student_name}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program Enrollment ID:</strong> {{program_enrollment}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program:</strong> {{program}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Enrollment Date:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Reason:</strong> {{reason}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Suspend Period:</strong> {{suspend_period}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Request Date:</strong> {{creation}}</li></ol><h2 class=\"ql-direction-rtl\" style=\"text-align: right;\">تفاصيل طلب وقف القيد:</h2><ol><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>معرف الطالب: </strong>{{student}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>اسم الطالب:</strong> {{student_name}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>رقم القيد:</strong> {{program_enrollment}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>البرنامج:</strong> {{program}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الالتحاق بالبرنامج:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>السبب:</strong> {{reason}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>فترة الإيقاف: </strong>{{suspend_period}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الطلب:</strong> {{creation}}</li></ol></div>",
+  "docstatus": 0,
+  "doctype": "Transaction Category Template",
+  "linked_fields": [
+   {
+    "docfield_name": "student_name",
+    "docfield_title": "student_name",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Suspend Enrollment Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "program",
+    "docfield_title": "program",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Suspend Enrollment Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "enrollment_date",
+    "docfield_title": "program_enrollment_date",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Suspend Enrollment Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   }
+  ],
+  "modified": "2024-08-02 18:20:34.984444",
+  "name": "Suspend Enrollment Request",
+  "template_doctype": "Suspend Enrollment Request",
+  "template_title": "Suspend Enrollment Request"
+ },
+ {
+  "description": "<div class=\"ql-editor read-mode\"><h2><strong>Continue Enrollment Request Details:</strong></h2><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student ID:</strong> {{student}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Name:</strong> {{student_name}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program Enrollment ID:</strong> {{program_enrollment}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program:</strong> {{program}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Enrollment Date:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Request Date:</strong> {{creation}}</li></ol><h2 class=\"ql-direction-rtl\" style=\"text-align: right;\">تفاصيل طلب فتح القيد:</h2><ol><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>معرف الطالب: </strong>{{student}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>اسم الطالب:</strong> {{student_name}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>رقم القيد:</strong> {{program_enrollment}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>البرنامج:</strong> {{program}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الالتحاق بالبرنامج:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الطلب:</strong> {{creation}}</li></ol></div>",
+  "docstatus": 0,
+  "doctype": "Transaction Category Template",
+  "linked_fields": [
+   {
+    "docfield_name": "student_name",
+    "docfield_title": "student_name",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Continue Enrollment Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "program",
+    "docfield_title": "program",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Continue Enrollment Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "enrollment_date",
+    "docfield_title": "program_enrollment_date",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Continue Enrollment Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   }
+  ],
+  "modified": "2024-08-03 18:44:16.388160",
+  "name": "Continue Enrollment Request",
+  "template_doctype": "Continue Enrollment Request",
+  "template_title": "Continue Enrollment Request"
+ },
+ {
+  "description": "<div class=\"ql-editor read-mode\"><h2><strong>Withdrawal Request Details:</strong></h2><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student ID:</strong> {{student}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Name:</strong> {{student_name}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program Enrollment ID:</strong> {{program_enrollment}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program:</strong> {{program}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Enrollment Date:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Reason:</strong> {{reason}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Request Date:</strong> {{creation}}</li></ol><h2 class=\"ql-direction-rtl\" style=\"text-align: right;\">تفاصيل طلب الانسحاب:</h2><ol><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>معرف الطالب: </strong>{{student}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>اسم الطالب:</strong> {{student_name}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>رقم القيد:</strong> {{program_enrollment}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>البرنامج:</strong> {{program}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الالتحاق بالبرنامج:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>السبب:</strong> {{reason}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الطلب:</strong> {{creation}}</li></ol></div>",
+  "docstatus": 0,
+  "doctype": "Transaction Category Template",
+  "linked_fields": [
+   {
+    "docfield_name": "student_name",
+    "docfield_title": "student_name",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Withdrawal Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "program",
+    "docfield_title": "program",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Withdrawal Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "enrollment_date",
+    "docfield_title": "program_enrollment_date",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Withdrawal Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   }
+  ],
+  "modified": "2024-08-03 18:46:07.125651",
+  "name": "Withdrawal Request",
+  "template_doctype": "Withdrawal Request",
+  "template_title": "Withdrawal Request"
+ }
+]
