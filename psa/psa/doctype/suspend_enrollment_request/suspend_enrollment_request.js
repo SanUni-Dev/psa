@@ -42,11 +42,12 @@ frappe.ui.form.on("Suspend Enrollment Request", {
         }
 
         if (frm.doc.docstatus == 1) {
-            frm.set_df_property("modified_request_date", "label", __("Transaction Creation Date"));
-            frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
-            frm.refresh_field('modified_request_date');
+            // frm.set_df_property("modified_request_date", "label", __("Transaction Creation Date"));
+            // frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+            // frm.refresh_field('modified_request_date');
             
-            $(frm.fields_dict["transaction_information"].wrapper).html("");
+            // $(frm.fields_dict["transaction_information"].wrapper).html("");
+            psa_utils.set_transaction_information(frm, "transaction_information", frm.doc.doctype, frm.doc.name);
         }
     },
 

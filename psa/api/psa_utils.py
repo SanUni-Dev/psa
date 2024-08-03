@@ -1,5 +1,8 @@
-import frappe, json, datetime
+import frappe, json
+import datetime as dt
+from datetime import datetime as DateTime
 from frappe import _
+
 
 @frappe.whitelist()
 def get_student_for_current_user():
@@ -202,7 +205,7 @@ def get_researcher_meetings(student, program_enrollment, from_date, to_date):
 @frappe.whitelist(allow_guest=True)
 def format_date(date_value):
     """Format date as string or return '--' if None."""
-    if isinstance(date_value, datetime.date):
+    if isinstance(date_value, dt.date):
         return date_value.strftime('%Y-%m-%d')
     return "--"
 
@@ -409,6 +412,250 @@ def get_students_by_supervisor():
 def get_single_value(doctype_name, field):
     result = frappe.db.get_single_value(doctype_name, str(field))
     return result
+
+
+@frappe.whitelist()
+def is_parent_category(category_name, sub_category_name):
+    try:
+        parent_category = frappe.get_doc("Transaction Category", {"category_name": category_name})    
+        sub_category = frappe.get_doc("Transaction Category", {"category_name": sub_category_name})
+        if sub_category.parent_category == parent_category.name:
+            return True
+        else:
+            return False
+    except Exception as e:
+        return {"error": f"An error occurred in fetching information: {str(e)}"}
+
+
+@frappe.whitelist()
+def get_template_by_category(category_name):
+    try:
+        category = frappe.get_doc("Transaction Category", category_name)
+        template = frappe.get_doc("Transaction Category Template", category.template)
+        return template
+    except Exception as e:
+        return {"error": f"An error occurred in fetching information: {str(e)}"}
+
+
+@frappe.whitelist()
+def create_applicants(transaction, applicants_list):
+    try:
+        for applicant in applicants_list:
+            applicant_entry = transaction.append('applicants_table', {})
+            applicant_entry.applicant_type = applicant.get('applicant_type')
+            applicant_entry.applicant = applicant.get('applicant')
+            applicant_entry.applicant_name = applicant.get('applicant_name')
+        
+        transaction.save()
+    except Exception as e:
+        return {"error": f"An error occurred while creating applicants: {str(e)}"}
+
+
+@frappe.whitelist()
+def create_transaction(priority, title, category, sub_category, refrenced_document, applicants_list):
+    try:
+        if(is_parent_category(category, sub_category)):
+            template = get_template_by_category(sub_category)
+
+            new_transaction = frappe.new_doc("Transaction")
+
+            new_transaction.transaction_scope = "In Company"
+            new_transaction.start_date =  DateTime.now()
+            new_transaction.hijri_date =  ""
+            new_transaction.priority = priority
+            new_transaction.status = "Pending"
+            new_transaction.submit_time = DateTime.now()
+            new_transaction.title = title
+            new_transaction.transaction_description =template.description
+            new_transaction.category = category
+            new_transaction.sub_category = sub_category
+            new_transaction.referenced_doctype = template.template_doctype
+            new_transaction.referenced_document = refrenced_document
+
+            new_transaction.insert(ignore_permissions=True)
+
+            if(applicants_list):
+                create_applicants(new_transaction, applicants_list) 
+
+            return new_transaction.name
+        else:
+            return {"error": "Sub-category is not a child of the category"}
+    except Exception as e:
+        return {"error": f"An error occurred while creating a transaction: {str(e)}"}
+
+
+@frappe.whitelist()
+def create_psa_transaction(doctype_name, doc_name, applicants):
+    try:
+        # applicant_type: "Student", "Employee", "User", "Academic"
+        # applicants = [
+        #     { 'applicant_type': "Student", 'applicant': "EDU-STU-2024-000011", 'applicant_name': "Esmail" },
+        #     { 'applicant_type': "Employee", 'applicant': "HR-EMP-00001", 'applicant_name': "Ahmed" }
+        # ]
+
+        priority = "Low"
+        title = doctype_name
+        category = "PSA"
+        sub_category = doctype_name
+        refrenced_document = doc_name
+        applicants_list = applicants
+
+        transaction_id = create_transaction(priority, title, category, sub_category, refrenced_document, applicants_list)
+
+        return {"transaction_id": transaction_id}
+    except Exception as e:
+        return {"error": f"An error occurred while creating a transaction: {str(e)}"}
+
+
+@frappe.whitelist()
+def get_transaction_status(doctype_name, doc_name):
+    try:
+        transaction = frappe.get_all(
+            "Transaction",
+            filters={
+                "referenced_doctype": doctype_name,
+                "referenced_document": doc_name,
+                "sub_category": doctype_name
+            },
+            fields=["name", "status", "creation"],
+            order_by="creation",
+            limit=1
+        )
+
+        return transaction or None
+    except Exception as e:
+        frappe.throw(_("An error occurred while getting the transaction information: {0}").format(str(e)))
+
+
+@frappe.whitelist()
+def get_transaction_actions_recursion(actions, recipients=[], processed_recipients=None):
+    try:
+        if processed_recipients is None:
+            processed_recipients = set()
+
+        recipient_actions = []
+        recipient = None
+
+        for recipient in recipients:
+            if recipient.recipient_email in processed_recipients:
+                continue
+            processed_recipients.add(recipient.recipient_email)
+            recipient_dict = {
+                "recipient": recipient.recipient_email,
+                "action": None,
+                "redirected": [],
+                "link": None,
+            }
+            for action in actions:
+                if action.owner == recipient.recipient_email and action.auto_redirect == 0:
+                    recipient_dict["action"] = action
+                    recipient_dict["link"] = get_document_link(
+                        "Transaction Action", action.name
+                    )
+                    if action.type == "Redirected":
+                        redirected_recipients = frappe.get_all(
+                            "Transaction Recipients",
+                            filters={"parent": action.name},
+                            fields=["recipient_email"],
+                            order_by="creation",
+                        )
+                        redirected_recipients = [
+                            r
+                            for r in redirected_recipients
+                            if r.recipient_email not in processed_recipients
+                        ]
+                        recipient_dict["redirected"] = get_transaction_actions_recursion(
+                            actions, redirected_recipients, processed_recipients
+                        )
+            recipient_actions.append(recipient_dict)
+        return recipient_actions
+    except Exception as e:
+        frappe.throw(_("An error occurred while getting the transaction information: {0}").format(str(e)))
+
+
+@frappe.whitelist()
+def get_transaction_actions(transaction_name):
+    try:
+        actions = frappe.get_all(
+            "Transaction Action",
+            filters={
+                "transaction": transaction_name,
+                "docstatus": 1,
+            },
+            fields=["name", "type", "owner", "auto_redirect"],
+            order_by="creation",
+        )
+
+        recipients = []
+        i = 0
+        while i < len(actions):
+            action = actions[i]
+
+            if action.auto_redirect == 1:
+                new_recipients = frappe.get_all(
+                    "Transaction Recipients",
+                    filters={"parent": action.name},
+                    fields=["recipient_email"],
+                    order_by="creation",
+                )
+                recipients.extend(new_recipients)
+                del actions[i]
+            else:
+                i += 1
+        recipient_actions = get_transaction_actions_recursion(actions, recipients)
+        return json.dumps(recipient_actions)
+
+    except Exception as e:
+        frappe.throw(_("An error occurred while getting the transaction information: {0}").format(str(e)))
+
+
+@frappe.whitelist()
+def get_transaction_information(doctype_name, doc_name):
+    transaction = get_transaction_status(doctype_name, doc_name)
+    if transaction:
+        transaction_name = transaction[0].name
+        transaction_status = transaction[0].status
+        transaction_date = transaction[0].creation
+
+        ###################################################################################
+        # transaction_actions = get_transaction_actions(transaction_name)
+        ###################################################################################
+        # From the Transaction Jinja Template #
+        ###################################################################################
+        # {% macro render_recipient(recipient_dict) %}
+        #   <div>
+        #     {% if recipient_dict.action %}
+        #       <a href="{{ recipient_dict.link }}">
+        #         <div class="dot 
+        #           {% if recipient_dict.action.type == 'Approved' %}approved
+        #           {% elif recipient_dict.action.type == 'Redirected' %}redirect
+        #           {% elif recipient_dict.action.type == 'Rejected' %}reject
+        #           {% else %}pending
+        #           {% endif %}"></div>
+        #         <span class="recipient">{{ recipient_dict.recipient }} - {{ recipient_dict.action.type }} </span>
+        #       </a>
+        #     {% else %}
+        #       <div class="dot pending"></div>
+        #       <span>{{ recipient_dict.recipient }} - Pending</span>
+        #     {% endif %}
+        #   </div>
+        #     {% for redirected_recipient in recipient_dict.redirected %}
+        #       <div class="redirected">
+        #         {{ render_recipient(redirected_recipient) }}
+        #       </div>
+        #     {% endfor %}
+        # {% endmacro %}
+
+        # {% for recipient_dict in recipient_actions %}
+        #   {{ render_recipient(recipient_dict) }}
+        # {% endfor %}
+        ###################################################################################
+        # return transaction_actions
+        ###################################################################################
+
+        return {'name': transaction_name, 'date': transaction_date, 'status': transaction_status}
+    else:
+        return None
 
 
 # Function to save timeline child table rows (before fixing it by check "In List View" in Timeline Child Table's fields)
