@@ -489,14 +489,16 @@ def notify_on_supervisor_change(doc, method):
 
 #تتنفذ عند تغيير العنوان 
 @frappe.whitelist()
-def notify_student_on_research_title_change(doc_name):
+def notify_student_on_research_title_change(doc,method=None):
     try:
-        # احصل على المستند بناءً على الاسم
-        research_doc = frappe.get_doc("Student Research", doc_name)
-        
+        if isinstance(doc, str):
+            research_doc = frappe.get_doc("Student Research", doc)
+        else:
+            research_doc = doc
+
         # تحقق من قيمة الحقل reference_doctype
         if research_doc.reference_doctype != "Change Research Title Request":
-            return  # لا تنفذ الدالة إذا لم يكن القيمة المطلوبة
+            return   
 
         student_id = research_doc.student
         student_doc = frappe.get_doc('Student', student_id)

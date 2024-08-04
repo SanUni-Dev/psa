@@ -4,14 +4,25 @@
 frappe.ui.form.on("Change Research Co Supervisor Request", {
     refresh(frm) {
         $(frm.fields_dict["information"].wrapper).html("");
+        $(frm.fields_dict["transaction_information"].wrapper).html("");
+
 
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
 
+        function hide_change_co_supervisor_button() {
+            let $btn = frm.page.actions.find(`[data-label='${__('change co supervisor')}']`);
+            if ($btn.length) {
+                $btn.parent().parent().remove();  
+            }
+        }
+
         if (frm.doc.docstatus == 1) {
-       // if (frm.doc.status.includes("Approved by")) {
-            frm.add_custom_button(__('change co supervisor'), function() {
+            psa_utils.set_transaction_information(frm, "transaction_information", frm.doc.doctype, frm.doc.name);
+
+            if (!frappe.user_roles.includes("Student") && !frappe.user_roles.includes("Supervisor")) {
+                frm.add_custom_button(__('change co supervisor'), function() {
                 frappe.new_doc('Student Supervisor', {
                     student: frm.doc.student,
                     program_enrollment: frm.doc.program_enrollment,
@@ -30,7 +41,11 @@ frappe.ui.form.on("Change Research Co Supervisor Request", {
                 });
 
             });
+        }else{
+            // Hide the button if the user is a Student or Supervisor
+            hide_change_co_supervisor_button();
         }
+    }
 
                         // لفلترة الفاكيوليتي ممبر الداخلي
                         frm.fields_dict['suggested_supervisors'].grid.get_field('faculty_member').get_query = function(doc, cdt, cdn) {
@@ -81,7 +96,7 @@ frappe.ui.form.on("Change Research Co Supervisor Request", {
     },
 
     check_and_set_approval_date: function(frm) {
-        if (frm.doc.status && frm.doc.status.includes("Approved by") && !frm.doc.supervisor_appointment_date) {
+        if (frm.doc.docstatus==1 && !frm.doc.supervisor_appointment_date) {
             frm.set_value('supervisor_appointment_date', frappe.datetime.get_today());
         }
     },
