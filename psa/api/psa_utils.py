@@ -403,6 +403,8 @@ def get_students_by_supervisor():
         JOIN `tabStudent Supervisor` AS supervisor
         ON student.name = supervisor.student
         WHERE supervisor.supervisor = %s
+        AND supervisor.enabled = 1
+        AND supervisor.status = 'Active'
     """, (supervisor,), as_dict=True)
 
     return students

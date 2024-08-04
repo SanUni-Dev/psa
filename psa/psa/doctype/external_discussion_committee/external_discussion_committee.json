@@ -31,7 +31,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Faculty Member",
-   "options": "Faculty Member"
+   "options": "Faculty Member",
+   "reqd": 1
   },
   {
    "fieldname": "external_faculty",
@@ -44,7 +45,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-30 23:19:16.739634",
+ "modified": "2024-08-04 05:19:29.246525",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "External Discussion Committee",
