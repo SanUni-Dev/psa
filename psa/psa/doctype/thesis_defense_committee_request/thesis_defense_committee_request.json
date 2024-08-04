@@ -16,6 +16,7 @@
   "information",
   "section_break_ymbg",
   "member_of_internal_selected_committee",
+  "section_break_mgvx",
   "member_of_external_selected_committee",
   "section_break_wfzp",
   "request_date",
@@ -28,7 +29,9 @@
   "section_break_pgpg",
   "amended_from",
   "attachments_tab",
-  "request_attachment"
+  "request_attachment",
+  "transaction_information_tab",
+  "transaction_information"
  ],
  "fields": [
   {
@@ -49,7 +52,8 @@
    "fieldname": "student",
    "fieldtype": "Link",
    "label": "Student",
-   "options": "Student"
+   "options": "Student",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_fcrr",
@@ -59,7 +63,9 @@
    "fieldname": "research_title",
    "fieldtype": "Link",
    "label": "Student Research",
-   "options": "Student Research"
+   "options": "Student Research",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "section_break_wfzp",
@@ -71,27 +77,32 @@
    "label": "Attachments"
   },
   {
+   "depends_on": "eval: doc.student",
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
    "label": "Program Enrollment",
-   "options": "Program Enrollment"
+   "options": "Program Enrollment",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "student_supervisor",
    "fieldtype": "Link",
    "label": "Student Supervisor",
-   "options": "Student Supervisor"
+   "options": "Student Supervisor",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "member_of_internal_selected_committee",
    "fieldtype": "Table",
-   "label": "Member of Internal Selected Committee",
+   "label": "Internal Suggested Members of Committee",
    "options": "Internal Discussion Committee"
   },
   {
    "fieldname": "member_of_external_selected_committee",
    "fieldtype": "Table",
-   "label": "Member of External Selected Committee ",
+   "label": "External Suggested Members of Committee",
    "options": "External Discussion Committee"
   },
   {
@@ -166,15 +177,31 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "rejection_reason",
    "fieldtype": "Small Text",
-   "label": "Rejection Reason"
+   "label": "Rejection Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "transaction_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "transaction_information",
+   "fieldtype": "HTML",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "section_break_mgvx",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-03 00:17:04.811177",
+ "modified": "2024-08-04 01:59:03.045435",
  "modified_by": "Administrator",
  "module": "PSA",
  "name": "Thesis Defense Committee Request",
@@ -210,6 +237,7 @@
    "role": "Supervisor",
    "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
