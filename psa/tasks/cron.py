@@ -17,6 +17,7 @@ def add_months(source_date, months):
     # استخدام relativedelta لإضافة الأشهر مع التعامل مع تجاوز السنة
     return source_date + relativedelta(months=+months)
 
+#دالة اشعار للطالب كتذكير بفتح قيد عند قرب انتهاء مدة وقف القيد 
 def send_suspend_enrollment_notification():
     suspend_requests = frappe.get_all("Suspend Enrollment Request", 
                                       filters={'status': ['not like', '%Reject%'], 'docstatus': 1},
@@ -50,7 +51,7 @@ def send_suspend_enrollment_notification():
                 notification_doc.insert(ignore_permissions=True)
  
 
-
+#دالة انشاء تقرير انجاز للطالب من النظام 
 def create_progress_report_and_notify():
     try:
         print("Fetching progress report settings...")
@@ -144,7 +145,7 @@ def create_progress_report_and_notify():
         print(f"Error: {str(e)}")
 
 
-
+#دالة لإشعار المشرف اذا لم يرسل الطالب له بالتقرير بالمدة المحددة
 def notify_supervisor_if_no_progress_report():
     progress_report_settings = frappe.get_all(
         'Progress Report Settings Child Table',
@@ -230,6 +231,7 @@ def get_supervisor_for_student(student,program_enrollment):
 def on_submit(doc, method):
     send_report_to_supervisor(doc.name)
 
+#دالة لارسال التقرير للمشرف 
 @frappe.whitelist()
 def send_report_to_supervisor(report_name):
     report = frappe.get_doc('Progress Report', report_name)
@@ -290,6 +292,7 @@ def on_update_after_submit(doc, method):
          print("Satisfaction status is satisfied")
          notify_student_satisfied(doc)
 
+#تتنفذ اذا كان المشرف غير راضي عن تقرير الانجاز للطالب
 def notify_student_unsatisfied(report):
     
     student = frappe.get_doc('Student', report.student)
@@ -321,7 +324,7 @@ def notify_student_unsatisfied(report):
         print(f"No email found for student: {student.first_name}")
 
 
-
+#تتنفذ لتخبر الطالب اذا كان المشرف راضي عن تقرير الانجاز
 def notify_student_satisfied(report):
     
     student = frappe.get_doc('Student', report.student)
@@ -356,16 +359,20 @@ def notify_student_satisfied(report):
 
  
 
-
+#تتنفذ عند تغيير مشرف رئيسي او مساعد 
 @frappe.whitelist()
 def notify_on_supervisor_change(doc, method):
     try:
+        # تحقق من قيمة الحقل reference_doctype
+        if doc.reference_doctype not in ["Change Research Co Supervisor Request", "Change Research Main Supervisor Request"]:
+            return 
+
         student = doc.student
         program_enrollment = doc.program_enrollment
 
         new_supervisor_id = frappe.db.get_value(
             "Student Supervisor",
-            {"student": student, "program_enrollment": program_enrollment, "enabled": 1, "type": "Main Supervisor"},
+            {"student": student, "program_enrollment": program_enrollment, "enabled": 1},
             "supervisor"
         )
         if not new_supervisor_id:
@@ -480,12 +487,19 @@ def notify_on_supervisor_change(doc, method):
 
 
 
-
+#تتنفذ عند تغيير العنوان 
 @frappe.whitelist()
-def notify_student_on_research_title_change(doc_name):
+def notify_student_on_research_title_change(doc,method=None):
     try:
-        research_doc = frappe.get_doc("Student Research", doc_name)
-        
+        if isinstance(doc, str):
+            research_doc = frappe.get_doc("Student Research", doc)
+        else:
+            research_doc = doc
+
+        # تحقق من قيمة الحقل reference_doctype
+        if research_doc.reference_doctype != "Change Research Title Request":
+            return   
+
         student_id = research_doc.student
         student_doc = frappe.get_doc('Student', student_id)
         student_user_id = student_doc.user_id
@@ -541,7 +555,7 @@ def notify_student_on_research_title_change(doc_name):
 
 
  
-
+#دالة للتحقق من النصاب للمشرف الرئيسي 
 @frappe.whitelist()
 def get_supervisor_main_workload():
     faculty_members_data = {}
@@ -606,6 +620,7 @@ def get_supervisor_main_workload():
     return result, supervisor_limit_exceeded
 
 
+#دالة للتحقق من النصاب للمشرف المساعد
 @frappe.whitelist()
 def get_supervisor_co_workload():
     faculty_members_data = {}

@@ -17,6 +17,8 @@ fixtures = [
     "Email Account",
     "Website Settings",
     "Navbar Settings"
+    "Transaction Category Template",
+    "Transaction Category"
 ]
 
 
@@ -25,12 +27,20 @@ app_include_js = [
     ]
 
 
-# doc_events = {
-#     "Progress Report": {
-#         "on_submit": "psa.tasks.cron.on_submit",
-#         "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
-#     }
-# }
+doc_events = {
+    # "Progress Report": {
+    #     "on_submit": "psa.tasks.cron.on_submit",
+    #     "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
+    # },
+    "Student Research": {
+        "on_submit": "psa.tasks.cron.notify_student_on_research_title_change"
+    },
+    "Student Supervisor": {
+        "on_submit": "psa.tasks.cron.notify_on_supervisor_change"
+    }
+
+    
+}
 
 
 # Cron Scheduler that be triggered everyday at 12:00:00 AM

@@ -42,11 +42,12 @@ frappe.ui.form.on("Continue Enrollment Request", {
         }
 
         if (frm.doc.docstatus == 1) {
-            frm.set_df_property("modified_request_date", "label", __("Transaction Creation Date"));
-            frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
-            frm.refresh_field('modified_request_date');
+            // frm.set_df_property("modified_request_date", "label", __("Transaction Creation Date"));
+            // frm.doc.modified_request_date = frm.doc.modified.split(" ")[0] + " " + (frm.doc.modified.split(" ")[1]).split(".")[0];
+            // frm.refresh_field('modified_request_date');
 
-            $(frm.fields_dict["transaction_information"].wrapper).html("");
+            // $(frm.fields_dict["transaction_information"].wrapper).html("");
+            psa_utils.set_transaction_information(frm, "transaction_information", frm.doc.doctype, frm.doc.name);
         }
     },
 
@@ -136,7 +137,7 @@ frappe.ui.form.on("Continue Enrollment Request", {
                             $(frm.fields_dict["suspended_request_details_html"].wrapper).html('There is no approved suspend enrollment request!');
                         }
 
-                        frappe.db.get_single_value('PSA Settings', 'check_active_requests_before_insert').then((check_active_requests_before_insert) => {
+                        psa_utils.get_single_value('PSA Settings', 'check_active_requests_before_insert', function(check_active_requests_before_insert) {
                             if (check_active_requests_before_insert) {
                                 psa_utils.check_active_request(frm.doc.student, frm.doc.program_enrollment, ['Continue Enrollment Request', 'Suspend Enrollment Request', 'Withdrawal Request'],
                                     function (active_request) {

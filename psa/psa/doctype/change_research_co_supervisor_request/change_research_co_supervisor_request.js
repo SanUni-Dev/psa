@@ -4,12 +4,25 @@
 frappe.ui.form.on("Change Research Co Supervisor Request", {
     refresh(frm) {
         $(frm.fields_dict["information"].wrapper).html("");
+        $(frm.fields_dict["transaction_information"].wrapper).html("");
+
 
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
-        if (frm.doc.status.includes("Approved by")) {
-            frm.add_custom_button(__('change co supervisor'), function() {
+
+        function hide_change_co_supervisor_button() {
+            let $btn = frm.page.actions.find(`[data-label='${__('change co supervisor')}']`);
+            if ($btn.length) {
+                $btn.parent().parent().remove();  
+            }
+        }
+
+        if (frm.doc.docstatus == 1) {
+            psa_utils.set_transaction_information(frm, "transaction_information", frm.doc.doctype, frm.doc.name);
+
+            if (!frappe.user_roles.includes("Student") && !frappe.user_roles.includes("Supervisor")) {
+                frm.add_custom_button(__('change co supervisor'), function() {
                 frappe.new_doc('Student Supervisor', {
                     student: frm.doc.student,
                     program_enrollment: frm.doc.program_enrollment,
@@ -28,7 +41,11 @@ frappe.ui.form.on("Change Research Co Supervisor Request", {
                 });
 
             });
+        }else{
+            // Hide the button if the user is a Student or Supervisor
+            hide_change_co_supervisor_button();
         }
+    }
 
                         // لفلترة الفاكيوليتي ممبر الداخلي
                         frm.fields_dict['suggested_supervisors'].grid.get_field('faculty_member').get_query = function(doc, cdt, cdn) {
@@ -79,7 +96,7 @@ frappe.ui.form.on("Change Research Co Supervisor Request", {
     },
 
     check_and_set_approval_date: function(frm) {
-        if (frm.doc.status && frm.doc.status.includes("Approved by") && !frm.doc.supervisor_appointment_date) {
+        if (frm.doc.docstatus==1 && !frm.doc.supervisor_appointment_date) {
             frm.set_value('supervisor_appointment_date', frappe.datetime.get_today());
         }
     },
@@ -306,6 +323,41 @@ frappe.ui.form.on('Suggested Supervisor', {
     faculty_member: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
         let selected_faculty_member_id = row.faculty_member;
+
+        let duplicate = frm.doc.suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.idx !== row.idx);
+        if (duplicate) {
+            frappe.call({
+                method: "frappe.client.get",
+                args: {
+                    doctype: "Faculty Member",  
+                    name: selected_faculty_member_id
+                },
+                callback: function(member_response) {
+                    let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
+                    var duplicateMessage = frappe._(
+                        'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
+                        [member_name]
+                    );
+                    frappe.msgprint(`
+                        <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
+                            <p style="font-size: 16px; color: #721c24;">
+                                ${duplicateMessage}
+                            </p>
+                        </div>
+                    `);
+                    frappe.model.set_value(cdt, cdn, 'faculty_member', '');
+                },
+                error: function(error) {
+                    console.error("Error in fetching Faculty Member details:", error);
+                }
+            });
+
+        }
+
+
+       
+        
+        
     
         checkFacultyMemberCoLimit(frm, cdt, cdn, selected_faculty_member_id);
     }   
@@ -400,7 +452,35 @@ frappe.ui.form.on('External Suggested Supervisor', {
     faculty_member: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
         let selected_faculty_member_id = row.faculty_member;
-    
+        let duplicate = frm.doc.external_suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.academic_rank === locals[cdt][cdn].academic_rank && r.idx !== locals[cdt][cdn].idx);
+        if (duplicate) {
+            frappe.call({
+                method: "frappe.client.get",
+                args: {
+                    doctype: "Faculty Member",  
+                    name: selected_faculty_member_id
+                },
+                callback: function(member_response) {
+                    let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
+                    var duplicateMessage = frappe._(
+                        'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
+                        [member_name]
+                    );
+                    frappe.msgprint(`
+                        <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
+                            <p style="font-size: 16px; color: #721c24;">
+                                ${duplicateMessage}
+                            </p>
+                        </div>
+                    `);
+                    frappe.model.set_value(cdt, cdn, 'faculty_member', '');
+                },
+                error: function(error) {
+                    console.error("Error in fetching Faculty Member details:", error);
+                }
+            });
+
+        }
         checkFacultyMemberCoLimit(frm, cdt, cdn, selected_faculty_member_id);
     }
 });
@@ -472,75 +552,13 @@ function checkFacultyMemberCoLimit(frm, cdt, cdn, selected_faculty_member_id) {
                                         console.error("Error in fetching Faculty Member details:", error);
                                     }
                                 });
-                            } else {
-                                let duplicateInInternal = frm.doc.suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.idx !== locals[cdt][cdn].idx);
-                                let duplicateInExternal = frm.doc.external_suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.academic_rank === locals[cdt][cdn].academic_rank && r.idx !== locals[cdt][cdn].idx);
-
-                                if (duplicateInInternal ||duplicateInExternal) {
-                                    frappe.call({
-                                        method: "frappe.client.get",
-                                        args: {
-                                            doctype: "Faculty Member",  
-                                            name: selected_faculty_member_id
-                                        },
-                                        callback: function(member_response) {
-                                            let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
-                                            var duplicateMessage = frappe._(
-                                                'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
-                                                [member_name]
-                                            );
-                                            frappe.msgprint(`
-                                                <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
-                                                    <p style="font-size: 16px; color: #721c24;">
-                                                        ${duplicateMessage}
-                                                    </p>
-                                                </div>
-                                            `);
-                                            frappe.model.set_value(cdt, cdn, 'faculty_member', '');
-                                        },
-                                        error: function(error) {
-                                            console.error("Error in fetching Faculty Member details:", error);
-                                        }
-                                    });
-                                }
-                            }
+                            } 
                         },
                         error: function(error) {
                             console.error("Error in fetching supervisor workload:", error);
                         }
                     });
-                } else {
-                    let duplicateInInternal = frm.doc.suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.idx !== locals[cdt][cdn].idx);
-                    let duplicateInExternal = frm.doc.external_suggested_supervisors.some((r) => r.faculty_member === selected_faculty_member_id && r.academic_rank === locals[cdt][cdn].academic_rank && r.idx !== locals[cdt][cdn].idx);
-
-                    if (duplicateInInternal ||duplicateInExternal) {
-                        frappe.call({
-                            method: "frappe.client.get",
-                            args: {
-                                doctype: "Faculty Member",  
-                                name: selected_faculty_member_id
-                            },
-                            callback: function(member_response) {
-                                let member_name = member_response.message ? member_response.message.faculty_member_name : selected_faculty_member_id;
-                                var duplicateMessage = frappe._(
-                                    'The Faculty Member <strong>{0}</strong> is already selected. Please choose a different one.',
-                                    [member_name]
-                                );
-                                frappe.msgprint(`
-                                    <div style="font-family: Arial, sans-serif; color: #333; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px;">
-                                        <p style="font-size: 16px; color: #721c24;">
-                                            ${duplicateMessage}
-                                        </p>
-                                    </div>
-                                `);
-                                frappe.model.set_value(cdt, cdn, 'faculty_member', '');
-                            },
-                            error: function(error) {
-                                console.error("Error in fetching Faculty Member details:", error);
-                            }
-                        });
-                    }
-                }
+                } 
             } else {
                 console.error("No PSA Settings found.");
             }

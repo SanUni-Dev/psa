@@ -3,13 +3,26 @@
 frappe.ui.form.on("Change Research Title Request", {
     refresh(frm) {
         $(frm.fields_dict["information"].wrapper).html("");
+        $(frm.fields_dict["transaction_information"].wrapper).html("");
+
 
         setTimeout(() => {
             frm.page.actions.find(`[data-label='Help']`).parent().parent().remove();
         }, 500);
 
-        if (frm.doc.status.includes("Approved by")) {
-            frm.add_custom_button(__('Change Title'), function() {
+
+        function hide_change_title_button() {
+            let $btn = frm.page.actions.find(`[data-label='${__('Change Title')}']`);
+            if ($btn.length) {
+                $btn.parent().parent().remove(); // Remove button from the UI
+            }
+        }
+        if (frm.doc.docstatus == 1) {
+
+            psa_utils.set_transaction_information(frm, "transaction_information", frm.doc.doctype, frm.doc.name);
+            if (!frappe.user_roles.includes("Student") && !frappe.user_roles.includes("Supervisor")) {
+
+                frm.add_custom_button(__('Change Title'), function() {
                 frappe.new_doc('Student Research', {
                     student: frm.doc.student,
                     program_enrollment: frm.doc.program_enrollment,
@@ -31,6 +44,12 @@ frappe.ui.form.on("Change Research Title Request", {
                     });
                 });
             });
+
+        }
+        else{
+            // Hide the button if the user is a Student or Supervisor
+            hide_change_title_button();
+        }
         }
         frm.trigger('check_and_set_approval_date');
 
@@ -38,11 +57,47 @@ frappe.ui.form.on("Change Research Title Request", {
             psa_utils.set_program_enrollment_information(frm, "information", frm.doc.student, frm.doc.program_enrollment);
         }
 
+   //////////////////
+   if (!frm.is_new() && frm.doc.docstatus === 0 && frappe.user_roles.includes("Student")) {
+    console.log("Condition met: Document is not new, docstatus is 0, and user is a Student");
+
+    if (frm.doc.status === "Draft") {
+        console.log("Document status is Draft");
+
+        frm.page.clear_primary_action();
+
+        frm.page.set_primary_action(__('Confirm'), function() {
+            frappe.confirm(__('Are you sure you want to Confirm this request?'), function() {
+                frm.set_value('status', 'Pending Supervisor Approval');  // Set status
+                frm.save().then(() => {
+                    frappe.msgprint(__('Request has been sent for supervisor approval.'));
+                    frm.refresh();  // Refresh the form to update UI
+
+                   frm.page.clear_primary_action();  // Remove the Confirm button
+    
+
+                   frm.set_df_property('status', 'read_only', 1);
+                   
+                   frm.set_read_only();
+                });
+            });
+        }, 'octicon octicon-check');
+    } else {
+        console.log("Document status is not Draft");
+        frm.page.clear_primary_action();   
+    }
+}
+   
     },
- 
+    validate(frm) {
+        if (frm.doc.status === 'Pending Supervisor Approval' && frappe.user_roles.includes("Student")) {
+            frappe.msgprint(__('You cannot make changes to this document as it is pending supervisor approval.'));
+            frappe.validated = false;   
+        }
+    },
 
     check_and_set_approval_date: function(frm) {
-        if (frm.doc.status && frm.doc.status.includes("Approved by") && !frm.doc.date_of_approval_of_the_research_title) {
+        if (frm.doc.docstatus==1 && !frm.doc.date_of_approval_of_the_research_title) {
             frm.set_value('date_of_approval_of_the_research_title', frappe.datetime.get_today());
         }
     },
@@ -50,8 +105,10 @@ frappe.ui.form.on("Change Research Title Request", {
     before_save: function(frm) {
         if (frm.doc.date_of_approval_of_the_research_title) {
             frm.set_df_property('date_of_approval_of_the_research_title', 'read_only', 1);
-        }
+        } 
     },
+
+    
 
     onload(frm) {
         if (frm.is_new() && frappe.user_roles.includes("Student")) {
