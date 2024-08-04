@@ -1,18 +1,5 @@
 [
  {
-  "category_name": "وقف قيد",
-  "company": "UCV",
-  "docstatus": 0,
-  "doctype": "Transaction Category",
-  "is_group": 0,
-  "modified": "2024-07-13 23:52:14.290712",
-  "name": "وقف قيد",
-  "parent_category": null,
-  "recipients": [],
-  "requirements": [],
-  "template": null
- },
- {
   "category_name": "Continue Enrollment Request",
   "company": "FCIT",
   "docstatus": 0,
@@ -140,7 +127,7 @@
  },
  {
   "category_name": "Change Research Main Supervisor Request",
-  "company": "UCV",
+  "company": "FCIT",
   "docstatus": 0,
   "doctype": "Transaction Category",
   "is_group": 0,
@@ -155,11 +142,11 @@
     "parentfield": "recipients",
     "parenttype": "Transaction Category",
     "print_paper": 0,
-    "recipient_company": "UCV",
-    "recipient_department": null,
-    "recipient_designation": null,
-    "recipient_email": "psa.yemen.2025@gmail.com",
-    "recipient_name": "shalabi",
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
     "step": 1
    },
    {
@@ -169,11 +156,11 @@
     "parentfield": "recipients",
     "parenttype": "Transaction Category",
     "print_paper": 0,
-    "recipient_company": "UCV",
-    "recipient_department": null,
-    "recipient_designation": null,
-    "recipient_email": "ucveh2020@gmail.com",
-    "recipient_name": "ahmed shalabi(Supervisor)",
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
     "step": 1
    }
   ],
@@ -182,7 +169,7 @@
  },
  {
   "category_name": "Change Research Co Supervisor Request",
-  "company": "UCV",
+  "company": "FCIT",
   "docstatus": 0,
   "doctype": "Transaction Category",
   "is_group": 0,
@@ -197,11 +184,11 @@
     "parentfield": "recipients",
     "parenttype": "Transaction Category",
     "print_paper": 0,
-    "recipient_company": "UCV",
+    "recipient_company": "FCIT",
     "recipient_department": null,
     "recipient_designation": null,
-    "recipient_email": "psa.yemen.2025@gmail.com",
-    "recipient_name": "shalabi",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
     "step": 1
    },
    {
@@ -211,10 +198,10 @@
     "parentfield": "recipients",
     "parenttype": "Transaction Category",
     "print_paper": 0,
-    "recipient_company": "UCV",
+    "recipient_company": "FCIT",
     "recipient_department": null,
     "recipient_designation": null,
-    "recipient_email": "alywsfyahmd613@gmail.com",
+    "recipient_email": "ahmed@psa.com",
     "recipient_name": "ziad",
     "step": 1
    }
@@ -224,7 +211,7 @@
  },
  {
   "category_name": "Change Research Title Request",
-  "company": "UCV",
+  "company": "FCIT",
   "docstatus": 0,
   "doctype": "Transaction Category",
   "is_group": 0,
@@ -239,10 +226,10 @@
     "parentfield": "recipients",
     "parenttype": "Transaction Category",
     "print_paper": 0,
-    "recipient_company": "UCV",
+    "recipient_company": "FCIT",
     "recipient_department": null,
     "recipient_designation": null,
-    "recipient_email": "psa.yemen.2025@gmail.com",
+    "recipient_email": "ahmed@psa.com",
     "recipient_name": "shalabi",
     "step": 1
    },
@@ -253,11 +240,11 @@
     "parentfield": "recipients",
     "parenttype": "Transaction Category",
     "print_paper": 0,
-    "recipient_company": "UCV",
-    "recipient_department": null,
-    "recipient_designation": null,
-    "recipient_email": "ucveh2020@gmail.com",
-    "recipient_name": "ahmed shalabi(Supervisor)",
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
     "step": 1
    }
   ],
