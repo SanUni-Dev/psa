@@ -112,5 +112,119 @@
   "name": "Withdrawal Request",
   "template_doctype": "Withdrawal Request",
   "template_title": "Withdrawal Request"
+ },
+ {
+  "description": "<div class=\"ql-editor read-mode\"><h3><strong>Change Research Title Request Details:</strong></h3><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student ID:</strong> {{student}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Name:</strong> {{student_name}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program Enrollment ID:</strong> {{program_enrollment}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Supervisor: </strong> {{student_supervisor}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program:</strong> {{program}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Enrollment Date:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Current Research Title Arabic:</strong> {{current_research_title_arabic}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Current Research Title English:</strong>&nbsp;{{current_research_title_english}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>New Research Title Arabic:</strong> {{new_research_title_arabic}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>New Research Title English:</strong> {{new_research_title_english}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Notes: </strong>{{notes}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Request Date:</strong> {{creation}}</li></ol><h2 class=\"ql-direction-rtl\" style=\"text-align: right;\">تفاصيل طلب تغيير عنوان:</h2><ol><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>معرف الطالب: </strong>{{student}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>اسم الطالب:</strong> {{student_name}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>رقم القيد:</strong> {{program_enrollment}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>مشرف الطالب:</strong> {{student_supervisor}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>البرنامج:</strong> {{program}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الالتحاق بالبرنامج:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>عنوان البحث الحالي بالعربي:</strong> {{current_research_title_arabic}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>عنوان البحث الحالي بالإنجليزي:</strong> {{current_research_title_english}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>العنوان الجديد بالعربي :</strong> {{new_research_title_arabic}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>العنوان الجديد بالإنجليزي</strong> {{new_research_title_english}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>الملاحظات: </strong>{{notes}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-5\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الطلب:</strong> {{creation}}</li></ol></div>",
+  "docstatus": 0,
+  "doctype": "Transaction Category Template",
+  "linked_fields": [
+   {
+    "docfield_name": "student_name",
+    "docfield_title": "student_name",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Title Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "program",
+    "docfield_title": "program",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Title Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "enrollment_date",
+    "docfield_title": "program_enrollment_date",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Title Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   }
+  ],
+  "modified": "2024-08-03 22:44:27.859861",
+  "name": "Change Research Title Request",
+  "template_doctype": "Change Research Title Request",
+  "template_title": "Change Research Title Request"
+ },
+ {
+  "description": "<div class=\"ql-editor read-mode\"><h2><strong>Change Research Main Supervisor Request</strong> <strong>Details:</strong></h2><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student ID:</strong> {{student}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Name:</strong> {{student_name}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program Enrollment ID:</strong> {{program_enrollment}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Current Supervisor: </strong> {{current_supervisor}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program:</strong> {{program}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Enrollment Date:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Internal Suggested Supervisors:</strong> {{suggested_supervisors}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>External Suggested Supervisors:&nbsp;</strong>{{external_suggested_supervisors}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Change Reason:</strong> {{change_reason}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Request Date:</strong> {{creation}}</li></ol><h2 class=\"ql-direction-rtl\" style=\"text-align: right;\">تفاصيل طلب تغيير مشرف رئيسي:</h2><ol><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>معرف الطالب: </strong>{{student}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>اسم الطالب:</strong> {{student_name}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>رقم القيد:</strong> {{program_enrollment}}</li><li data-list=\"bullet\" class=\"ql-direction-rtl ql-indent-2\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>المشرف الحالي:</strong> {{current_supervisor}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>البرنامج:</strong> {{program}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الالتحاق بالبرنامج:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>المشرفين المقترحين الداخليين:</strong> {{suggested_supervisors}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>المشرفين المقترحين الخارجيين</strong> {external_suggested_supervisors}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>سبب التغيير &nbsp;:</strong> {{change_reason}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الطلب:</strong> {{creation}}</li></ol><p><br></p></div>",
+  "docstatus": 0,
+  "doctype": "Transaction Category Template",
+  "linked_fields": [
+   {
+    "docfield_name": "student_name",
+    "docfield_title": "student_name",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Main Supervisor Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "program",
+    "docfield_title": "program",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Main Supervisor Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "enrollment_date",
+    "docfield_title": "program_enrollment_date",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Main Supervisor Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   }
+  ],
+  "modified": "2024-08-03 22:44:47.857529",
+  "name": "Change Research Main Supervisor Request",
+  "template_doctype": "Change Research Main Supervisor Request",
+  "template_title": "Change Research Main Supervisor Request"
+ },
+ {
+  "description": "<div class=\"ql-editor read-mode\"><h2><strong>Change Research Co Supervisor Request</strong> <strong>Details:</strong></h2><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student ID:</strong> {{student}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Student Name:</strong> {{student_name}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program Enrollment ID:</strong> {{program_enrollment}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Current Supervisor: </strong> {{current_supervisor}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Program:</strong> {{program}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Enrollment Date:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Internal Suggested Supervisors:</strong> {{suggested_supervisors}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>External Suggested Supervisors:&nbsp;</strong>{{external_suggested_supervisors}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Change Reason:</strong> {{change_reason}}</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Request Date:</strong> {{creation}}</li></ol><h2 class=\"ql-direction-rtl\" style=\"text-align: right;\">تفاصيل طلب تغيير مشرف مساعد:</h2><ol><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>معرف الطالب: </strong>{{student}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>اسم الطالب:</strong> {{student_name}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>رقم القيد:</strong> {{program_enrollment}}</li><li data-list=\"bullet\" class=\"ql-indent-2 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>المشرف الحالي:</strong> {{current_supervisor}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>البرنامج:</strong> {{program}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الالتحاق بالبرنامج:</strong> {{program_enrollment_date}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>المشرفين المقترحين الداخليين:</strong> {{suggested_supervisors}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>المشرفين المقترحين الخارجيين</strong> {external_suggested_supervisors}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>سبب التغيير :</strong> {{change_reason}}</li><li data-list=\"bullet\" class=\"ql-indent-5 ql-direction-rtl\" style=\"text-align: right;\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>تاريخ الطلب:</strong> {{creation}}</li></ol><p><br></p></div>",
+  "docstatus": 0,
+  "doctype": "Transaction Category Template",
+  "linked_fields": [
+   {
+    "docfield_name": "student_name",
+    "docfield_title": "student_name",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Co Supervisor Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "program",
+    "docfield_title": "program",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Co Supervisor Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   },
+   {
+    "docfield_name": "enrollment_date",
+    "docfield_title": "program_enrollment_date",
+    "doctype_name": "Program Enrollment",
+    "link_field": "program_enrollment",
+    "parent": "Change Research Co Supervisor Request",
+    "parentfield": "linked_fields",
+    "parenttype": "Transaction Category Template"
+   }
+  ],
+  "modified": "2024-08-03 22:52:46.794920",
+  "name": "Change Research Co Supervisor Request",
+  "template_doctype": "Change Research Co Supervisor Request",
+  "template_title": "Change Research Co Supervisor Request"
  }
 ]
