@@ -61,48 +61,10 @@ frappe.ui.form.on("Thesis Defense Committee Request", {
             }
         }
 
-        frappe.call({
-            method: 'psa.api.psa_utils.get_students_by_supervisor',
-            callback: function(r) {
-                if (r.message) {
-                    let student_names = r.message.map(student => student.name);
-                    
-                    frm.set_query('student', function() {
-                        return {
-                            filters: {
-                                'name': ['in', student_names]
-                            }
-                        };
-                    });
-
-                    console.log('Filtered students:', student_names);
-                } else {
-                    console.log('No students found.');
-                }
-            }
-        });
+        get_students_by_supervisor(frm);
         
         filter_internal(frm);
         filter_external(frm);
-
-
-        frm.fields_dict['member_of_external_selected_committee'].grid.get_field('external_faculty').get_query = function (doc, cdt, cdn) {
-            let row = locals[cdt][cdn];
-            if (row.university == null) {
-                return {
-                    filters: {
-                        'university': null
-                    }
-                };
-            }
-            else {
-                return {
-                    filters: {
-                        'university': row.university
-                    }
-                };
-            }
-        };
 
         override_add_row_button(frm, 'member_of_internal_selected_committee');
         override_add_row_button(frm, 'member_of_external_selected_committee');
@@ -254,15 +216,16 @@ frappe.ui.form.on("External Discussion Committee", {
         
         // Refresh the grid and update the field query
         frm.fields_dict['member_of_external_selected_committee'].grid.refresh(); // Ensure the grid is refreshed
-        frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
-            return {
-                filters: {
-                    'from_another_university': row.university,
-                    'external_faculty': row.external_faculty,
-                    'academic_rank': row.academic_rank,
-                }
-            };
-        };
+        // frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
+        //     return {
+        //         filters: {
+        //             'from_another_university': row.university,
+        //             'external_faculty': row.external_faculty,
+        //             'academic_rank': row.academic_rank,
+        //         }
+        //     };
+        // };
+        filter_external(frm);
     },
 
 
@@ -275,15 +238,16 @@ frappe.ui.form.on("External Discussion Committee", {
         
         // Refresh the grid and update the field query
         frm.fields_dict['member_of_external_selected_committee'].grid.refresh(); // Ensure the grid is refreshed
-        frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
-            return {
-                filters: {
-                    'from_another_university': row.university,
-                    'external_faculty': row.external_faculty,
-                    'academic_rank': row.academic_rank,
-                }
-            };
-        };
+        // frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
+        //     return {
+        //         filters: {
+        //             'from_another_university': row.university,
+        //             'external_faculty': row.external_faculty,
+        //             'academic_rank': row.academic_rank,
+        //         }
+        //     };
+        // };
+        filter_external(frm);
     },
 
 
@@ -296,15 +260,16 @@ frappe.ui.form.on("External Discussion Committee", {
         
         // Refresh the grid and update the field query
         frm.fields_dict['member_of_external_selected_committee'].grid.refresh(); // Ensure the grid is refreshed
-        frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
-            return {
-                filters: {
-                    'from_another_university': row.university,
-                    'external_faculty': row.external_faculty,
-                    'academic_rank': row.academic_rank,
-                }
-            };
-        };
+        // frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
+        //     return {
+        //         filters: {
+        //             'from_another_university': row.university,
+        //             'external_faculty': row.external_faculty,
+        //             'academic_rank': row.academic_rank,
+        //         }
+        //     };
+        // };
+        filter_external(frm);
     },
 
 
@@ -411,7 +376,7 @@ function filter_internal(frm) {
                     'external_faculty': ""
                 }
             };
-        }        
+        }      
     };
 }
 
@@ -419,27 +384,59 @@ function filter_internal(frm) {
 function filter_external(frm) {
     frm.fields_dict['member_of_external_selected_committee'].grid.get_field('faculty_member').get_query = function (doc, cdt, cdn) {
         const row = locals[cdt][cdn];
-        if (row.university == null || row.external_faculty == null || row.academic_rank == null) {
-            return {
-                filters: {
-                    'from_another_university': null,
-                    'external_faculty': null,
-                    'academic_rank': null,
-                    // 'from_another_university': ['', null],
-                    // 'contract_status': 1
-                }
-            };
+        let filters = {};
+
+        if (row.university) {
+            filters['from_another_university'] = row.university;
+        } else {
+            filters['from_another_university'] = ['!=', ''];
         }
-        else {
-            return {
-                filters: {
-                    'from_another_university': row.university,
-                    'external_faculty': row.external_faculty,
-                    'academic_rank': row.academic_rank,
-                    // 'from_another_university': ['', null],
-                    // 'contract_status': 1
-                }
-            };
+
+        if (row.external_faculty) {
+            filters['external_faculty'] = row.external_faculty;
+        } else {
+            filters['external_faculty'] = ['!=', ''];
         }
+
+        if (row.academic_rank) {
+            filters['academic_rank'] = row.academic_rank;
+        }
+
+        return { filters: filters };
     };
+
+    frm.fields_dict['member_of_external_selected_committee'].grid.get_field('external_faculty').get_query = function (doc, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        let filters = {};
+
+        if (row.university) {
+            filters['university'] = row.university;
+        }
+
+        return { filters: filters };
+    };
+}
+
+
+function get_students_by_supervisor(frm) {
+    frappe.call({
+        method: 'psa.api.psa_utils.get_students_by_supervisor',
+        callback: function(r) {
+            if (r.message) {
+                let student_names = r.message.map(student => student.name);
+                
+                frm.set_query('student', function() {
+                    return {
+                        filters: {
+                            'name': ['in', student_names]
+                        }
+                    };
+                });
+
+                console.log('Filtered students:', student_names);
+            } else {
+                console.log('No students found.');
+            }
+        }
+    });
 }
