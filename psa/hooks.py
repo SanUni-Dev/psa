@@ -13,7 +13,6 @@ fixtures = [
     "Workflow Action Master",
     "Wiki Space",
     "Wiki Page",
-    "Translation",
     "Email Account",
     "Website Settings",
     "Navbar Settings"
