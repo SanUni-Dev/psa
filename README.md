@@ -24,7 +24,7 @@ PSA leverages the [Frappe framework](https://frappeframework.com/), known for it
 
 ### License
 
-PSA is licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for more information.
+PSA is licensed under the GNU General Public License v3.0. See [LICENSE](license.txt) for more information.
 
 
 ## Contributors
