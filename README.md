@@ -13,7 +13,7 @@ PSA leverages the [Frappe framework](https://frappeframework.com/), known for it
 - **Document Management**: Enables efficient handling of document submissions, reviews, and approvals.
 
 
-### Technology Stack
+## Technology Stack
 
 - **Framework**: [Frappe](https://frappeframework.com/)
 - **Backend**: [Python](https://www.python.org/)
@@ -22,7 +22,16 @@ PSA leverages the [Frappe framework](https://frappeframework.com/), known for it
 - **Deployment**: [Ubuntu Server](https://ubuntu.com/server)
 
 
-### License
+## Required Apps
+PSA requires the following Frappe apps to be installed and configured:
+
+- **ERPNext**: Core ERP functionalities [GitHub: ERPNext](https://github.com/frappe/erpnext).
+- **HRMS**: Human Resource Management System integration [GitHub: HRMS](https://github.com/frappe/hrms).
+- **Wiki**: Collaborative documentation platform [GitHub: Wiki](https://github.com/frappe/wiki).
+- **Academia**: Sana'a University Academic System integration [GitHub: Academia](https://github.com/Sana-a-Uni/Academia).
+
+
+## License
 
 PSA is licensed under the GNU General Public License v3.0. See [LICENSE](license.txt) for more information.
 
@@ -32,12 +41,12 @@ This project was developed by the following contributors, organized into two col
 
 #### Information Systems Department
 - Eng. **Esmail Ebrahim Hamza** ([GitHub: EsmailEbrahim](https://github.com/EsmailEbrahim))
-- Eng. **Ahmed Mohammed** ([GitHub: proAhmedUcv](https://github.com/proAhmedUcv))
+- Eng. **Ahmed Mohammed Al-Yousofi** ([GitHub: proAhmedUcv](https://github.com/proAhmedUcv))
 - Eng. **Eyad Mohammed Alolofi** ([GitHub: EyadAlolofi](https://github.com/EyadAlolofi))
-- Eng. **Hosam Ahmed Al -Rabuoi** ([GitHub: alhoss99](https://github.com/alhoss99))
+- Eng. **Hosam Ahmed Al-Rabuoi** ([GitHub: alhoss99](https://github.com/alhoss99))
 - Eng. **Mohammed Aref Alqahm** ([GitHub: Mohammedaref770738266](https://github.com/Mohammedaref770738266))
 
 #### Information Technology Department
-- Eng. **Abdualaziz Alkadry** ([GitHub: azozalkadry](https://github.com/azozalkadry))
-- Eng. **Rajeh Alshujaa** ([GitHub: rajehshujaarsms](https://github.com/rajehshujaarsms))
-- Eng. **Hothaifa** ([GitHub: Hothafa2001](https://github.com/Hothafa2001))
+- Eng. **Hothaifa Sadeq Al-Sharabi** ([GitHub: Hothafa2001](https://github.com/Hothafa2001))
+- Eng. **Abdualaziz Abdullah Alkadry** ([GitHub: azozalkadry](https://github.com/azozalkadry))
+- Eng. **Rajeh Shujaa Alshujaa** ([GitHub: rajehshujaarsms](https://github.com/rajehshujaarsms))
