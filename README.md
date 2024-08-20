@@ -25,10 +25,10 @@ PSA leverages the [Frappe framework](https://frappeframework.com/), known for it
 ## Required Apps
 PSA requires the following Frappe apps to be installed and configured:
 
-- **ERPNext**: Core ERP functionalities [GitHub: ERPNext](https://github.com/frappe/erpnext).
-- **HRMS**: Human Resource Management System integration [GitHub: HRMS](https://github.com/frappe/hrms).
-- **Wiki**: Collaborative documentation platform [GitHub: Wiki](https://github.com/frappe/wiki).
-- **Academia**: Sana'a University Academic System integration [GitHub: Academia](https://github.com/Sana-a-Uni/Academia).
+- **ERPNext**: Core ERP functionalities ([GitHub: ERPNext](https://github.com/frappe/erpnext)).
+- **HRMS**: Human Resource Management System integration ([GitHub: HRMS](https://github.com/frappe/hrms)).
+- **Wiki**: Collaborative documentation platform ([GitHub: Wiki](https://github.com/frappe/wiki)).
+- **Academia**: Sana'a University Academic System integration ([GitHub: Academia](https://github.com/Sana-a-Uni/Academia)).
 
 
 ## License

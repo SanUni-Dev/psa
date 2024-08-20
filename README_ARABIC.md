@@ -22,10 +22,10 @@
 ## التطبيقات المطلوبة
 يتطلب نظام PSA تثبيت وتهيئة التطبيقات التالية من فرابي:
 
-- **إي آر بي نكست (ERPNext)**: وظائف النظام الأساسية [GitHub: ERPNext](https://github.com/frappe/erpnext).
-- **إتش آر إم إس (HRMS)**: تكامل نظام إدارة الموارد البشرية [GitHub: HRMS](https://github.com/frappe/hrms).
-- **ويكي (Wiki)**: منصة توثيق تعاونية [GitHub: Wiki](https://github.com/frappe/wiki).
-- **أكاديميا**: تكامل نظام الأكاديمية بجامعة صنعاء [GitHub: Academia](https://github.com/Sana-a-Uni/Academia).
+- **إي آر بي نكست (ERPNext)**: وظائف النظام الأساسية ([GitHub: ERPNext](https://github.com/frappe/erpnext)).
+- **إتش آر إم إس (HRMS)**: تكامل نظام إدارة الموارد البشرية ([GitHub: HRMS](https://github.com/frappe/hrms)).
+- **ويكي (Wiki)**: منصة توثيق تعاونية ([GitHub: Wiki](https://github.com/frappe/wiki)).
+- **أكاديميا**: تكامل نظام الأكاديمية بجامعة صنعاء ([GitHub: Academia](https://github.com/Sana-a-Uni/Academia)).
 
 ## الترخيص
 
