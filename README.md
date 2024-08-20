@@ -1,3 +1,6 @@
+[Readme باللغة العربية](README_ARABIC.md)
+
+
 # Postgraduate Studies Administration System (PSA)
 
 The **Postgraduate Studies Administration System (PSA)** is a comprehensive web-based solution designed to streamline the administrative processes involved in managing postgraduate studies. This system is the culmination of a bachelor's degree graduation project developed by eight students from the Faculty of Computer and Information Technology, Sana'a University, Sana'a, Yemen, organized into two collaborative groups.
