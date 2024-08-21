@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "creation": "2024-05-04 03:50:08.647101",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "research_count",
+  "journal_type",
+  "column_break_ggde",
+  "journal",
+  "requirement"
+ ],
+ "fields": [
+  {
+   "fieldname": "research_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Research Count",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "journal_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Journal Type",
+   "options": "Journal Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ggde",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.journal_type == 'Internal'",
+   "fieldname": "journal",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Journal",
+   "options": "Journal"
+  },
+  {
+   "depends_on": "eval: doc.journal_type == 'Internal'",
+   "fieldname": "requirement",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Requirement",
+   "mandatory_depends_on": "eval: doc.journal_type == 'Internal'",
+   "options": "\nRequired\nAt Least"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-27 03:17:16.851038",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Publication Condition",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

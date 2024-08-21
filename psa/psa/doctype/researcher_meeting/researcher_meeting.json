@@ -1,0 +1,291 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-04 02:25:40.340461",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_aipr",
+  "student",
+  "column_break_gxpz",
+  "program_enrollment",
+  "student_research",
+  "more_information_section",
+  "information",
+  "meeting_details_section",
+  "meeting_date",
+  "meeting_time",
+  "column_break_asdq",
+  "meeting_period",
+  "meeting_place",
+  "section_break_cxcy",
+  "meeting_with",
+  "section_break_kkar",
+  "meeting_details",
+  "section_break_ctpi",
+  "status",
+  "section_break_taai",
+  "amended_from",
+  "supervisor_notes_tab",
+  "supervisor_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Meeting-.YY.-.MM.-.#####.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "permlevel": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.student",
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "permlevel": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "meeting_date",
+   "fieldtype": "Date",
+   "label": "Meeting Date",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_asdq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kkar",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "meeting_details",
+   "fieldtype": "Text Editor",
+   "label": "Meeting Details",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Researcher Meeting",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "meeting_time",
+   "fieldtype": "Time",
+   "label": "Meeting Time",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "meeting_period",
+   "fieldtype": "Duration",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Meeting Period",
+   "non_negative": 1,
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "meeting_place",
+   "fieldtype": "Data",
+   "label": "Meeting Place",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "meeting_with",
+   "fieldtype": "Table",
+   "label": "Meeting with",
+   "options": "Meeting with",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ctpi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "supervisor_notes",
+   "fieldtype": "Text Editor",
+   "label": "Supervisor Notes",
+   "permlevel": 2
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research",
+   "permlevel": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_cxcy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "supervisor_notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Supervisor Notes"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_aipr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gxpz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "meeting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Meeting Details"
+  },
+  {
+   "fieldname": "section_break_taai",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-02 06:15:14.338404",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Researcher Meeting",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student",
+   "select": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Supervisor",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Supervisor",
+   "select": 1,
+   "write": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

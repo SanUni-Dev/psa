@@ -1,0 +1,263 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-06 00:30:16.147236",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_0zie",
+  "student",
+  "program_enrollment",
+  "column_break_zjmz",
+  "student_supervisor",
+  "student_research",
+  "more_information_section",
+  "information",
+  "section_break_qpyi",
+  "current_research_title_arabic",
+  "new_research_title_arabic",
+  "column_break_ftxr",
+  "current_research_title_english",
+  "new_research_title_english",
+  "section_break_gplw",
+  "notes",
+  "section_break_qhzt",
+  "status",
+  "request_date",
+  "column_break_zfum",
+  "date_of_approval_of_the_research_title",
+  "amended_from",
+  "section_break_gpxp",
+  "modified_request_date",
+  "column_break_nobi",
+  "rejection_reason",
+  "transaction_information_tab",
+  "transaction_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_0zie",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Research Title Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Change-Tit-Req-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "section_break_qhzt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "student_research.research_title_arabic",
+   "fieldname": "current_research_title_arabic",
+   "fieldtype": "Data",
+   "label": "Current Research Title Arabic",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student_research.research_title_english",
+   "fieldname": "current_research_title_english",
+   "fieldtype": "Data",
+   "label": "Current Research Title English",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_qpyi",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "column_break_ftxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "new_research_title_arabic",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "New Research Title Arabic",
+   "reqd": 1
+  },
+  {
+   "fieldname": "new_research_title_english",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "New Research Title English",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gplw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Fill it with change reasons.",
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Link",
+   "label": "Student Supervisor",
+   "options": "Student Supervisor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "options": "Draft",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zfum",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "date_of_approval_of_the_research_title",
+   "fieldtype": "Data",
+   "label": "Date of Approval of the Research Title",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zjmz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "section_break_gpxp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nobi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "transaction_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "transaction_information",
+   "fieldtype": "HTML",
+   "label": "Transaction Information"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-04 02:08:50.555093",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Change Research Title Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

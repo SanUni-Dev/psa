@@ -1,0 +1,267 @@
+[
+ {
+  "category_name": "Continue Enrollment Request",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 0,
+  "modified": "2024-08-03 18:47:02.333872",
+  "name": "Continue Enrollment Request",
+  "parent_category": "PSA",
+  "recipients": [
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Continue Enrollment Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Department Head",
+    "recipient_email": "mansour@psa.com",
+    "recipient_name": "Mansour Noman Marhoob",
+    "step": 1
+   },
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Continue Enrollment Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 2
+   }
+  ],
+  "requirements": [],
+  "template": "Continue Enrollment Request"
+ },
+ {
+  "category_name": "Withdrawal Request",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 0,
+  "modified": "2024-08-03 18:47:17.812500",
+  "name": "Withdrawal Request",
+  "parent_category": "PSA",
+  "recipients": [
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Withdrawal Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Department Head",
+    "recipient_email": "mansour@psa.com",
+    "recipient_name": "Mansour Noman Marhoob",
+    "step": 1
+   },
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Withdrawal Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 2
+   }
+  ],
+  "requirements": [],
+  "template": "Withdrawal Request"
+ },
+ {
+  "category_name": "Suspend Enrollment Request",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 0,
+  "modified": "2024-08-02 17:36:06.468293",
+  "name": "Suspend Enrollment Request",
+  "parent_category": "PSA",
+  "recipients": [
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Suspend Enrollment Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Department Head",
+    "recipient_email": "mansour@psa.com",
+    "recipient_name": "Mansour Noman Marhoob",
+    "step": 1
+   },
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Suspend Enrollment Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 2
+   }
+  ],
+  "requirements": [],
+  "template": "Suspend Enrollment Request"
+ },
+ {
+  "category_name": "Change Research Main Supervisor Request",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 0,
+  "modified": "2024-08-03 22:46:13.357589",
+  "name": "Change Research Main Supervisor Request",
+  "parent_category": "PSA",
+  "recipients": [
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Change Research Main Supervisor Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 1
+   },
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Change Research Main Supervisor Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 1
+   }
+  ],
+  "requirements": [],
+  "template": "Change Research Main Supervisor Request"
+ },
+ {
+  "category_name": "Change Research Co Supervisor Request",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 0,
+  "modified": "2024-08-03 23:02:15.246536",
+  "name": "Change Research Co Supervisor Request",
+  "parent_category": "PSA",
+  "recipients": [
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Change Research Co Supervisor Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": null,
+    "recipient_designation": null,
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 1
+   },
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Change Research Co Supervisor Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": null,
+    "recipient_designation": null,
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "ziad",
+    "step": 1
+   }
+  ],
+  "requirements": [],
+  "template": "Change Research Co Supervisor Request"
+ },
+ {
+  "category_name": "Change Research Title Request",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 0,
+  "modified": "2024-08-03 22:24:32.136119",
+  "name": "Change Research Title Request",
+  "parent_category": "PSA",
+  "recipients": [
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Change Research Title Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": null,
+    "recipient_designation": null,
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "shalabi",
+    "step": 1
+   },
+   {
+    "has_sign": 0,
+    "is_received": 0,
+    "parent": "Change Research Title Request",
+    "parentfield": "recipients",
+    "parenttype": "Transaction Category",
+    "print_paper": 0,
+    "recipient_company": "FCIT",
+    "recipient_department": "IS",
+    "recipient_designation": "Faculty Dean",
+    "recipient_email": "ahmed@psa.com",
+    "recipient_name": "Ahmed Abdullah Alshalabi",
+    "step": 1
+   }
+  ],
+  "requirements": [],
+  "template": "Change Research Title Request"
+ },
+ {
+  "category_name": "PSA",
+  "company": "FCIT",
+  "docstatus": 0,
+  "doctype": "Transaction Category",
+  "is_group": 1,
+  "modified": "2024-08-02 17:23:40.964950",
+  "name": "PSA",
+  "parent_category": null,
+  "recipients": [],
+  "requirements": [],
+  "template": null
+ }
+]

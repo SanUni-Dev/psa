@@ -1,0 +1,562 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"MpM8I_97Y7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h2\\\">\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062f\u0631\u0627\u0633\u0627\u062a \u0627\u0644\u0639\u0644\u064a\u0627 - PSA</span>\",\"col\":12}},{\"id\":\"GZLgrq0lIX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">\u0625\u062d\u0635\u0627\u0626\u064a\u0627\u062a:</span><br>\",\"col\":12}},{\"id\":\"gOSpZUwqcn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c\",\"col\":3}},{\"id\":\"cGRAVQJjTE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u0648\u0642\u0641\u064a\u0646 \u0644\u0644\u0642\u064a\u062f\",\"col\":3}},{\"id\":\"4xz5ChOiPt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u0633\u062a\u0645\u0631\u064a\u0646\",\"col\":3}},{\"id\":\"_hslWHB8TL\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u064f\u0646\u0633\u062d\u0628\u064a\u0646\",\"col\":3}},{\"id\":\"GgzD9sH3yV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0628\u062d\u0648\u062b\u0627\u062a \u0627\u0644\u0637\u0644\u0627\u0628\",\"col\":3}},{\"id\":\"rZnLveNxPF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0645\u064f\u0634\u0631\u0641\u064a \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0631\u0626\u064a\u0633\u064a\u064a\u0646\",\"col\":3}},{\"id\":\"kG9v7JmWhI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0645\u064f\u0634\u0631\u0641\u064a \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0645\u0633\u0627\u0639\u062f\u064a\u0646\",\"col\":3}},{\"id\":\"INnUNKQ7qV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0645\u0634\u0631\u0641\u064a \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0630\u064a\u0646 \u062a\u0645 \u062a\u063a\u064a\u064a\u0631\u0647\u0645\",\"col\":3}},{\"id\":\"FKisAwGvg0\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"xMHLpTPz7E\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">\u062a\u0642\u0627\u0631\u064a\u0631:</span>\",\"col\":12}},{\"id\":\"LiFzqwGAX0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"\u0628\u062d\u062b \u0639\u0646 \u0637\u0644\u0628\u0627\u062a \u0637\u0627\u0644\u0628 \u062e\u0644\u0627\u0644 \u0641\u062a\u0631\u0629\",\"col\":4}},{\"id\":\"YJAlxpaBQH\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"Li24CUwpC1\",\"type\":\"card\",\"data\":{\"card_name\":\"\u0627\u0644\u0637\u0644\u0628\u0627\u062a:\",\"col\":4}},{\"id\":\"4boRPw5bll\",\"type\":\"card\",\"data\":{\"card_name\":\"\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629:\",\"col\":4}},{\"id\":\"uNJ5WOhiVW\",\"type\":\"card\",\"data\":{\"card_name\":\"\u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646 \u0648\u0627\u0644\u0635\u0644\u0627\u062d\u064a\u0627\u062a:\",\"col\":4}},{\"id\":\"nffm7XUN6r\",\"type\":\"card\",\"data\":{\"card_name\":\"PSA Masters\",\"col\":4}},{\"id\":\"8zGJkq1WFR\",\"type\":\"card\",\"data\":{\"card_name\":\"For Development\",\"col\":4}},{\"id\":\"pBc0boxuOg\",\"type\":\"card\",\"data\":{\"card_name\":\"\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a:\",\"col\":4}},{\"id\":\"9qPYZQSoDg\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"exzpljZFst\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PSA Documentation\",\"col\":4}}]",
+ "creation": "2024-03-10 02:10:29.764588",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "quantity-1",
+ "idx": 0,
+ "indicator_color": "orange",
+ "is_hidden": 0,
+ "label": "PSA",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PSA Settings",
+   "link_count": 0,
+   "link_to": "PSA Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "For Development",
+   "link_count": 8,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DocType",
+   "link_count": 0,
+   "link_to": "DocType",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow",
+   "link_count": 0,
+   "link_to": "Workflow",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow State",
+   "link_count": 0,
+   "link_to": "Workflow State",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow Action Master",
+   "link_count": 0,
+   "link_to": "Workflow Action Master",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Notification",
+   "link_count": 0,
+   "link_to": "Notification",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Wiki Space",
+   "link_count": 0,
+   "link_to": "Wiki Space",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Wiki Page",
+   "link_count": 0,
+   "link_to": "Wiki Page",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Translation",
+   "link_count": 0,
+   "link_to": "Translation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PSA Masters",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Research",
+   "link_count": 0,
+   "link_to": "Student Research",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Supervisor",
+   "link_count": 0,
+   "link_to": "Student Supervisor",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Program Publication Requirement",
+   "link_count": 0,
+   "link_to": "Program Publication Requirement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u0627\u0644\u0637\u0644\u0628\u0627\u062a:",
+   "link_count": 10,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Suspend Enrollment Request",
+   "link_count": 0,
+   "link_to": "Suspend Enrollment Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Continue Enrollment Request",
+   "link_count": 0,
+   "link_to": "Continue Enrollment Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Withdrawal Request",
+   "link_count": 0,
+   "link_to": "Withdrawal Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Change Research Title Request",
+   "link_count": 0,
+   "link_to": "Change Research Title Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Change Research Main Supervisor Request",
+   "link_count": 0,
+   "link_to": "Change Research Main Supervisor Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Change Research Co Supervisor Request",
+   "link_count": 0,
+   "link_to": "Change Research Co Supervisor Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Thesis Defense Committee Request",
+   "link_count": 0,
+   "link_to": "Thesis Defense Committee Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Thesis Defense Committee",
+   "link_count": 0,
+   "link_to": "Thesis Defense Committee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Researcher Meeting",
+   "link_count": 0,
+   "link_to": "Researcher Meeting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Progress Report",
+   "link_count": 0,
+   "link_to": "Progress Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629:",
+   "link_count": 13,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Company",
+   "link_count": 0,
+   "link_to": "Company",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Faculty",
+   "link_count": 0,
+   "link_to": "Faculty",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Faculty Department",
+   "link_count": 0,
+   "link_to": "Faculty Department",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Academic Program",
+   "link_count": 0,
+   "link_to": "Academic Program",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student",
+   "link_count": 0,
+   "link_to": "Student",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Program Enrollment",
+   "link_count": 0,
+   "link_to": "Program Enrollment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Academic Status",
+   "link_count": 0,
+   "link_to": "Academic Status",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Academic Year",
+   "link_count": 0,
+   "link_to": "Academic Year",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Academic Term",
+   "link_count": 0,
+   "link_to": "Academic Term",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee",
+   "link_count": 0,
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Faculty Member",
+   "link_count": 0,
+   "link_to": "Faculty Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Scientific Degree",
+   "link_count": 0,
+   "link_to": "Scientific Degree",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Program Publication Requirement",
+   "link_count": 0,
+   "link_to": "Program Publication Requirement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646 \u0648\u0627\u0644\u0635\u0644\u0627\u062d\u064a\u0627\u062a:",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User",
+   "link_count": 0,
+   "link_to": "User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Role",
+   "link_count": 0,
+   "link_to": "Role",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Role Permission Manager",
+   "link_count": 0,
+   "link_to": "permission-manager",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a:",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PSA Settings",
+   "link_count": 0,
+   "link_to": "PSA Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-08-04 03:19:04.412911",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "PSA",
+ "number_cards": [],
+ "owner": "esmailebraheem771@gmail.com",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "\u0628\u062d\u062b \u0639\u0646 \u0637\u0644\u0628\u0627\u062a \u0637\u0627\u0644\u0628 \u062e\u0644\u0627\u0644 \u0641\u062a\u0631\u0629",
+   "link_to": "Student Request",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "PSA Documentation",
+   "type": "URL",
+   "url": "/psa"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c",
+   "link_to": "Program Enrollment",
+   "stats_filter": "[[\"Program Enrollment\",\"enabled\",\"=\",1,false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u0648\u0642\u0641\u064a\u0646 \u0644\u0644\u0642\u064a\u062f",
+   "link_to": "Program Enrollment",
+   "stats_filter": "[[\"Program Enrollment\",\"enabled\",\"=\",1,false],[\"Program Enrollment\",\"status\",\"=\",\"Suspended\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u0633\u062a\u0645\u0631\u064a\u0646",
+   "link_to": "Program Enrollment",
+   "stats_filter": "[[\"Program Enrollment\",\"enabled\",\"=\",1,false],[\"Program Enrollment\",\"status\",\"=\",\"Continued\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "\u0627\u0644\u0645\u0644\u062a\u062d\u0642\u064a\u0646 \u0628\u0627\u0644\u0628\u0631\u0627\u0645\u062c \u0627\u0644\u0645\u064f\u0646\u0633\u062d\u0628\u064a\u0646",
+   "link_to": "Program Enrollment",
+   "stats_filter": "[[\"Program Enrollment\",\"enabled\",\"=\",1,false],[\"Program Enrollment\",\"status\",\"=\",\"Withdrawn\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "\u0628\u062d\u0648\u062b\u0627\u062a \u0627\u0644\u0637\u0644\u0627\u0628",
+   "link_to": "Student Research",
+   "stats_filter": "[[\"Student Research\",\"enabled\",\"=\",1,false],[\"Student Research\",\"status\",\"=\",\"Active\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "\u0645\u064f\u0634\u0631\u0641\u064a \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0631\u0626\u064a\u0633\u064a\u064a\u0646",
+   "link_to": "Student Supervisor",
+   "stats_filter": "[[\"Student Supervisor\",\"enabled\",\"=\",1,false],[\"Student Supervisor\",\"status\",\"=\",\"Active\",false],[\"Student Supervisor\",\"type\",\"=\",\"Main Supervisor\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "\u0645\u064f\u0634\u0631\u0641\u064a \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0645\u0633\u0627\u0639\u062f\u064a\u0646",
+   "link_to": "Student Supervisor",
+   "stats_filter": "[[\"Student Supervisor\",\"enabled\",\"=\",1,false],[\"Student Supervisor\",\"status\",\"=\",\"Active\",false],[\"Student Supervisor\",\"type\",\"=\",\"Co-Supervisor\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "\u0645\u0634\u0631\u0641\u064a \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0630\u064a\u0646 \u062a\u0645 \u062a\u063a\u064a\u064a\u0631\u0647\u0645",
+   "link_to": "Student Supervisor",
+   "stats_filter": "[[\"Student Supervisor\",\"enabled\",\"=\",0,false],[\"Student Supervisor\",\"status\",\"=\",\"Changed\",false]]",
+   "type": "DocType"
+  }
+ ],
+ "title": "PSA"
+}

@@ -1,0 +1,68 @@
+{
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name",
+   "width": 150
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollmen",
+   "options": "Program Enrollment",
+   "width": 150
+  },
+  {
+   "fieldname": "report_date",
+   "fieldtype": "Date",
+   "label": "Report Date",
+   "width": 100
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "width": 100
+  }
+ ],
+ "creation": "2024-06-04 21:51:35.611080",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name",
+   "mandatory": 0,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2024-06-05 18:24:53.365717",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Monthly Student Progress Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Progress Report",
+ "reference_report": "",
+ "report_name": "Monthly Student Progress Report",
+ "report_script": "__import__ frappe\r\nfrom datetime __import__ datetime, timedelta\r\n\r\ndef execute(filters=None):\r\n    columns, data = get_columns(), get_data(filters)\r\n    return columns, data\r\n\r\ndef get_columns():\r\n    return [\r\n        {\"fieldname\": \"student_name\", \"label\": \"Student Name\", \"fieldtype\": \"Data\", \"width\": 200},\r\n        {\"fieldname\": \"progress_status\", \"label\": \"Progress Status\", \"fieldtype\": \"Data\", \"width\": 150},\r\n        {\"fieldname\": \"report_date\", \"label\": \"Report Date\", \"fieldtype\": \"Date\", \"width\": 100},\r\n    ]\r\n\r\ndef get_data(filters):\r\n    today = datetime.today()\r\n    last_month = today - timedelta(days=30)\r\n    progress_reports = frappe.db.sql(\"\"\"\r\n        SELECT student, status, report_date \r\n        FROM `tabProgress Report`\r\n        WHERE report_date BETWEEN %s AND %s\r\n    \"\"\", (last_month, today), as_dict=True)\r\n\r\n    data = []\r\n    for report in progress_reports:\r\n        data.append({\r\n            \"student_name\": report.student,\r\n            \"progress_status\": report.status,\r\n            \"report_date\": report.report_date\r\n        })\r\n    return data\r\n",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Supervisor"
+  },
+  {
+   "role": "Student"
+  }
+ ]
+}

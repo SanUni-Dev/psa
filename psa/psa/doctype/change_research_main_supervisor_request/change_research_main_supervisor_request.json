@@ -1,0 +1,281 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-12 23:51:24.775652",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_nvan",
+  "student",
+  "program_enrollment",
+  "column_break_olbw",
+  "student_research",
+  "current_supervisor",
+  "more_information_section",
+  "information",
+  "section_break_eadh",
+  "suggested_supervisors",
+  "check_suggested_supervisors",
+  "external_suggested_supervisors",
+  "change_reason",
+  "section_break_dvmb",
+  "request_date",
+  "column_break_hydq",
+  "status",
+  "section_break_jfpm",
+  "modified_request_date",
+  "supervisor_appointment_date",
+  "column_break_pjay",
+  "rejection_reason",
+  "transaction_information_tab",
+  "transaction_information",
+  "connections_tab",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_nvan",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_olbw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Change-Sup-Req-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "section_break_eadh",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "change_reason",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Change Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Change Research Main Supervisor Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "suggested_supervisors",
+   "fieldtype": "Table",
+   "label": "Internal Suggested Supervisors",
+   "options": "Suggested Supervisor",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "check_suggested_supervisors",
+   "fieldtype": "Check",
+   "label": " Suggested  from another university?"
+  },
+  {
+   "depends_on": "eval:doc.check_suggested_supervisors",
+   "fieldname": "external_suggested_supervisors",
+   "fieldtype": "Table",
+   "label": "External Suggested Supervisors",
+   "options": "External Suggested Supervisor"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "section_break_dvmb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hydq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_supervisor",
+   "fieldtype": "Link",
+   "label": "Current Supervisor",
+   "options": "Student Supervisor",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "section_break_jfpm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pjay",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "supervisor_appointment_date",
+   "fieldtype": "Data",
+   "label": "Approval Supervisor Appointment Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "transaction_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "transaction_information",
+   "fieldtype": "HTML",
+   "label": "Transaction Information"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Student Supervisor",
+   "link_fieldname": "document_name"
+  }
+ ],
+ "modified": "2024-08-02 20:13:43.635990",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Change Research Main Supervisor Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Director of Graduate Studies",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

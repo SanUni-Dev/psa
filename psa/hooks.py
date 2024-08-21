@@ -4,14 +4,92 @@ app_publisher = "Sana\'a university"
 app_description = "Postgraduate Studies Administration"
 app_email = "sanaa-uni@gmail.com"
 app_license = "mit"
-# required_apps = []
+required_apps = ["wiki", "academia"]
+
+
+fixtures = [
+    "Workflow",
+    "Workflow State",
+    "Workflow Action Master",
+    "Wiki Space",
+    "Wiki Page",
+    "Email Account",
+    "Website Settings",
+    "Navbar Settings"
+    "Transaction Category Template",
+    "Transaction Category"
+]
+
+
+app_include_js = [
+    "/assets/psa/js/psa_utils.js"
+    ]
+
+
+doc_events = {
+    # "Progress Report": {
+    #     "on_submit": "psa.tasks.cron.on_submit",
+    #     "on_update_after_submit": "psa.tasks.cron.on_update_after_submit"
+    # },
+    "Student Research": {
+        "on_submit": "psa.tasks.cron.notify_student_on_research_title_change"
+    },
+    "Student Supervisor": {
+        "on_submit": "psa.tasks.cron.notify_on_supervisor_change"
+    }
+
+    
+}
+
+
+# Cron Scheduler that be triggered everyday at 12:00:00 AM
+# scheduler_events = {
+# 	"cron":{
+# 		"0 0 * * *": [
+# 			"psa.tasks.cron.send_suspend_enrollment_notification",
+# 			"psa.tasks.cron.create_progress_report_and_notify",
+# 			"psa.tasks.cron.notify_supervisor_if_no_progress_report"
+# 		]
+# 	}
+# }
+
+
+########## stopped workflow override
+# app_include_js = [
+#     "/assets/psa/js/workflow_override.js"
+#     ]
+
+########## deleted because of no need of workflow
+# fixtures = [
+#     "Workflow",
+#     "Workflow State",
+#     "Workflow Action Master"
+# ]
+
+
+####################### Logo and theme
+app_logo_url = "/assets/psa/images/san_logo.png"
+brand_html = '<img src="/assets/psa/images/san_logo.svg" alt="PSA" class="app-logo"/>'
+website_context = {
+    "favicon": "/assets/psa/images/san_logo.svg",
+    "splash_image": "/assets/psa/images/san_logo.svg"
+}
+web_include_css = "/assets/psa/css/psa.css"
+app_include_css = "/assets/psa/css/psa.css"
+######################################
+
+
+############################################################################################################################################
+
 
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/psa/css/psa.css"
-# app_include_js = "/assets/psa/js/psa.js"
+# app_include_js = [
+#     "/assets/psa/js/psa.js",
+#     ]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/psa/css/psa.css"
@@ -38,6 +116,13 @@ app_license = "mit"
 #     "Translation",
 #     "ToDo"
 # ]
+
+
+# fixtures = [
+#     export all records from the Category table
+#     "Role"
+# ]
+
 
 # Svg Icons
 # ------------------
@@ -136,15 +221,15 @@ app_license = "mit"
 # 	}
 # }
 
+
 # Scheduled Tasks
 # ---------------
-
 # scheduler_events = {
 # 	"all": [
 # 		"psa.tasks.all"
 # 	],
-# 	"daily": [
-# 		"psa.tasks.daily"
+# 	"daily": [		 
+#         "psa.tasks.daily"
 # 	],
 # 	"hourly": [
 # 		"psa.tasks.hourly"
@@ -155,6 +240,11 @@ app_license = "mit"
 # 	"monthly": [
 # 		"psa.tasks.monthly"
 # 	],
+#     "cron": {
+#             "0 0 * * *": [
+#                 "psa.tasks.function"
+#             ]
+#     },
 # }
 
 # Testing

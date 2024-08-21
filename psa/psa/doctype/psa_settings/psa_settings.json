@@ -1,0 +1,466 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-03-16 23:36:04.788303",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_tab",
+  "check_active_requests_before_insert",
+  "enrollment_requests_tab",
+  "section_break_pdzj",
+  "allowed_program_degrees",
+  "column_break_otyr",
+  "suspend_enrollment_requests_section",
+  "suspend_set_a_limit_on_the_number_of_requests",
+  "suspend_number_of_requests",
+  "column_break_ysag",
+  "suspend_set_a_limit_on_the_number_of_rejected_requests",
+  "suspend_number_of_rejected_requests",
+  "continue_enrollment_requests_section",
+  "allow_before_end_of_period",
+  "column_break_qogd",
+  "change_student_research_supervisor_requests_tab",
+  "section_break_cyty",
+  "set_a_limit_on_the_number_of_suggested_supervisors",
+  "section_break_phkb",
+  "minimum_number_of_suggested_supervisors",
+  "column_break_jwht",
+  "maximum_number_of_suggested_supervisors",
+  "change_co_supervisor_requests_section",
+  "require_the_approval_of_the_main_supervisor",
+  "column_break_hasi",
+  "set_a_limit_on_the_number_of_co_supervisors",
+  "number_of_co_supervisors",
+  "section_break_ucta",
+  "column_break_wqln",
+  "set_a_limit_on_the_number_of_change_co_supervisor_requests",
+  "change_co_number_of_requests",
+  "column_break_atyk",
+  "section_break_dbig",
+  "set_a_limit_on_the_number_of_change_main_supervisor_requests",
+  "change_main_number_of_requests",
+  "column_break_cnff",
+  "change_student_research_requests_section",
+  "set_a_limit_on_the_number_of_change_research_requests",
+  "change_research_number_of_requests",
+  "column_break_mtek",
+  "progress_reports_tab",
+  "section_break_kmfc",
+  "program_progress_reports",
+  "section_break_bqtn",
+  "number_of_days_a_student_can_delay",
+  "researcher_meetings_tab",
+  "section_break_vxxp",
+  "set_a_limit_on_the_number_of_researcher_meetings",
+  "number_of_meetings",
+  "column_break_jfnj",
+  "formation_discussion_committee_tab",
+  "set_a_limit_on_the_number_of_suggested_committee_members",
+  "section_break_kjqc",
+  "minimum_number_of_suggested_committee_members",
+  "column_break_iala",
+  "maximum_number_of_suggested_committee_members",
+  "research_supervisor_limit_tab",
+  "main_supervisor_section",
+  "set_limit_on_number_researches_faculty_member_main_supervisor",
+  "number_of_researches_main",
+  "section_break_odch",
+  "set_limit_on_number_researches_faculty_member_co_supervisor",
+  "number_of_researches_co"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_ysag",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wqln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jfnj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Add program degrees that student can suspend enrollment during them.",
+   "fieldname": "allowed_program_degrees",
+   "fieldtype": "Table",
+   "label": "Allowed Program Degrees",
+   "options": "Program Degree for Suspend"
+  },
+  {
+   "default": "0",
+   "description": "Check it to allow students to create a continue enrollment request before the end of period.",
+   "fieldname": "allow_before_end_of_period",
+   "fieldtype": "Check",
+   "label": "Allow before end of period"
+  },
+  {
+   "fieldname": "column_break_qogd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_otyr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kmfc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_dbig",
+   "fieldtype": "Section Break",
+   "label": "Change Main Supervisor Requests"
+  },
+  {
+   "fieldname": "section_break_vxxp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "enrollment_requests_tab",
+   "fieldtype": "Tab Break",
+   "label": "Enrollment Requests"
+  },
+  {
+   "fieldname": "suspend_enrollment_requests_section",
+   "fieldtype": "Section Break",
+   "label": "Suspend Enrollment Requests"
+  },
+  {
+   "fieldname": "continue_enrollment_requests_section",
+   "fieldtype": "Section Break",
+   "label": "Continue Enrollment Requests"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of requests a student can create per an enrolled program.",
+   "fieldname": "suspend_set_a_limit_on_the_number_of_requests",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of requests"
+  },
+  {
+   "depends_on": "eval: doc.suspend_set_a_limit_on_the_number_of_requests",
+   "fieldname": "suspend_number_of_requests",
+   "fieldtype": "Int",
+   "label": "Number of requests ",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of rejected requests a student can create per an enrolled program.",
+   "fieldname": "suspend_set_a_limit_on_the_number_of_rejected_requests",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of rejected requests"
+  },
+  {
+   "depends_on": "eval: doc.suspend_set_a_limit_on_the_number_of_rejected_requests",
+   "fieldname": "suspend_number_of_rejected_requests",
+   "fieldtype": "Int",
+   "label": "Number of rejected requests",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed suggested supervisors a student can select.",
+   "fieldname": "set_a_limit_on_the_number_of_suggested_supervisors",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of suggested supervisors"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_supervisors;",
+   "description": "Set the value to 0 to set no minimum.",
+   "fieldname": "minimum_number_of_suggested_supervisors",
+   "fieldtype": "Int",
+   "label": "Minimum number of suggested supervisors",
+   "non_negative": 1
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_supervisors;",
+   "description": "Set the value to 0 to set no maximum.",
+   "fieldname": "maximum_number_of_suggested_supervisors",
+   "fieldtype": "Int",
+   "label": "Maximum number of suggested supervisors",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_phkb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jwht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cyty",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "default": "0",
+   "description": "Changing the research student\u2019s co-supervisor requires the approval of the main supervisor?",
+   "fieldname": "require_the_approval_of_the_main_supervisor",
+   "fieldtype": "Check",
+   "label": "Require the approval of the main supervisor"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of co-supervisors a student can have.",
+   "fieldname": "set_a_limit_on_the_number_of_co_supervisors",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of co-supervisors"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_co_supervisors;",
+   "fieldname": "number_of_co_supervisors",
+   "fieldtype": "Int",
+   "label": "Number of co-supervisors",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_pdzj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of change main supervisor requests a student can create per a program.",
+   "fieldname": "set_a_limit_on_the_number_of_change_main_supervisor_requests",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of change main supervisor requests"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.set_a_limit_on_the_number_of_change_main_supervisor_requests;",
+   "fieldname": "change_main_number_of_requests",
+   "fieldtype": "Int",
+   "label": "Number of requests",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.set_a_limit_on_the_number_of_change_co_supervisor_requests;",
+   "fieldname": "change_co_number_of_requests",
+   "fieldtype": "Int",
+   "label": "Number of requests",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of change co-supervisor requests a student can create per a program.",
+   "fieldname": "set_a_limit_on_the_number_of_change_co_supervisor_requests",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of change co-supervisor requests"
+  },
+  {
+   "fieldname": "column_break_hasi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ucta",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_atyk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cnff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "change_co_supervisor_requests_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "Change Co-Supervisor Requests"
+  },
+  {
+   "fieldname": "progress_reports_tab",
+   "fieldtype": "Tab Break",
+   "label": "Progress Reports"
+  },
+  {
+   "fieldname": "researcher_meetings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Researcher Meetings"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of meetings a researcher can create per a program.",
+   "fieldname": "set_a_limit_on_the_number_of_researcher_meetings",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researcher meetings"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_researcher_meetings",
+   "fieldname": "number_of_meetings",
+   "fieldtype": "Int",
+   "label": "Number of meetings",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "program_progress_reports",
+   "fieldtype": "Table",
+   "label": "Program progress reports",
+   "options": "Progress Report Settings Child Table"
+  },
+  {
+   "fieldname": "general_tab",
+   "fieldtype": "Tab Break",
+   "label": "General"
+  },
+  {
+   "default": "0",
+   "description": "Check it to prevent adding a new request if there is another request that is draft or pending approval.",
+   "fieldname": "check_active_requests_before_insert",
+   "fieldtype": "Check",
+   "label": "Check Active Requests Before Insert"
+  },
+  {
+   "fieldname": "formation_discussion_committee_tab",
+   "fieldtype": "Tab Break",
+   "label": "Formation Discussion Committee"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed suggested committee members a supervisor can select.",
+   "fieldname": "set_a_limit_on_the_number_of_suggested_committee_members",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of suggested committee members"
+  },
+  {
+   "fieldname": "section_break_kjqc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_committee_members;",
+   "description": "Set the value to 0 to set no minimum.",
+   "fieldname": "minimum_number_of_suggested_committee_members",
+   "fieldtype": "Int",
+   "label": "Minimum number of suggested committee members",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_iala",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.set_a_limit_on_the_number_of_suggested_committee_members;",
+   "description": "Set the value to 0 to set no maximum.",
+   "fieldname": "maximum_number_of_suggested_committee_members",
+   "fieldtype": "Int",
+   "label": "Maximum number of suggested committee members",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed researches a faculty member can be a main supervisor for.",
+   "fieldname": "set_limit_on_number_researches_faculty_member_main_supervisor",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researches a faculty member can be a main supervisor for"
+  },
+  {
+   "fieldname": "research_supervisor_limit_tab",
+   "fieldtype": "Tab Break",
+   "label": "Research Supervisor Limit"
+  },
+  {
+   "fieldname": "main_supervisor_section",
+   "fieldtype": "Section Break",
+   "label": "Main Supervisor"
+  },
+  {
+   "depends_on": "eval: doc.set_limit_on_number_researches_faculty_member_main_supervisor;",
+   "fieldname": "number_of_researches_main",
+   "fieldtype": "Int",
+   "label": "Number of researches",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_odch",
+   "fieldtype": "Section Break",
+   "label": "Co-Supervisor"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of allowed researches a faculty member can be a co-supervisor for.",
+   "fieldname": "set_limit_on_number_researches_faculty_member_co_supervisor",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of researches a faculty member can be a co-supervisor for"
+  },
+  {
+   "depends_on": "eval: doc.set_limit_on_number_researches_faculty_member_co_supervisor;",
+   "fieldname": "number_of_researches_co",
+   "fieldtype": "Int",
+   "label": "Number of researches",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "number_of_days_a_student_can_delay",
+   "fieldtype": "Int",
+   "label": "Number of days a student can delay submitting a progress report before notifying the supervisor",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "section_break_bqtn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "change_student_research_supervisor_requests_tab",
+   "fieldtype": "Tab Break",
+   "label": "Change Student Research & Supervisor Requests"
+  },
+  {
+   "fieldname": "change_student_research_requests_section",
+   "fieldtype": "Section Break",
+   "label": "Change Student Research Requests"
+  },
+  {
+   "default": "0",
+   "description": "Check it to set a limit on the number of change student research requests a student can create per a program.",
+   "fieldname": "set_a_limit_on_the_number_of_change_research_requests",
+   "fieldtype": "Check",
+   "label": "Set a limit on the number of change main supervisor requests"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.set_a_limit_on_the_number_of_change_research_requests;",
+   "fieldname": "change_research_number_of_requests",
+   "fieldtype": "Int",
+   "label": "Number of requests",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_mtek",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-07-31 23:51:01.140916",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "PSA Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "All",
+   "select": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,32 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.fees_status==\"Not Paid\"",
+ "creation": "2024-05-23 02:05:17.176486",
+ "date_changed": "creation",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "Days After",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "You have to Pay Fees of Your Suspend Enrollment Request ({{doc.name}}) to complete it.",
+ "modified": "2024-05-24 20:51:01.088028",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "New Suspend Enrollment Request Notification for Student Fees Reminder Email",
+ "owner": "eyadalolofi2020@gmail.com",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "You have to Pay Fees of Your Suspend Enrollment Request ({{doc.name}}) to complete it."
+}

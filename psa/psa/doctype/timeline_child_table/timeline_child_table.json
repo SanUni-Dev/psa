@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "creation": "2024-03-27 17:11:57.248098",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "position",
+  "full_name",
+  "previous_status",
+  "received_date",
+  "action",
+  "next_status",
+  "action_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Position"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "previous_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Previous Status"
+  },
+  {
+   "fieldname": "received_date",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Received Date"
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Action"
+  },
+  {
+   "fieldname": "next_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Next Status"
+  },
+  {
+   "fieldname": "action_date",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Action Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-16 01:32:11.504908",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Timeline Child Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

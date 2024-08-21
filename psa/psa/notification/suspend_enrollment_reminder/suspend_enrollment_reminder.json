@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2024-05-28 01:22:50.993801",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "Method",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "hiddddddddd\nejewklowlodddddddddddd",
+ "method": "psa.tasks.cron.send_suspend_enrollment_notification",
+ "modified": "2024-05-28 02:01:28.606796",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "suspend_enrollment_reminder",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "psa",
+ "sender_email": "psa.yemen.2024@gmail.com",
+ "subject": "Reminder to Resume Enrollment"
+}

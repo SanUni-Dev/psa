@@ -1,0 +1,398 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-01-27 22:36:10.913144",
+ "doctype": "DocType",
+ "documentation": "/psa/\u0637\u0644\u0628-\u0641\u062a\u062d-\u0627\u0644\u0642\u064a\u062f",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_aexq",
+  "student",
+  "column_break_vdui",
+  "program_enrollment",
+  "more_information_section",
+  "information",
+  "section_break_kpjo",
+  "request_date",
+  "column_break_caxe",
+  "status",
+  "section_break_wpel",
+  "modified_request_date",
+  "column_break_tpag",
+  "rejection_reason",
+  "last_approved_suspend_enrollment_request_details_section",
+  "suspend_enrollment_request",
+  "column_break_scdl",
+  "suspended_request_details_html",
+  "section_break_uktv",
+  "amended_from",
+  "timeline_tab",
+  "timeline_section",
+  "timeline_html",
+  "timeline_child_table",
+  "fees_information_tab",
+  "section_break_rddd",
+  "fees_status",
+  "transaction_information_tab",
+  "transaction_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_aexq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "permlevel": 2,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "Not Paid",
+   "fieldname": "fees_status",
+   "fieldtype": "Select",
+   "label": "Fees Status",
+   "options": "\nPaid\nNot Paid",
+   "permlevel": 2
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Continue Enrollment Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_approved_suspend_enrollment_request_details_section",
+   "fieldtype": "Section Break",
+   "label": "Last Approved Suspend Enrollment Request Details"
+  },
+  {
+   "fieldname": "column_break_scdl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kpjo",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "column_break_caxe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "suspended_request_details_html",
+   "fieldtype": "HTML",
+   "label": "Request Details"
+  },
+  {
+   "fieldname": "fees_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Fees Information"
+  },
+  {
+   "fieldname": "section_break_rddd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "timeline_tab",
+   "fieldtype": "Tab Break",
+   "hidden": 1,
+   "label": "Timeline"
+  },
+  {
+   "fieldname": "timeline_html",
+   "fieldtype": "HTML"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "timeline_child_table",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Timeline",
+   "options": "Timeline Child Table",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timeline_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "permlevel": 2,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vdui",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Continue-Req-.YY.-.MM.-.#####.",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "suspend_enrollment_request",
+   "fieldtype": "Link",
+   "label": "Suspend Enrollment Request",
+   "options": "Suspend Enrollment Request",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_wpel",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tpag",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_uktv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "transaction_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Transaction Information"
+  },
+  {
+   "fieldname": "transaction_information",
+   "fieldtype": "HTML",
+   "label": "Transaction Information"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-02 02:07:24.829795",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Continue Enrollment Request",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "if_owner": 1,
+   "read": 1,
+   "role": "Student",
+   "select": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 1,
+   "read": 1,
+   "role": "Student"
+  },
+  {
+   "if_owner": 1,
+   "permlevel": 2,
+   "read": 1,
+   "role": "Student",
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Dean For GSA",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Vice Dean For GSA",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Vice Dean For GSA"
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Department Head",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Department Head",
+   "write": 1
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Department Head"
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Dean",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "College Dean"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "College Dean"
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "College Director of Graduate Studies",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "College Director of Graduate Studies"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "College Director of Graduate Studies"
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Vice Chancellor for Graduate Studies",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Vice Chancellor for Graduate Studies"
+  },
+  {
+   "permlevel": 2,
+   "read": 1,
+   "role": "Vice Chancellor for Graduate Studies"
+  },
+  {
+   "read": 1,
+   "role": "No One for Rejected Request",
+   "select": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

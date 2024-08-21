@@ -1,0 +1,211 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-05 18:04:59.317878",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_rgae",
+  "enabled",
+  "column_break_uuuw",
+  "status",
+  "section_break_jhrk",
+  "student",
+  "program_enrollment",
+  "column_break_twux",
+  "section_break_cssm",
+  "supervisor",
+  "supervisor_name",
+  "column_break_lirc",
+  "type",
+  "section_break_apcp",
+  "reference_doctype",
+  "column_break_cdqb",
+  "document_name",
+  "section_break_fppk",
+  "pervious_supervisor",
+  "column_break_egdd",
+  "supervisor_appointment_date",
+  "section_break_gbik",
+  "research_details_html",
+  "section_break_iblh",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nActive\nChanged\nFinished"
+  },
+  {
+   "fieldname": "column_break_twux",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Faculty Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nMain Supervisor\nCo-Supervisor"
+  },
+  {
+   "fieldname": "section_break_gbik",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "research_details_html",
+   "fieldtype": "HTML",
+   "label": "Research Details html"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PSA-Std-Sup-.YY.-.MM.-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_apcp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "column_break_cdqb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_fppk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pervious_supervisor",
+   "fieldtype": "Link",
+   "label": "Pervious Supervisor",
+   "options": "Student Supervisor"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_jhrk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "supervisor.faculty_member_name",
+   "fieldname": "supervisor_name",
+   "fieldtype": "Data",
+   "label": "Supervisor Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Student Supervisor",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_egdd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "supervisor_appointment_date",
+   "fieldtype": "Date",
+   "label": "Supervisor Appointment Date"
+  },
+  {
+   "fieldname": "section_break_rgae",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_uuuw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cssm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lirc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_iblh",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-07-27 02:24:01.141853",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Student Supervisor",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "supervisor_name",
+ "track_changes": 1
+}

@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"The File Pending Delivery by the Archivist\"",
+ "creation": "2024-07-24 22:53:12.409621",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Withdrawal Request",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-07-25 01:12:41.008636",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "Withdrawal Request Workflow Notification for Student File",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "\"Take Your File\", Your Withdrawal Request ({{doc.name}}) Approved by Director of Graduate Studies.",
+ "value_changed": "status"
+}

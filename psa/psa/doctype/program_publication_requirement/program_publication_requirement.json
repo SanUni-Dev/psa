@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-04 03:46:45.050902",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_ijnz",
+  "program_degree",
+  "column_break_qriw",
+  "effective_date",
+  "section_break_psgk",
+  "conditions",
+  "section_break_gmpy",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Pub-Con-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Effective Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "conditions",
+   "fieldtype": "Table",
+   "label": "Conditions",
+   "options": "Publication Condition"
+  },
+  {
+   "fieldname": "column_break_qriw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_psgk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "program_degree",
+   "fieldtype": "Link",
+   "label": "Program Degree",
+   "options": "Program Degree",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_gmpy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Program Publication Requirement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_ijnz",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-07-27 03:20:59.385493",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Program Publication Requirement",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "program_degree",
+ "track_changes": 1
+}

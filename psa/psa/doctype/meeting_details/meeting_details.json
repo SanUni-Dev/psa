@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-04 03:23:11.610491",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "meeting_id",
+  "column_break_zcjc",
+  "date"
+ ],
+ "fields": [
+  {
+   "fieldname": "meeting_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Meeting Id",
+   "options": "Researcher Meeting",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "meeting_id.meeting_date",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zcjc",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-15 01:07:01.966449",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Meeting Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

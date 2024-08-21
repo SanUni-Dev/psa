@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-05-23 01:02:18.644006",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "program_enrollment",
+  "student_research",
+  "column_break_asdq",
+  "discussion_date",
+  "discussion_time",
+  "discussion_place",
+  "status",
+  "section_break_cxcy",
+  "selected_committee",
+  "discussion_committee_evaluation",
+  "amended_from",
+  "section_break_esxh",
+  "note",
+  "done"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Initial-Discussion-.YY.-.MM.-.#####.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_asdq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cxcy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Initial Discussion",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "discussion_date",
+   "fieldtype": "Date",
+   "label": "Discussion Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discussion_time",
+   "fieldtype": "Time",
+   "label": "Discussion Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discussion_place",
+   "fieldtype": "Data",
+   "label": "Discussion Place",
+   "reqd": 1
+  },
+  {
+   "fieldname": "selected_committee",
+   "fieldtype": "Table",
+   "label": "Selected Committee",
+   "options": "Selected Committee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discussion_committee_evaluation",
+   "fieldtype": "Table",
+   "label": "Discussion Committee Evaluation",
+   "options": "Discussion Committee Evaluation"
+  },
+  {
+   "fieldname": "section_break_esxh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Text Editor",
+   "label": "Note"
+  },
+  {
+   "default": "0",
+   "fieldname": "done",
+   "fieldtype": "Check",
+   "label": "Done"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-06-06 22:47:36.759039",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Initial Discussion",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

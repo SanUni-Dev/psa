@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.status == \"Approval Pending by Vice Dean for GSA\" or doc.status == \"Approval Pending by Department Head\" or doc.status == \"Approval Pending by Department Council\" or doc.status == \"Approval Pending by College Dean\" or doc.status == \"Approval Pending by College Council\"",
+ "creation": "2024-07-24 22:53:11.159662",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Suspend Enrollment Request",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2024-07-25 00:57:59.032249",
+ "modified_by": "esmailebraheem771@gmail.com",
+ "module": "PSA",
+ "name": "Suspend Enrollment Request Workflow Notification for Student",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Student"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Your Suspend Enrollment Request ({{doc.name}}) {{doc.status}}.",
+ "value_changed": "status"
+}

@@ -1,0 +1,262 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-08-02 22:50:37.272526",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_4uxa",
+  "student",
+  "program_enrollment",
+  "column_break_fcrr",
+  "research_title",
+  "student_supervisor",
+  "section_break_zsvh",
+  "information",
+  "section_break_ymbg",
+  "chairman",
+  "member_of_internal_selected_committee",
+  "member_of_external_selected_committee",
+  "section_break_wfzp",
+  "request_date",
+  "column_break_igxi",
+  "status",
+  "section_break_eoip",
+  "reference_doctype",
+  "column_break_fhjs",
+  "document_name",
+  "section_break_hwbq",
+  "modified_request_date",
+  "column_break_yhuk",
+  "rejection_reason",
+  "section_break_pgpg",
+  "amended_from",
+  "attachments_tab",
+  "request_attachment"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "PSA-TDC-.YY.-.MM.-.#####.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_4uxa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment"
+  },
+  {
+   "fieldname": "column_break_fcrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "research_title",
+   "fieldtype": "Link",
+   "label": "Student Research",
+   "options": "Student Research"
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Link",
+   "label": "Student Supervisor",
+   "options": "Student Supervisor"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_zsvh",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "depends_on": "eval: doc.program_enrollment",
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  },
+  {
+   "fieldname": "section_break_ymbg",
+   "fieldtype": "Section Break",
+   "label": "Request Information"
+  },
+  {
+   "fieldname": "member_of_internal_selected_committee",
+   "fieldtype": "Table",
+   "label": "Member of Internal Selected Committee",
+   "options": "Internal Discussion Committee"
+  },
+  {
+   "fieldname": "member_of_external_selected_committee",
+   "fieldtype": "Table",
+   "label": "Member of External Selected Committee ",
+   "options": "External Discussion Committee"
+  },
+  {
+   "fieldname": "section_break_wfzp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "is_virtual": 1,
+   "label": "Request Date",
+   "options": "frappe.utils.format_datetime(doc.creation, \n                format_string='dd MMM yyyy, HH:mm:ss'\n            )",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_igxi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_hwbq",
+   "fieldtype": "Section Break",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "modified_request_date",
+   "fieldtype": "Date",
+   "is_virtual": 1,
+   "label": "Modified Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yhuk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason"
+  },
+  {
+   "fieldname": "section_break_pgpg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Thesis Defense Committee",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "attachments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "request_attachment",
+   "fieldtype": "Attach",
+   "label": "Request Attachment"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Document Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "section_break_eoip",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_fhjs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chairman",
+   "fieldtype": "Link",
+   "label": "Chairman",
+   "options": "Faculty Member"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-03 00:56:39.046574",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Thesis Defense Committee",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Student",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

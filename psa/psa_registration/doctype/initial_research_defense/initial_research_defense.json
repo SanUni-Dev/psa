@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-05-05 18:54:02.067247",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "program_enrollment",
+  "column_break_noae",
+  "supervisor",
+  "naming_series",
+  "section_break_zaej",
+  "research_title_english",
+  "column_break_kcii",
+  "research_title_arabic",
+  "research_proposal",
+  "\u0644\u062c\u0646\u0629_\u0627\u0644\u0645\u0646\u0627\u0642\u0629_ta",
+  "committee_president_section",
+  "committee_president",
+  "discussion_place",
+  "type_committee",
+  "column_break_gdzn",
+  "discussion_date",
+  "discussion_time",
+  "committee_members_section",
+  "committee_members"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming series",
+   "options": "REQ-."
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_noae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "committee_president.",
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Student Main Supervisor"
+  },
+  {
+   "fieldname": "section_break_zaej",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": ".",
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fieldname": "column_break_kcii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": ".research_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
+  },
+  {
+   "fetch_from": "student.research_proposal",
+   "fieldname": "research_proposal",
+   "fieldtype": "Attach",
+   "label": "Research Proposal"
+  },
+  {
+   "fieldname": "\u0644\u062c\u0646\u0629_\u0627\u0644\u0645\u0646\u0627\u0642\u0629_ta",
+   "fieldtype": "Tab Break",
+   "label": "Discussion Committee"
+  },
+  {
+   "fieldname": "committee_president_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "committee_president",
+   "fieldtype": "Link",
+   "label": "Committee President",
+   "options": "Faculty Member"
+  },
+  {
+   "fieldname": "column_break_gdzn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discussion_date",
+   "fieldtype": "Date",
+   "label": "Discussion Date"
+  },
+  {
+   "fieldname": "discussion_time",
+   "fieldtype": "Datetime",
+   "label": "Discussion Time"
+  },
+  {
+   "fieldname": "committee_members_section",
+   "fieldtype": "Section Break",
+   "label": "Committee Members"
+  },
+  {
+   "fieldname": "committee_members",
+   "fieldtype": "Table",
+   "label": "Committee Members",
+   "options": "Request A Supervisor child"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discussion_place",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Discussion Place",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type_committee",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type Committee ",
+   "options": "\nResearch Proposal Defense\nInitial Defense",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-16 03:05:01.729695",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Initial Research Defense",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
