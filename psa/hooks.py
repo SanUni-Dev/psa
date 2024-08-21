@@ -3,8 +3,8 @@ app_title = "Postgraduate Studies Administration"
 app_publisher = "Sana\'a university"
 app_description = "Postgraduate Studies Administration"
 app_email = "sanaa-uni@gmail.com"
-app_license = "mit"
-required_apps = ["wiki", "academia"]
+app_license = "gpl-3.0"
+required_apps = ["wiki", "academia", "frappe/erpnext", "frappe/hrms"]
 
 
 fixtures = [
