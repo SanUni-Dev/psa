@@ -8,16 +8,10 @@ required_apps = ["wiki", "academia"]
 
 
 fixtures = [
-    "Workflow",
-    "Workflow State",
-    "Workflow Action Master",
+ 
     "Wiki Space",
     "Wiki Page",
-    "Email Account",
-    "Website Settings",
-    "Navbar Settings"
-    "Transaction Category Template",
-    "Transaction Category"
+ 
 ]
 
 
