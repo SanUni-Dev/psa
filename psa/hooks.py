@@ -3,8 +3,8 @@ app_title = "Postgraduate Studies Administration"
 app_publisher = "Sana\'a university"
 app_description = "Postgraduate Studies Administration"
 app_email = "sanaa-uni@gmail.com"
-app_license = "mit"
-required_apps = ["wiki", "academia"]
+app_license = "gpl-3.0"
+required_apps = ["wiki", "academia", "frappe/erpnext", "frappe/hrms"]
 
 
 fixtures = [
@@ -23,7 +23,7 @@ fixtures = [
 
 app_include_js = [
     "/assets/psa/js/psa_utils.js"
-    ]
+]
 
 
 doc_events = {
@@ -37,8 +37,6 @@ doc_events = {
     "Student Supervisor": {
         "on_submit": "psa.tasks.cron.notify_on_supervisor_change"
     }
-
-    
 }
 
 
@@ -57,7 +55,7 @@ doc_events = {
 ########## stopped workflow override
 # app_include_js = [
 #     "/assets/psa/js/workflow_override.js"
-#     ]
+# ]
 
 ########## deleted because of no need of workflow
 # fixtures = [
