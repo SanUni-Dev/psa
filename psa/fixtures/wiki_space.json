@@ -32,7 +32,7 @@
   "docstatus": 0,
   "doctype": "Wiki Space",
   "light_mode_logo": null,
-  "modified": "2024-04-18 20:51:11.459736",
+  "modified": "2024-08-23 23:42:34.696193",
   "name": "905efdcc82",
   "navbar_items": [],
   "route": "psa",
@@ -60,6 +60,14 @@
     "parentfield": "wiki_sidebars",
     "parenttype": "Wiki Space",
     "wiki_page": "466f813614"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "استمارة توثيق ",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "e18d41ab5d"
    }
   ]
  }
