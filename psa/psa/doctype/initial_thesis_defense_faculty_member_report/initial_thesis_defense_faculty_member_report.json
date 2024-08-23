@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-08-23 23:31:03.719709",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_zrxn",
+  "student",
+  "program_enrollment",
+  "column_break_obzz",
+  "faculty_member",
+  "section_break_nrzo",
+  "description",
+  "section_break_jzib",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-Fac-Mem-Rep-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "column_break_obzz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_nrzo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_break_jzib",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Initial Thesis Defense Faculty Member Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_zrxn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "faculty_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Faculty Member",
+   "options": "Faculty Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nApproved\nUnapproved"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-23 23:34:47.772647",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Initial Thesis Defense Faculty Member Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
