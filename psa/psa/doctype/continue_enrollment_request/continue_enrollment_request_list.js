@@ -11,7 +11,7 @@ frappe.listview_settings["Continue Enrollment Request"] = {
     // $(".sidebar-toggle-placeholder").remove();
 
     listview.page.add_inner_button(__("Documentation"), function() {
-      window.location.href = "/psa/طلب-فتح-القيد";
+      window.location.href = "/psa-ar/طلب-فتح-القيد";
       // window.open("/psa/طلب-فتح-القيد", "_blank");
     });
 
