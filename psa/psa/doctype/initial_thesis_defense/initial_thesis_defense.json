@@ -1,0 +1,194 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-08-23 00:53:16.201319",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "section_break_oqtk",
+  "student",
+  "program_enrollment",
+  "column_break_sduv",
+  "student_supervisor",
+  "student_research",
+  "more_information_section",
+  "information",
+  "section_break_bsol",
+  "research_title_arabic",
+  "column_break_chvw",
+  "research_title_english",
+  "section_break_x0oq",
+  "amended_from",
+  "discussion_committee_tab",
+  "chairman",
+  "discussion_place",
+  "column_break_mgtj",
+  "discussion_date",
+  "discussion_time",
+  "committee_members_section",
+  "committee_members"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_x0oq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Initial Thesis Defense",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PSA-ITD-.YY.-.MM.-.#####."
+  },
+  {
+   "fieldname": "section_break_oqtk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sduv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student Supervisor",
+   "options": "Student Supervisor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student Research",
+   "options": "Student Research",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_bsol",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "student_research.research_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Small Text",
+   "label": "Research Title Arabic"
+  },
+  {
+   "fieldname": "column_break_chvw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "student_research.research_title_english",
+   "fieldname": "research_title_english",
+   "fieldtype": "Small Text",
+   "label": "Research Title English"
+  },
+  {
+   "fieldname": "discussion_committee_tab",
+   "fieldtype": "Tab Break",
+   "label": "Discussion Committee"
+  },
+  {
+   "fieldname": "chairman",
+   "fieldtype": "Link",
+   "label": "Chairman",
+   "options": "Faculty Member"
+  },
+  {
+   "fieldname": "discussion_place",
+   "fieldtype": "Data",
+   "label": "Discussion Place"
+  },
+  {
+   "fieldname": "column_break_mgtj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "discussion_date",
+   "fieldtype": "Date",
+   "label": "Discussion Date"
+  },
+  {
+   "fieldname": "discussion_time",
+   "fieldtype": "Time",
+   "label": "Discussion Time"
+  },
+  {
+   "fieldname": "committee_members_section",
+   "fieldtype": "Section Break",
+   "label": "Committee Members"
+  },
+  {
+   "fieldname": "committee_members",
+   "fieldtype": "Table",
+   "label": "Committee Members",
+   "options": "Initial Thesis Defense Committee Member"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "information",
+   "fieldtype": "HTML",
+   "label": "Information"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-23 01:51:59.874931",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Initial Thesis Defense",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

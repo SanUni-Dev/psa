@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "creation": "2024-08-23 22:58:13.481852",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student",
+  "program_enrollment",
+  "column_break_hhyr",
+  "student_supervisor",
+  "student_research",
+  "section_break_ywsm",
+  "committee_report",
+  "section_break_5srj",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_5srj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Initial Thesis Defense Committee Member Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hhyr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "student_supervisor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student Supervisor",
+   "options": "Student Supervisor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student_research",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student Research",
+   "options": "Student Research",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_ywsm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "committee_report",
+   "fieldtype": "Table",
+   "label": "Committee Report",
+   "options": "Initial Thesis Defense Discussion Committee Member"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-23 23:24:01.226090",
+ "modified_by": "Administrator",
+ "module": "PSA",
+ "name": "Initial Thesis Defense Committee Member Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
