@@ -1,34 +1,6 @@
 [
  {
   "allow_guest": 1,
-  "content": "Welcome to the homepage of your wiki!",
-  "docstatus": 0,
-  "doctype": "Wiki Page",
-  "meta_description": null,
-  "meta_image": null,
-  "meta_keywords": null,
-  "modified": "2024-05-23 00:17:04.889722",
-  "name": "2fb06cc44f",
-  "published": 1,
-  "route": "wiki/home",
-  "title": "Home"
- },
- {
-  "allow_guest": 1,
-  "content": "Welcome to Wiki Space wiki",
-  "docstatus": 0,
-  "doctype": "Wiki Page",
-  "meta_description": null,
-  "meta_image": null,
-  "meta_keywords": null,
-  "modified": "2024-05-23 00:17:05.615848",
-  "name": "b51a36fdb3",
-  "published": 1,
-  "route": "wiki/new-wiki-page",
-  "title": "New Wiki Page"
- },
- {
-  "allow_guest": 1,
   "content": "<div><p style=\"text-align: right;\">يُمكّن النظام الطالب من إصدار تقرير إنجاز لما قام به خلال فترة، حيث أنه مُطالب بعدد محدد من التقارير خلال فترة البحث الذي يسهل توثيق تقدم الطالب في البحث بشكل منظم وفعال.</p><h2 style=\"text-align: right;\"><strong>كيفية إنشاء تقرير إنجاز</strong></h2><ol><li><p style=\"text-align: right;\">الدخول إلى <strong>الشاشة الرئيسية</strong>.</p></li><li><p style=\"text-align: right;\">اختيار <strong>تقرير إنجاز </strong>من قائمة الطلبات المتاحة.</p></li><li><p style=\"text-align: right;\">الضغط على زر <strong>إضافة تقرير إنجاز</strong>.</p></li><li><p style=\"text-align: right;\">يتم تعبئة بيانات الطالب تلقائيًا من النظام.</p></li><li><p style=\"text-align: right;\">حفظ المستند كمسودة للاحتفاظ بالبيانات المدخلة بعد كتابة تاريخ وفترة التقرير وتفاصيل البحث ...إلخ.</p></li><li><p style=\"text-align: right;\">يصل المستند إلى المشرف للإطلاع عليه.</p></li><li><p style=\"text-align: right;\">كتابة المشرف للملاحظات.</p></li><li><p style=\"text-align: right;\">يتم إشعار الطالب بذلك.</p></li></ol><h2 style=\"text-align: right;\"><strong>ملاحظات</strong></h2><ul><li><p style=\"text-align: right;\">بإمكان الطالب إصدار تقرير إنجاز إذا كانت حالته بالنظام \"مستمر\" فقط، وفي غير ذلك لا يستطيع إصدار التقرير<strong>.</strong></p></li></ul><p style=\"text-align: right;\"><br class=\"ProseMirror-trailingBreak\"/></p><p style=\"text-align: right;\"><br class=\"ProseMirror-trailingBreak\"/></p></div>",
   "docstatus": 0,
   "doctype": "Wiki Page",
