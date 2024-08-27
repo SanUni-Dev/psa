@@ -4,38 +4,21 @@
   "docstatus": 0,
   "doctype": "Wiki Space",
   "light_mode_logo": null,
-  "modified": "2024-05-23 00:17:05.659532",
-  "name": "1044462692",
-  "navbar_items": [],
-  "route": "wiki",
-  "wiki_sidebars": [
-   {
-    "hide_on_sidebar": 0,
-    "parent": "1044462692",
-    "parent_label": "Wiki",
-    "parentfield": "wiki_sidebars",
-    "parenttype": "Wiki Space",
-    "wiki_page": "2fb06cc44f"
-   },
-   {
-    "hide_on_sidebar": 0,
-    "parent": "1044462692",
-    "parent_label": "New Group",
-    "parentfield": "wiki_sidebars",
-    "parenttype": "Wiki Space",
-    "wiki_page": "b51a36fdb3"
-   }
-  ]
- },
- {
-  "dark_mode_logo": null,
-  "docstatus": 0,
-  "doctype": "Wiki Space",
-  "light_mode_logo": null,
-  "modified": "2024-08-23 23:42:34.696193",
+  "modified": "2024-08-27 01:26:50.844728",
   "name": "905efdcc82",
-  "navbar_items": [],
-  "route": "psa",
+  "navbar_items": [
+   {
+    "label": "EN",
+    "open_in_new_tab": 0,
+    "parent": "905efdcc82",
+    "parent_label": null,
+    "parentfield": "navbar_items",
+    "parenttype": "Wiki Space",
+    "right": 1,
+    "url": "psa-en"
+   }
+  ],
+  "route": "psa-ar",
   "wiki_sidebars": [
    {
     "hide_on_sidebar": 0,
@@ -59,15 +42,150 @@
     "parent_label": "طلبات القيد",
     "parentfield": "wiki_sidebars",
     "parenttype": "Wiki Space",
-    "wiki_page": "466f813614"
+    "wiki_page": "6117911d0d"
    },
    {
     "hide_on_sidebar": 0,
     "parent": "905efdcc82",
-    "parent_label": "استمارة توثيق ",
+    "parent_label": "طلبات التغيير",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "72acd4650b"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "طلبات التغيير",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "52753cfe76"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "طلبات التغيير",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "48b305315e"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "طلبات المناقشة",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "ce9d8d9c5e"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "أخرى",
     "parentfield": "wiki_sidebars",
     "parenttype": "Wiki Space",
     "wiki_page": "e18d41ab5d"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "905efdcc82",
+    "parent_label": "أخرى",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "645e1d547f"
+   }
+  ]
+ },
+ {
+  "dark_mode_logo": null,
+  "docstatus": 0,
+  "doctype": "Wiki Space",
+  "light_mode_logo": null,
+  "modified": "2024-08-27 01:27:05.740818",
+  "name": "391382f4df",
+  "navbar_items": [
+   {
+    "label": "AR",
+    "open_in_new_tab": 0,
+    "parent": "391382f4df",
+    "parent_label": null,
+    "parentfield": "navbar_items",
+    "parenttype": "Wiki Space",
+    "right": 1,
+    "url": "psa-ar"
+   }
+  ],
+  "route": "psa-en",
+  "wiki_sidebars": [
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Enrollment Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "71d91b223e"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Enrollment Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "c7d8b104e8"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Enrollment Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "466f813614"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Change Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "e93077685d"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Change Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "017b1ce77e"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Change Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "acd4b037ce"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Defense Requests",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "5fef3b2bd6"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Other",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "bbb0c9bfc7"
+   },
+   {
+    "hide_on_sidebar": 0,
+    "parent": "391382f4df",
+    "parent_label": "Other",
+    "parentfield": "wiki_sidebars",
+    "parenttype": "Wiki Space",
+    "wiki_page": "fabe26a38c"
    }
   ]
  }

@@ -11,7 +11,7 @@ frappe.listview_settings["Suspend Enrollment Request"] = {
     // $(".sidebar-toggle-placeholder").remove();
 
     listview.page.add_inner_button(__("Documentation"), function() {
-      window.location.href = "/psa/طلب-وقف-القيد";
+      window.location.href = "/psa-ar/طلب-وقف-القيد";
       // window.open("/psa/طلب-وقف-القيد", "_blank");
     });
  
