@@ -21,21 +21,24 @@
   {
    "fieldname": "student",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Student",
-   "options": "Student"
+   "options": "Student",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "column_break_noae",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "student.search_title_english",
+   "fetch_from": ".search_title_english",
    "fieldname": "research_title_english",
    "fieldtype": "Small Text",
    "label": "Research Title English"
   },
   {
-   "fetch_from": "student.search_title_arabic",
+   "fetch_from": ".search_title_arabic",
    "fieldname": "research_title_arabic",
    "fieldtype": "Small Text",
    "label": "Research Title Arabic"
@@ -43,19 +46,26 @@
   {
    "fieldname": "supervisor",
    "fieldtype": "Data",
-   "label": "Supervisor"
+   "in_list_view": 1,
+   "label": "Supervisor",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Naming series",
    "options": "REQ-."
   },
   {
    "fieldname": "program_enrollment",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Program Enrollment",
-   "options": "Program Enrollment"
+   "options": "Program Enrollment",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "section_break_zaej",
@@ -73,7 +83,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-05 18:35:12.893566",
+ "modified": "2024-08-04 00:51:22.003159",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Request for Research Proposal Defense",

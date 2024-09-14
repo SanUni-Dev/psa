@@ -1,31 +1,33 @@
 // Copyright (c) 2024, Sana'a university and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Initial Research Defense", {
-// 	refresh(frm) {
-
-// 	},
-// });
-frappe.ui.form.on("Initial Research Defense", {
-   
-   
-    // Fetch data from the Doctype
-    student: function(frm) {
-      
-
-      var student = frm.doc.student
+frappe.ui.form.on("Appoint Supervisor and Defense",  {
+  onload(frm){
+       // Fetch data from the Doctype
+       frappe.call({
+        method: "frappe.client.get_list",
+        args: {
+          doctype: "Student",
+          fields: ["name"],
+          filters: {
+              user_id:frappe.session.user_email
+          }
+        },
+        callback: function(r) {
+          frm.set_value('student', r.message[0].name);
+          
           frappe.call({
               method: "frappe.client.get_list",
               args: {
                 doctype: "Program Enrollment",
-                fields: ["name"],
+                fields: ["program"],
                 filters: {
-                  student:student,
+                  student:r.message[0].name,
                   status:"Continued"
                 }
               },
-              callback: function(p) {
-          frm.set_value('program_enrollment', p.message[0].name);
+              callback: function(s) {
+          frm.set_value('program_enrollment', s.message[0].program);
                 
         
               }
@@ -36,16 +38,15 @@ frappe.ui.form.on("Initial Research Defense", {
                 doctype: "Student Supervisor",
                 fields: ["supervisor_name"],
                 filters: {
-                  student:student,
-                  status:"Active",
-                  type:"Main Supervisor"
+                  student:r.message[0].name,
+                  status:"Active"
                 }
               },
               callback: function(s) {
           frm.set_value('supervisor', s.message[0].supervisor_name);
                 
         
-              },
+              }
             });
             frappe.call({
               method: "frappe.client.get_list",
@@ -53,7 +54,7 @@ frappe.ui.form.on("Initial Research Defense", {
                 doctype: "Student Research",
                 fields: ["research_title_arabic","research_title_english"],
                 filters: {
-                  student:student,
+                  student:r.message[0].name,
                   status:"Active"
                 }
               },
@@ -63,13 +64,11 @@ frappe.ui.form.on("Initial Research Defense", {
         
               }
             });
-        
-    
-
-
-
-
-      
-    }
-   
+        }
+      });
+  }
+  
+ 
    });
+  
+ 
