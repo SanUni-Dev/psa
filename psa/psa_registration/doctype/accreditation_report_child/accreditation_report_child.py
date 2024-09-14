@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class AppointStudentResearch(Document):
+class AccreditationReportChild(Document):
 	pass

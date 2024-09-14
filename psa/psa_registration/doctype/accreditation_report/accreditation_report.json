@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-03 22:03:30.487985",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "appoint_supervisor_and_defense",
+  "program_enrollment",
+  "research_title_english",
+  "research_proposal",
+  "column_break_bmgj",
+  "student",
+  "supervisor",
+  "research_title_arabic",
+  "section_break_hawp",
+  "council",
+  "record_number",
+  "decision",
+  "column_break_vzym",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "appoint_supervisor_and_defense",
+   "fieldtype": "Link",
+   "label": "Appoint Supervisor and Defense",
+   "options": "Appoint Supervisor and Defense"
+  },
+  {
+   "fetch_from": "appoint_supervisor_and_defense.student",
+   "fieldname": "student",
+   "fieldtype": "Data",
+   "label": "Student",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "appoint_supervisor_and_defense.supervisor",
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "appoint_supervisor_and_defense.program_enrollment",
+   "fieldname": "program_enrollment",
+   "fieldtype": "Data",
+   "label": "Program Enrollment",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "appoint_supervisor_and_defense.research_title_english",
+   "fieldname": "research_title_english",
+   "fieldtype": "Data",
+   "label": "Research Title English",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "appoint_supervisor_and_defense.research_title_arabic",
+   "fieldname": "research_title_arabic",
+   "fieldtype": "Data",
+   "label": "Research Title Arabic",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "appoint_supervisor_and_defense.research_proposal",
+   "fieldname": "research_proposal",
+   "fieldtype": "Attach",
+   "label": " Research Proposal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bmgj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_hawp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "council",
+   "fieldtype": "Link",
+   "label": "Council",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "record_number",
+   "fieldtype": "Int",
+   "label": "Record Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Select",
+   "label": "Decision",
+   "options": "\nAccepte\nReject",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "options": "\n",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vzym",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-03 22:24:05.842809",
+ "modified_by": "Administrator",
+ "module": "PSA Registration",
+ "name": "Accreditation Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

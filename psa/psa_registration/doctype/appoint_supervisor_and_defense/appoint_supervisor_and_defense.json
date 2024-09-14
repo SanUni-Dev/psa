@@ -2,90 +2,83 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2024-07-08 18:28:38.411087",
+ "creation": "2024-08-02 03:00:59.622302",
  "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "student_name",
-  "column_break_xhbm",
+  "student",
+  "column_break_noae",
   "program_enrollment",
-  "section_break_lbre",
+  "supervisor",
+  "section_break_zaej",
   "research_title_english",
-  "search",
-  "column_break_pign",
+  "column_break_kcii",
   "research_title_arabic",
-  "section_break_qtzf",
-  "supervisors"
+  "research_proposal"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
-   "label": "Naming Series",
-   "options": "ADM-SAP-.YYYY.-"
+   "label": "Naming series",
+   "options": "REQ-."
   },
   {
-   "fieldname": "student_name",
+   "fieldname": "student",
    "fieldtype": "Link",
-   "label": "Student Name",
-   "options": "Student",
-   "read_only": 1
+   "label": "Student",
+   "options": "Student"
   },
   {
-   "fieldname": "column_break_xhbm",
+   "fieldname": "column_break_noae",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "program_enrollment",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Program Enrollment",
-   "read_only": 1
+   "options": "Program Enrollment"
   },
   {
-   "fieldname": "section_break_lbre",
+   "fieldname": "supervisor",
+   "fieldtype": "Data",
+   "label": "Supervisor"
+  },
+  {
+   "fieldname": "section_break_zaej",
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "student.search_title_english",
    "fieldname": "research_title_english",
    "fieldtype": "Small Text",
    "label": "Research Title English"
   },
   {
-   "fieldname": "search",
-   "fieldtype": "Text",
-   "label": "Search"
-  },
-  {
-   "fieldname": "column_break_pign",
+   "fieldname": "column_break_kcii",
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "student.search_title_arabic",
    "fieldname": "research_title_arabic",
    "fieldtype": "Small Text",
    "label": "Research Title Arabic"
   },
   {
-   "fieldname": "section_break_qtzf",
-   "fieldtype": "Section Break",
-   "label": "Supervisors"
-  },
-  {
-   "fieldname": "supervisors",
-   "fieldtype": "Table",
-   "label": "Supervisors",
-   "options": "Request A Supervisor child",
-   "reqd": 1
+   "fieldname": "research_proposal",
+   "fieldtype": "Attach",
+   "label": "Research Proposal"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-03 22:45:40.574111",
+ "modified": "2024-08-02 03:01:31.738477",
  "modified_by": "Administrator",
  "module": "PSA Registration",
- "name": "Request Main Supervisor",
+ "name": "Appoint Supervisor and Defense",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

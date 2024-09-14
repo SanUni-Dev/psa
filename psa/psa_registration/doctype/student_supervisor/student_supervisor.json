@@ -13,8 +13,8 @@
   "status",
   "section_break_jhrk",
   "student",
-  "program_enrollment",
   "column_break_twux",
+  "program_enrollment",
   "section_break_cssm",
   "supervisor",
   "supervisor_name",
@@ -65,6 +65,7 @@
    "fieldtype": "Link",
    "label": "Program Enrollment",
    "options": "Program Enrollment",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -182,7 +183,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-27 02:24:01.141853",
+ "modified": "2024-08-02 18:20:32.463409",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Supervisor",

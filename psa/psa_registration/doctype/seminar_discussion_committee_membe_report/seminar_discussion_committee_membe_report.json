@@ -9,6 +9,7 @@
   "program_enrollment",
   "column_break_ktid",
   "supervisor",
+  "doctor",
   "section_break_acsd",
   "committee_report"
  ],
@@ -43,11 +44,16 @@
    "fieldtype": "Table",
    "label": "Committee Report",
    "options": "Discussion Committee Seminar Faculty Member"
+  },
+  {
+   "fieldname": "doctor",
+   "fieldtype": "Data",
+   "label": "Doctor"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-16 04:03:58.641207",
+ "modified": "2024-08-04 01:48:59.993438",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Seminar Discussion Committee Membe Report",

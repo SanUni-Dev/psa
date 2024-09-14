@@ -11,13 +11,8 @@
   "column_break_xhbm",
   "program_enrollment",
   "supervisor",
-  "section_break_lbre",
-  "research_title_english",
-  "search",
-  "column_break_pign",
-  "research_title_arabic",
   "section_break_qtzf",
-  "table_nxrm"
+  "supervisors"
  ],
  "fields": [
   {
@@ -45,46 +40,24 @@
   },
   {
    "fieldname": "supervisor",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Supervisor",
-   "options": "Student Main Supervisor"
-  },
-  {
-   "fieldname": "section_break_lbre",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "research_title_english",
-   "fieldtype": "Small Text",
-   "label": "Research Title English"
-  },
-  {
-   "fieldname": "search",
-   "fieldtype": "Text",
-   "label": "Search"
-  },
-  {
-   "fieldname": "column_break_pign",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "research_title_arabic",
-   "fieldtype": "Small Text",
-   "label": "Research Title Arabic"
+   "read_only": 1
   },
   {
    "fieldname": "section_break_qtzf",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "table_nxrm",
+   "fieldname": "supervisors",
    "fieldtype": "Table",
+   "label": "supervisors",
    "options": "Request A Supervisor child"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-13 23:45:02.569046",
+ "modified": "2024-08-04 00:20:20.192809",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Request Co-Supervisor",
