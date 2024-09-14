@@ -25,39 +25,48 @@ frappe.ui.form.on('Request Main Supervisor', {
 // 		frm.set_value('student_name', frappe.session.user_fullname);
 // 	}
 // });
-frappe.ui.form.on("Request Main Supervisor", "onload", function(frm) {
-   
-  
-    // Fetch data from the Doctype
-    frappe.call({
-      method: "frappe.client.get_list",
-      args: {
-        doctype: "Student",
-        fields: ["name"],
-        filters: {
-            user_id:frappe.session.user_email
-        }
-      },
-      callback: function(r) {
-        frm.set_value('student_name', r.message[0].name);
-        
-        frappe.call({
-            method: "frappe.client.get_list",
-            args: {
-              doctype: "Program Enrollment",
-              fields: ["program"],
-              filters: {
-                student:r.message[0].name,
-                status:"Active"
-              }
-            },
-            callback: function(s) {
-				frm.set_value('program_enrollment', s.message[0].program);
+frappe.ui.form.on("Request Main Supervisor",  {
+  onload(frm){
+    frm.clear_table("supervisors");
+     frm.add_child("supervisors");
+     frm.add_child("supervisors");
+     frm.add_child("supervisors");
+     frm.refresh_field("supervisors");
               
-      
-            }
-          });
-      }
-    });
+       // Fetch data from the Doctype
+       frappe.call({
+        method: "frappe.client.get_list",
+        args: {
+          doctype: "Student",
+          fields: ["name"],
+          filters: {
+              user_id:frappe.session.user_email
+          }
+        },
+        callback: function(r) {
+          frm.set_value('student_name', r.message[0].name);
+          
+          frappe.call({
+              method: "frappe.client.get_list",
+              args: {
+                doctype: "Program Enrollment",
+                fields: ["name"],
+                filters: {
+                  student:r.message[0].name,
+                  status:"Continued"
+                }
+              },
+              callback: function(s) {
+          frm.set_value('program_enrollment', s.message[0].name);
+                
+        
+              }
+            });
+         
+           
+        }
+      });
+  }
+  
+ 
    });
-    

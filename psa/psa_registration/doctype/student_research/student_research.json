@@ -13,8 +13,8 @@
   "status",
   "section_break_styg",
   "student",
-  "program_enrollment",
   "column_break_robp",
+  "program_enrollment",
   "section_break_qcdd",
   "research_title_arabic",
   "column_break_hrcl",
@@ -106,10 +106,10 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Naming Series",
-   "options": "PSA-Std-Res-.YY.-.MM.-.####",
-   "reqd": 1
+   "options": "PSA-Std-Res-.YY.-.MM.-.####"
   },
   {
    "fieldname": "section_break_qcdd",
@@ -135,6 +135,7 @@
    "fieldtype": "Link",
    "label": "Program Enrollment",
    "options": "Program Enrollment",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -183,7 +184,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-27 02:29:02.266197",
+ "modified": "2024-08-03 23:18:03.930141",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Student Research",
@@ -199,6 +200,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Department Head",
    "share": 1,
    "write": 1
   }

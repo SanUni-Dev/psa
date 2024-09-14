@@ -28,8 +28,50 @@ frappe.ui.form.on('Seminar Discussion Faculty Member Report', {
     }
 });
 
-frappe.ui.form.on('Seminar Discussion Faculty Member Report', {
-	onload: function(frm) {
-		frm.set_value('doctor', frappe.session.user_fullname);
-	}
-});
+frappe.ui.form.on("Seminar Discussion Faculty Member Report", {
+    onload: function(frm) {
+        // Fetch the user's Employee record using their email ID
+        frappe.call({
+            method: "frappe.client.get_list",
+            args: {
+                doctype: "Employee",
+                filters: {
+                    user_id: frappe.session.user
+                },
+                fields: ["first_name"]
+            },
+            callback: function(r) {
+                if (r.message && r.message.length > 0) {
+                    // Set the 'doctor' field with the fetched user's first name
+                    frm.set_value('doctor', r.message[0].first_name);
+                } else {
+                    // Handle case where user is not found
+                    frappe.msgprint(__('No Employee record found for the current user.'));
+                }
+            },
+            error: function(error) {
+                // Handle any errors during the call
+                frappe.msgprint(__('Error fetching user data: ' + error.message));
+            }
+        });
+        
+    },
+    student:function(frm){
+        frappe.call({
+            method: "frappe.client.get_list",
+            args: {
+              doctype: "Program Enrollment",
+              fields: ["name"],
+              filters: {
+                student:frm.doc.student,
+                status:"Continued"
+              }
+            },
+            callback: function(s) {
+        frm.set_value('program_enrollment', s.message[0].name);
+              
+      
+            }
+          });
+    }
+  });

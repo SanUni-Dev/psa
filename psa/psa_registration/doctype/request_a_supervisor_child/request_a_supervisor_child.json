@@ -3,6 +3,7 @@
  "allow_rename": 1,
  "creation": "2024-05-05 03:12:59.755405",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "faculty",
@@ -16,14 +17,18 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Faculty",
-   "options": "Faculty"
+   "options": "Faculty",
+   "reqd": 1
   },
   {
    "allow_in_quick_entry": 1,
+   "fetch_from": "faculty_member.scientific_degree",
    "fieldname": "academic_degree",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Academic Degree"
+   "label": "Academic Degree",
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -31,13 +36,14 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Faculty Member",
-   "options": "Faculty Member"
+   "options": "Faculty Member",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-05-08 12:33:53.539309",
+ "modified": "2024-08-03 22:44:25.217046",
  "modified_by": "Administrator",
  "module": "PSA Registration",
  "name": "Request A Supervisor child",

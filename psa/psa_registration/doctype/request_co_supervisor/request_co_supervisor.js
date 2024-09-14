@@ -7,7 +7,7 @@
 // 	},
 // });
 frappe.ui.form.on('Request Co-Supervisor', {
-    validate: function(frm) {
+      validate: function(frm) {
         var research_title_english = frm.doc.research_title_english; // Replace 'letter' with the actual fieldname in your doctype
         var isEnglish = /^[A-Za-z\s]+$/.test(research_title_english); // Replace 'letter' with the actual fieldname in your doctype
         if (!isEnglish) {
@@ -27,10 +27,15 @@ frappe.ui.form.on('Request Co-Supervisor', {
     
 });
 
-frappe.ui.form.on("Request Co-Supervisor", "onload", function(frm) {
+frappe.ui.form.on("Request Co-Supervisor",{
    
-  
-    // Fetch data from the Doctype
+  onload(frm){
+    frm.clear_table("supervisors");
+     frm.add_child("supervisors");
+     frm.add_child("supervisors");
+     frm.add_child("supervisors");
+     frm.refresh_field("supervisors");
+      // Fetch data from the Doctype
     frappe.call({
       method: "frappe.client.get_list",
       args: {
@@ -47,20 +52,42 @@ frappe.ui.form.on("Request Co-Supervisor", "onload", function(frm) {
             method: "frappe.client.get_list",
             args: {
               doctype: "Program Enrollment",
-              fields: ["program"],
+              fields: ["name"],
               filters: {
                 student:r.message[0].name,
-                status:"Active"
+                status:"Continued"
+              }
+            },
+            callback: function(p) {
+				frm.set_value('program_enrollment', p.message[0].name);
+              
+      
+            }
+          });
+          frappe.call({
+            method: "frappe.client.get_list",
+            args: {
+              doctype: "Student Supervisor",
+              fields: ["supervisor_name"],
+              filters: {
+                student:r.message[0].name,
+                status:"Active",
+                type:"Main Supervisor"
               }
             },
             callback: function(s) {
-				frm.set_value('program_enrollment', s.message[0].program);
+				frm.set_value('supervisor', s.message[0].supervisor_name);
               
       
             }
           });
       }
-    });
+    }
+    );
+
+    }
+
+   
    });
   
  
